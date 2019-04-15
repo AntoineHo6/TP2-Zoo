@@ -7,6 +7,8 @@ using System.Threading.Tasks;
 namespace TP2_Zoo.Animal {
     public abstract class Animal {
 
+        public static Random r = new Random();
+
         public int Position;
         public String Type;
         public String Genre;
@@ -31,5 +33,19 @@ namespace TP2_Zoo.Animal {
         }
 
         abstract public void Crier();
+
+        public String GenreAleatoire() {
+            int nombre = r.Next(0, 2);
+            String genre;
+
+            if (nombre == 0) {
+                genre = "Masculin";
+            }
+            else {
+                genre = "Féminin";
+            }
+
+            return genre;
+        }
     }
 }

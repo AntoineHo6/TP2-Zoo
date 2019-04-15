@@ -99,15 +99,6 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\lion.wav" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\mouton.wav" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\licorne.wav" />
-  </ItemGroup>
-  <ItemGroup>
     <None Include="Resources\SMB-Tiles.png" />
   </ItemGroup>
   <ItemGroup>
@@ -146,6 +137,14 @@
   <ItemGroup>
     <None Include="Resources\haut2.gif" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <None Include="Resources\licorne.wav" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\lion.wav" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\mouton.wav" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
