@@ -16,7 +16,6 @@ namespace TP2_Zoo {
         Septembre, Octobre, Novembre, Decembre };
         public Zoo() {
             InitializeComponent();
-
         }
 
         private void Zoo_Paint(object sender, PaintEventArgs e) {

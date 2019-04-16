@@ -30,14 +30,14 @@
             // 
             this.etatJeu1.Location = new System.Drawing.Point(0, 0);
             this.etatJeu1.Name = "etatJeu1";
-            this.etatJeu1.Size = new System.Drawing.Size(1609, 762);
+            this.etatJeu1.Size = new System.Drawing.Size(1280, 800);
             this.etatJeu1.TabIndex = 0;
             // 
             // Zoo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1264, 762);
+            this.ClientSize = new System.Drawing.Size(1280, 800);
             this.Controls.Add(this.etatJeu1);
             this.Name = "Zoo";
             this.Text = "Zoo Tycoon";

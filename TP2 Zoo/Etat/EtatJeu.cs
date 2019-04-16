@@ -19,6 +19,8 @@ namespace TP2_Zoo.Etat {
             PaintUtils.PeintureGazon(e);
 
             PaintUtils.PeintureEnclos(e);
+
+            PaintUtils.PeintureCadriage(e);
         }
     }
 }

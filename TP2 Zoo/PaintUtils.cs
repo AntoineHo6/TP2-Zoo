@@ -32,5 +32,21 @@ namespace TP2_Zoo {
         public static void PeintureEnclos(PaintEventArgs e) {
             e.Graphics.DrawImage(TilesetImageGenerator.GetTile(2), TuileAPixel(38), TuileAPixel(0));
         }
+
+        public static void PeintureCadriage(PaintEventArgs e) {
+            Pen blackPen = new Pen(Color.Black, 1);
+
+            // peinture lignes verticales
+            for (int i = 0; i < 40; i++) {
+                e.Graphics.DrawLine(blackPen, TuileAPixel(i), 0, TuileAPixel(i), 800);
+            }
+
+            // peinture lines horizontales
+            for (int i = 0; i < 25; i++) {
+                e.Graphics.DrawLine(blackPen, 0, TuileAPixel(i), 1296, TuileAPixel(i));
+            }
+
+            
+        }
     }
 }

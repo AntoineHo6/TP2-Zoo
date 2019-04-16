@@ -30,7 +30,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Name = "EtatJeu";
-            this.Size = new System.Drawing.Size(1609, 762);
+            this.Size = new System.Drawing.Size(1280, 800);
             this.Paint += new System.Windows.Forms.PaintEventHandler(this.EtatJeu_Paint);
             this.ResumeLayout(false);
 
