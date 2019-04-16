@@ -13,8 +13,9 @@ namespace tileSetZoo {
         // La valeur entière correspond "par hasard" à la position de l'image dans la List<TileCoord>
         public static int FLAQUEDEAU = 0;
         public static int GAZON = 1;
-        public static int ENCLOS = 2;
-        public static int SABLE = 3;
+        public static int ENCLOS_H = 2;
+        public static int ENCLOS_V = 3;
+        public static int SABLE = 4;
 
         private static List<TileCoord> listeCoord = new List<TileCoord>();
         private static List<Bitmap> listeBitmap = new List<Bitmap>();
@@ -25,12 +26,14 @@ namespace tileSetZoo {
         static TilesetImageGenerator() {
             listeCoord.Add(new TileCoord() { Ligne = 0, Colonne = 0 }); // FLAQUEDEAU
             listeCoord.Add(new TileCoord() { Ligne = 8, Colonne = 0 }); // GAZON
-            listeCoord.Add(new TileCoord() { Ligne = 14, Colonne = 22 }); // ENCLOS
-            listeCoord.Add(new TileCoord() { Ligne = 5, Colonne = 14 }); // SABLE
+            listeCoord.Add(new TileCoord() { Ligne = 14, Colonne = 22 }); // ENCLOS HORIZONTAL
+            listeCoord.Add(new TileCoord() { Ligne = 10, Colonne = 18 }); // ENCLOS VERTICAL
+            listeCoord.Add(new TileCoord() { Ligne = 14, Colonne = 4 }); // SABLE
 
             listeBitmap.Add(LoadTile(FLAQUEDEAU, 32, 32));  // FLAQUEDEAU
             listeBitmap.Add(LoadTile(GAZON, 32, 32));       // GAZON
-            listeBitmap.Add(LoadTile(ENCLOS, 64, 32));      // ENCLOS
+            listeBitmap.Add(LoadTile(ENCLOS_H, 64, 32));      // ENCLOS HORIZONTAL
+            listeBitmap.Add(LoadTile(ENCLOS_V, 32, 32));      // ENCLOS VERTICAL
             listeBitmap.Add(LoadTile(SABLE, 32, 32));      // SABLE
         }
 

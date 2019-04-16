@@ -20,6 +20,9 @@ namespace TP2_Zoo.Etat {
 
             PaintUtils.PeintureEnclos(e);
 
+            PaintUtils.PeintureCheminSable(e);
+
+            // FIN ; Cadrier toujours à la fin pour qu'il soit visible.
             PaintUtils.PeintureCadriage(e);
         }
     }
