@@ -16,7 +16,7 @@ namespace TP2_Zoo {
             
         }
 
-        // 40 x 25
+        // Taille de 40 x 25 ou (39 x 24 si on commmence par index 0)
         static int TuileAPixel(int Tuile) {
             return Tuile * 32;
         }
@@ -30,7 +30,7 @@ namespace TP2_Zoo {
         }
 
         public static void PeintureEnclos(PaintEventArgs e) {
-            
+            e.Graphics.DrawImage(TilesetImageGenerator.GetTile(2), TuileAPixel(38), TuileAPixel(0));
         }
     }
 }

@@ -20,10 +20,7 @@ namespace TP2_Zoo {
         }
 
         private void Zoo_Paint(object sender, PaintEventArgs e) {
-            PaintUtils.PeintureGazon(e);
-
-            // PAINT TESTING GROUND
-            e.Graphics.DrawImage(TilesetImageGenerator.GetTile(2), 0, 0);
+            
         }
     }
 }

@@ -18,8 +18,7 @@ namespace TP2_Zoo.Etat {
         private void EtatJeu_Paint(object sender, PaintEventArgs e) {
             PaintUtils.PeintureGazon(e);
 
-            // PAINT
-            e.Graphics.DrawImage(TilesetImageGenerator.GetTile(2), 32, 0);
+            PaintUtils.PeintureEnclos(e);
         }
     }
 }

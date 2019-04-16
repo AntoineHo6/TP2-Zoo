@@ -30,7 +30,7 @@
             // 
             this.etatJeu1.Location = new System.Drawing.Point(0, 0);
             this.etatJeu1.Name = "etatJeu1";
-            this.etatJeu1.Size = new System.Drawing.Size(1264, 762);
+            this.etatJeu1.Size = new System.Drawing.Size(1609, 762);
             this.etatJeu1.TabIndex = 0;
             // 
             // Zoo
