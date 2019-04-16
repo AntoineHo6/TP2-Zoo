@@ -10,40 +10,41 @@ using tileSetZoo;
 namespace TP2_Zoo {
     public static class GerantCarte {
 
-        public static bool[,] TileSolidMap = new bool[40, 26];
+        public static bool[,] SolidMapping = new bool[40, 26];
+        public static Bitmap[,] TileFloorMapping = new Bitmap[40, 26];
 
         static GerantCarte() {
             // Par defaut, tout n'est pas solide.
-            for (int y = 0; y < TileSolidMap.GetLength(1); y++) {
-                for (int x = 0; x < TileSolidMap.GetLength(0); x++) {
-                    TileSolidMap[x, y] = false;
+            for (int y = 0; y < SolidMapping.GetLength(1); y++) {
+                for (int x = 0; x < SolidMapping.GetLength(0); x++) {
+                    SolidMapping[x, y] = false;
                 }
             }
 
             // Changement des bools dans TileSolidMap a solide ou les enclos sont places.
-            for (int y = 0; y < TileSolidMap.GetLength(1); y++) {
-                for (int x = 0; x < TileSolidMap.GetLength(0); x++) {
+            for (int y = 0; y < SolidMapping.GetLength(1); y++) {
+                for (int x = 0; x < SolidMapping.GetLength(0); x++) {
                     if ((y == 6 || y == 11 || y == 14 || y == 19) && ((x >= 7 && x <= 18) || (x >= 21 && x <= 32))) {       // Verifie ou les enclos horizontals se retrouvent.
-                        TileSolidMap[x, y] = true;
+                        SolidMapping[x, y] = true;
                     }
                     else if ((x == 7 || x == 18 || x == 21 || x == 32) && ((y >= 7 && y <= 10) || (y >= 15 && y <= 18))) {  // Verifie ou les enclos verticals se retrouvent.
-                        TileSolidMap[x, y] = true;
+                        SolidMapping[x, y] = true;
                     }
                 }
             }
 
             for (int y = 0; y < 5; y++) {
                 for (int x = 0; x < 4; x++) {
-                    TileSolidMap[x, y] = true;
+                    SolidMapping[x, y] = true;
                 }
             }
         }
 
         // testing purposes
         public static void PrintTileSolidMapping() {
-            for (int y = 0; y < TileSolidMap.GetLength(1); y++) {
-                for (int x = 0; x < TileSolidMap.GetLength(0); x++) {
-                    if (TileSolidMap[x, y]) {
+            for (int y = 0; y < SolidMapping.GetLength(1); y++) {
+                for (int x = 0; x < SolidMapping.GetLength(0); x++) {
+                    if (SolidMapping[x, y]) {
                         Console.Write("1 ");
                     }
                     else {
