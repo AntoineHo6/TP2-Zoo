@@ -10,10 +10,17 @@ using tileSetZoo;
 namespace TP2_Zoo {
     public static class GerantCarte {
 
+        public static Bitmap[,] TileFloorMapping = new Bitmap[40, 26];  // Savoir quoi repaint sur les tuiles ou le hero ou autres ont été.
         public static bool[,] SolidMapping = new bool[40, 26];
-        public static Bitmap[,] TileFloorMapping = new Bitmap[40, 26];
+
 
         static GerantCarte() {
+            InitSolidMapping();
+            InitTileFloorMapping();
+        }
+
+
+        public static void InitSolidMapping() {
             // Par defaut, tout n'est pas solide.
             for (int y = 0; y < SolidMapping.GetLength(1); y++) {
                 for (int x = 0; x < SolidMapping.GetLength(0); x++) {
@@ -33,6 +40,7 @@ namespace TP2_Zoo {
                 }
             }
 
+            // La maison est solide
             for (int y = 0; y < 5; y++) {
                 for (int x = 0; x < 4; x++) {
                     SolidMapping[x, y] = true;
@@ -40,8 +48,26 @@ namespace TP2_Zoo {
             }
         }
 
+
+        public static void InitTileFloorMapping() {
+            // Ajout du GAZON et SABLE
+            for (int y = 0; y < TileFloorMapping.GetLength(1); y++) {
+                for (int x = 0; x < TileFloorMapping.GetLength(0); x++) {
+                    TileFloorMapping[x, y] = MapTileSetImageGenerator.GetTile(1);
+
+                    if ((x == 19 || x == 20) || (y == 12 || y == 13)) {
+                        TileFloorMapping[x, y] = MapTileSetImageGenerator.GetTile(4);
+                    }
+                    else if (x == 1 && (y >= 5 && y <= 11)) {
+                        TileFloorMapping[x, y] = MapTileSetImageGenerator.GetTile(4);
+                    }
+                }
+            }
+        }
+
+
         // testing purposes
-        public static void PrintTileSolidMapping() {
+        public static void PrintSolidMapping() {
             for (int y = 0; y < SolidMapping.GetLength(1); y++) {
                 for (int x = 0; x < SolidMapping.GetLength(0); x++) {
                     if (SolidMapping[x, y]) {
@@ -52,6 +78,16 @@ namespace TP2_Zoo {
                     }
                 }
                 Console.Write("\n");
+            }
+        }
+
+
+        // testing purposes
+        public static void PaintTileFloorMapping(PaintEventArgs e) {
+            for (int y = 0; y < TileFloorMapping.GetLength(1); y++) {
+                for (int x = 0; x < TileFloorMapping.GetLength(0); x++) {
+                    e.Graphics.DrawImage(TileFloorMapping[x, y], TuileAPixel(x), TuileAPixel(y));
+                }
             }
         }
 
@@ -87,12 +123,12 @@ namespace TP2_Zoo {
 
 
         public static void PeintureCheminSable(PaintEventArgs e) {
-            // Peinture le chemin vertical au milieu.
+            // Peinture le chemin sable vertical au milieu.
             for (int x = 0; x < 40; x++) {
                 e.Graphics.DrawImage(MapTileSetImageGenerator.GetTile(4), TuileAPixel(x), TuileAPixel(12));
                 e.Graphics.DrawImage(MapTileSetImageGenerator.GetTile(4), TuileAPixel(x), TuileAPixel(13));
             }
-            // Peinture le chemin horizontal au milieu.
+            // Peinture le chemin sable horizontal au milieu.
             for (int y = 0; y < 26; y++) {
                 e.Graphics.DrawImage(MapTileSetImageGenerator.GetTile(4), TuileAPixel(19), TuileAPixel(y));
                 e.Graphics.DrawImage(MapTileSetImageGenerator.GetTile(4), TuileAPixel(20), TuileAPixel(y));

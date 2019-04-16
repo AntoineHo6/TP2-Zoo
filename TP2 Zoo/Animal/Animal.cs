@@ -9,14 +9,15 @@ namespace TP2_Zoo.Animal {
 
         public static Random r = new Random();
 
-        public int Position;
-        public String Type;
-        public String Genre;
-        public String Faim;
-        public String Age;
-        public bool Enceinte;
+        public int Position { get; set; }
+        public String Type { get; set; }
+        public String Genre { get; set; }
+        public String Faim { get; set; }
+        public String Age { get; set; }
+        public bool Enceinte { get; set; }
+        public int Prix { get; set; }
 
-        public Animal(int Position, String Type, String Genre, String Faim, String Age, bool Enceinte) {
+        public Animal(int Position, int Prix, String Type, String Genre, String Faim, String Age, bool Enceinte) {
             this.Position = Position;
             this.Type = Type;
             this.Genre = Genre;
