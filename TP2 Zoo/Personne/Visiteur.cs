@@ -5,20 +5,20 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace TP2_Zoo.Personne {
-    class Visiteur : Personne {
+    public class Visiteur : Personne {
 
         String Nom { get; set; }
         String Sexe { get; set; }
         int NbrJours { get; set; }
         int NbrDechets { get; set; }
-        int PrixEntree { get; } = 2;
+        int PrixEntree { get; set; }
 
-        public Visiteur(int[] Position, String Nom, String Sexe, int NbrJours, int PrixEntree) : base(Position) {
+        public Visiteur(String Nom, String Sexe, int NbrJours, params int[] Position) : base(Position) {
             this.Position = Position;
             this.Nom = Nom;
             this.Sexe = Sexe;
             this.NbrJours = NbrJours;
-            this.PrixEntree = PrixEntree;
+            this.PrixEntree = 2;
         }
 
     }

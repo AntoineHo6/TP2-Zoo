@@ -6,10 +6,10 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace TP2_Zoo.Animal {
-    class Licorne : Animal {
+    public class Licorne : Animal {
 
-        public Licorne(int Position, int Prix, String Type, String Genre, String Faim, String Age, bool Enceinte) : 
-            base(Position, Prix, Type, Genre, Faim, Age, Enceinte) {
+        public Licorne(int Prix, String Type, String Genre, String Faim, String Age, bool Enceinte, params int[] Position) : 
+            base(Prix, Type, Genre, Faim, Age, Enceinte, Position) {
             this.Position = Position;
             Prix = 50;
             Type = "Licorne";

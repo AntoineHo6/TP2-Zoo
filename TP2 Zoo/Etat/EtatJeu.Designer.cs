@@ -32,6 +32,7 @@
             this.Name = "EtatJeu";
             this.Size = new System.Drawing.Size(1280, 800);
             this.Paint += new System.Windows.Forms.PaintEventHandler(this.EtatJeu_Paint);
+            this.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.EtatJeu_KeyPress);
             this.ResumeLayout(false);
 
         }

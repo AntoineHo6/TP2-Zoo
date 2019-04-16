@@ -7,9 +7,9 @@ using System.Threading.Tasks;
 namespace TP2_Zoo.Animal {
     public abstract class Animal {
 
-        public static Random r = new Random();
+        static Random r = new Random();
 
-        public int Position { get; set; }
+        public int[] Position { get; set; }
         public String Type { get; set; }
         public String Genre { get; set; }
         public String Faim { get; set; }
@@ -17,7 +17,7 @@ namespace TP2_Zoo.Animal {
         public bool Enceinte { get; set; }
         public int Prix { get; set; }
 
-        public Animal(int Position, int Prix, String Type, String Genre, String Faim, String Age, bool Enceinte) {
+        public Animal(int Prix, String Type, String Genre, String Faim, String Age, bool Enceinte, params int[] Position) {
             this.Position = Position;
             this.Type = Type;
             this.Genre = Genre;

@@ -5,11 +5,13 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace TP2_Zoo.Personne {
-    class Concierge : Personne {
+    public class Concierge : Personne {
 
-        int Frais { get; } = 2;
-        public Concierge(int[] Position) : base(Position) {
+        int Frais { get; set; }
+
+        public Concierge(params int[] Position) : base(Position) {
             this.Position = Position;
+            Frais = 2;
         }
     }
 }

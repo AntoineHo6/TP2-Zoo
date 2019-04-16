@@ -6,9 +6,10 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace TP2_Zoo.Animal {
-    class Lion : Animal {
-        public Lion(int Position, int Prix, String Type, String Genre, String Faim, String Age, bool Enceinte) :
-            base(Position, Prix, Type, Genre, Faim, Age, Enceinte) {
+    public class Lion : Animal {
+
+        public Lion(int Prix, String Type, String Genre, String Faim, String Age, bool Enceinte, params int[] Position) :
+            base(Prix, Type, Genre, Faim, Age, Enceinte, Position) {
             this.Position = Position;
             Prix = 35;
             Type = "Lion";
