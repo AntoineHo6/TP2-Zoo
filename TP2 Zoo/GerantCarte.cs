@@ -8,12 +8,44 @@ using System.Windows.Forms;
 using tileSetZoo;
 
 namespace TP2_Zoo {
-    public static class PaintUtils {
+    public static class GerantCarte {
 
-        static Bitmap[,] Gazon = new Bitmap[40, 25];
+        public static bool[,] TileSolidMap = new bool[40, 26];
 
-        static PaintUtils() {
-            
+        static GerantCarte() {
+            // Par defaut, tout n'est pas solide.
+            for (int y = 0; y < TileSolidMap.GetLength(1); y++) {
+                for (int x = 0; x < TileSolidMap.GetLength(0); x++) {
+                    TileSolidMap[x, y] = false;
+                }
+            }
+
+            // Changement des bools dans TileSolidMap a solide ou les enclos sont places.
+            for (int y = 0; y < TileSolidMap.GetLength(1); y++) {
+                for (int x = 0; x < TileSolidMap.GetLength(0); x++) {
+                    if ((y == 6 || y == 11 || y == 14 || y == 19) && ((x >= 7 && x <= 18) || (x >= 21 && x <= 32))) {       // Verifie ou les enclos horizontals se retrouvent.
+                        TileSolidMap[x, y] = true;
+                    }
+                    else if ((x == 7 || x == 18 || x == 21 || x == 32) && ((y >= 7 && y <= 10) || (y >= 15 && y <= 18))) {
+                        TileSolidMap[x, y] = true;
+                    }
+                }
+            }
+        }
+
+        // testing purposes
+        public static void PrintTileSolidMapping() {
+            for (int y = 0; y < TileSolidMap.GetLength(1); y++) {
+                for (int x = 0; x < TileSolidMap.GetLength(0); x++) {
+                    if (TileSolidMap[x, y]) {
+                        Console.Write("1 ");
+                    }
+                    else {
+                        Console.Write("- ");
+                    }
+                }
+                Console.Write("\n");
+            }
         }
 
 
@@ -61,9 +93,6 @@ namespace TP2_Zoo {
 
 
         public static void PeintureEnclos(PaintEventArgs e) {
-            // Quand on peinture un enclos horizontal, il faut ajouter 8 pixel car ils sont autistes.
-
-
             // Peinture enclos horizontales.
             for (int x = 0; x < 11; x++) {
                 // pour l'enclos en haut à gauche.

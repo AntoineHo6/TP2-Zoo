@@ -16,14 +16,15 @@ namespace TP2_Zoo.Etat {
         }
 
         private void EtatJeu_Paint(object sender, PaintEventArgs e) {
-            PaintUtils.PeintureGazon(e);
-            PaintUtils.PeintureCheminSable(e);
+            // temp
+            GerantCarte.PrintTileSolidMapping();
 
-            PaintUtils.PeintureEnclos(e);
-
+            GerantCarte.PeintureGazon(e);
+            GerantCarte.PeintureCheminSable(e);
+            GerantCarte.PeintureEnclos(e);
 
             // FIN ; Cadrier toujours à la fin pour qu'il soit visible.
-            PaintUtils.PeintureCadriage(e);
+            GerantCarte.PeintureCadriage(e);
         }
     }
 }

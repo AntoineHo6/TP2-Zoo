@@ -61,7 +61,7 @@
     <Compile Include="ZooTycoon.Designer.cs">
       <DependentUpon>ZooTycoon.cs</DependentUpon>
     </Compile>
-    <Compile Include="PaintUtils.cs" />
+    <Compile Include="GerantCarte.cs" />
     <Compile Include="Personne\Concierge.cs" />
     <Compile Include="Personne\Heros.cs" />
     <Compile Include="Personne\Personne.cs" />
