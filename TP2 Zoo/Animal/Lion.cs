@@ -7,8 +7,10 @@ using System.Threading.Tasks;
 
 namespace TP2_Zoo.Animal {
     class Lion : Animal {
-        public Lion(int Position, String Type, String Genre, String Faim, String Age, bool Enceinte) :
-            base(Position, Type, Genre, Faim, Age, Enceinte) {
+        public Lion(int Position, int Prix, String Type, String Genre, String Faim, String Age, bool Enceinte) :
+            base(Position, Prix, Type, Genre, Faim, Age, Enceinte) {
+            this.Position = Position;
+            Prix = 35;
             Type = "Lion";
             Genre = GenreAleatoire();
             Faim = "Nourri";

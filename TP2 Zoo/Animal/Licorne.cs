@@ -8,8 +8,10 @@ using System.Threading.Tasks;
 namespace TP2_Zoo.Animal {
     class Licorne : Animal {
 
-        public Licorne(int Position, String Type, String Genre, String Faim, String Age, bool Enceinte) : 
-            base(Position, Type, Genre, Faim, Age, Enceinte) {
+        public Licorne(int Position, int Prix, String Type, String Genre, String Faim, String Age, bool Enceinte) : 
+            base(Position, Prix, Type, Genre, Faim, Age, Enceinte) {
+            this.Position = Position;
+            Prix = 50;
             Type = "Licorne";
             Genre = GenreAleatoire();
             Faim = "Nourri";

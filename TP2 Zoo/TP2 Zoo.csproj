@@ -55,6 +55,18 @@
     <Compile Include="Etat\EtatJeu.Designer.cs">
       <DependentUpon>EtatJeu.cs</DependentUpon>
     </Compile>
+    <Compile Include="InformationsAnimaux.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="InformationsAnimaux.Designer.cs">
+      <DependentUpon>InformationsAnimaux.cs</DependentUpon>
+    </Compile>
+    <Compile Include="InfosAnimaux.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="InfosAnimaux.Designer.cs">
+      <DependentUpon>InfosAnimaux.cs</DependentUpon>
+    </Compile>
     <Compile Include="TileSetImageGenerator\AnimalTileSetImageGenerator.cs" />
     <Compile Include="ZooTycoon.cs">
       <SubType>Form</SubType>
@@ -72,6 +84,12 @@
     <Compile Include="TileSetImageGenerator\MapTileSetImageGenerator.cs" />
     <EmbeddedResource Include="Etat\EtatJeu.resx">
       <DependentUpon>EtatJeu.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="InformationsAnimaux.resx">
+      <DependentUpon>InformationsAnimaux.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="InfosAnimaux.resx">
+      <DependentUpon>InfosAnimaux.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ZooTycoon.resx">
       <DependentUpon>ZooTycoon.cs</DependentUpon>
