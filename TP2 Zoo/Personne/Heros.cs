@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace TP2_Zoo.Personne {
     class Heros : Personne {
-        int Portefeuille { get; set; } = 100;
+        int Argent { get; set; } = 100;
 
         public Heros(int[] Position) : base(Position) {
             this.Position = Position;

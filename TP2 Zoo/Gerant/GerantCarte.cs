@@ -26,9 +26,15 @@ namespace TP2_Zoo {
                     if ((y == 6 || y == 11 || y == 14 || y == 19) && ((x >= 7 && x <= 18) || (x >= 21 && x <= 32))) {       // Verifie ou les enclos horizontals se retrouvent.
                         TileSolidMap[x, y] = true;
                     }
-                    else if ((x == 7 || x == 18 || x == 21 || x == 32) && ((y >= 7 && y <= 10) || (y >= 15 && y <= 18))) {
+                    else if ((x == 7 || x == 18 || x == 21 || x == 32) && ((y >= 7 && y <= 10) || (y >= 15 && y <= 18))) {  // Verifie ou les enclos verticals se retrouvent.
                         TileSolidMap[x, y] = true;
                     }
+                }
+            }
+
+            for (int y = 0; y < 5; y++) {
+                for (int x = 0; x < 4; x++) {
+                    TileSolidMap[x, y] = true;
                 }
             }
         }
@@ -73,21 +79,26 @@ namespace TP2_Zoo {
         public static void PeintureGazon(PaintEventArgs e) {
             for (int y = 0; y < 26; y++) {
                 for (int x = 0; x < 40; x++) {
-                    e.Graphics.DrawImage(TilesetImageGenerator.GetTile(1), TuileAPixel(x), TuileAPixel(y));
+                    e.Graphics.DrawImage(MapTileSetImageGenerator.GetTile(1), TuileAPixel(x), TuileAPixel(y));
                 }
             }
         }
 
 
         public static void PeintureCheminSable(PaintEventArgs e) {
+            // Peinture le chemin vertical au milieu.
             for (int x = 0; x < 40; x++) {
-                e.Graphics.DrawImage(TilesetImageGenerator.GetTile(4), TuileAPixel(x), TuileAPixel(12));
-                e.Graphics.DrawImage(TilesetImageGenerator.GetTile(4), TuileAPixel(x), TuileAPixel(13));
+                e.Graphics.DrawImage(MapTileSetImageGenerator.GetTile(4), TuileAPixel(x), TuileAPixel(12));
+                e.Graphics.DrawImage(MapTileSetImageGenerator.GetTile(4), TuileAPixel(x), TuileAPixel(13));
+            }
+            // Peinture le chemin horizontal au milieu.
+            for (int y = 0; y < 26; y++) {
+                e.Graphics.DrawImage(MapTileSetImageGenerator.GetTile(4), TuileAPixel(19), TuileAPixel(y));
+                e.Graphics.DrawImage(MapTileSetImageGenerator.GetTile(4), TuileAPixel(20), TuileAPixel(y));
             }
 
-            for (int y = 0; y < 26; y++) {
-                e.Graphics.DrawImage(TilesetImageGenerator.GetTile(4), TuileAPixel(19), TuileAPixel(y));
-                e.Graphics.DrawImage(TilesetImageGenerator.GetTile(4), TuileAPixel(20), TuileAPixel(y));
+            for (int y = 0; y < 7; y++) {
+                e.Graphics.DrawImage(MapTileSetImageGenerator.GetTile(4), TuileAPixel(1), TuileAPixel(y + 5));
             }
         }
 
@@ -96,40 +107,45 @@ namespace TP2_Zoo {
             // Peinture enclos horizontales.
             for (int x = 0; x < 11; x++) {
                 // pour l'enclos en haut à gauche.
-                e.Graphics.DrawImage(TilesetImageGenerator.GetTile(2), TuileAPixel(7+x) + 8, TuileAPixel(6));
-                e.Graphics.DrawImage(TilesetImageGenerator.GetTile(2), TuileAPixel(7+x) + 8, TuileAPixel(11));
+                e.Graphics.DrawImage(MapTileSetImageGenerator.GetTile(2), TuileAPixel(7+x) + 8, TuileAPixel(6));
+                e.Graphics.DrawImage(MapTileSetImageGenerator.GetTile(2), TuileAPixel(7+x) + 8, TuileAPixel(11));
 
                 // pour l'enclos en haut à droite.
-                e.Graphics.DrawImage(TilesetImageGenerator.GetTile(2), TuileAPixel(21+x) + 8, TuileAPixel(6));
-                e.Graphics.DrawImage(TilesetImageGenerator.GetTile(2), TuileAPixel(21+x) + 8, TuileAPixel(11));
+                e.Graphics.DrawImage(MapTileSetImageGenerator.GetTile(2), TuileAPixel(21+x) + 8, TuileAPixel(6));
+                e.Graphics.DrawImage(MapTileSetImageGenerator.GetTile(2), TuileAPixel(21+x) + 8, TuileAPixel(11));
 
                 // Peinture l'enclos en bas à gauche.
-                e.Graphics.DrawImage(TilesetImageGenerator.GetTile(2), TuileAPixel(7 + x) + 8, TuileAPixel(14));
-                e.Graphics.DrawImage(TilesetImageGenerator.GetTile(2), TuileAPixel(7 + x) + 8, TuileAPixel(19));
+                e.Graphics.DrawImage(MapTileSetImageGenerator.GetTile(2), TuileAPixel(7 + x) + 8, TuileAPixel(14));
+                e.Graphics.DrawImage(MapTileSetImageGenerator.GetTile(2), TuileAPixel(7 + x) + 8, TuileAPixel(19));
 
                 // Peinture l'enclos en bas à droite.
-                e.Graphics.DrawImage(TilesetImageGenerator.GetTile(2), TuileAPixel(21 + x) + 8, TuileAPixel(14));
-                e.Graphics.DrawImage(TilesetImageGenerator.GetTile(2), TuileAPixel(21 + x) + 8, TuileAPixel(19));
+                e.Graphics.DrawImage(MapTileSetImageGenerator.GetTile(2), TuileAPixel(21 + x) + 8, TuileAPixel(14));
+                e.Graphics.DrawImage(MapTileSetImageGenerator.GetTile(2), TuileAPixel(21 + x) + 8, TuileAPixel(19));
             }
 
             // Peinture enclos verticales.
             for (int y = 0; y < 5; y++) {
                 // pour l'enclos en haut à gauche.
-                e.Graphics.DrawImage(TilesetImageGenerator.GetTile(3), TuileAPixel(7), TuileAPixel(6+y));
-                e.Graphics.DrawImage(TilesetImageGenerator.GetTile(3), TuileAPixel(18), TuileAPixel(6+y));
+                e.Graphics.DrawImage(MapTileSetImageGenerator.GetTile(3), TuileAPixel(7), TuileAPixel(6+y));
+                e.Graphics.DrawImage(MapTileSetImageGenerator.GetTile(3), TuileAPixel(18), TuileAPixel(6+y));
 
                 // pour l'enclos en haut à droite.
-                e.Graphics.DrawImage(TilesetImageGenerator.GetTile(3), TuileAPixel(21), TuileAPixel(6+y));
-                e.Graphics.DrawImage(TilesetImageGenerator.GetTile(3), TuileAPixel(32), TuileAPixel(6+y));
+                e.Graphics.DrawImage(MapTileSetImageGenerator.GetTile(3), TuileAPixel(21), TuileAPixel(6+y));
+                e.Graphics.DrawImage(MapTileSetImageGenerator.GetTile(3), TuileAPixel(32), TuileAPixel(6+y));
 
                 // Peinture l'enclos en bas à gauche.
-                e.Graphics.DrawImage(TilesetImageGenerator.GetTile(3), TuileAPixel(7), TuileAPixel(14 + y));
-                e.Graphics.DrawImage(TilesetImageGenerator.GetTile(3), TuileAPixel(18), TuileAPixel(14 + y));
+                e.Graphics.DrawImage(MapTileSetImageGenerator.GetTile(3), TuileAPixel(7), TuileAPixel(14 + y));
+                e.Graphics.DrawImage(MapTileSetImageGenerator.GetTile(3), TuileAPixel(18), TuileAPixel(14 + y));
 
                 // Peinture l'enclos en bas à droite.
-                e.Graphics.DrawImage(TilesetImageGenerator.GetTile(3), TuileAPixel(21), TuileAPixel(14 + y));
-                e.Graphics.DrawImage(TilesetImageGenerator.GetTile(3), TuileAPixel(32), TuileAPixel(14 + y));
+                e.Graphics.DrawImage(MapTileSetImageGenerator.GetTile(3), TuileAPixel(21), TuileAPixel(14 + y));
+                e.Graphics.DrawImage(MapTileSetImageGenerator.GetTile(3), TuileAPixel(32), TuileAPixel(14 + y));
             }
+        }
+
+
+        public static void PeintureMaison(PaintEventArgs e) {
+            e.Graphics.DrawImage(MapTileSetImageGenerator.GetTile(5), TuileAPixel(0), 0);
         }
     }
 }

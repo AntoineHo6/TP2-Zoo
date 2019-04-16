@@ -55,6 +55,7 @@
     <Compile Include="Etat\EtatJeu.Designer.cs">
       <DependentUpon>EtatJeu.cs</DependentUpon>
     </Compile>
+    <Compile Include="TileSetImageGenerator\AnimalTileSetImageGenerator.cs" />
     <Compile Include="ZooTycoon.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -68,7 +69,7 @@
     <Compile Include="Personne\Visiteur.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="TilesetImageGenerator.cs" />
+    <Compile Include="TileSetImageGenerator\MapTileSetImageGenerator.cs" />
     <EmbeddedResource Include="Etat\EtatJeu.resx">
       <DependentUpon>EtatJeu.cs</DependentUpon>
     </EmbeddedResource>

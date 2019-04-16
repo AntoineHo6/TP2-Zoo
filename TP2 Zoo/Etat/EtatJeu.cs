@@ -13,15 +13,15 @@ namespace TP2_Zoo.Etat {
     public partial class EtatJeu : UserControl {
         public EtatJeu() {
             InitializeComponent();
+            // temp
+            GerantCarte.PrintTileSolidMapping();
         }
 
         private void EtatJeu_Paint(object sender, PaintEventArgs e) {
-            // temp
-            GerantCarte.PrintTileSolidMapping();
-
             GerantCarte.PeintureGazon(e);
             GerantCarte.PeintureCheminSable(e);
             GerantCarte.PeintureEnclos(e);
+            GerantCarte.PeintureMaison(e);
 
             // FIN ; Cadrier toujours à la fin pour qu'il soit visible.
             GerantCarte.PeintureCadriage(e);
