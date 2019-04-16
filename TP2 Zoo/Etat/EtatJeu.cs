@@ -15,6 +15,8 @@ namespace TP2_Zoo.Etat {
             InitializeComponent();
             // temp
             GerantCarte.PrintTileSolidMapping();
+
+            DoubleBuffered = true;
         }
 
         private void EtatJeu_Paint(object sender, PaintEventArgs e) {
