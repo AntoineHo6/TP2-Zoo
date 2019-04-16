@@ -17,10 +17,10 @@ namespace TP2_Zoo.Etat {
 
         private void EtatJeu_Paint(object sender, PaintEventArgs e) {
             PaintUtils.PeintureGazon(e);
+            PaintUtils.PeintureCheminSable(e);
 
             PaintUtils.PeintureEnclos(e);
 
-            PaintUtils.PeintureCheminSable(e);
 
             // FIN ; Cadrier toujours à la fin pour qu'il soit visible.
             PaintUtils.PeintureCadriage(e);

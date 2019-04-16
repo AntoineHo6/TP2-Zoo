@@ -62,13 +62,45 @@ namespace TP2_Zoo {
 
         public static void PeintureEnclos(PaintEventArgs e) {
             // Quand on peinture un enclos horizontal, il faut ajouter 8 pixel car ils sont autistes.
-            e.Graphics.DrawImage(TilesetImageGenerator.GetTile(2), TuileAPixel(0) + 8, TuileAPixel(0));
 
-            e.Graphics.DrawImage(TilesetImageGenerator.GetTile(3), TuileAPixel(0), TuileAPixel(0));
-            e.Graphics.DrawImage(TilesetImageGenerator.GetTile(3), TuileAPixel(0), TuileAPixel(1));
+
+            // Peinture enclos horizontales.
+            for (int x = 0; x < 11; x++) {
+                // pour l'enclos en haut à gauche.
+                e.Graphics.DrawImage(TilesetImageGenerator.GetTile(2), TuileAPixel(7+x) + 8, TuileAPixel(6));
+                e.Graphics.DrawImage(TilesetImageGenerator.GetTile(2), TuileAPixel(7+x) + 8, TuileAPixel(11));
+
+                // pour l'enclos en haut à droite.
+                e.Graphics.DrawImage(TilesetImageGenerator.GetTile(2), TuileAPixel(21+x) + 8, TuileAPixel(6));
+                e.Graphics.DrawImage(TilesetImageGenerator.GetTile(2), TuileAPixel(21+x) + 8, TuileAPixel(11));
+
+                // Peinture l'enclos en bas à gauche.
+                e.Graphics.DrawImage(TilesetImageGenerator.GetTile(2), TuileAPixel(7 + x) + 8, TuileAPixel(14));
+                e.Graphics.DrawImage(TilesetImageGenerator.GetTile(2), TuileAPixel(7 + x) + 8, TuileAPixel(19));
+
+                // Peinture l'enclos en bas à droite.
+                e.Graphics.DrawImage(TilesetImageGenerator.GetTile(2), TuileAPixel(21 + x) + 8, TuileAPixel(14));
+                e.Graphics.DrawImage(TilesetImageGenerator.GetTile(2), TuileAPixel(21 + x) + 8, TuileAPixel(19));
+            }
+
+            // Peinture enclos verticales.
+            for (int y = 0; y < 5; y++) {
+                // pour l'enclos en haut à gauche.
+                e.Graphics.DrawImage(TilesetImageGenerator.GetTile(3), TuileAPixel(7), TuileAPixel(6+y));
+                e.Graphics.DrawImage(TilesetImageGenerator.GetTile(3), TuileAPixel(18), TuileAPixel(6+y));
+
+                // pour l'enclos en haut à droite.
+                e.Graphics.DrawImage(TilesetImageGenerator.GetTile(3), TuileAPixel(21), TuileAPixel(6+y));
+                e.Graphics.DrawImage(TilesetImageGenerator.GetTile(3), TuileAPixel(32), TuileAPixel(6+y));
+
+                // Peinture l'enclos en bas à gauche.
+                e.Graphics.DrawImage(TilesetImageGenerator.GetTile(3), TuileAPixel(7), TuileAPixel(14 + y));
+                e.Graphics.DrawImage(TilesetImageGenerator.GetTile(3), TuileAPixel(18), TuileAPixel(14 + y));
+
+                // Peinture l'enclos en bas à droite.
+                e.Graphics.DrawImage(TilesetImageGenerator.GetTile(3), TuileAPixel(21), TuileAPixel(14 + y));
+                e.Graphics.DrawImage(TilesetImageGenerator.GetTile(3), TuileAPixel(32), TuileAPixel(14 + y));
+            }
         }
-
-
-
     }
 }
