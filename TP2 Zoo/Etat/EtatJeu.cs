@@ -44,18 +44,7 @@ namespace TP2_Zoo.Etat {
 
         // Pour bouger le perso
         private void EtatJeu_KeyPress(object sender, KeyPressEventArgs e) {
-            if (e.KeyChar.Equals(Keys.W)) {
-                MessageBox.Show("Tu as cliqué sur W!");
-            }
-            else if (e.KeyChar.Equals(Keys.A)) {
-
-            }
-            else if (e.KeyChar.Equals(Keys.S)) {
-
-            }
-            else if (e.KeyChar.Equals(Keys.D)) {
-
-            }
+            OnKeyPressed?.Invoke(sender, e);
         }
     }
 }
