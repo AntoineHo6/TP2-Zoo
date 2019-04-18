@@ -21,7 +21,7 @@ namespace TP2_Zoo.Etat {
             InitializeComponent();
             DoubleBuffered = true;
 
-            hero = new Hero(1, 1);
+            hero = new Hero(1, 5);
 
 
             // Testing purposes
@@ -39,7 +39,7 @@ namespace TP2_Zoo.Etat {
 
             // FIN ; Cadrier toujours à la fin pour qu'il soit visible.
             GerantCarte.PeintureCadriage(e);
-            GerantPersonnages.DessinerHeros(e);
+            hero.Peinturer(e);
         }
 
         // Pour bouger le perso

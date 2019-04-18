@@ -55,7 +55,6 @@
     <Compile Include="Etat\EtatJeu.Designer.cs">
       <DependentUpon>EtatJeu.cs</DependentUpon>
     </Compile>
-    <Compile Include="Gerant\GerantPersonnages.cs" />
     <Compile Include="InformationsAnimaux.cs">
       <SubType>Form</SubType>
     </Compile>
