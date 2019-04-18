@@ -14,7 +14,7 @@ namespace TP2_Zoo {
         public static void DessinerHeros(PaintEventArgs e) {
             int x = 1;
             int y = 5;
-            e.Graphics.DrawImage(PersonneTileSetImageGenerator.GetTile(1), TuileAPixel(x), TuileAPixel(y));
+            e.Graphics.DrawImage(Properties.Resources.bas1, TuileAPixel(x), TuileAPixel(y));
         }
 
         static int TuileAPixel(int Tuile) {

@@ -69,7 +69,7 @@
       <DependentUpon>InfosAnimaux.cs</DependentUpon>
     </Compile>
     <Compile Include="TileSetImageGenerator\AnimalTileSetImageGenerator.cs" />
-    <Compile Include="TileSetImageGenerator\PersonneTileSetImageGenerator.cs" />
+    <Compile Include="TileSetImageGenerator\VisiteurTileSetImageGenerator.cs" />
     <Compile Include="ZooTycoon.cs">
       <SubType>Form</SubType>
     </Compile>

@@ -6,7 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace tileSetZoo {
-    class PersonneTileSetImageGenerator {
+    class VisiteurTileSetImageGenerator {
         // Différentes tailles concernant les images dans le fichier de tuiles de jeu
         public const int IMAGE_WIDTH = 32, IMAGE_HEIGHT = 32;
 
@@ -26,7 +26,7 @@ namespace tileSetZoo {
         /// <summary>
         /// Constructeur statique
         /// </summary>
-        static PersonneTileSetImageGenerator() {
+        static VisiteurTileSetImageGenerator() {
 
             listeCoord.Add(new TileCoord() { Ligne = 2, Colonne = 0 }); // PEPE_FACE1
             listeCoord.Add(new TileCoord() { Ligne = 2, Colonne = 3 }); // PEPE_FACE2
