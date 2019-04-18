@@ -33,6 +33,7 @@ namespace tileSetZoo {
             listeCoord.Add(new TileCoord() { Ligne = 14, Colonne = 4 }); // SABLE
             listeCoord.Add(new TileCoord() { Ligne = 0, Colonne = 18 }); // MAISON
 
+
             // Map
             listeBitmap.Add(LoadTile(FLAQUEDEAU, 32, 32));  // FLAQUEDEAU
             listeBitmap.Add(LoadTile(GAZON, 32, 32));       // GAZON

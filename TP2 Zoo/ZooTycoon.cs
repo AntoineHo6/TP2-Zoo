@@ -18,8 +18,8 @@ namespace TP2_Zoo {
             InitializeComponent();
         }
 
-        private void Zoo_Paint(object sender, PaintEventArgs e) {
-            
+        private void Zoo_KeyPress(object sender, KeyPressEventArgs e) {
+
         }
     }
 }

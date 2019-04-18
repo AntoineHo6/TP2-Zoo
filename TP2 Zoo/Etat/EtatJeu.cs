@@ -10,10 +10,12 @@ using System.Windows.Forms;
 using tileSetZoo;
 using TP2_Zoo.Personne;
 
+
 namespace TP2_Zoo.Etat {
     public partial class EtatJeu : UserControl {
 
         Hero hero;
+        public event EventHandler<KeyPressEventArgs> OnKeyPressed;
 
         public EtatJeu() {
             InitializeComponent();
@@ -37,11 +39,23 @@ namespace TP2_Zoo.Etat {
 
             // FIN ; Cadrier toujours à la fin pour qu'il soit visible.
             GerantCarte.PeintureCadriage(e);
+            GerantPersonnages.DessinerHeros(e);
         }
 
         // Pour bouger le perso
         private void EtatJeu_KeyPress(object sender, KeyPressEventArgs e) {
+            if (e.KeyChar.Equals(Keys.W)) {
+                MessageBox.Show("Tu as cliqué sur W!");
+            }
+            else if (e.KeyChar.Equals(Keys.A)) {
 
+            }
+            else if (e.KeyChar.Equals(Keys.S)) {
+
+            }
+            else if (e.KeyChar.Equals(Keys.D)) {
+
+            }
         }
     }
 }

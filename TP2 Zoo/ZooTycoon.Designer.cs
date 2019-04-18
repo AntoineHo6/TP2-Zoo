@@ -40,9 +40,10 @@
             this.ClientSize = new System.Drawing.Size(1280, 832);
             this.Controls.Add(this.etatJeu1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.KeyPreview = true;
             this.Name = "Zoo";
             this.Text = "Zoo Tycoon";
-            this.Paint += new System.Windows.Forms.PaintEventHandler(this.Zoo_Paint);
+            this.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Zoo_KeyPress);
             this.ResumeLayout(false);
 
         }

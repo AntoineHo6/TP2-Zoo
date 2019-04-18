@@ -47,7 +47,7 @@ namespace tileSetZoo {
         }
 
         private static Bitmap LoadTile(int posListe) {
-            Image source = TP2_Zoo.Properties.Resources.zoo_tileset;
+            Image source = TP2_Zoo.Properties.Resources.personnages;
             TileCoord coord = listeCoord[posListe];
             Rectangle crop = new Rectangle((coord.Colonne * IMAGE_WIDTH), (coord.Ligne * IMAGE_HEIGHT), IMAGE_WIDTH, IMAGE_HEIGHT);
 
