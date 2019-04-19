@@ -10,7 +10,7 @@ using tileSetZoo;
 namespace TP2_Zoo {
     public static class GerantCarte {
 
-        public static Bitmap[,] TileFloorMapping = new Bitmap[40, 26];  // Savoir quoi repaint sur les tuiles ou le hero ou autres ont été.
+        public static Bitmap[,] TileFloorMapping = new Bitmap[40, 26];  // Probablement inutile.
         public static bool[,] SolidMapping = new bool[42, 28];  // Plus large pour créer une bordure solide autour de la carte.
 
 

@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using tileSetZoo;
 using TP2_Zoo.Personne;
-
+using System.Threading;
 
 namespace TP2_Zoo.Etat {
     public partial class EtatJeu : UserControl {
@@ -18,6 +18,7 @@ namespace TP2_Zoo.Etat {
         int nbrAnimaux;
         int nbrVisiteurs;
         List<Pepe> listePepe;
+        Thread animeHero;
 
         public EtatJeu() {
             InitializeComponent();
@@ -38,9 +39,6 @@ namespace TP2_Zoo.Etat {
 
 
         private void EtatJeu_Paint(object sender, PaintEventArgs e) {
-            // temp
-            //GerantCarte.PaintTileFloorMapping(e);
-
             GerantCarte.PeintureGazon(e);
             GerantCarte.PeintureCheminSable(e);
             GerantCarte.PeintureEnclos(e);
@@ -76,10 +74,10 @@ namespace TP2_Zoo.Etat {
             int indexY = p.Y / 32;
 
             bool heroAdjacent = HeroAdjacent(indexX, indexY);
-
             // temp
             Console.WriteLine("Hero adjacent?: " + heroAdjacent);
         }
+
 
         /// <summary>
         ///     Verifie si le hero est adjacent à la tuile cliquée.

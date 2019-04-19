@@ -24,5 +24,8 @@ namespace TP2_Zoo.Personne {
             Sprites.Add(Properties.Resources.haut2);    // 8
             Sprites.Add(Properties.Resources.haut3);    // 9
         }
+
+
+
     }
 }
