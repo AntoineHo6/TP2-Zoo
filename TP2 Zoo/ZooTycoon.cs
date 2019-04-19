@@ -12,10 +12,16 @@ using tileSetZoo;
 namespace TP2_Zoo {
     public partial class Zoo : Form {
 
-        enum Jour { Janvier=1, Fevrier, Mars, Avril, Mai, Juin, Juillet, Aout,
+        enum Mois { Janvier=1, Fevrier, Mars, Avril, Mai, Juin, Juillet, Aout,
         Septembre, Octobre, Novembre, Decembre };
+
+        DateTime dateNow;
+
         public Zoo() {
             InitializeComponent();
+
+            dateNow = DateTime.Now;
+            lblDate.Text = "Date : " + dateNow.Day + "  " + (Mois)dateNow.Month + "  " + dateNow.Year;
         }
 
         private void Zoo_KeyPress(object sender, KeyPressEventArgs e) {
@@ -31,6 +37,11 @@ namespace TP2_Zoo {
             else if (e.KeyChar.Equals(Keys.D)) {
 
             }
+        }
+
+        private void Timer1_Tick(object sender, EventArgs e) {
+            dateNow = dateNow.AddDays(1);
+            lblDate.Text = "Date : " + dateNow.Day + "  " + (Mois)dateNow.Month + "  " + dateNow.Year;
         }
     }
 }

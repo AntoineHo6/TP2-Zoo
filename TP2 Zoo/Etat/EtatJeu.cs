@@ -17,12 +17,16 @@ namespace TP2_Zoo.Etat {
         Hero hero;
         public event EventHandler<KeyPressEventArgs> OnKeyPressed;
 
+        DateTime dateNow;
+        
+        
+        
+
         public EtatJeu() {
             InitializeComponent();
             DoubleBuffered = true;
 
             hero = new Hero(1, 5);
-
 
             // Testing purposes
             GerantCarte.PrintSolidMapping();
@@ -37,9 +41,10 @@ namespace TP2_Zoo.Etat {
             GerantCarte.PeintureEnclos(e);
             GerantCarte.PeintureMaison(e);
 
+            hero.Peinturer(e);
+
             // FIN ; Cadrier toujours à la fin pour qu'il soit visible.
             GerantCarte.PeintureCadriage(e);
-            hero.Peinturer(e);
         }
 
         // Pour bouger le perso
