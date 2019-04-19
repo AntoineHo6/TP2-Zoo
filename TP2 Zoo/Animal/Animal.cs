@@ -40,10 +40,10 @@ namespace TP2_Zoo.Animal {
             String genre;
 
             if (nombre == 0) {
-                genre = "Masculin";
+                genre = "Male";
             }
             else {
-                genre = "Féminin";
+                genre = "Femelle";
             }
 
             return genre;

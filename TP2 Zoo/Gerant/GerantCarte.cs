@@ -11,7 +11,7 @@ namespace TP2_Zoo {
     public static class GerantCarte {
 
         public static Bitmap[,] TileFloorMapping = new Bitmap[40, 26];  // Savoir quoi repaint sur les tuiles ou le hero ou autres ont été.
-        public static bool[,] SolidMapping = new bool[40, 26];
+        public static bool[,] SolidMapping = new bool[42, 28];  // Plus large pour créer une bordure solide autour de la carte.
 
 
         static GerantCarte() {
@@ -20,36 +20,41 @@ namespace TP2_Zoo {
         }
 
 
-        public static void InitSolidMapping() {
-            // Par defaut, tout n'est pas solide.
+        static void InitSolidMapping() {
+            // Par defaut, tout n'est pas solide à part la bordure.
             for (int y = 0; y < SolidMapping.GetLength(1); y++) {
                 for (int x = 0; x < SolidMapping.GetLength(0); x++) {
-                    SolidMapping[x, y] = false;
+                    if ((x == 0 || x == 41) || (y == 0 || y == 27)) {
+                        SolidMapping[x, y] = true;
+                    }
+                    else {
+                        SolidMapping[x, y] = false;
+                    }
                 }
             }
 
             // Changement des bools dans TileSolidMap a solide ou les enclos sont places.
             for (int y = 0; y < SolidMapping.GetLength(1); y++) {
                 for (int x = 0; x < SolidMapping.GetLength(0); x++) {
-                    if ((y == 6 || y == 11 || y == 14 || y == 19) && ((x >= 7 && x <= 18) || (x >= 21 && x <= 32))) {       // Verifie ou les enclos horizontals se retrouvent.
+                    if ((y == 7 || y == 12 || y == 15 || y == 20) && ((x >= 8 && x <= 19) || (x >= 22 && x <= 33))) {       // Verifie ou les enclos horizontals se retrouvent.
                         SolidMapping[x, y] = true;
                     }
-                    else if ((x == 7 || x == 18 || x == 21 || x == 32) && ((y >= 7 && y <= 10) || (y >= 15 && y <= 18))) {  // Verifie ou les enclos verticals se retrouvent.
+                    else if ((x == 8 || x == 19 || x == 22 || x == 33) && ((y >= 8 && y <= 11) || (y >= 16 && y <= 19))) {  // Verifie ou les enclos verticals se retrouvent.
                         SolidMapping[x, y] = true;
                     }
                 }
             }
 
             // La maison est solide
-            for (int y = 0; y < 5; y++) {
-                for (int x = 0; x < 4; x++) {
+            for (int y = 1; y < 6; y++) {
+                for (int x = 1; x < 5; x++) {
                     SolidMapping[x, y] = true;
                 }
             }
         }
 
 
-        public static void InitTileFloorMapping() {
+        static void InitTileFloorMapping() {
             // Ajout du GAZON et SABLE
             for (int y = 0; y < TileFloorMapping.GetLength(1); y++) {
                 for (int x = 0; x < TileFloorMapping.GetLength(0); x++) {

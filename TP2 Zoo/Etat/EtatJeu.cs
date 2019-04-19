@@ -15,13 +15,23 @@ namespace TP2_Zoo.Etat {
     public partial class EtatJeu : UserControl {
 
         Hero hero;
-        public event EventHandler<KeyPressEventArgs> OnKeyPressed;
+        int nbrAnimaux;
+        int nbrVisiteurs;
+        List<Pepe> listePepe;
 
         public EtatJeu() {
             InitializeComponent();
             DoubleBuffered = true;
 
-            hero = new Hero(1, 5);
+            hero = new Hero();
+            nbrAnimaux = 0;
+            listePepe = new List<Pepe>();
+            
+            // temp -----------
+            //nbrVisiteurs = 0;
+            nbrVisiteurs = 1;
+            listePepe.Add(new Pepe("Bernard"));
+            // -----------------
 
             // Testing purposes
             GerantCarte.PrintSolidMapping();
@@ -36,18 +46,20 @@ namespace TP2_Zoo.Etat {
             GerantCarte.PeintureEnclos(e);
             GerantCarte.PeintureMaison(e);
 
-            hero.Peinturer(e);
+            hero.Peinturer(e, 0);
+            listePepe[0].Peinturer(e, 0);
 
             // FIN ; Cadrier toujours à la fin pour qu'il soit visible.
             GerantCarte.PeintureCadriage(e);
-
-            // temp
-            e.Graphics.DrawImage(VisiteurTileSetImageGenerator.GetTile(7), 1 * 32, 6 * 32);
         }
 
         // Pour bouger le perso
         private void EtatJeu_KeyPress(object sender, KeyPressEventArgs e) {
-            OnKeyPressed?.Invoke(sender, e);
+            
+        }
+
+        private void Timer_Tick(object sender, EventArgs e) {
+
         }
     }
 }

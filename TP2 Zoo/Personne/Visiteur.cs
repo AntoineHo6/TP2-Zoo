@@ -3,23 +3,57 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using TP2_Zoo;
 
 namespace TP2_Zoo.Personne {
-    public class Visiteur : Personne {
+    public abstract class Visiteur : Personne {
 
-        String Nom { get; set; }
-        String Sexe { get; set; }
-        int NbrJours { get; set; }
-        int NbrDechets { get; set; }
-        int PrixEntree { get; set; }
+        public String Nom { get; set; }
+        public String Sexe { get; set; }
+        public int NbrJours { get; set; }
+        public int NbrDechets { get; set; }
+        public int PrixEntree { get; set; }
+        static Random r = new Random();
 
-        public Visiteur(String Nom, String Sexe, int NbrJours, params int[] Position) : base(Position) {
-            this.Position = Position;
-            this.Nom = Nom;
-            this.Sexe = Sexe;
-            this.NbrJours = NbrJours;
-            this.PrixEntree = 2;
+        public Visiteur() {
+            Position = new int[] {19, 0 };
+            PrixEntree = 2;
         }
 
+
+        /*
+         * en haut: 1
+         * en bas:  2
+         * à gauche: 3
+         * à droite: 4
+         * 
+         */
+        public void Deplacer() {
+            int direction = r.Next(1, 5);
+            bool estDeplacer = false;
+
+            switch (direction) {
+                case 1:
+                    if (!GerantCarte.SolidMapping[Position[0], Position[1] - 1]) {
+                        Position[1] -= 1;
+                    }
+                    break;
+                case 2:
+                    if (!GerantCarte.SolidMapping[Position[0], Position[1] + 1]) {
+                        Position[1] += 1;
+                    }
+                    break;
+                case 3:
+                    if (!GerantCarte.SolidMapping[Position[0] - 1, Position[1]]) {
+                        Position[0] -= 1;
+                    }
+                    break;
+                case 4:
+                    if (!GerantCarte.SolidMapping[Position[0] + 1, Position[1]]) {
+                        Position[0] += 1;
+                    }
+                    break;
+            }
+        }
     }
 }

@@ -9,7 +9,7 @@ namespace TP2_Zoo.Personne {
 
         int Frais { get; set; }
 
-        public Concierge(params int[] Position) : base(Position) {
+        public Concierge(params int[] Position) {
             this.Position = Position;
             Frais = 2;
         }
