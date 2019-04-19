@@ -59,7 +59,8 @@ namespace TP2_Zoo.Etat {
         }
 
         private void Timer_Tick(object sender, EventArgs e) {
-
+            listePepe[0].Deplacer();
+            this.Refresh();
         }
     }
 }
