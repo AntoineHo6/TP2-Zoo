@@ -22,22 +22,7 @@ namespace TP2_Zoo {
 
             dateNow = DateTime.Now;
             LblDate.Text = "Date : " + dateNow.Day + "  " + (Mois)dateNow.Month + "  " + dateNow.Year;
-        }
-
-        private void Zoo_KeyPress(object sender, KeyPressEventArgs e) {
-            // neg tu devrais faire ca dans etatJeu non?
-            if (e.KeyChar.Equals(Keys.W)) {
-                MessageBox.Show("Tu as cliqué sur W!");
-            }
-            else if (e.KeyChar.Equals(Keys.A)) {
-
-            }
-            else if (e.KeyChar.Equals(Keys.S)) {
-
-            }
-            else if (e.KeyChar.Equals(Keys.D)) {
-
-            }
+            EtatJeu.Focus();
         }
 
         private void Timer1_Tick(object sender, EventArgs e) {

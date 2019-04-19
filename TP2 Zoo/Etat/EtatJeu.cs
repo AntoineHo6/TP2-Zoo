@@ -18,7 +18,6 @@ namespace TP2_Zoo.Etat {
         int nbrAnimaux;
         int nbrVisiteurs;
         List<Pepe> listePepe;
-        Thread animeHero;
 
         public EtatJeu() {
             InitializeComponent();
@@ -56,8 +55,9 @@ namespace TP2_Zoo.Etat {
         }
 
         // Pour bouger le perso
-        private void EtatJeu_KeyPress(object sender, KeyPressEventArgs e) {
-            
+        private void EtatJeu_KeyDown(object sender, KeyEventArgs e) {
+            hero.Deplacer(e);
+            this.Refresh();
         }
 
         private void Timer_Tick(object sender, EventArgs e) {

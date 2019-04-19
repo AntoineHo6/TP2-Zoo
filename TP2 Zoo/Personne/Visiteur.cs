@@ -21,6 +21,7 @@ namespace TP2_Zoo.Personne {
         }
 
 
+        // A REFACTOR: CHANGER LORDRE
         /*
          * en haut: 1
          * en bas:  2

@@ -25,13 +25,13 @@
         private void InitializeComponent() {
             this.components = new System.ComponentModel.Container();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.LblNbrDechets = new System.Windows.Forms.Label();
+            this.LblNbrAnimaux = new System.Windows.Forms.Label();
             this.LblDate = new System.Windows.Forms.Label();
             this.LblArgent = new System.Windows.Forms.Label();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.menuToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.Timer = new System.Windows.Forms.Timer(this.components);
-            this.LblNbrAnimaux = new System.Windows.Forms.Label();
-            this.LblNbrDechets = new System.Windows.Forms.Label();
             this.EtatJeu = new TP2_Zoo.Etat.EtatJeu();
             this.panel1.SuspendLayout();
             this.menuStrip1.SuspendLayout();
@@ -48,6 +48,28 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(1280, 88);
             this.panel1.TabIndex = 1;
+            // 
+            // LblNbrDechets
+            // 
+            this.LblNbrDechets.AutoSize = true;
+            this.LblNbrDechets.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LblNbrDechets.ForeColor = System.Drawing.Color.White;
+            this.LblNbrDechets.Location = new System.Drawing.Point(389, 47);
+            this.LblNbrDechets.Name = "LblNbrDechets";
+            this.LblNbrDechets.Size = new System.Drawing.Size(257, 29);
+            this.LblNbrDechets.TabIndex = 4;
+            this.LblNbrDechets.Text = "Nombre de dechets : 0";
+            // 
+            // LblNbrAnimaux
+            // 
+            this.LblNbrAnimaux.AutoSize = true;
+            this.LblNbrAnimaux.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LblNbrAnimaux.ForeColor = System.Drawing.Color.White;
+            this.LblNbrAnimaux.Location = new System.Drawing.Point(389, 10);
+            this.LblNbrAnimaux.Name = "LblNbrAnimaux";
+            this.LblNbrAnimaux.Size = new System.Drawing.Size(245, 29);
+            this.LblNbrAnimaux.TabIndex = 3;
+            this.LblNbrAnimaux.Text = "Nombre d\'animaux : 0";
             // 
             // LblDate
             // 
@@ -95,28 +117,6 @@
             this.Timer.Interval = 1000;
             this.Timer.Tick += new System.EventHandler(this.Timer1_Tick);
             // 
-            // LblNbrAnimaux
-            // 
-            this.LblNbrAnimaux.AutoSize = true;
-            this.LblNbrAnimaux.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.LblNbrAnimaux.ForeColor = System.Drawing.Color.White;
-            this.LblNbrAnimaux.Location = new System.Drawing.Point(389, 10);
-            this.LblNbrAnimaux.Name = "LblNbrAnimaux";
-            this.LblNbrAnimaux.Size = new System.Drawing.Size(245, 29);
-            this.LblNbrAnimaux.TabIndex = 3;
-            this.LblNbrAnimaux.Text = "Nombre d\'animaux : 0";
-            // 
-            // LblNbrDechets
-            // 
-            this.LblNbrDechets.AutoSize = true;
-            this.LblNbrDechets.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.LblNbrDechets.ForeColor = System.Drawing.Color.White;
-            this.LblNbrDechets.Location = new System.Drawing.Point(389, 47);
-            this.LblNbrDechets.Name = "LblNbrDechets";
-            this.LblNbrDechets.Size = new System.Drawing.Size(257, 29);
-            this.LblNbrDechets.TabIndex = 4;
-            this.LblNbrDechets.Text = "Nombre de dechets : 0";
-            // 
             // EtatJeu
             // 
             this.EtatJeu.Location = new System.Drawing.Point(0, 112);
@@ -137,7 +137,6 @@
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "Zoo";
             this.Text = "Zoo Tycoon";
-            this.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Zoo_KeyPress);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.menuStrip1.ResumeLayout(false);

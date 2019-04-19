@@ -25,7 +25,29 @@ namespace TP2_Zoo.Personne {
             Sprites.Add(Properties.Resources.haut3);    // 9
         }
 
-
-
+        public void Deplacer(KeyEventArgs e) {
+            switch (e.KeyCode) {
+                case Keys.W:
+                    if (!GerantCarte.SolidMapping[Position[0] + 1, Position[1] + 1 - 1]) {
+                        Position[1] -= 1;
+                    }
+                    break;
+                case Keys.A:
+                    if (!GerantCarte.SolidMapping[Position[0] + 1 - 1, Position[1] + 1]) {
+                        Position[0] -= 1;
+                    }
+                    break;
+                case Keys.S:
+                    if (!GerantCarte.SolidMapping[Position[0] + 1, Position[1] + 1 + 1]) {
+                        Position[1] += 1;
+                    }
+                    break;
+                case Keys.D:
+                    if (!GerantCarte.SolidMapping[Position[0] + 1 + 1, Position[1] + 1]) {
+                        Position[0] += 1;
+                    }
+                    break;
+            }
+        }
     }
 }
