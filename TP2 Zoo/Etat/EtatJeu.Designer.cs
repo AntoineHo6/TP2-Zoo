@@ -40,6 +40,7 @@
             this.Name = "EtatJeu";
             this.Size = new System.Drawing.Size(1280, 800);
             this.Paint += new System.Windows.Forms.PaintEventHandler(this.EtatJeu_Paint);
+            this.MouseClick += new System.Windows.Forms.MouseEventHandler(this.EtatJeu_MouseClick);
             this.ResumeLayout(false);
 
         }

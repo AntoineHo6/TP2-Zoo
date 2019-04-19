@@ -30,7 +30,6 @@ namespace TP2_Zoo.Personne {
          */
         public void Deplacer() {
             int direction = r.Next(1, 5);
-            bool estDeplacer = false;
 
             switch (direction) {    // Additionne 1 aux positions parce que le tableau GerantCarte.SolidMapping a une bordure.
                 case 1:
