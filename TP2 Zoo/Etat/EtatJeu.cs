@@ -17,11 +17,6 @@ namespace TP2_Zoo.Etat {
         Hero hero;
         public event EventHandler<KeyPressEventArgs> OnKeyPressed;
 
-        DateTime dateNow;
-        
-        
-        
-
         public EtatJeu() {
             InitializeComponent();
             DoubleBuffered = true;
@@ -45,6 +40,9 @@ namespace TP2_Zoo.Etat {
 
             // FIN ; Cadrier toujours à la fin pour qu'il soit visible.
             GerantCarte.PeintureCadriage(e);
+
+            // temp
+            e.Graphics.DrawImage(VisiteurTileSetImageGenerator.GetTile(7), 1 * 32, 6 * 32);
         }
 
         // Pour bouger le perso

@@ -25,6 +25,7 @@ namespace TP2_Zoo {
         }
 
         private void Zoo_KeyPress(object sender, KeyPressEventArgs e) {
+            // neg tu devrais faire ca dans etatJeu non?
             if (e.KeyChar.Equals(Keys.W)) {
                 MessageBox.Show("Tu as cliqué sur W!");
             }
