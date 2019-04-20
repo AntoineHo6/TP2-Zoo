@@ -31,7 +31,7 @@ namespace TP2_Zoo.Personne {
          */
         public void Deplacer() {
             int direction = r.Next(1, 5);
-
+            //TODO: Ne pas permettre l'acces aux enclos.
             switch (direction) {    // Additionne 1 aux positions parce que le tableau GerantCarte.SolidMapping a une bordure.
                 case 1:
                     if (!GerantCarte.SolidMapping[Position[0]+1, Position[1]+1 - 1]) {

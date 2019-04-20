@@ -44,6 +44,13 @@ namespace TP2_Zoo {
                     }
                 }
             }
+            // Change a false les entrees pour les enclos
+            for (int i = 0; i < SolidMapping.GetLength(0); i++) {
+                if (i == 13 || i == 14 || i == 27 || i == 28) {
+                    SolidMapping[i, 7] = false;
+                    SolidMapping[i, 20] = false;
+                }
+            }
 
             // La maison est solide
             for (int y = 1; y < 6; y++) {
@@ -182,6 +189,14 @@ namespace TP2_Zoo {
                 // Peinture l'enclos en bas à droite.
                 e.Graphics.DrawImage(MapTileSetImageGenerator.GetTile(3), TuileAPixel(21), TuileAPixel(14 + y));
                 e.Graphics.DrawImage(MapTileSetImageGenerator.GetTile(3), TuileAPixel(32), TuileAPixel(14 + y));
+            }
+
+            // Peinture les entrees
+            for (int i = 0; i < SolidMapping.GetLength(0); i++) {
+                if (i == 12 || i == 13 || i == 26 || i == 27) {
+                    e.Graphics.DrawImage(MapTileSetImageGenerator.GetTile(1), TuileAPixel(i), TuileAPixel(6));
+                    e.Graphics.DrawImage(MapTileSetImageGenerator.GetTile(1), TuileAPixel(i), TuileAPixel(19));
+                }
             }
         }
 
