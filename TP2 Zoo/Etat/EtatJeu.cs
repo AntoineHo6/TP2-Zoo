@@ -10,6 +10,7 @@ using System.Windows.Forms;
 using tileSetZoo;
 using TP2_Zoo.Personne;
 using System.Threading;
+using TP2_Zoo.Animal;
 
 namespace TP2_Zoo.Etat {
     public partial class EtatJeu : UserControl {
@@ -18,6 +19,7 @@ namespace TP2_Zoo.Etat {
         int nbrAnimaux;
         int nbrVisiteurs;
         List<Pepe> listePepe;
+        List<Licorne> listeLicorne;
 
         public EtatJeu() {
             InitializeComponent();
@@ -26,11 +28,13 @@ namespace TP2_Zoo.Etat {
             hero = new Hero();
             nbrAnimaux = 0;
             listePepe = new List<Pepe>();
+            listeLicorne = new List<Licorne>();
             
             nbrVisiteurs = 0;
 
             // temp
             listePepe.Add(new Pepe("Bernard"));
+            listeLicorne.Add(new Licorne(8, 7));
 
             // Testing purposes
             GerantCarte.PrintSolidMapping();
@@ -47,9 +51,14 @@ namespace TP2_Zoo.Etat {
 
             hero.Peinturer(e, 0);
 
+            // temp
             foreach (var pepe in listePepe) {
                 pepe.Peinturer(e, 0);
             }
+            foreach (var licorne in listeLicorne) {
+                licorne.Peinturer(e, 0);
+            }
+
         }
 
         // Pour bouger le perso
@@ -58,9 +67,13 @@ namespace TP2_Zoo.Etat {
             this.Refresh();
         }
 
+        // temp utiliser thread au lieu
         private void Timer_Tick(object sender, EventArgs e) {
             foreach (var pepe in listePepe) {
                 pepe.Deplacer();
+            }
+            foreach (var licorne in listeLicorne) {
+                licorne.Deplacer();
             }
 
             this.Refresh();

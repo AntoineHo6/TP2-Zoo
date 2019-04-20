@@ -4,6 +4,7 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace TP2_Zoo.Animal {
     public abstract class Animal {
@@ -23,14 +24,19 @@ namespace TP2_Zoo.Animal {
             this.Genre = r.Next(0, 2);
             Faim = false;
             Enceinte = false;
+            Sprites = new List<Bitmap>();
         }
 
         public void Deplacer() {
-
+            Ai.Ai.ChoisirDirection(Position);
         }
 
         public void Manger() {
 
+        }
+
+        public void Peinturer(PaintEventArgs e, int index) {
+            e.Graphics.DrawImage(Sprites[index], Position[0] * 32, Position[1] * 32);
         }
 
         abstract public void Crier();
