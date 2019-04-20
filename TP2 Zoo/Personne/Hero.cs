@@ -26,31 +26,35 @@ namespace TP2_Zoo.Personne {
         }
 
         public void Deplacer(KeyEventArgs e) {
-            // temp
-            Console.WriteLine(Position[0] + ", " + (Position[1] - 1));
-            //Console.WriteLine("OccupeAiMap: (" + Position[0] + "," + Position[1] + "): " + GerantCarte.OccupeAiMap[Position[0], Position[1]]);
+            int x = Position[0];
+            int y = Position[1];
+
             switch (e.KeyCode) {
                 case Keys.W:
-                    if (!GerantCarte.SolidMapHero[Position[0] + 1, Position[1] + 1 - 1] && !GerantCarte.OccupeAiMap[Position[0], Position[1] - 1]) {
+                    if (!GerantCarte.SolidMapHero[ToSolidCoord(x), ToSolidCoord(y) - 1] && !GerantCarte.OccupeAiMap[Position[0], Position[1] - 1]) {
                         Position[1] -= 1;
                     }
                     break;
                 case Keys.A:
-                    if (!GerantCarte.SolidMapHero[Position[0] + 1 - 1, Position[1] + 1] && !GerantCarte.OccupeAiMap[Position[0] - 1, Position[1]]) {
+                    if (!GerantCarte.SolidMapHero[ToSolidCoord(x) - 1, ToSolidCoord(y)] && !GerantCarte.OccupeAiMap[Position[0] - 1, Position[1]]) {
                         Position[0] -= 1;
                     }
                     break;
                 case Keys.S:
-                    if (!GerantCarte.SolidMapHero[Position[0] + 1, Position[1] + 1 + 1] && !GerantCarte.OccupeAiMap[Position[0], Position[1] + 1]) {
+                    if (!GerantCarte.SolidMapHero[ToSolidCoord(x), ToSolidCoord(y) + 1] && !GerantCarte.OccupeAiMap[Position[0], Position[1] + 1]) {
                         Position[1] += 1;
                     }
                     break;
                 case Keys.D:
-                    if (!GerantCarte.SolidMapHero[Position[0] + 1 + 1, Position[1] + 1] && !GerantCarte.OccupeAiMap[Position[0] + 1, Position[1]]) {
+                    if (!GerantCarte.SolidMapHero[ToSolidCoord(x) + 1, ToSolidCoord(y)] && !GerantCarte.OccupeAiMap[Position[0] + 1, Position[1]]) {
                         Position[0] += 1;
                     }
                     break;
             }
+        }
+
+        int ToSolidCoord(int coord) {
+            return coord + 1;
         }
     }
 }

@@ -39,9 +39,7 @@ namespace TP2_Zoo.Etat {
             //GerantCarte.PrintSolidMappingHero();
             //GerantCarte.PrintSolidMappingAi();
             //GerantCarte.PrintSurfaceEnclosMapping();
-            GerantCarte.PrintOccupeAiMap();
-
-            
+            //GerantCarte.PrintOccupeAiMap();
         }
 
 
@@ -115,7 +113,6 @@ namespace TP2_Zoo.Etat {
                     }
                 }
             }
-
             return heroAdjacent;
         }
     }
