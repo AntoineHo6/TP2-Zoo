@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using TP2_Zoo;
 
 namespace TP2_Zoo.Ai {
     public static class Ai {
@@ -13,35 +14,42 @@ namespace TP2_Zoo.Ai {
 
         }
 
-        public static void ChoisirDirection(int[] Position) {
+        /*
+         * 1: en haut
+         * 2. en bas
+         * 3. a gauche
+         * 4. a droite
+         */
+        public static void ChoisirDirection(int[] Position, int[] positionHero) {
             int x = Position[0];
             int y = Position[1];
 
             int direction = r.Next(1, 5);
             switch (direction) {    // Additionne 1 aux positions parce que le tableau GerantCarte.SolidMapping a une bordure.
                 case 1:
-                    if (!GerantCarte.SolidMapAi[x + 1, (y + 1) - 1]) {
+                        // Si la prochaine tuile n'est pas un solide          Si le hero n'est pas sur la prochaine tuile
+                    if (!GerantCarte.SolidMapAi[x + 1, (y + 1) - 1] && (x != positionHero[0] && y - 1 != positionHero[1])) {
                         LibererTuile(x, y);
                         Position[1] -= 1;
                         OccuperTuile(Position[0], Position[1]);
                     }
                     break;
                 case 2:
-                    if (!GerantCarte.SolidMapAi[x + 1, (y + 1) + 1]) {
+                    if (!GerantCarte.SolidMapAi[x + 1, (y + 1) + 1] && (x != positionHero[0] && y + 1 != positionHero[1])) {
                         LibererTuile(x, y);
                         Position[1] += 1;
                         OccuperTuile(Position[0], Position[1]);
                     }
                     break;
                 case 3:
-                    if (!GerantCarte.SolidMapAi[(x + 1) - 1, y + 1]) {
+                    if (!GerantCarte.SolidMapAi[(x + 1) - 1, y + 1] && (x - 1 != positionHero[0] && y != positionHero[1])) {
                         LibererTuile(x, y);
                         Position[0] -= 1;
                         OccuperTuile(Position[0], Position[1]);
                     }
                     break;
                 case 4:
-                    if (!GerantCarte.SolidMapAi[(x + 1) + 1, y + 1]) {
+                    if (!GerantCarte.SolidMapAi[(x + 1) + 1, y + 1] && (x + 1 != positionHero[0] && y != positionHero[1])) {
                         LibererTuile(x, y);
                         Position[0] += 1;
                         OccuperTuile(Position[0], Position[1]);

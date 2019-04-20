@@ -28,8 +28,8 @@ namespace TP2_Zoo.Animal {
             Ai.Ai.OccuperTuile(Position[0], Position[1]);
         }
 
-        public void Deplacer() {
-            Ai.Ai.ChoisirDirection(Position);
+        public void Deplacer(int[] positionHero) {
+            Ai.Ai.ChoisirDirection(Position, positionHero);
         }
 
         public void Manger() {

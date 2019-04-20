@@ -24,8 +24,8 @@ namespace TP2_Zoo.Personne {
 
 
 
-        public void Deplacer() {
-            Ai.Ai.ChoisirDirection(Position);
+        public void Deplacer(int[] positionHero) {
+            Ai.Ai.ChoisirDirection(Position, positionHero);
         }
     }
 }

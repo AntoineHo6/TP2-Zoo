@@ -32,7 +32,7 @@
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.menuToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.Timer = new System.Windows.Forms.Timer(this.components);
-            this.EtatJeu = new TP2_Zoo.Etat.EtatJeu();
+            this.etatJeu = new TP2_Zoo.Etat.EtatJeu();
             this.panel1.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -117,12 +117,12 @@
             this.Timer.Interval = 1000;
             this.Timer.Tick += new System.EventHandler(this.Timer1_Tick);
             // 
-            // EtatJeu
+            // etatJeu
             // 
-            this.EtatJeu.Location = new System.Drawing.Point(0, 112);
-            this.EtatJeu.Name = "EtatJeu";
-            this.EtatJeu.Size = new System.Drawing.Size(1280, 832);
-            this.EtatJeu.TabIndex = 0;
+            this.etatJeu.Location = new System.Drawing.Point(0, 112);
+            this.etatJeu.Name = "etatJeu";
+            this.etatJeu.Size = new System.Drawing.Size(1280, 832);
+            this.etatJeu.TabIndex = 0;
             // 
             // Zoo
             // 
@@ -130,7 +130,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1280, 944);
             this.Controls.Add(this.panel1);
-            this.Controls.Add(this.EtatJeu);
+            this.Controls.Add(this.etatJeu);
             this.Controls.Add(this.menuStrip1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.KeyPreview = true;
@@ -147,8 +147,6 @@
         }
 
         #endregion
-
-        private Etat.EtatJeu EtatJeu;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem menuToolStripMenuItem;
@@ -157,6 +155,7 @@
         private System.Windows.Forms.Timer Timer;
         private System.Windows.Forms.Label LblNbrDechets;
         private System.Windows.Forms.Label LblNbrAnimaux;
+        private Etat.EtatJeu etatJeu;
     }
 }
 

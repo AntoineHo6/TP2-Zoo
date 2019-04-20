@@ -15,7 +15,7 @@ using TP2_Zoo.Animal;
 namespace TP2_Zoo.Etat {
     public partial class EtatJeu : UserControl {
 
-        Hero hero;
+        public Hero hero;
         int nbrAnimaux;
         int nbrVisiteurs;
         List<Pepe> listePepe;
@@ -41,9 +41,7 @@ namespace TP2_Zoo.Etat {
             //GerantCarte.PrintSurfaceEnclosMapping();
             GerantCarte.PrintOccupeAiMap();
 
-            if (etatEnclos[0] == null) {
-                Console.WriteLine("CEST NULLL");
-            }
+            
         }
 
 
@@ -76,10 +74,10 @@ namespace TP2_Zoo.Etat {
         // temp utiliser thread au lieu pour pas que tout tick en meme temps.
         private void Timer_Tick(object sender, EventArgs e) {
             foreach (var pepe in listePepe) {
-                pepe.Deplacer();
+                pepe.Deplacer(hero.Position);
             }
             foreach (var licorne in listeLicorne) {
-                licorne.Deplacer();
+                licorne.Deplacer(hero.Position);
             }
 
             this.Refresh();
