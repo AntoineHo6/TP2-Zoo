@@ -25,6 +25,7 @@ namespace TP2_Zoo.Animal {
             Faim = false;
             Enceinte = false;
             Sprites = new List<Bitmap>();
+            Ai.Ai.OccuperTuile(Position[0], Position[1]);
         }
 
         public void Deplacer() {

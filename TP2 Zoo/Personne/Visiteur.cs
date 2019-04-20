@@ -18,6 +18,7 @@ namespace TP2_Zoo.Personne {
 
         public Visiteur() {
             Position = new int[] {19, 0 };
+            Ai.Ai.OccuperTuile(19, 0);
             PrixEntree = 2;
         }
 

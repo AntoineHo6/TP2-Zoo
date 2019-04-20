@@ -11,61 +11,64 @@ namespace TP2_Zoo {
     public static class GerantCarte {
 
         public static Bitmap[,] TileFloorMapping = new Bitmap[40, 26];  // Probablement inutile.
-        public static bool[,] SolidMappingHero = new bool[42, 28];  // Plus large pour créer une bordure solide autour de la carte.
-        public static bool[,] SolidMappingAi = new bool[42, 28];    // Pour les visiteurs et les animaux
+        public static bool[,] SolidMapHero = new bool[42, 28];  // Plus large pour créer une bordure solide autour de la carte.
+        public static bool[,] SolidMapAi = new bool[42, 28];    // Pour les visiteurs et les animaux
+        public static bool[,] SurfaceEnclosMap = new bool[40, 26];    // Verifie quelles tuiles sont dans l'enclos
+        public static bool[,] OccupeAiMap = new bool[40, 26];
 
 
         static GerantCarte() {
             InitSolidMapping();
             InitTileFloorMapping();
+            InitSurfaceEnclosMapping();
+            InitOccupeAiMap();
         }
         
 
         static void InitSolidMapping() {
             // Par defaut, tout n'est pas solide à part la bordure.
-            for (int y = 0; y < SolidMappingHero.GetLength(1); y++) {
-                for (int x = 0; x < SolidMappingHero.GetLength(0); x++) {
+            for (int y = 0; y < SolidMapHero.GetLength(1); y++) {
+                for (int x = 0; x < SolidMapHero.GetLength(0); x++) {
                     if ((x == 0 || x == 41) || (y == 0 || y == 27)) {
-                        SolidMappingHero[x, y] = true;
-                        SolidMappingAi[x, y] = true;
+                        SolidMapHero[x, y] = true;
+                        SolidMapAi[x, y] = true;
                     }
                     else {
-                        SolidMappingHero[x, y] = false;
-                        SolidMappingAi[x, y] = false;
+                        SolidMapHero[x, y] = false;
+                        SolidMapAi[x, y] = false;
                     }
                 }
             }
 
             // Changement des bools dans TileSolidMap a solide ou les enclos sont places.
-            for (int y = 0; y < SolidMappingHero.GetLength(1); y++) {
-                for (int x = 0; x < SolidMappingHero.GetLength(0); x++) {
+            for (int y = 0; y < SolidMapHero.GetLength(1); y++) {
+                for (int x = 0; x < SolidMapHero.GetLength(0); x++) {
                     if ((y == 7 || y == 12 || y == 15 || y == 20) && ((x >= 8 && x <= 19) || (x >= 22 && x <= 33))) {       // Verifie ou les enclos horizontals se retrouvent.
-                        SolidMappingHero[x, y] = true;
-                        SolidMappingAi[x, y] = true;
+                        SolidMapHero[x, y] = true;
+                        SolidMapAi[x, y] = true;
                     }
                     else if ((x == 8 || x == 19 || x == 22 || x == 33) && ((y >= 8 && y <= 11) || (y >= 16 && y <= 19))) {  // Verifie ou les enclos verticals se retrouvent.
-                        SolidMappingHero[x, y] = true;
-                        SolidMappingAi[x, y] = true;
+                        SolidMapHero[x, y] = true;
+                        SolidMapAi[x, y] = true;
                     }
                 }
             }
             // Change a false les entrees pour les enclos
-            for (int i = 0; i < SolidMappingHero.GetLength(0); i++) {
+            for (int i = 0; i < SolidMapHero.GetLength(0); i++) {
                 if (i == 13 || i == 14 || i == 27 || i == 28) {
-                    SolidMappingHero[i, 7] = false;
-                    SolidMappingHero[i, 20] = false;
+                    SolidMapHero[i, 7] = false;
+                    SolidMapHero[i, 20] = false;
                 }
             }
 
             // La maison est solide
             for (int y = 1; y < 6; y++) {
                 for (int x = 1; x < 5; x++) {
-                    SolidMappingHero[x, y] = true;
-                    SolidMappingAi[x, y] = true;
+                    SolidMapHero[x, y] = true;
+                    SolidMapAi[x, y] = true;
                 }
             }
         }
-
 
         static void InitTileFloorMapping() {
             // Ajout du GAZON et SABLE
@@ -83,12 +86,31 @@ namespace TP2_Zoo {
             }
         }
 
+        static void InitSurfaceEnclosMapping() {
+            for (int y = 0; y < SurfaceEnclosMap.GetLength(1); y++) {
+                for (int x = 0; x < SurfaceEnclosMap.GetLength(0); x++) {
+                    SurfaceEnclosMap[x, y] = false;
+                    if (((x > 7 && x < 18) || (x > 21 && x < 32)) && ((y > 6 && y < 11) || (y > 14 && y < 19))) {
+                        SurfaceEnclosMap[x, y] = true;
+                    }
+                }
+            }
+        }
+
+        static void InitOccupeAiMap() {
+            for (int y = 0; y < OccupeAiMap.GetLength(1); y++) {
+                for (int x = 0; x < OccupeAiMap.GetLength(0); x++) {
+                    OccupeAiMap[x, y] = false;
+                }
+            }
+        }
 
         // testing purposes
         public static void PrintSolidMappingHero() {
-            for (int y = 0; y < SolidMappingHero.GetLength(1); y++) {
-                for (int x = 0; x < SolidMappingHero.GetLength(0); x++) {
-                    if (SolidMappingHero[x, y]) {
+            Console.WriteLine("SOLID MAPPING HERO: ");
+            for (int y = 0; y < SolidMapHero.GetLength(1); y++) {
+                for (int x = 0; x < SolidMapHero.GetLength(0); x++) {
+                    if (SolidMapHero[x, y]) {
                         Console.Write("1 ");
                     }
                     else {
@@ -99,16 +121,53 @@ namespace TP2_Zoo {
             }
         }
 
-
         // testing purposes
-        public static void PaintTileFloorMapping(PaintEventArgs e) {
-            for (int y = 0; y < TileFloorMapping.GetLength(1); y++) {
-                for (int x = 0; x < TileFloorMapping.GetLength(0); x++) {
-                    e.Graphics.DrawImage(TileFloorMapping[x, y], TuileAPixel(x), TuileAPixel(y));
+        public static void PrintSolidMappingAi() {
+            Console.WriteLine("SOLID MAPPING AI: ");
+            for (int y = 0; y < SolidMapAi.GetLength(1); y++) {
+                for (int x = 0; x < SolidMapAi.GetLength(0); x++) {
+                    if (SolidMapAi[x, y]) {
+                        Console.Write("1 ");
+                    }
+                    else {
+                        Console.Write("- ");
+                    }
                 }
+                Console.Write("\n");
             }
         }
 
+        // testing purposes
+        public static void PrintSurfaceEnclosMapping() {
+            Console.WriteLine("SURFACE MAPPING ENCLOS: ");
+            for (int y = 0; y < SurfaceEnclosMap.GetLength(1); y++) {
+                for (int x = 0; x < SurfaceEnclosMap.GetLength(0); x++) {
+                    if (SurfaceEnclosMap[x, y]) {
+                        Console.Write("1 ");
+                    }
+                    else {
+                        Console.Write("- ");
+                    }
+                }
+                Console.Write("\n");
+            }
+        }
+
+        // testing purposes
+        public static void PrintOccupeAiMap() {
+            Console.WriteLine("AI OCCUPE MAPPING: ");
+            for (int y = 0; y < OccupeAiMap.GetLength(1); y++) {
+                for (int x = 0; x < OccupeAiMap.GetLength(0); x++) {
+                    if (OccupeAiMap[x, y]) {
+                        Console.Write("1 ");
+                    }
+                    else {
+                        Console.Write("- ");
+                    }
+                }
+                Console.Write("\n");
+            }
+        }
 
         // Taille de 40 x 26 ou (39 x 25 si on commmence par index 0)
         static int TuileAPixel(int Tuile) {
@@ -198,7 +257,7 @@ namespace TP2_Zoo {
             }
 
             // Peinture les entrees
-            for (int i = 0; i < SolidMappingHero.GetLength(0); i++) {
+            for (int i = 0; i < SolidMapHero.GetLength(0); i++) {
                 if (i == 12 || i == 13 || i == 26 || i == 27) {
                     e.Graphics.DrawImage(MapTileSetImageGenerator.GetTile(1), TuileAPixel(i), TuileAPixel(6));
                     e.Graphics.DrawImage(MapTileSetImageGenerator.GetTile(1), TuileAPixel(i), TuileAPixel(19));

@@ -28,22 +28,22 @@ namespace TP2_Zoo.Personne {
         public void Deplacer(KeyEventArgs e) {
             switch (e.KeyCode) {
                 case Keys.W:
-                    if (!GerantCarte.SolidMappingHero[Position[0] + 1, Position[1] + 1 - 1]) {
+                    if (!GerantCarte.SolidMapHero[Position[0] + 1, Position[1] + 1 - 1]) {
                         Position[1] -= 1;
                     }
                     break;
                 case Keys.A:
-                    if (!GerantCarte.SolidMappingHero[Position[0] + 1 - 1, Position[1] + 1]) {
+                    if (!GerantCarte.SolidMapHero[Position[0] + 1 - 1, Position[1] + 1]) {
                         Position[0] -= 1;
                     }
                     break;
                 case Keys.S:
-                    if (!GerantCarte.SolidMappingHero[Position[0] + 1, Position[1] + 1 + 1]) {
+                    if (!GerantCarte.SolidMapHero[Position[0] + 1, Position[1] + 1 + 1]) {
                         Position[1] += 1;
                     }
                     break;
                 case Keys.D:
-                    if (!GerantCarte.SolidMappingHero[Position[0] + 1 + 1, Position[1] + 1]) {
+                    if (!GerantCarte.SolidMapHero[Position[0] + 1 + 1, Position[1] + 1]) {
                         Position[0] += 1;
                     }
                     break;

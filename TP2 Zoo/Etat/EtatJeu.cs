@@ -29,7 +29,7 @@ namespace TP2_Zoo.Etat {
             nbrAnimaux = 0;
             listePepe = new List<Pepe>();
             listeLicorne = new List<Licorne>();
-            
+
             nbrVisiteurs = 0;
 
             // temp
@@ -37,7 +37,10 @@ namespace TP2_Zoo.Etat {
             listeLicorne.Add(new Licorne(8, 7));
 
             // Testing purposes
-            GerantCarte.PrintSolidMappingHero();
+            //GerantCarte.PrintSolidMappingHero();
+            //GerantCarte.PrintSolidMappingAi();
+            //GerantCarte.PrintSurfaceEnclosMapping();
+            GerantCarte.PrintOccupeAiMap();
         }
 
 
@@ -76,17 +79,23 @@ namespace TP2_Zoo.Etat {
                 licorne.Deplacer();
             }
 
+            // temp
+            GerantCarte.PrintOccupeAiMap();
             this.Refresh();
         }
 
         private void EtatJeu_MouseClick(object sender, MouseEventArgs e) {
             Point p = this.PointToClient(Cursor.Position);
-            int indexX = p.X / 32;
-            int indexY = p.Y / 32;
+            int pX = p.X / 32;
+            int pY = p.Y / 32;
 
-            bool heroAdjacent = HeroAdjacent(indexX, indexY);
-            // temp
-            Console.WriteLine("Hero adjacent?: " + heroAdjacent);
+            bool heroAdjacent = HeroAdjacent(pX, pY);
+            
+            if (heroAdjacent) {
+                if (GerantCarte.SurfaceEnclosMap[pX, pY] && !GerantCarte.OccupeAiMap[pX, pY]) { // Si dans enclos sur une tuile vide
+                    // CREER UN ANIMAL
+                }
+            }
         }
 
 
