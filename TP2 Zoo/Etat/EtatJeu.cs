@@ -29,7 +29,6 @@ namespace TP2_Zoo.Etat {
             nbrAnimaux = 0;
             listePepe = new List<Pepe>();
             listeLicorne = new List<Licorne>();
-
             nbrVisiteurs = 0;
 
             // temp
@@ -41,6 +40,10 @@ namespace TP2_Zoo.Etat {
             //GerantCarte.PrintSolidMappingAi();
             //GerantCarte.PrintSurfaceEnclosMapping();
             GerantCarte.PrintOccupeAiMap();
+
+            if (etatEnclos[0] == null) {
+                Console.WriteLine("CEST NULLL");
+            }
         }
 
 
@@ -79,8 +82,6 @@ namespace TP2_Zoo.Etat {
                 licorne.Deplacer();
             }
 
-            // temp
-            GerantCarte.PrintOccupeAiMap();
             this.Refresh();
         }
 
@@ -92,7 +93,8 @@ namespace TP2_Zoo.Etat {
             bool heroAdjacent = HeroAdjacent(pX, pY);
             
             if (heroAdjacent) {
-                if (GerantCarte.SurfaceEnclosMap[pX, pY] && !GerantCarte.OccupeAiMap[pX, pY]) { // Si dans enclos sur une tuile vide
+                if (GerantCarte.SurfaceEnclosMap[pX, pY] && !GerantCarte.OccupeAiMap[pX, pY]) { // Si clique dans un enclos sur une tuile vide
+                    // VERIFIER SI ENCLOS A DEJA UN ANIMAL DEDANS OU PAS
                     // CREER UN ANIMAL
                 }
             }
