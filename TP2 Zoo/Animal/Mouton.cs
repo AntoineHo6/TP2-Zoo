@@ -8,15 +8,9 @@ using System.Threading.Tasks;
 namespace TP2_Zoo.Animal {
     public class Mouton : Animal {
         
-        public Mouton(int Prix, String Type, String Genre, String Faim, String Age, bool Enceinte, params int[] Position) :
-            base(Prix, Type, Genre, Faim, Age, Enceinte, Position) {
-            this.Position = Position;
+        public Mouton(params int[] Position) : base(Position) {
             Prix = 20;
             Type = "Mouton";
-            Genre = GenreAleatoire();
-            Faim = "Nourri";
-            this.Age = Age;
-            Enceinte = false;
         }
 
         public override void Crier() {

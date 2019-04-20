@@ -50,8 +50,6 @@ namespace TP2_Zoo.Etat {
             foreach (var pepe in listePepe) {
                 pepe.Peinturer(e, 0);
             }
-
-            
         }
 
         // Pour bouger le perso

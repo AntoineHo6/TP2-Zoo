@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -11,42 +12,27 @@ namespace TP2_Zoo.Animal {
 
         public int[] Position { get; set; }
         public String Type { get; set; }
-        public String Genre { get; set; }
-        public String Faim { get; set; }
-        public String Age { get; set; }
+        public int Genre { get; set; }   // 0: male; 1: femelle
+        public bool Faim { get; set; }
         public bool Enceinte { get; set; }
         public int Prix { get; set; }
+        public List<Bitmap> Sprites { get; set; }
 
-        public Animal(int Prix, String Type, String Genre, String Faim, String Age, bool Enceinte, params int[] Position) {
+        public Animal(params int[] Position) {
             this.Position = Position;
-            this.Type = Type;
-            this.Genre = Genre;
-            this.Faim = Faim;
-            this.Age = Age;
-            this.Enceinte = Enceinte;
+            this.Genre = r.Next(0, 2);
+            Faim = false;
+            Enceinte = false;
         }
 
         public void Deplacer() {
 
         }
+
         public void Manger() {
 
         }
 
         abstract public void Crier();
-
-        public String GenreAleatoire() {
-            int nombre = r.Next(0, 2);
-            String genre;
-
-            if (nombre == 0) {
-                genre = "Male";
-            }
-            else {
-                genre = "Femelle";
-            }
-
-            return genre;
-        }
     }
 }
