@@ -37,7 +37,7 @@ namespace TP2_Zoo.Etat {
             listeLicorne.Add(new Licorne(8, 7));
 
             // Testing purposes
-            GerantCarte.PrintSolidMapping();
+            GerantCarte.PrintSolidMappingHero();
         }
 
 
@@ -67,7 +67,7 @@ namespace TP2_Zoo.Etat {
             this.Refresh();
         }
 
-        // temp utiliser thread au lieu
+        // temp utiliser thread au lieu pour pas que tout tick en meme temps.
         private void Timer_Tick(object sender, EventArgs e) {
             foreach (var pepe in listePepe) {
                 pepe.Deplacer();
