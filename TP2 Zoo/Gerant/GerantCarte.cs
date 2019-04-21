@@ -18,14 +18,14 @@ namespace TP2_Zoo {
 
 
         static GerantCarte() {
-            InitSolidMapping();
-            InitTileFloorMapping();
-            InitSurfaceEnclosMapping();
+            InitSolidMap();
+            InitTileFloorMap();
+            InitSurfaceEnclosMap();
             InitOccupeAiMap();
         }
         
 
-        static void InitSolidMapping() {
+        static void InitSolidMap() {
             // Par defaut, tout n'est pas solide à part la bordure.
             for (int y = 0; y < SolidMapHero.GetLength(1); y++) {
                 for (int x = 0; x < SolidMapHero.GetLength(0); x++) {
@@ -70,7 +70,7 @@ namespace TP2_Zoo {
             }
         }
 
-        static void InitTileFloorMapping() {
+        static void InitTileFloorMap() {
             // Ajout du GAZON et SABLE
             for (int y = 0; y < TileFloorMapping.GetLength(1); y++) {
                 for (int x = 0; x < TileFloorMapping.GetLength(0); x++) {
@@ -86,7 +86,7 @@ namespace TP2_Zoo {
             }
         }
 
-        static void InitSurfaceEnclosMapping() {
+        static void InitSurfaceEnclosMap() {
             for (int y = 0; y < SurfaceEnclosMap.GetLength(1); y++) {
                 for (int x = 0; x < SurfaceEnclosMap.GetLength(0); x++) {
                     SurfaceEnclosMap[x, y] = false;

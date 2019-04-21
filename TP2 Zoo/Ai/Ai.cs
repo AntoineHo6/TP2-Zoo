@@ -58,11 +58,11 @@ namespace TP2_Zoo.Ai {
             }
         }
 
-        static void OccuperTuile(int x, int y) {
+        public static void OccuperTuile(int x, int y) {
             GerantCarte.OccupeAiMap[x, y] = true;
         }
 
-        static void LibererTuile(int x, int y) {
+        public static void LibererTuile(int x, int y) {
             GerantCarte.OccupeAiMap[x, y] = false;
         }
 
