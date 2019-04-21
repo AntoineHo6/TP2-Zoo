@@ -63,13 +63,15 @@ namespace TP2_Zoo.Etat {
 
         }
 
+
         // Pour bouger le perso
         private void EtatJeu_KeyDown(object sender, KeyEventArgs e) {
             hero.Deplacer(e);
             this.Refresh();
         }
 
-        // temp utiliser thread au lieu pour pas que tout tick en meme temps.
+
+        // temp. utiliser thread au lieu pour pas que tout tick en meme temps.
         private void Timer_Tick(object sender, EventArgs e) {
             foreach (var pepe in listePepe) {
                 pepe.Deplacer(hero.Position);
@@ -80,6 +82,7 @@ namespace TP2_Zoo.Etat {
 
             this.Refresh();
         }
+
 
         private void EtatJeu_MouseClick(object sender, MouseEventArgs e) {
             Point p = this.PointToClient(Cursor.Position);
@@ -93,9 +96,11 @@ namespace TP2_Zoo.Etat {
                 if (enclos != 0 && !GerantCarte.OccupeAiMap[pX, pY] && (pX != hero.Position[0] || pY != hero.Position[1])) { // Si clique dans un enclos sur une tuile vide
                     if (GerantCarte.animalEnclos[enclos - 1] == null) {
                         Console.WriteLine("Il n'y a pas d'animal dans l'enclos " + enclos);
+                        // CREER UN ANIMAL AU CHOIX
                     }
-                    // VERIFIER SI ENCLOS A DEJA UN ANIMAL DEDANS OU PAS
-                    // CREER UN ANIMAL
+                    else {
+                        // CREER UN ANIMAL 
+                    }
                 }
             }
         }

@@ -50,6 +50,12 @@
     <Compile Include="Animal\Licorne.cs" />
     <Compile Include="Animal\Lion.cs" />
     <Compile Include="Animal\Mouton.cs" />
+    <Compile Include="ChoixAnimal.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ChoixAnimal.Designer.cs">
+      <DependentUpon>ChoixAnimal.cs</DependentUpon>
+    </Compile>
     <Compile Include="Etat\EtatJeu.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -85,6 +91,9 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TileSetImageGenerator\MapTileSetImageGenerator.cs" />
+    <EmbeddedResource Include="ChoixAnimal.resx">
+      <DependentUpon>ChoixAnimal.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Etat\EtatJeu.resx">
       <DependentUpon>EtatJeu.cs</DependentUpon>
     </EmbeddedResource>
