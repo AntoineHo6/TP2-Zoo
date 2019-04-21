@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 namespace TP2_Zoo.Animal {
     public class Lion : Animal {
 
-        public Lion(params int[] Position) : base(Position) {
+        public Lion(bool EstAdulte, params int[] Position) : base(EstAdulte, Position) {
             Prix = 35;
             Type = "Lion";
         }

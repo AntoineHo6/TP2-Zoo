@@ -19,8 +19,10 @@ namespace TP2_Zoo.Animal {
         public int Prix { get; set; }
         public List<Bitmap> Sprites { get; set; }
         public int Jours { get; set; }
+        public bool EstAdulte { get; set; }
 
-    public Animal(params int[] Position) {
+        public Animal(bool EstAdulte, params int[] Position) {
+            this.EstAdulte = EstAdulte;
             this.Jours = 0;
             this.Position = Position;
             this.Genre = r.Next(0, 2);

@@ -13,9 +13,9 @@ namespace TP2_Zoo {
         public static Bitmap[,] TileFloorMapping = new Bitmap[40, 26];  // Probablement inutile.
         public static bool[,] SolidMapHero = new bool[42, 28];  // Plus large pour créer une bordure solide autour de la carte.
         public static bool[,] SolidMapAi = new bool[42, 28];    // Pour les visiteurs et les animaux
-        public static bool[,] SurfaceEnclosMap = new bool[40, 26];    // Verifie quelles tuiles sont dans l'enclos
         public static bool[,] OccupeAiMap = new bool[40, 26];
-
+        public static int[,] SurfaceEnclosMap = new int[40, 26];    // Verifie quelles tuiles sont dans l'enclos. 1: NW, 2: NE, 3: SW, 4: SE
+        public static String[] animalEnclos = new String[4];        // Stock le type d'animal que chaque enclos contient.
 
         static GerantCarte() {
             InitSolidMap();
@@ -89,12 +89,33 @@ namespace TP2_Zoo {
         static void InitSurfaceEnclosMap() {
             for (int y = 0; y < SurfaceEnclosMap.GetLength(1); y++) {
                 for (int x = 0; x < SurfaceEnclosMap.GetLength(0); x++) {
-                    SurfaceEnclosMap[x, y] = false;
-                    if (((x > 7 && x < 18) || (x > 21 && x < 32)) && ((y > 6 && y < 11) || (y > 14 && y < 19))) {
-                        SurfaceEnclosMap[x, y] = true;
+                    if ((x > 7 && x < 18)) {
+                        if (y > 6 && y < 11) {
+                            SurfaceEnclosMap[x, y] = 1;
+                        }
+                        else if (y > 14 && y < 19) {
+                            SurfaceEnclosMap[x, y] = 3;
+                        }
+                    }
+                    else if (x > 21 && x < 32) {
+                        if (y > 6 && y < 11) {
+                            SurfaceEnclosMap[x, y] = 2;
+                        }
+                        else if (y > 14 && y < 19) {
+                            SurfaceEnclosMap[x, y] = 4;
+                        }
                     }
                 }
             }
+
+            //for (int y = 0; y < SurfaceEnclosMap.GetLength(1); y++) {
+            //    for (int x = 0; x < SurfaceEnclosMap.GetLength(0); x++) {
+            //        SurfaceEnclosMap[x, y] = false;
+            //        if (((x > 7 && x < 18) || (x > 21 && x < 32)) && ((y > 6 && y < 11) || (y > 14 && y < 19))) {
+            //            SurfaceEnclosMap[x, y] = true;
+            //        }
+            //    }
+            //}
         }
 
         static void InitOccupeAiMap() {
@@ -106,7 +127,7 @@ namespace TP2_Zoo {
         }
 
         // testing purposes
-        public static void PrintSolidMappingHero() {
+        public static void PrintSolidMapHero() {
             Console.WriteLine("SOLID MAPPING HERO: ");
             for (int y = 0; y < SolidMapHero.GetLength(1); y++) {
                 for (int x = 0; x < SolidMapHero.GetLength(0); x++) {
@@ -122,7 +143,7 @@ namespace TP2_Zoo {
         }
 
         // testing purposes
-        public static void PrintSolidMappingAi() {
+        public static void PrintSolidMapAi() {
             Console.WriteLine("SOLID MAPPING AI: ");
             for (int y = 0; y < SolidMapAi.GetLength(1); y++) {
                 for (int x = 0; x < SolidMapAi.GetLength(0); x++) {
@@ -138,15 +159,15 @@ namespace TP2_Zoo {
         }
 
         // testing purposes
-        public static void PrintSurfaceEnclosMapping() {
+        public static void PrintSurfaceEnclosMap() {
             Console.WriteLine("SURFACE MAPPING ENCLOS: ");
             for (int y = 0; y < SurfaceEnclosMap.GetLength(1); y++) {
                 for (int x = 0; x < SurfaceEnclosMap.GetLength(0); x++) {
-                    if (SurfaceEnclosMap[x, y]) {
-                        Console.Write("1 ");
+                    if (SurfaceEnclosMap[x, y] == 0) {
+                        Console.Write("- ");
                     }
                     else {
-                        Console.Write("- ");
+                        Console.Write(SurfaceEnclosMap[x, y] + " ");
                     }
                 }
                 Console.Write("\n");
