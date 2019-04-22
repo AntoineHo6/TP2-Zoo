@@ -22,8 +22,6 @@ namespace TP2_Zoo {
             
             dateNow = DateTime.Now;
             LblDate.Text = "Date : " + dateNow.Day + "  " + (Mois)dateNow.Month + "  " + dateNow.Year;
-            etatJeu.Focus();
-            
         }
 
         private void Timer1_Tick(object sender, EventArgs e) {
@@ -33,7 +31,7 @@ namespace TP2_Zoo {
 
         private void Zoo_KeyDown(object sender, KeyEventArgs e) {
             if (e.KeyCode == Keys.Escape) {
-                etatJeu.ChoixAnimal.Visible = false;
+                etatJeu.choixAnimal.Visible = false;
                 etatJeu.Focus();
             }
         }

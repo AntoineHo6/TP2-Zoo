@@ -16,28 +16,36 @@ namespace TP2_Zoo.Etat {
     public partial class EtatJeu : UserControl {
 
         public Hero hero;
-        //int nbrAnimaux;
-        //int nbrVisiteurs;
         List<Pepe> listePepe;
+        List<Mouton> listeMouton;
+        List<Lion> listeLion;
         List<Licorne> listeLicorne;
+        public ChoixAnimal choixAnimal;
 
         public EtatJeu() {
             InitializeComponent();
             DoubleBuffered = true;
 
             hero = new Hero();
+            InitListeAI();
+            InitChoixAnimal();
+        }
+
+
+        private void InitChoixAnimal() {
+            choixAnimal = new ChoixAnimal(this);
+            choixAnimal.Setup(hero.Argent);
+            choixAnimal.Location = new Point(345, 239);
+            this.Controls.Add(choixAnimal);
+            choixAnimal.Visible = false;
+        }
+
+
+        private void InitListeAI() {
             listePepe = new List<Pepe>();
+            listeMouton = new List<Mouton>();
+            listeLion = new List<Lion>();
             listeLicorne = new List<Licorne>();
-
-            // temp
-            listePepe.Add(new Pepe("Bernard"));
-            listeLicorne.Add(new Licorne(true, 8, 7));
-
-            // Testing purposes
-            //GerantCarte.PrintSolidMapHero();
-            //GerantCarte.PrintSolidMapAi();
-            GerantCarte.PrintSurfaceEnclosMap();
-            //GerantCarte.PrintOccupeAiMap();
         }
 
 
@@ -46,7 +54,6 @@ namespace TP2_Zoo.Etat {
             GerantCarte.PeintureCheminSable(e);
             GerantCarte.PeintureEnclos(e);
             GerantCarte.PeintureMaison(e);
-            // FIN ; Cadrier toujours à la fin pour qu'il soit visible.
             GerantCarte.PeintureCadriage(e);
 
             hero.Peinturer(e, 0);
@@ -58,26 +65,12 @@ namespace TP2_Zoo.Etat {
             foreach (var licorne in listeLicorne) {
                 licorne.Peinturer(e, 0);
             }
-
         }
 
 
         // Pour bouger le perso
         private void EtatJeu_KeyDown(object sender, KeyEventArgs e) {
             hero.Deplacer(e);
-            this.Refresh();
-        }
-
-
-        // temp. utiliser thread au lieu pour pas que tout tick en meme temps.
-        private void Timer_Tick(object sender, EventArgs e) {
-            foreach (var pepe in listePepe) {
-                pepe.Deplacer(hero.Position);
-            }
-            foreach (var licorne in listeLicorne) {
-                licorne.Deplacer(hero.Position);
-            }
-
             this.Refresh();
         }
 
@@ -94,9 +87,7 @@ namespace TP2_Zoo.Etat {
                 if (heroAdjacent) {
                     if (enclos != 0 && !GerantCarte.OccupeAiMap[pX, pY] && (pX != hero.Position[0] || pY != hero.Position[1])) { // Si clique dans un enclos sur une tuile vide
                         if (GerantCarte.animalEnclos[enclos - 1] == null) {
-                            ChoixAnimal.Setup(hero.Argent);
-                            
-                            ChoixAnimal.Visible = true;
+                            choixAnimal.Visible = true;
                         }
                         else {
                             // CREER UN ANIMAL 

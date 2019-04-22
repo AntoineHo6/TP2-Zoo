@@ -7,11 +7,17 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using TP2_Zoo.Etat;
 
 namespace TP2_Zoo {
     public partial class ChoixAnimal : UserControl {
-        public ChoixAnimal() {
+
+        EtatJeu etatJeu;
+
+        public ChoixAnimal(EtatJeu etatJeu) {
             InitializeComponent();
+
+            this.etatJeu = etatJeu;
         }
 
         public void Setup(int argentHero) {

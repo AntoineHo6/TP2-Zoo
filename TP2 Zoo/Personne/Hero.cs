@@ -11,9 +11,7 @@ namespace TP2_Zoo.Personne {
 
         public Hero() {
             this.Position = new int[] { 1, 5 };
-            // temp
-            //Argent = 100;
-            Argent = 15;
+            Argent = 100;
 
             Sprites.Add(Properties.Resources.bas1);     // 0
             Sprites.Add(Properties.Resources.bas2);     // 1
