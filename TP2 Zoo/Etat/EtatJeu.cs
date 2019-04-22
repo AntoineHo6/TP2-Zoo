@@ -57,12 +57,17 @@ namespace TP2_Zoo.Etat {
 
             hero.Peinturer(e, 0);
 
-            // temp ou pas;
             foreach (var pepe in listePepe) {
                 pepe.Peinturer(e, 0);
             }
             foreach (var mouton in listeMouton) {
                 mouton.Peinturer(e, 0);
+            }
+            foreach (var lion in listeLion) {
+                lion.Peinturer(e, 0);
+            }
+            foreach (var licorne in listeLicorne) {
+                licorne.Peinturer(e, 0);
             }
         }
 
@@ -122,9 +127,19 @@ namespace TP2_Zoo.Etat {
             foreach (var pepe in listePepe) {
                 pepe.Deplacer(hero.Position);
             }
+
             foreach (var mouton in listeMouton) {
                 mouton.Deplacer(hero.Position);
             }
+
+            foreach (var lion in listeLion) {
+                lion.Deplacer(hero.Position);
+            }
+
+            foreach (var licorne in listeLicorne) {
+                licorne.Deplacer(hero.Position);
+            }
+
 
             this.Refresh();
             GerantCarte.PrintOccupeAiMap();

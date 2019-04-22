@@ -13,7 +13,7 @@ namespace TP2_Zoo.Animal {
             Prix = 50;
             Type = "Licorne";
 
-            Sprites.Add(AnimalTileSetImageGenerator.GetTile(0));
+            Sprites.Add(AnimalTileSetImageGenerator.GetTile(2));
         }
 
         public override void Crier() {

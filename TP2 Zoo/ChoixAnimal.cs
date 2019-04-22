@@ -65,18 +65,31 @@ namespace TP2_Zoo {
 
 
         private void BtnMouton_Click(object sender, EventArgs e) {
-            etatJeu.listeMouton.Add(new Mouton(true, spawnX, spawnY));
-
-            this.Visible = false;
-            etatJeu.Focus();
+            Mouton mouton = new Mouton(true, spawnX, spawnY);
+            etatJeu.hero.Argent -= mouton.Prix;
+            etatJeu.listeMouton.Add(mouton);
+            Cacher();
         }
 
         private void BtnLion_Click(object sender, EventArgs e) {
-
+            Lion lion = new Lion(true, spawnX, spawnY);
+            etatJeu.hero.Argent -= lion.Prix;
+            etatJeu.listeLion.Add(lion);
+            Cacher();
         }
 
         private void BtnLicorne_Click(object sender, EventArgs e) {
+            Licorne licorne = new Licorne(true, spawnX, spawnY);
+            etatJeu.hero.Argent -= licorne.Prix;
+            etatJeu.listeLicorne.Add(licorne);
+            Cacher();
+        }
 
+        private void Cacher() {
+            this.Visible = false;
+            etatJeu.Focus();
         }
     }
+
+    /// TODO: deduct money.
 }

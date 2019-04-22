@@ -130,9 +130,6 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\SMB-Tiles.png" />
-  </ItemGroup>
-  <ItemGroup>
     <None Include="Resources\zoo_tileset.png" />
   </ItemGroup>
   <ItemGroup>
