@@ -17,7 +17,7 @@ namespace TP2_Zoo.Animal {
         }
 
         public override void Crier() {
-            SoundPlayer Son = new SoundPlayer(TP2_Zoo.Properties.Resources.licorne);
+            SoundPlayer Son = new SoundPlayer(TP2_Zoo.Properties.Resources.licorne_son);
             Son.Play();
         }
     }

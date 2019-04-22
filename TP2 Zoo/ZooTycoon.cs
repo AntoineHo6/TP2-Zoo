@@ -29,5 +29,12 @@ namespace TP2_Zoo {
             dateNow = dateNow.AddDays(1);
             LblDate.Text = "Date : " + dateNow.Day + "  " + (Mois)dateNow.Month + "  " + dateNow.Year;
         }
+
+        private void Zoo_KeyDown(object sender, KeyEventArgs e) {
+            if (e.KeyCode == Keys.Escape) {
+                etatJeu.ChoixAnimal.Visible = false;
+                etatJeu.Focus();
+            }
+        }
     }
 }

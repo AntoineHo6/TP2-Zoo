@@ -177,5 +177,23 @@
   <ItemGroup>
     <None Include="Resources\mouton.wav" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Mouton_Mono.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Licorne.JPG" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Licorne_Mono.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Lion.JPG" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Lion_Mono.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Mouton.JPG" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

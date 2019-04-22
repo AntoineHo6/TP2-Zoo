@@ -13,7 +13,7 @@ namespace TP2_Zoo.Animal {
             Type = "Lion";
         }
         public override void Crier() {
-            SoundPlayer Son = new SoundPlayer(TP2_Zoo.Properties.Resources.lion);
+            SoundPlayer Son = new SoundPlayer(TP2_Zoo.Properties.Resources.lion_son);
             Son.Play();
         }
 

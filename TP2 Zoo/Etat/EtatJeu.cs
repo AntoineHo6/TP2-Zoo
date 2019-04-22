@@ -16,8 +16,8 @@ namespace TP2_Zoo.Etat {
     public partial class EtatJeu : UserControl {
 
         public Hero hero;
-        int nbrAnimaux;
-        int nbrVisiteurs;
+        //int nbrAnimaux;
+        //int nbrVisiteurs;
         List<Pepe> listePepe;
         List<Licorne> listeLicorne;
 
@@ -26,10 +26,8 @@ namespace TP2_Zoo.Etat {
             DoubleBuffered = true;
 
             hero = new Hero();
-            nbrAnimaux = 0;
             listePepe = new List<Pepe>();
             listeLicorne = new List<Licorne>();
-            nbrVisiteurs = 0;
 
             // temp
             listePepe.Add(new Pepe("Bernard"));
@@ -95,8 +93,9 @@ namespace TP2_Zoo.Etat {
             if (heroAdjacent) {
                 if (enclos != 0 && !GerantCarte.OccupeAiMap[pX, pY] && (pX != hero.Position[0] || pY != hero.Position[1])) { // Si clique dans un enclos sur une tuile vide
                     if (GerantCarte.animalEnclos[enclos - 1] == null) {
-                        Console.WriteLine("Il n'y a pas d'animal dans l'enclos " + enclos);
-                        // CREER UN ANIMAL AU CHOIX
+                        ChoixAnimal.Setup(hero.Argent);
+                        ChoixAnimal.Focus();
+                        ChoixAnimal.Visible = true;
                     }
                     else {
                         // CREER UN ANIMAL 

@@ -37,11 +37,13 @@
             // 
             // BtnMouton
             // 
+            this.BtnMouton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.BtnMouton.Location = new System.Drawing.Point(50, 50);
             this.BtnMouton.Name = "BtnMouton";
             this.BtnMouton.Size = new System.Drawing.Size(130, 130);
             this.BtnMouton.TabIndex = 0;
             this.BtnMouton.UseVisualStyleBackColor = true;
+            this.BtnMouton.Click += new System.EventHandler(this.BtnMouton_Click);
             // 
             // BtnLion
             // 
@@ -50,6 +52,7 @@
             this.BtnLion.Size = new System.Drawing.Size(130, 130);
             this.BtnLion.TabIndex = 1;
             this.BtnLion.UseVisualStyleBackColor = true;
+            this.BtnLion.Click += new System.EventHandler(this.BtnLion_Click);
             // 
             // BtnLicorne
             // 
@@ -58,6 +61,7 @@
             this.BtnLicorne.Size = new System.Drawing.Size(130, 130);
             this.BtnLicorne.TabIndex = 2;
             this.BtnLicorne.UseVisualStyleBackColor = true;
+            this.BtnLicorne.Click += new System.EventHandler(this.BtnLicorne_Click);
             // 
             // LblPrixMouton
             // 

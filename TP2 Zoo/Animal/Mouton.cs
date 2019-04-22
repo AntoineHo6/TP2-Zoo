@@ -14,7 +14,7 @@ namespace TP2_Zoo.Animal {
         }
 
         public override void Crier() {
-            SoundPlayer Son = new SoundPlayer(TP2_Zoo.Properties.Resources.mouton);
+            SoundPlayer Son = new SoundPlayer(TP2_Zoo.Properties.Resources.mouton_son);
             Son.Play();
         }
 

@@ -7,11 +7,13 @@ using System.Windows.Forms;
 
 namespace TP2_Zoo.Personne {
     public class Hero : Personne {
-        int Argent { get; set; }
+        public int Argent { get; set; }
 
         public Hero() {
             this.Position = new int[] { 1, 5 };
-            Argent = 100;
+            // temp
+            //Argent = 100;
+            Argent = 15;
 
             Sprites.Add(Properties.Resources.bas1);     // 0
             Sprites.Add(Properties.Resources.bas2);     // 1

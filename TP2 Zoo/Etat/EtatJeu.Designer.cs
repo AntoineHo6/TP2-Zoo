@@ -25,6 +25,7 @@
         private void InitializeComponent() {
             this.components = new System.ComponentModel.Container();
             this.Timer = new System.Windows.Forms.Timer(this.components);
+            this.ChoixAnimal = new TP2_Zoo.ChoixAnimal();
             this.SuspendLayout();
             // 
             // Timer
@@ -33,10 +34,19 @@
             this.Timer.Interval = 1000;
             this.Timer.Tick += new System.EventHandler(this.Timer_Tick);
             // 
+            // ChoixAnimal
+            // 
+            this.ChoixAnimal.Location = new System.Drawing.Point(345, 239);
+            this.ChoixAnimal.Name = "ChoixAnimal";
+            this.ChoixAnimal.Size = new System.Drawing.Size(590, 322);
+            this.ChoixAnimal.TabIndex = 0;
+            this.ChoixAnimal.Visible = false;
+            // 
             // EtatJeu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.ChoixAnimal);
             this.Name = "EtatJeu";
             this.Size = new System.Drawing.Size(1280, 800);
             this.Paint += new System.Windows.Forms.PaintEventHandler(this.EtatJeu_Paint);
@@ -49,5 +59,6 @@
         #endregion
 
         private System.Windows.Forms.Timer Timer;
+        public ChoixAnimal ChoixAnimal;
     }
 }

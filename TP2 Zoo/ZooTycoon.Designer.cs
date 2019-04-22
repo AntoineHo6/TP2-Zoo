@@ -137,6 +137,7 @@
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "Zoo";
             this.Text = "Zoo Tycoon";
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Zoo_KeyDown);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.menuStrip1.ResumeLayout(false);
