@@ -4,6 +4,7 @@ using System.Linq;
 using System.Media;
 using System.Text;
 using System.Threading.Tasks;
+using tileSetZoo;
 
 namespace TP2_Zoo.Animal {
     public class Mouton : Animal {
@@ -11,6 +12,9 @@ namespace TP2_Zoo.Animal {
         public Mouton(bool EstAdulte, params int[] Position) : base(EstAdulte, Position) {
             Prix = 20;
             Type = "Mouton";
+
+            // temp
+            Sprites.Add(AnimalTileSetImageGenerator.GetTile(0));
         }
 
         public override void Crier() {

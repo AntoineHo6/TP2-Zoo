@@ -23,7 +23,15 @@
         /// le contenu de cette méthode avec l'éditeur de code.
         /// </summary>
         private void InitializeComponent() {
+            this.components = new System.ComponentModel.Container();
+            this.Timer = new System.Windows.Forms.Timer(this.components);
             this.SuspendLayout();
+            // 
+            // Timer
+            // 
+            this.Timer.Enabled = true;
+            this.Timer.Interval = 1000;
+            this.Timer.Tick += new System.EventHandler(this.Timer_Tick);
             // 
             // EtatJeu
             // 
@@ -39,5 +47,7 @@
         }
 
         #endregion
+
+        private System.Windows.Forms.Timer Timer;
     }
 }

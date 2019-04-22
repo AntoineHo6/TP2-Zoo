@@ -8,11 +8,15 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using TP2_Zoo.Etat;
+using TP2_Zoo.Animal;
+using System.Threading;
 
 namespace TP2_Zoo {
     public partial class ChoixAnimal : UserControl {
 
         EtatJeu etatJeu;
+        int spawnX;
+        int spawnY;
 
         public ChoixAnimal(EtatJeu etatJeu) {
             InitializeComponent();
@@ -53,8 +57,18 @@ namespace TP2_Zoo {
             }
         }
 
-        private void BtnMouton_Click(object sender, EventArgs e) {
 
+        public void SetSpawn(int x, int y) {
+            spawnX = x;
+            spawnY = y;
+        }
+
+
+        private void BtnMouton_Click(object sender, EventArgs e) {
+            etatJeu.listeMouton.Add(new Mouton(true, spawnX, spawnY));
+
+            this.Visible = false;
+            etatJeu.Focus();
         }
 
         private void BtnLion_Click(object sender, EventArgs e) {

@@ -17,9 +17,9 @@ namespace TP2_Zoo.Etat {
 
         public Hero hero;
         List<Pepe> listePepe;
-        List<Mouton> listeMouton;
-        List<Lion> listeLion;
-        List<Licorne> listeLicorne;
+        public List<Mouton> listeMouton;
+        public List<Lion> listeLion;
+        public List<Licorne> listeLicorne;
         public ChoixAnimal choixAnimal;
 
         public EtatJeu() {
@@ -34,7 +34,6 @@ namespace TP2_Zoo.Etat {
 
         private void InitChoixAnimal() {
             choixAnimal = new ChoixAnimal(this);
-            choixAnimal.Setup(hero.Argent);
             choixAnimal.Location = new Point(345, 239);
             this.Controls.Add(choixAnimal);
             choixAnimal.Visible = false;
@@ -58,12 +57,12 @@ namespace TP2_Zoo.Etat {
 
             hero.Peinturer(e, 0);
 
-            // temp
+            // temp ou pas;
             foreach (var pepe in listePepe) {
                 pepe.Peinturer(e, 0);
             }
-            foreach (var licorne in listeLicorne) {
-                licorne.Peinturer(e, 0);
+            foreach (var mouton in listeMouton) {
+                mouton.Peinturer(e, 0);
             }
         }
 
@@ -87,6 +86,8 @@ namespace TP2_Zoo.Etat {
                 if (heroAdjacent) {
                     if (enclos != 0 && !GerantCarte.OccupeAiMap[pX, pY] && (pX != hero.Position[0] || pY != hero.Position[1])) { // Si clique dans un enclos sur une tuile vide
                         if (GerantCarte.animalEnclos[enclos - 1] == null) {
+                            choixAnimal.Setup(hero.Argent);
+                            choixAnimal.SetSpawn(pX, pY);
                             choixAnimal.Visible = true;
                         }
                         else {
@@ -115,6 +116,18 @@ namespace TP2_Zoo.Etat {
                 }
             }
             return heroAdjacent;
+        }
+
+        private void Timer_Tick(object sender, EventArgs e) {
+            foreach (var pepe in listePepe) {
+                pepe.Deplacer(hero.Position);
+            }
+            foreach (var mouton in listeMouton) {
+                mouton.Deplacer(hero.Position);
+            }
+
+            this.Refresh();
+            GerantCarte.PrintOccupeAiMap();
         }
     }
 }
