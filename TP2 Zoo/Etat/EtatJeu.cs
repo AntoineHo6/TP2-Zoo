@@ -15,17 +15,20 @@ using TP2_Zoo.Animal;
 namespace TP2_Zoo.Etat {
     public partial class EtatJeu : UserControl {
 
-        public Hero hero;
+        Zoo formPrincipale;
         List<Pepe> listePepe;
+
+        public Hero hero;
         public List<Mouton> listeMouton;
         public List<Lion> listeLion;
         public List<Licorne> listeLicorne;
         public ChoixAnimal choixAnimal;
 
-        public EtatJeu() {
+        public EtatJeu(Zoo formPrincipale) {
             InitializeComponent();
             DoubleBuffered = true;
 
+            this.formPrincipale = formPrincipale;
             hero = new Hero();
             InitListeAI();
             InitChoixAnimal();
@@ -33,7 +36,7 @@ namespace TP2_Zoo.Etat {
 
 
         private void InitChoixAnimal() {
-            choixAnimal = new ChoixAnimal(this);
+            choixAnimal = new ChoixAnimal(this, formPrincipale);
             choixAnimal.Location = new Point(345, 239);
             this.Controls.Add(choixAnimal);
             choixAnimal.Visible = false;

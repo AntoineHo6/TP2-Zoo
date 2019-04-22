@@ -14,13 +14,15 @@ using System.Threading;
 namespace TP2_Zoo {
     public partial class ChoixAnimal : UserControl {
 
+        Zoo formPrincipale;
         EtatJeu etatJeu;
         int spawnX;
         int spawnY;
 
-        public ChoixAnimal(EtatJeu etatJeu) {
+        public ChoixAnimal(EtatJeu etatJeu, Zoo formPrincipale) {
             InitializeComponent();
 
+            this.formPrincipale = formPrincipale;
             this.etatJeu = etatJeu;
         }
 
@@ -66,21 +68,21 @@ namespace TP2_Zoo {
 
         private void BtnMouton_Click(object sender, EventArgs e) {
             Mouton mouton = new Mouton(true, spawnX, spawnY);
-            etatJeu.hero.Argent -= mouton.Prix;
+            DeduireArgentHero(mouton.Prix);
             etatJeu.listeMouton.Add(mouton);
             Cacher();
         }
 
         private void BtnLion_Click(object sender, EventArgs e) {
             Lion lion = new Lion(true, spawnX, spawnY);
-            etatJeu.hero.Argent -= lion.Prix;
+            DeduireArgentHero(lion.Prix);
             etatJeu.listeLion.Add(lion);
             Cacher();
         }
 
         private void BtnLicorne_Click(object sender, EventArgs e) {
             Licorne licorne = new Licorne(true, spawnX, spawnY);
-            etatJeu.hero.Argent -= licorne.Prix;
+            DeduireArgentHero(licorne.Prix);
             etatJeu.listeLicorne.Add(licorne);
             Cacher();
         }
@@ -88,6 +90,11 @@ namespace TP2_Zoo {
         private void Cacher() {
             this.Visible = false;
             etatJeu.Focus();
+        }
+
+        private void DeduireArgentHero(int montant) {
+            etatJeu.hero.Argent -= montant;
+            formPrincipale.LblArgent.Text = "Argent : " + etatJeu.hero.Argent + "$";
         }
     }
 
