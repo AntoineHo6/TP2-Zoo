@@ -87,18 +87,20 @@ namespace TP2_Zoo.Etat {
             int pX = p.X / 32;
             int pY = p.Y / 32;
 
-            bool heroAdjacent = HeroAdjacent(pX, pY);
-            int enclos = GerantCarte.SurfaceEnclosMap[pX, pY];  // 0: pas dans un enclos.
+            if (e.Button == MouseButtons.Left) {
+                bool heroAdjacent = HeroAdjacent(pX, pY);
+                int enclos = GerantCarte.SurfaceEnclosMap[pX, pY];  // 0: pas dans un enclos.
 
-            if (heroAdjacent) {
-                if (enclos != 0 && !GerantCarte.OccupeAiMap[pX, pY] && (pX != hero.Position[0] || pY != hero.Position[1])) { // Si clique dans un enclos sur une tuile vide
-                    if (GerantCarte.animalEnclos[enclos - 1] == null) {
-                        ChoixAnimal.Setup(hero.Argent);
-                        ChoixAnimal.Focus();
-                        ChoixAnimal.Visible = true;
-                    }
-                    else {
-                        // CREER UN ANIMAL 
+                if (heroAdjacent) {
+                    if (enclos != 0 && !GerantCarte.OccupeAiMap[pX, pY] && (pX != hero.Position[0] || pY != hero.Position[1])) { // Si clique dans un enclos sur une tuile vide
+                        if (GerantCarte.animalEnclos[enclos - 1] == null) {
+                            ChoixAnimal.Setup(hero.Argent);
+                            
+                            ChoixAnimal.Visible = true;
+                        }
+                        else {
+                            // CREER UN ANIMAL 
+                        }
                     }
                 }
             }
