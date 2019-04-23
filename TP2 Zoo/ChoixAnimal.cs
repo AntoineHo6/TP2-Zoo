@@ -14,19 +14,22 @@ using System.Threading;
 namespace TP2_Zoo {
     public partial class ChoixAnimal : UserControl {
 
-        Zoo formPrincipale;
         EtatJeu etatJeu;
         int spawnX;
         int spawnY;
+        public int Enclos { get; set; }
 
-        public ChoixAnimal(EtatJeu etatJeu, Zoo formPrincipale) {
+        public ChoixAnimal(EtatJeu etatJeu) {
             InitializeComponent();
 
-            this.formPrincipale = formPrincipale;
             this.etatJeu = etatJeu;
         }
 
-        public void Setup(int argentHero) {
+        public void Setup(int argentHero, int Enclos, int x, int y) {
+            this.Enclos = Enclos;
+            spawnX = x;
+            spawnY = y;
+
             if (argentHero < 20) {
                 LblPrixMouton.ForeColor = Color.Red;
                 LblPrixLion.ForeColor = Color.Red;
@@ -60,41 +63,27 @@ namespace TP2_Zoo {
         }
 
 
-        public void SetSpawn(int x, int y) {
-            spawnX = x;
-            spawnY = y;
-        }
-
-
         private void BtnMouton_Click(object sender, EventArgs e) {
-            Mouton mouton = new Mouton(true, spawnX, spawnY);
-            DeduireArgentHero(mouton.Prix);
-            etatJeu.listeMouton.Add(mouton);
+            etatJeu.CreerMouton(spawnX, spawnY);
+            GerantCarte.animalEnclos[Enclos] = "Mouton";
             Cacher();
         }
 
         private void BtnLion_Click(object sender, EventArgs e) {
-            Lion lion = new Lion(true, spawnX, spawnY);
-            DeduireArgentHero(lion.Prix);
-            etatJeu.listeLion.Add(lion);
+            etatJeu.CreerLion(spawnX, spawnY);
+            GerantCarte.animalEnclos[Enclos] = "Lion";
             Cacher();
         }
 
         private void BtnLicorne_Click(object sender, EventArgs e) {
-            Licorne licorne = new Licorne(true, spawnX, spawnY);
-            DeduireArgentHero(licorne.Prix);
-            etatJeu.listeLicorne.Add(licorne);
+            etatJeu.CreerLicorne(spawnX, spawnY);
+            GerantCarte.animalEnclos[Enclos] = "Licorne";
             Cacher();
         }
 
         private void Cacher() {
             this.Visible = false;
             etatJeu.Focus();
-        }
-
-        private void DeduireArgentHero(int montant) {
-            etatJeu.hero.Argent -= montant;
-            formPrincipale.LblArgent.Text = "Argent : " + etatJeu.hero.Argent + "$";
         }
     }
 

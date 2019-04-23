@@ -15,7 +15,7 @@ namespace TP2_Zoo {
         public static bool[,] SolidMapAi = new bool[42, 28];    // Pour les visiteurs et les animaux
         public static bool[,] OccupeAiMap = new bool[40, 26];
         public static int[,] SurfaceEnclosMap = new int[40, 26];    // Verifie quelles tuiles sont dans l'enclos. 1: NW, 2: NE, 3: SW, 4: SE
-        public static String[] animalEnclos = new String[4];        // Stock le type d'animal que chaque enclos contient.
+        public static String[] animalEnclos = new String[5];        // Stock le type d'animal que chaque enclos contient. commence a index 1.
 
         static GerantCarte() {
             InitSolidMap();
