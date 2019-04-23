@@ -36,7 +36,7 @@ namespace TP2_Zoo.Etat {
 
 
         private void InitChoixAnimal() {
-            choixAnimal = new ChoixAnimal(this, formPrincipale);
+            choixAnimal = new ChoixAnimal(this);
             choixAnimal.Location = new Point(345, 239);
             this.Controls.Add(choixAnimal);
             choixAnimal.Visible = false;
@@ -56,7 +56,7 @@ namespace TP2_Zoo.Etat {
             GerantCarte.PeintureCheminSable(e);
             GerantCarte.PeintureEnclos(e);
             GerantCarte.PeintureMaison(e);
-            GerantCarte.PeintureCadriage(e);
+            //GerantCarte.PeintureCadriage(e);
 
             hero.Peinturer(e, 0);
 
@@ -90,22 +90,61 @@ namespace TP2_Zoo.Etat {
             if (e.Button == MouseButtons.Left) {
                 bool heroAdjacent = HeroAdjacent(pX, pY);
                 int enclos = GerantCarte.SurfaceEnclosMap[pX, pY];  // 0: pas dans un enclos.
+                String enclosTypeAnimal = GerantCarte.animalEnclos[enclos];
 
                 if (heroAdjacent) {
                     if (enclos != 0 && !GerantCarte.OccupeAiMap[pX, pY] && (pX != hero.Position[0] || pY != hero.Position[1])) { // Si clique dans un enclos sur une tuile vide
-                        if (GerantCarte.animalEnclos[enclos - 1] == null) {
-                            choixAnimal.Setup(hero.Argent);
-                            choixAnimal.SetSpawn(pX, pY);
+                        if (enclosTypeAnimal == null) {
+                            choixAnimal.Setup(hero.Argent, enclos, pX, pY);
                             choixAnimal.Visible = true;
                         }
                         else {
-                            // CREER UN ANIMAL 
+                            CreerAnimal(enclosTypeAnimal, pX, pY);
                         }
                     }
                 }
             }
         }
 
+        private void CreerAnimal(String animal, int x, int y) {
+            switch (animal) {
+                case "Mouton":
+                    CreerMouton(x, y);
+                    break;
+                case "Lion":
+                    CreerLion(x, y);
+                    break;
+                case "Licorne":
+                    CreerLicorne(x, y);
+                    break;
+            }
+        }
+
+        public void CreerMouton(int x, int y) {
+            Mouton mouton = new Mouton(true, x, y);
+            DeduireArgentHero(mouton.Prix);
+            listeMouton.Add(mouton);
+            Refresh();
+        }
+
+        public void CreerLion(int x, int y) {
+            Lion lion = new Lion(true, x, y);
+            DeduireArgentHero(lion.Prix);
+            listeLion.Add(lion);
+            Refresh();
+        }
+
+        public void CreerLicorne(int x, int y) {
+            Licorne licorne = new Licorne(true, x, y);
+            DeduireArgentHero(licorne.Prix);
+            listeLicorne.Add(licorne);
+            Refresh();
+        }
+
+        public void DeduireArgentHero(int montant) {
+            hero.Argent -= montant;
+            formPrincipale.LblArgent.Text = "Argent : " + hero.Argent + "$";
+        }
 
         /// <summary>
         ///     Verifie si le hero est adjacent à la tuile cliquée.
