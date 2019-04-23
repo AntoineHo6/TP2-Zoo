@@ -121,24 +121,27 @@ namespace TP2_Zoo.Etat {
         }
 
         public void CreerMouton(int x, int y) {
-            Mouton mouton = new Mouton(true, x, y);
-            DeduireArgentHero(mouton.Prix);
-            listeMouton.Add(mouton);
-            Refresh();
+            if (hero.Argent >= 20) {
+                DeduireArgentHero(20);
+                listeMouton.Add(new Mouton(true, x, y));
+                Refresh();
+            }
         }
 
         public void CreerLion(int x, int y) {
-            Lion lion = new Lion(true, x, y);
-            DeduireArgentHero(lion.Prix);
-            listeLion.Add(lion);
-            Refresh();
+            if (hero.Argent >= 35) {
+                DeduireArgentHero(35);
+                listeLion.Add(new Lion(true, x, y));
+                Refresh();
+            }
         }
 
         public void CreerLicorne(int x, int y) {
-            Licorne licorne = new Licorne(true, x, y);
-            DeduireArgentHero(licorne.Prix);
-            listeLicorne.Add(licorne);
-            Refresh();
+            if (hero.Argent >= 50) {
+                DeduireArgentHero(50);
+                listeLicorne.Add(new Licorne(true, x, y));
+                Refresh();
+            }
         }
 
         public void DeduireArgentHero(int montant) {
@@ -164,6 +167,7 @@ namespace TP2_Zoo.Etat {
             }
             return heroAdjacent;
         }
+
 
         private void Timer_Tick(object sender, EventArgs e) {
             foreach (var pepe in listePepe) {
