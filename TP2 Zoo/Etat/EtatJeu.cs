@@ -17,6 +17,7 @@ namespace TP2_Zoo.Etat {
 
         Zoo formPrincipale;
         List<Pepe> listePepe;
+        int nbrAnimaux;
 
         public Hero hero;
         public List<Mouton> listeMouton;
@@ -28,6 +29,7 @@ namespace TP2_Zoo.Etat {
             InitializeComponent();
             DoubleBuffered = true;
 
+            nbrAnimaux = 0;
             this.formPrincipale = formPrincipale;
             hero = new Hero();
             InitListeAI();
@@ -107,7 +109,9 @@ namespace TP2_Zoo.Etat {
                     }
                     // Si clique sur un animal
                     else if (enclos != 0 && GerantCarte.OccupeAiMap[pX, pY]) {
-                        NourrirAnimal(enclosTypeAnimal, pX, pY);
+                        if (hero.Argent >= 1) {
+                            NourrirAnimal(enclosTypeAnimal, pX, pY);
+                        }
                     }
                 }
             }
@@ -127,11 +131,15 @@ namespace TP2_Zoo.Etat {
             }
         }
 
+        // bouger les conditions de la verification de largent du hero ailleurs
         public void CreerMouton(int x, int y) {
             if (hero.Argent >= 20) {
                 DeduireArgentHero(20);
                 listeMouton.Add(new Mouton(true, x, y));
                 Refresh();
+
+                nbrAnimaux++;
+                UpdateLblNbrAnimaux();
             }
         }
 
@@ -140,6 +148,9 @@ namespace TP2_Zoo.Etat {
                 DeduireArgentHero(35);
                 listeLion.Add(new Lion(true, x, y));
                 Refresh();
+
+                nbrAnimaux++;
+                UpdateLblNbrAnimaux();
             }
         }
 
@@ -148,6 +159,9 @@ namespace TP2_Zoo.Etat {
                 DeduireArgentHero(50);
                 listeLicorne.Add(new Licorne(true, x, y));
                 Refresh();
+
+                nbrAnimaux++;
+                UpdateLblNbrAnimaux();
             }
         }
 
@@ -173,6 +187,11 @@ namespace TP2_Zoo.Etat {
                 }
             }
             return heroAdjacent;
+        }
+
+
+        void UpdateLblNbrAnimaux() {
+            formPrincipale.LblNbrAnimaux.Text = "Nombre d'animaux : " + nbrAnimaux;
         }
 
 

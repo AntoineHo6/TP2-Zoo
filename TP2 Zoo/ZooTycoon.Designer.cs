@@ -145,8 +145,8 @@
         private System.Windows.Forms.Label LblDate;
         private System.Windows.Forms.Timer Timer;
         private System.Windows.Forms.Label LblNbrDechets;
-        private System.Windows.Forms.Label LblNbrAnimaux;
         public System.Windows.Forms.Label LblArgent;
+        public System.Windows.Forms.Label LblNbrAnimaux;
     }
 }
 
