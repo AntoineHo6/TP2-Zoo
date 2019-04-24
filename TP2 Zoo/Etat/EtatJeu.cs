@@ -18,7 +18,7 @@ namespace TP2_Zoo.Etat {
         Zoo formPrincipale;
         int nbrAnimaux;
 
-        public Hero hero;
+        public Heros heros;
 
         public List<Mouton> listeMouton;
         public List<Lion> listeLion;
@@ -33,7 +33,7 @@ namespace TP2_Zoo.Etat {
 
             nbrAnimaux = 0;
             this.formPrincipale = formPrincipale;
-            hero = new Hero();
+            heros = new Heros();
             InitListeAI();
             InitChoixAnimal();
         }
@@ -58,7 +58,7 @@ namespace TP2_Zoo.Etat {
         private void EtatJeu_Paint(object sender, PaintEventArgs e) {
             GerantCarte.PeintureMap(e);
 
-            hero.Peinturer(e, 0);
+            heros.Peinturer(e, 0);
 
             // Paint les animaux
             foreach (var mouton in listeMouton) {
@@ -78,9 +78,13 @@ namespace TP2_Zoo.Etat {
         }
 
 
-        // Pour bouger le perso
+        /// <summary>
+        ///     Permet de déplacer le heros.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void EtatJeu_KeyDown(object sender, KeyEventArgs e) {
-            hero.Deplacer(e);
+            heros.Deplacer(e);
             this.Refresh();
         }
 
@@ -91,17 +95,17 @@ namespace TP2_Zoo.Etat {
             int pY = p.Y / 32;
 
             if (e.Button == MouseButtons.Left) {
-                bool heroAdjacent = HeroAdjacent(pX, pY);
+                bool heroAdjacent = HerosAdjacent(pX, pY);
 
                 if (heroAdjacent) {
                     int enclos = GerantCarte.SurfaceEnclosMap[pX, pY];  // 0: pas dans un enclos.
                     String enclosTypeAnimal = GerantCarte.animalEnclos[enclos];
 
                     // Si clique dans un enclos sur une tuile vide
-                    if (enclos != 0 && !GerantCarte.OccupeAiMap[pX, pY] && (pX != hero.Position[0] || pY != hero.Position[1])) {
+                    if (enclos != 0 && !GerantCarte.OccupeAiMap[pX, pY] && (pX != heros.Position[0] || pY != heros.Position[1])) {
                         // Si aucun animal dans l'enclos
                         if (enclosTypeAnimal == null) {
-                            choixAnimal.Setup(hero.Argent, enclos, pX, pY);
+                            choixAnimal.Setup(heros.Argent, enclos, pX, pY);
                             choixAnimal.Visible = true;
                         }
                         else {
@@ -110,7 +114,7 @@ namespace TP2_Zoo.Etat {
                     }
                     // Si clique sur un animal
                     else if (enclos != 0 && GerantCarte.OccupeAiMap[pX, pY]) {
-                        if (hero.Argent >= 1) {
+                        if (heros.Argent >= 1) {
                             NourrirAnimal(enclosTypeAnimal, pX, pY);
                         }
                     }
@@ -121,17 +125,17 @@ namespace TP2_Zoo.Etat {
         public void CreerAnimal(String animal, int x, int y) {
             switch (animal) {
                 case "Mouton":
-                    if (hero.Argent >= 20) {
+                    if (heros.Argent >= 20) {
                         CreerMouton(x, y);
                     }                    
                     break;
                 case "Lion":
-                    if (hero.Argent >= 35) {
+                    if (heros.Argent >= 35) {
                         CreerLion(x, y);
                     }
                     break;
                 case "Licorne":
-                    if (hero.Argent >= 50) {
+                    if (heros.Argent >= 50) {
                         CreerLicorne(x, y);
                     }
                     break;
@@ -162,22 +166,22 @@ namespace TP2_Zoo.Etat {
         }
 
         public void DeduireArgentHero(int montant) {
-            hero.Argent -= montant;
-            formPrincipale.LblArgent.Text = "Argent : " + hero.Argent + "$";
+            heros.Argent -= montant;
+            formPrincipale.LblArgent.Text = "Argent : " + heros.Argent + "$";
         }
 
         /// <summary>
-        ///     Verifie si le hero est adjacent à la tuile cliquée.
+        ///     Verifie si le heros est adjacent à la tuile cliquée.
         /// </summary>
         /// <param name="iX"> Coordonnée X de la tuile cliquée </param>
         /// <param name="iY"> Coordonnée Y de la tuile cliquée </param>
         /// <returns></returns>
-        private bool HeroAdjacent(int iX, int iY) {
+        private bool HerosAdjacent(int iX, int iY) {
             bool heroAdjacent = false;
 
             for (int y = -1; y < 2; y++) {
                 for (int x = -1; x < 2; x++) {
-                    if ((hero.Position[0] == iX + x) && (hero.Position[1] == iY + y)) {
+                    if ((heros.Position[0] == iX + x) && (heros.Position[1] == iY + y)) {
                         heroAdjacent = true;
                     }
                 }
@@ -257,7 +261,7 @@ namespace TP2_Zoo.Etat {
         private void Timer_Tick(object sender, EventArgs e) {
             foreach (var pepe in listePepe) {
                 pepe.NbrJours++;
-                pepe.Deplacer(hero.Position);
+                pepe.Deplacer(heros.Position);
             }
 
             foreach (var mouton in listeMouton) {
@@ -268,7 +272,7 @@ namespace TP2_Zoo.Etat {
                     mouton.Faim = true;
                 }
 
-                mouton.Deplacer(hero.Position);
+                mouton.Deplacer(heros.Position);
             }
 
             foreach (var lion in listeLion) {
@@ -279,7 +283,7 @@ namespace TP2_Zoo.Etat {
                     lion.Faim = true;
                 }
 
-                lion.Deplacer(hero.Position);
+                lion.Deplacer(heros.Position);
             }
 
             foreach (var licorne in listeLicorne) {
@@ -290,7 +294,7 @@ namespace TP2_Zoo.Etat {
                     licorne.Faim = true;
                 }
 
-                licorne.Deplacer(hero.Position);
+                licorne.Deplacer(heros.Position);
             }
 
             this.Refresh();

@@ -6,10 +6,10 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace TP2_Zoo.Personne {
-    public class Hero : Personne {
+    public class Heros : Personne {
         public int Argent { get; set; }
 
-        public Hero() {
+        public Heros() {
             this.Position = new int[] { 1, 5 };
             Argent = 100;
 
@@ -31,22 +31,22 @@ namespace TP2_Zoo.Personne {
 
             switch (e.KeyCode) {
                 case Keys.W:
-                    if (!GerantCarte.SolidMapHero[ToSolidCoord(x), ToSolidCoord(y) - 1] && !GerantCarte.OccupeAiMap[Position[0], Position[1] - 1]) {
+                    if (!GerantCarte.SolidMapHeros[ToSolidCoord(x), ToSolidCoord(y) - 1] && !GerantCarte.OccupeAiMap[Position[0], Position[1] - 1]) {
                         Position[1] -= 1;
                     }
                     break;
                 case Keys.A:
-                    if (!GerantCarte.SolidMapHero[ToSolidCoord(x) - 1, ToSolidCoord(y)] && !GerantCarte.OccupeAiMap[Position[0] - 1, Position[1]]) {
+                    if (!GerantCarte.SolidMapHeros[ToSolidCoord(x) - 1, ToSolidCoord(y)] && !GerantCarte.OccupeAiMap[Position[0] - 1, Position[1]]) {
                         Position[0] -= 1;
                     }
                     break;
                 case Keys.S:
-                    if (!GerantCarte.SolidMapHero[ToSolidCoord(x), ToSolidCoord(y) + 1] && !GerantCarte.OccupeAiMap[Position[0], Position[1] + 1]) {
+                    if (!GerantCarte.SolidMapHeros[ToSolidCoord(x), ToSolidCoord(y) + 1] && !GerantCarte.OccupeAiMap[Position[0], Position[1] + 1]) {
                         Position[1] += 1;
                     }
                     break;
                 case Keys.D:
-                    if (!GerantCarte.SolidMapHero[ToSolidCoord(x) + 1, ToSolidCoord(y)] && !GerantCarte.OccupeAiMap[Position[0] + 1, Position[1]]) {
+                    if (!GerantCarte.SolidMapHeros[ToSolidCoord(x) + 1, ToSolidCoord(y)] && !GerantCarte.OccupeAiMap[Position[0] + 1, Position[1]]) {
                         Position[0] += 1;
                     }
                     break;

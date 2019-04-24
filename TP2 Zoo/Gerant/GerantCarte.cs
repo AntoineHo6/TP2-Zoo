@@ -10,7 +10,7 @@ using tileSetZoo;
 namespace TP2_Zoo {
     public static class GerantCarte {
 
-        public static bool[,] SolidMapHero = new bool[42, 28];  // Plus large pour créer une bordure solide autour de la carte.
+        public static bool[,] SolidMapHeros = new bool[42, 28];  // Plus large pour créer une bordure solide autour de la carte.
         public static bool[,] SolidMapAi = new bool[42, 28];    // Pour les visiteurs et les animaux
         public static bool[,] OccupeAiMap = new bool[40, 26];
         public static int[,] SurfaceEnclosMap = new int[40, 26];    // Verifie quelles tuiles sont dans l'enclos. 1: NW, 2: NE, 3: SW, 4: SE
@@ -21,50 +21,51 @@ namespace TP2_Zoo {
             InitSurfaceEnclosMap();
             InitOccupeAiMap();
 
+            // les prints pour tester
             PrintSurfaceEnclosMap();
         }
         
 
         static void InitSolidMaps() {
             // Par defaut, tout n'est pas solide à part la bordure.
-            for (int y = 0; y < SolidMapHero.GetLength(1); y++) {
-                for (int x = 0; x < SolidMapHero.GetLength(0); x++) {
+            for (int y = 0; y < SolidMapHeros.GetLength(1); y++) {
+                for (int x = 0; x < SolidMapHeros.GetLength(0); x++) {
                     if ((x == 0 || x == 41) || (y == 0 || y == 27)) {
-                        SolidMapHero[x, y] = true;
+                        SolidMapHeros[x, y] = true;
                         SolidMapAi[x, y] = true;
                     }
                     else {
-                        SolidMapHero[x, y] = false;
+                        SolidMapHeros[x, y] = false;
                         SolidMapAi[x, y] = false;
                     }
                 }
             }
 
             // Changement des bools dans TileSolidMap a solide ou les enclos sont places.
-            for (int y = 0; y < SolidMapHero.GetLength(1); y++) {
-                for (int x = 0; x < SolidMapHero.GetLength(0); x++) {
+            for (int y = 0; y < SolidMapHeros.GetLength(1); y++) {
+                for (int x = 0; x < SolidMapHeros.GetLength(0); x++) {
                     if ((y == 7 || y == 12 || y == 15 || y == 20) && ((x >= 8 && x <= 19) || (x >= 22 && x <= 33))) {       // Verifie ou les enclos horizontals se retrouvent.
-                        SolidMapHero[x, y] = true;
+                        SolidMapHeros[x, y] = true;
                         SolidMapAi[x, y] = true;
                     }
                     else if ((x == 8 || x == 19 || x == 22 || x == 33) && ((y >= 8 && y <= 11) || (y >= 16 && y <= 19))) {  // Verifie ou les enclos verticals se retrouvent.
-                        SolidMapHero[x, y] = true;
+                        SolidMapHeros[x, y] = true;
                         SolidMapAi[x, y] = true;
                     }
                 }
             }
             // Change a false les entrees pour les enclos
-            for (int i = 0; i < SolidMapHero.GetLength(0); i++) {
+            for (int i = 0; i < SolidMapHeros.GetLength(0); i++) {
                 if (i == 13 || i == 14 || i == 27 || i == 28) {
-                    SolidMapHero[i, 7] = false;
-                    SolidMapHero[i, 20] = false;
+                    SolidMapHeros[i, 7] = false;
+                    SolidMapHeros[i, 20] = false;
                 }
             }
 
             // La maison est solide
             for (int y = 1; y < 6; y++) {
                 for (int x = 1; x < 5; x++) {
-                    SolidMapHero[x, y] = true;
+                    SolidMapHeros[x, y] = true;
                     SolidMapAi[x, y] = true;
                 }
             }
@@ -91,15 +92,6 @@ namespace TP2_Zoo {
                     }
                 }
             }
-
-            //for (int y = 0; y < SurfaceEnclosMap.GetLength(1); y++) {
-            //    for (int x = 0; x < SurfaceEnclosMap.GetLength(0); x++) {
-            //        SurfaceEnclosMap[x, y] = false;
-            //        if (((x > 7 && x < 18) || (x > 21 && x < 32)) && ((y > 6 && y < 11) || (y > 14 && y < 19))) {
-            //            SurfaceEnclosMap[x, y] = true;
-            //        }
-            //    }
-            //}
         }
 
         static void InitOccupeAiMap() {
@@ -111,11 +103,11 @@ namespace TP2_Zoo {
         }
 
         // testing purposes
-        public static void PrintSolidMapHero() {
+        public static void PrintSolidMapHeros() {
             Console.WriteLine("SOLID MAPPING HERO: ");
-            for (int y = 0; y < SolidMapHero.GetLength(1); y++) {
-                for (int x = 0; x < SolidMapHero.GetLength(0); x++) {
-                    if (SolidMapHero[x, y]) {
+            for (int y = 0; y < SolidMapHeros.GetLength(1); y++) {
+                for (int x = 0; x < SolidMapHeros.GetLength(0); x++) {
+                    if (SolidMapHeros[x, y]) {
                         Console.Write("1 ");
                     }
                     else {
@@ -271,7 +263,7 @@ namespace TP2_Zoo {
             }
 
             // Peinture les entrees
-            for (int i = 0; i < SolidMapHero.GetLength(0); i++) {
+            for (int i = 0; i < SolidMapHeros.GetLength(0); i++) {
                 if (i == 12 || i == 13 || i == 26 || i == 27) {
                     e.Graphics.DrawImage(MapTileSetImageGenerator.GetTile(1), TuileAPixel(i), TuileAPixel(6));
                     e.Graphics.DrawImage(MapTileSetImageGenerator.GetTile(1), TuileAPixel(i), TuileAPixel(19));
