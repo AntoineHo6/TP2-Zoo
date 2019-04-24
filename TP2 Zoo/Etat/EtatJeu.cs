@@ -95,9 +95,7 @@ namespace TP2_Zoo.Etat {
             int pY = p.Y / 32;
 
             if (e.Button == MouseButtons.Left) {
-                bool heroAdjacent = HerosAdjacent(pX, pY);
-
-                if (heroAdjacent) {
+                if (HerosAdjacent(pX, pY)) {
                     int enclos = GerantCarte.SurfaceEnclosMap[pX, pY];  // 0: pas dans un enclos.
                     String enclosTypeAnimal = GerantCarte.animalEnclos[enclos];
 
@@ -119,6 +117,9 @@ namespace TP2_Zoo.Etat {
                         }
                     }
                 }
+            }
+            else if (e.Button == MouseButtons.Right) {
+
             }
         }
 
@@ -259,45 +260,65 @@ namespace TP2_Zoo.Etat {
 
 
         private void Timer_Tick(object sender, EventArgs e) {
+            // Tick les visiteurs
             foreach (var pepe in listePepe) {
-                pepe.NbrJours++;
-                pepe.Deplacer(heros.Position);
+                PepeTick(pepe);
             }
 
+            // Tick les animaux
             foreach (var mouton in listeMouton) {
-                mouton.NbrJours++;
-                mouton.JoursPasNourri++;
-
-                if (mouton.JoursPasNourri > 30) {
-                    mouton.Faim = true;
-                }
-
-                mouton.Deplacer(heros.Position);
+                MoutonTick(mouton);
             }
-
             foreach (var lion in listeLion) {
-                lion.NbrJours++;
-                lion.JoursPasNourri++;
-
-                if (lion.JoursPasNourri > 30){
-                    lion.Faim = true;
-                }
-
-                lion.Deplacer(heros.Position);
+                LionTick(lion);
             }
-
             foreach (var licorne in listeLicorne) {
-                licorne.NbrJours++;
-                licorne.JoursPasNourri++;
-
-                if (licorne.JoursPasNourri > 30){
-                    licorne.Faim = true;
-                }
-
-                licorne.Deplacer(heros.Position);
+                LicorneTick(licorne);
             }
 
             this.Refresh();
+        }
+
+
+        private void PepeTick(Pepe pepe) {
+            pepe.NbrJours++;
+            pepe.Deplacer(heros.Position);
+        }
+
+
+        private void MoutonTick(Mouton mouton) {
+            mouton.NbrJours++;
+            mouton.JoursPasNourri++;
+
+            if (mouton.JoursPasNourri > 30) {
+                mouton.Faim = true;
+            }
+
+            mouton.Deplacer(heros.Position);
+        }
+
+
+        private void LionTick(Lion lion) {
+            lion.NbrJours++;
+            lion.JoursPasNourri++;
+
+            if (lion.JoursPasNourri > 30) {
+                lion.Faim = true;
+            }
+
+            lion.Deplacer(heros.Position);
+        }
+
+
+        private void LicorneTick(Licorne licorne) {
+            licorne.NbrJours++;
+            licorne.JoursPasNourri++;
+
+            if (licorne.JoursPasNourri > 60) {
+                licorne.Faim = true;
+            }
+
+            licorne.Deplacer(heros.Position);
         }
     }
 }

@@ -85,7 +85,7 @@
     </Compile>
     <Compile Include="Gerant\GerantCarte.cs" />
     <Compile Include="Personne\Concierge.cs" />
-    <Compile Include="Personne\Hero.cs" />
+    <Compile Include="Personne\Heros.cs" />
     <Compile Include="Personne\Personne.cs" />
     <Compile Include="Personne\Visiteur.cs" />
     <Compile Include="Program.cs" />
