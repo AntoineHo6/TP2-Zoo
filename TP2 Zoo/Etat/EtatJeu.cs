@@ -89,11 +89,14 @@ namespace TP2_Zoo.Etat {
 
             if (e.Button == MouseButtons.Left) {
                 bool heroAdjacent = HeroAdjacent(pX, pY);
-                int enclos = GerantCarte.SurfaceEnclosMap[pX, pY];  // 0: pas dans un enclos.
-                String enclosTypeAnimal = GerantCarte.animalEnclos[enclos];
 
                 if (heroAdjacent) {
-                    if (enclos != 0 && !GerantCarte.OccupeAiMap[pX, pY] && (pX != hero.Position[0] || pY != hero.Position[1])) { // Si clique dans un enclos sur une tuile vide
+                    int enclos = GerantCarte.SurfaceEnclosMap[pX, pY];  // 0: pas dans un enclos.
+                    String enclosTypeAnimal = GerantCarte.animalEnclos[enclos];
+
+                    // Si clique dans un enclos sur une tuile vide
+                    if (enclos != 0 && !GerantCarte.OccupeAiMap[pX, pY] && (pX != hero.Position[0] || pY != hero.Position[1])) {
+                        // Si aucun animal dans l'enclos
                         if (enclosTypeAnimal == null) {
                             choixAnimal.Setup(hero.Argent, enclos, pX, pY);
                             choixAnimal.Visible = true;
@@ -101,6 +104,10 @@ namespace TP2_Zoo.Etat {
                         else {
                             CreerAnimal(enclosTypeAnimal, pX, pY);
                         }
+                    }
+                    // Si clique sur un animal
+                    else if (enclos != 0 && GerantCarte.OccupeAiMap[pX, pY]) {
+                        NourrirAnimal(enclosTypeAnimal, pX, pY);
                     }
                 }
             }
@@ -169,26 +176,62 @@ namespace TP2_Zoo.Etat {
         }
 
 
+        private void NourrirAnimal(String typeAnimal, int x, int y) {
+            switch (typeAnimal) {
+                case "Mouton":
+                    foreach (var mouton in listeMouton) {
+                        if (mouton.Position[0] == x && mouton.Position[1] == y) {
+                            mouton.Manger();
+                            DeduireArgentHero(1);
+                        }
+                    }
+                    break;
+                case "Lion":
+                    Console.WriteLine("Lion clique");
+                    foreach (var lion in listeLion) {
+                        if (lion.Position[0] == x && lion.Position[1] == y) {
+                            lion.Manger();
+                            DeduireArgentHero(1);
+                        }
+                    }
+                    break;
+                case "Licorne":
+                    Console.WriteLine("Licorne clique");
+                    foreach (var licorne in listeLicorne) {
+                        if (licorne.Position[0] == x && licorne.Position[1] == y) {
+                            licorne.Manger();
+                            DeduireArgentHero(1);
+                        }
+                    }
+                    break;
+            }
+        }
+
+
         private void Timer_Tick(object sender, EventArgs e) {
             foreach (var pepe in listePepe) {
                 pepe.Deplacer(hero.Position);
             }
 
             foreach (var mouton in listeMouton) {
+                mouton.Jours++;
+                mouton.JoursPasNourri++;
                 mouton.Deplacer(hero.Position);
             }
 
             foreach (var lion in listeLion) {
+                lion.Jours++;
+                lion.JoursPasNourri++;
                 lion.Deplacer(hero.Position);
             }
 
             foreach (var licorne in listeLicorne) {
+                licorne.Jours++;
+                licorne.JoursPasNourri++;
                 licorne.Deplacer(hero.Position);
             }
 
-
             this.Refresh();
-            GerantCarte.PrintOccupeAiMap();
         }
     }
 }

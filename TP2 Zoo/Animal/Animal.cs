@@ -19,13 +19,15 @@ namespace TP2_Zoo.Animal {
         public int Prix { get; set; }
         public List<Bitmap> Sprites { get; set; }
         public int Jours { get; set; }
+        public int JoursPasNourri { get; set; }
         public bool EstAdulte { get; set; }
 
         public Animal(bool EstAdulte, params int[] Position) {
             this.EstAdulte = EstAdulte;
-            this.Jours = 0;
+            Jours = 0;
+            JoursPasNourri = 0;
             this.Position = Position;
-            this.Genre = r.Next(0, 2);
+            Genre = r.Next(0, 2);
             Faim = false;
             Enceinte = false;
             Sprites = new List<Bitmap>();
@@ -37,7 +39,8 @@ namespace TP2_Zoo.Animal {
         }
 
         public void Manger() {
-
+            JoursPasNourri = 0;
+            Crier();
         }
 
         public void Peinturer(PaintEventArgs e, int index) {
