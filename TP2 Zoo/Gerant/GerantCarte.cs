@@ -10,7 +10,6 @@ using tileSetZoo;
 namespace TP2_Zoo {
     public static class GerantCarte {
 
-        public static Bitmap[,] TileFloorMapping = new Bitmap[40, 26];  // Probablement inutile.
         public static bool[,] SolidMapHero = new bool[42, 28];  // Plus large pour créer une bordure solide autour de la carte.
         public static bool[,] SolidMapAi = new bool[42, 28];    // Pour les visiteurs et les animaux
         public static bool[,] OccupeAiMap = new bool[40, 26];
@@ -18,14 +17,15 @@ namespace TP2_Zoo {
         public static String[] animalEnclos = new String[5];        // Stock le type d'animal que chaque enclos contient. commence a index 1.
 
         static GerantCarte() {
-            InitSolidMap();
-            InitTileFloorMap();
+            InitSolidMaps();
             InitSurfaceEnclosMap();
             InitOccupeAiMap();
+
+            PrintSurfaceEnclosMap();
         }
         
 
-        static void InitSolidMap() {
+        static void InitSolidMaps() {
             // Par defaut, tout n'est pas solide à part la bordure.
             for (int y = 0; y < SolidMapHero.GetLength(1); y++) {
                 for (int x = 0; x < SolidMapHero.GetLength(0); x++) {
@@ -66,22 +66,6 @@ namespace TP2_Zoo {
                 for (int x = 1; x < 5; x++) {
                     SolidMapHero[x, y] = true;
                     SolidMapAi[x, y] = true;
-                }
-            }
-        }
-
-        static void InitTileFloorMap() {
-            // Ajout du GAZON et SABLE
-            for (int y = 0; y < TileFloorMapping.GetLength(1); y++) {
-                for (int x = 0; x < TileFloorMapping.GetLength(0); x++) {
-                    TileFloorMapping[x, y] = MapTileSetImageGenerator.GetTile(1);
-
-                    if ((x == 19 || x == 20) || (y == 12 || y == 13)) {
-                        TileFloorMapping[x, y] = MapTileSetImageGenerator.GetTile(4);
-                    }
-                    else if (x == 1 && (y >= 5 && y <= 11)) {
-                        TileFloorMapping[x, y] = MapTileSetImageGenerator.GetTile(4);
-                    }
                 }
             }
         }
