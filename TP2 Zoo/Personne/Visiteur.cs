@@ -20,12 +20,13 @@ namespace TP2_Zoo.Personne {
             Position = new int[] {19, 0 };
             Ai.Ai.OccuperTuile(19, 0);
             PrixEntree = 2;
+            NbrJours = 0;
         }
 
 
 
         public void Deplacer(int[] positionHero) {
-            Ai.Ai.ChoisirDirection(Position, positionHero);
+            Ai.Ai.ChoixDirectionAleatoire(Position, positionHero);
         }
     }
 }

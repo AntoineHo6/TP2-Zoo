@@ -180,7 +180,16 @@ namespace TP2_Zoo {
         }
 
 
-        public static void PeintureCadriage(PaintEventArgs e) {
+        public static void PeintureMap(PaintEventArgs e) {
+            PeintureGazon(e);
+            PeintureCheminSable(e);
+            PeintureEnclos(e);
+            PeintureMaison(e);
+            PeintureCadriage(e);
+        }
+
+
+        private static void PeintureCadriage(PaintEventArgs e) {
             Pen blackPen = new Pen(Color.Black, 1);
 
             // peinture lignes verticales
@@ -195,7 +204,7 @@ namespace TP2_Zoo {
         }
 
 
-        public static void PeintureGazon(PaintEventArgs e) {
+        private static void PeintureGazon(PaintEventArgs e) {
             for (int y = 0; y < 26; y++) {
                 for (int x = 0; x < 40; x++) {
                     e.Graphics.DrawImage(MapTileSetImageGenerator.GetTile(1), TuileAPixel(x), TuileAPixel(y));
@@ -204,7 +213,7 @@ namespace TP2_Zoo {
         }
 
 
-        public static void PeintureCheminSable(PaintEventArgs e) {
+        private static void PeintureCheminSable(PaintEventArgs e) {
             // Peinture le chemin sable vertical au milieu.
             for (int x = 0; x < 40; x++) {
                 e.Graphics.DrawImage(MapTileSetImageGenerator.GetTile(4), TuileAPixel(x), TuileAPixel(12));
@@ -222,7 +231,7 @@ namespace TP2_Zoo {
         }
 
 
-        public static void PeintureEnclos(PaintEventArgs e) {
+        private static void PeintureEnclos(PaintEventArgs e) {
             // Peinture enclos horizontales.
             for (int x = 0; x < 11; x++) {
                 // pour l'enclos en haut à gauche.
@@ -271,7 +280,7 @@ namespace TP2_Zoo {
         }
 
 
-        public static void PeintureMaison(PaintEventArgs e) {
+        private static void PeintureMaison(PaintEventArgs e) {
             e.Graphics.DrawImage(MapTileSetImageGenerator.GetTile(5), TuileAPixel(0), 0);
         }
     }

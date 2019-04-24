@@ -14,13 +14,19 @@ namespace TP2_Zoo.Ai {
 
         }
 
+        
+        public static void ChoixDirectionVisiteur(int[] Position, int[] positionHero) {
+
+        }
+
+
         /*
          * 1: en haut
          * 2. en bas
          * 3. a gauche
          * 4. a droite
          */
-        public static void ChoisirDirection(int[] Position, int[] positionHero) {
+        public static void ChoixDirectionAleatoire(int[] Position, int[] positionHero) {
             int x = Position[0];
             int y = Position[1];
 

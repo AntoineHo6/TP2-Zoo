@@ -16,14 +16,16 @@ namespace TP2_Zoo.Etat {
     public partial class EtatJeu : UserControl {
 
         Zoo formPrincipale;
-        List<Pepe> listePepe;
         int nbrAnimaux;
 
         public Hero hero;
+
         public List<Mouton> listeMouton;
         public List<Lion> listeLion;
         public List<Licorne> listeLicorne;
         public ChoixAnimal choixAnimal;
+
+        List<Pepe> listePepe;
 
         public EtatJeu(Zoo formPrincipale) {
             InitializeComponent();
@@ -54,17 +56,11 @@ namespace TP2_Zoo.Etat {
 
 
         private void EtatJeu_Paint(object sender, PaintEventArgs e) {
-            GerantCarte.PeintureGazon(e);
-            GerantCarte.PeintureCheminSable(e);
-            GerantCarte.PeintureEnclos(e);
-            GerantCarte.PeintureMaison(e);
-            //GerantCarte.PeintureCadriage(e);
+            GerantCarte.PeintureMap(e);
 
             hero.Peinturer(e, 0);
 
-            foreach (var pepe in listePepe) {
-                pepe.Peinturer(e, 0);
-            }
+            // Paint les animaux
             foreach (var mouton in listeMouton) {
                 mouton.Peinturer(e, 0);
             }
@@ -73,6 +69,11 @@ namespace TP2_Zoo.Etat {
             }
             foreach (var licorne in listeLicorne) {
                 licorne.Peinturer(e, 0);
+            }
+
+            // Paint les visiteurs
+            foreach (var pepe in listePepe) {
+                pepe.Peinturer(e, 0);
             }
         }
 
@@ -117,7 +118,7 @@ namespace TP2_Zoo.Etat {
             }
         }
 
-        private void CreerAnimal(String animal, int x, int y) {
+        public void CreerAnimal(String animal, int x, int y) {
             switch (animal) {
                 case "Mouton":
                     CreerMouton(x, y);
@@ -129,6 +130,9 @@ namespace TP2_Zoo.Etat {
                     CreerLicorne(x, y);
                     break;
             }
+
+            nbrAnimaux++;
+            UpdateLblNbrAnimaux();
         }
 
         // bouger les conditions de la verification de largent du hero ailleurs
@@ -137,9 +141,6 @@ namespace TP2_Zoo.Etat {
                 DeduireArgentHero(20);
                 listeMouton.Add(new Mouton(true, x, y));
                 Refresh();
-
-                nbrAnimaux++;
-                UpdateLblNbrAnimaux();
             }
         }
 
@@ -148,9 +149,6 @@ namespace TP2_Zoo.Etat {
                 DeduireArgentHero(35);
                 listeLion.Add(new Lion(true, x, y));
                 Refresh();
-
-                nbrAnimaux++;
-                UpdateLblNbrAnimaux();
             }
         }
 
@@ -159,9 +157,6 @@ namespace TP2_Zoo.Etat {
                 DeduireArgentHero(50);
                 listeLicorne.Add(new Licorne(true, x, y));
                 Refresh();
-
-                nbrAnimaux++;
-                UpdateLblNbrAnimaux();
             }
         }
 
@@ -206,7 +201,6 @@ namespace TP2_Zoo.Etat {
                     }
                     break;
                 case "Lion":
-                    Console.WriteLine("Lion clique");
                     foreach (var lion in listeLion) {
                         if (lion.Position[0] == x && lion.Position[1] == y) {
                             lion.Manger();
@@ -215,7 +209,6 @@ namespace TP2_Zoo.Etat {
                     }
                     break;
                 case "Licorne":
-                    Console.WriteLine("Licorne clique");
                     foreach (var licorne in listeLicorne) {
                         if (licorne.Position[0] == x && licorne.Position[1] == y) {
                             licorne.Manger();
@@ -229,23 +222,24 @@ namespace TP2_Zoo.Etat {
 
         private void Timer_Tick(object sender, EventArgs e) {
             foreach (var pepe in listePepe) {
+                pepe.NbrJours++;
                 pepe.Deplacer(hero.Position);
             }
 
             foreach (var mouton in listeMouton) {
-                mouton.Jours++;
+                mouton.NbrJours++;
                 mouton.JoursPasNourri++;
                 mouton.Deplacer(hero.Position);
             }
 
             foreach (var lion in listeLion) {
-                lion.Jours++;
+                lion.NbrJours++;
                 lion.JoursPasNourri++;
                 lion.Deplacer(hero.Position);
             }
 
             foreach (var licorne in listeLicorne) {
-                licorne.Jours++;
+                licorne.NbrJours++;
                 licorne.JoursPasNourri++;
                 licorne.Deplacer(hero.Position);
             }

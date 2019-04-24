@@ -18,13 +18,13 @@ namespace TP2_Zoo.Animal {
         public bool Enceinte { get; set; }
         public int Prix { get; set; }
         public List<Bitmap> Sprites { get; set; }
-        public int Jours { get; set; }
+        public int NbrJours { get; set; }
         public int JoursPasNourri { get; set; }
         public bool EstAdulte { get; set; }
 
         public Animal(bool EstAdulte, params int[] Position) {
             this.EstAdulte = EstAdulte;
-            Jours = 0;
+            NbrJours = 0;
             JoursPasNourri = 0;
             this.Position = Position;
             Genre = r.Next(0, 2);
@@ -35,7 +35,7 @@ namespace TP2_Zoo.Animal {
         }
 
         public void Deplacer(int[] positionHero) {
-            Ai.Ai.ChoisirDirection(Position, positionHero);
+            Ai.Ai.ChoixDirectionAleatoire(Position, positionHero);
         }
 
         public void Manger() {

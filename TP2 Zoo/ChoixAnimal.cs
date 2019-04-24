@@ -79,19 +79,19 @@ namespace TP2_Zoo {
 
 
         private void BtnMouton_Click(object sender, EventArgs e) {
-            etatJeu.CreerMouton(spawnX, spawnY);
+            etatJeu.CreerAnimal("Mouton", spawnX, spawnY);
             GerantCarte.animalEnclos[Enclos] = "Mouton";
             Cacher();
         }
 
         private void BtnLion_Click(object sender, EventArgs e) {
-            etatJeu.CreerLion(spawnX, spawnY);
+            etatJeu.CreerAnimal("Lion", spawnX, spawnY);
             GerantCarte.animalEnclos[Enclos] = "Lion";
             Cacher();
         }
 
         private void BtnLicorne_Click(object sender, EventArgs e) {
-            etatJeu.CreerLicorne(spawnX, spawnY);
+            etatJeu.CreerAnimal("Licorne", spawnX, spawnY);
             GerantCarte.animalEnclos[Enclos] = "Licorne";
             Cacher();
         }
