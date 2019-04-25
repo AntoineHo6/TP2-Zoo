@@ -14,13 +14,13 @@ namespace TP2_Zoo.Animal {
         public int[] Position { get; set; }
         public String Type { get; set; }
         public int Genre { get; set; }   // 0: male; 1: femelle
-        public bool Faim { get; set; }
+        public bool Faim { get; set; } // True: Faim ; False: Pas faim
         public bool Enceinte { get; set; }
         public int Prix { get; set; }
         public List<Bitmap> Sprites { get; set; }
         public int NbrJours { get; set; }
         public int JoursPasNourri { get; set; }
-        public bool EstAdulte { get; set; }
+        public bool EstAdulte { get; set; } // True : Adulte
 
         public Animal(bool EstAdulte, params int[] Position) {
             this.EstAdulte = EstAdulte;

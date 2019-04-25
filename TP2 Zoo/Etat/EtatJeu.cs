@@ -54,8 +54,11 @@ namespace TP2_Zoo.Etat {
             listeMouton = new List<Mouton>();
             listeLion = new List<Lion>();
             listeLicorne = new List<Licorne>();
+            listeAnimaux = new List<Animal>();
         }
 
+        private void InitListeAnimaux() {
+        }
 
         private void EtatJeu_Paint(object sender, PaintEventArgs e) {
             GerantCarte.PeintureMap(e);
@@ -130,7 +133,7 @@ namespace TP2_Zoo.Etat {
                 case "Mouton":
                     if (heros.Argent >= 20) {
                         CreerMouton(x, y);
-                    }                    
+                    }
                     break;
                 case "Lion":
                     if (heros.Argent >= 35) {
@@ -275,7 +278,8 @@ namespace TP2_Zoo.Etat {
             mouton.JoursPasNourri++;
 
             if (mouton.JoursPasNourri > 120) {
-                mouton.Faim = true;
+                mouton.Faim = false;
+                Contravention();
             }
 
             mouton.Deplacer(heros.Position);
@@ -287,7 +291,8 @@ namespace TP2_Zoo.Etat {
             lion.JoursPasNourri++;
 
             if (lion.JoursPasNourri > 120) {
-                lion.Faim = true;
+                lion.Faim = false;
+                Contravention();
             }
 
             lion.Deplacer(heros.Position);
@@ -299,10 +304,15 @@ namespace TP2_Zoo.Etat {
             licorne.JoursPasNourri++;
 
             if (licorne.JoursPasNourri > 180) {
-                licorne.Faim = true;
+                licorne.Faim = false;
+                Contravention();
             }
 
             licorne.Deplacer(heros.Position);
+        }
+
+        private void Contravention() {
+            DeduireArgentHero(2);
         }
     }
 }
