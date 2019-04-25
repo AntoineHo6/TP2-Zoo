@@ -226,37 +226,19 @@ namespace TP2_Zoo.Etat {
 
 
         private void NourrirMouton(Mouton mouton) {
-            if (mouton.Faim) {
-                DeduireArgentHero(2);
-            }
-            else {
-                DeduireArgentHero(1);
-            }
-
+            DeduireArgentHero(1);
             mouton.Manger();
         }
 
 
         private void NourrirLion(Lion lion) {
-            if (lion.Faim) {
-                DeduireArgentHero(2);
-            }
-            else {
-                DeduireArgentHero(1);
-            }
-
+            DeduireArgentHero(1);
             lion.Manger();
         }
 
 
         private void NourrirLicorne(Licorne licorne) {
-            if (licorne.Faim) {
-                DeduireArgentHero(2);
-            }
-            else {
-                DeduireArgentHero(1);
-            }
-
+            DeduireArgentHero(1);
             licorne.Manger();
         }
 
@@ -292,7 +274,7 @@ namespace TP2_Zoo.Etat {
             mouton.NbrJours++;
             mouton.JoursPasNourri++;
 
-            if (mouton.JoursPasNourri > 30) {
+            if (mouton.JoursPasNourri > 120) {
                 mouton.Faim = true;
             }
 
@@ -304,7 +286,7 @@ namespace TP2_Zoo.Etat {
             lion.NbrJours++;
             lion.JoursPasNourri++;
 
-            if (lion.JoursPasNourri > 30) {
+            if (lion.JoursPasNourri > 120) {
                 lion.Faim = true;
             }
 
@@ -316,7 +298,7 @@ namespace TP2_Zoo.Etat {
             licorne.NbrJours++;
             licorne.JoursPasNourri++;
 
-            if (licorne.JoursPasNourri > 60) {
+            if (licorne.JoursPasNourri > 180) {
                 licorne.Faim = true;
             }
 
