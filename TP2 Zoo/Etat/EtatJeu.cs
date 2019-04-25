@@ -28,6 +28,7 @@ namespace TP2_Zoo.Etat {
         List<Pepe> listePepe;
         List<Dame> listeDame;
         List<Fillette> listeFillette;
+        List<Monsieur> listeMonsieur;
 
         public EtatJeu(Zoo formPrincipale) {
             InitializeComponent();
@@ -59,6 +60,7 @@ namespace TP2_Zoo.Etat {
             listePepe = new List<Pepe>();
             listeDame = new List<Dame>();
             listeFillette = new List<Fillette>();
+            listeMonsieur = new List<Monsieur>();
         }
 
         private void InitListeAnimaux() {
@@ -84,13 +86,14 @@ namespace TP2_Zoo.Etat {
             foreach (var pepe in listePepe) {
                 pepe.Peinturer(e, 0);
             }
-
             foreach (var dame in listeDame) {
                 dame.Peinturer(e, 0);
             }
-
             foreach (var fillette in listeFillette) {
                 fillette.Peinturer(e, 0);
+            }
+            foreach (var monsieur in listeMonsieur) {
+                monsieur.Peinturer(e, 0);
             }
         }
 
@@ -144,28 +147,34 @@ namespace TP2_Zoo.Etat {
         }
 
         public void CreerAnimal(String animal, int x, int y) {
+            bool animalCree = false;
+
             switch (animal) {
                 case "Mouton":
                     if (heros.Argent >= 20) {
                         CreerMouton(x, y);
+                        animalCree = true;
                     }
                     break;
                 case "Lion":
                     if (heros.Argent >= 35) {
                         CreerLion(x, y);
+                        animalCree = true;
                     }
                     break;
                 case "Licorne":
                     if (heros.Argent >= 50) {
                         CreerLicorne(x, y);
+                        animalCree = true;
                     }
                     break;
             }
 
             UpdateLblNbrAnimaux();
 
-            // temp?
-            CreerVisiteur(r.Next(0, 3));
+            if (animalCree) {
+                CreerVisiteur(r.Next(0, 4));
+            }
         }
 
         public void CreerMouton(int x, int y) {
@@ -200,6 +209,9 @@ namespace TP2_Zoo.Etat {
                     break;
                 case 2:
                     listeFillette.Add(new Fillette());
+                    break;
+                case 3:
+                    listeMonsieur.Add(new Monsieur());
                     break;
             }
         }
@@ -291,6 +303,9 @@ namespace TP2_Zoo.Etat {
             foreach (var fillette in listeFillette) {
                 FilletteTick(fillette);
             }
+            foreach (var monsieur in listeMonsieur) {
+                MonsieurTick(monsieur);
+            }
 
             // Tick les animaux
             foreach (var mouton in listeMouton) {
@@ -331,6 +346,16 @@ namespace TP2_Zoo.Etat {
 
             if (fillette.NbrJours > 60) {
                 fillette.PeutQuitter = true;
+            }
+        }
+
+
+        private void MonsieurTick(Monsieur monsieur) {
+            monsieur.NbrJours++;
+            monsieur.Deplacer(heros.Position);
+
+            if (monsieur.NbrJours > 60) {
+                monsieur.PeutQuitter = true;
             }
         }
 
