@@ -14,7 +14,7 @@ using TP2_Zoo.Animal;
 
 namespace TP2_Zoo.Etat {
     public partial class EtatJeu : UserControl {
-
+        static Random r = new Random();
         Zoo formPrincipale;
         int nbrAnimaux;
 
@@ -158,6 +158,9 @@ namespace TP2_Zoo.Etat {
             }
 
             UpdateLblNbrAnimaux();
+
+            // temp?
+            CreerVisiteur(r.Next(0, 3));
         }
 
         public void CreerMouton(int x, int y) {
@@ -180,6 +183,22 @@ namespace TP2_Zoo.Etat {
             nbrAnimaux++;
             Refresh();
         }
+
+
+        void CreerVisiteur(int typeVisiteur) {
+            switch(typeVisiteur) {
+                case 0:
+                    listePepe.Add(new Pepe());
+                    break;
+                case 1:
+                    listeDame.Add(new Dame());
+                    break;
+                case 2:
+                    listeFillette.Add(new Fillette());
+                    break;
+            }
+        }
+
 
         public void DeduireArgentHero(int montant) {
             heros.Argent -= montant;
