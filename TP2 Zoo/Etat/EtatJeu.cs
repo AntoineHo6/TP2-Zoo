@@ -267,6 +267,10 @@ namespace TP2_Zoo.Etat {
         private void PepeTick(Pepe pepe) {
             pepe.NbrJours++;
             pepe.Deplacer(heros.Position);
+
+            if (pepe.NbrJours > 60) {
+                pepe.PeutQuitter = true;
+            }
         }
 
 

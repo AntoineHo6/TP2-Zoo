@@ -14,6 +14,7 @@ namespace TP2_Zoo.Personne {
         public int NbrJours { get; set; }
         public int NbrDechets { get; set; }
         public int PrixEntree { get; set; }
+        public bool PeutQuitter { get; set; }
 
         static Random r = new Random();
 
@@ -22,6 +23,7 @@ namespace TP2_Zoo.Personne {
             Ai.Ai.OccuperTuile(19, 0);
             PrixEntree = 2;
             NbrJours = 0;
+            PeutQuitter = false;
         }
         
 
