@@ -14,7 +14,11 @@ namespace TP2_Zoo.Noms {
             noms = new List<string>();
 
             // load names in txt file to list<>
-            string[] lines = System.IO.File.ReadAllLines(@"C:\Users\Public\TestFolder\WriteLines2.txt");
+            //string[] lines = System.IO.File.ReadAllLines(@"NomsMasculins.txt");
+            Console.WriteLine("ALLLLLLOOO");
+            //foreach (String line in lines) {
+            //    Console.WriteLine(line);
+            //}
         }
     }
 }

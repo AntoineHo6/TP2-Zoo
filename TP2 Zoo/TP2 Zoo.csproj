@@ -74,6 +74,7 @@
     <Compile Include="InfosAnimaux.Designer.cs">
       <DependentUpon>InfosAnimaux.cs</DependentUpon>
     </Compile>
+    <Compile Include="Noms\Noms.cs" />
     <Compile Include="Personne\Pepe.cs" />
     <Compile Include="TileSetImageGenerator\AnimalTileSetImageGenerator.cs" />
     <Compile Include="TileSetImageGenerator\VisiteurTileSetImageGenerator.cs" />
@@ -191,6 +192,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\Mouton.JPG" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Noms\NomsMasculins.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

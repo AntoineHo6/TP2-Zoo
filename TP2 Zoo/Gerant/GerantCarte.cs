@@ -22,7 +22,7 @@ namespace TP2_Zoo {
             InitOccupeAiMap();
 
             // les prints pour tester
-            PrintSurfaceEnclosMap();
+            //PrintSurfaceEnclosMap();
         }
         
 
