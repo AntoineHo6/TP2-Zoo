@@ -28,6 +28,12 @@ namespace tileSetZoo {
         public static int FILLETTE_GAUCHE = 10;
         public static int FILLETTE_DROITE = 11;
 
+        // MONSIEUR
+        public static int MONSIEUR_FACE = 12;
+        public static int MONSIEUR_DOS = 13;
+        public static int MONSIEUR_GAUCHE = 14;
+        public static int MONSIEUR_DROITE = 15;
+
 
         private static List<TileCoord> listeCoord = new List<TileCoord>();
         private static List<Bitmap> listeBitmap = new List<Bitmap>();
@@ -52,6 +58,12 @@ namespace tileSetZoo {
             listeCoord.Add(new TileCoord() { Ligne = 3, Colonne = 2 }); // FILLETTE_GAUCHE
             listeCoord.Add(new TileCoord() { Ligne = 3, Colonne = 2 }); // FILLETTE_DROITE
 
+            listeCoord.Add(new TileCoord() { Ligne = 0, Colonne = 0 }); // MONSIEUR_FACE
+            listeCoord.Add(new TileCoord() { Ligne = 0, Colonne = 1 }); // MONSIEUR_DOS
+            listeCoord.Add(new TileCoord() { Ligne = 0, Colonne = 2 }); // MONSIEUR_GAUCHE
+            listeCoord.Add(new TileCoord() { Ligne = 0, Colonne = 2 }); // MONSIEUR_DROITE
+
+
 
 
             listeBitmap.Add(LoadTile(PEPE_FACE));  // PEPE_FACE
@@ -70,6 +82,12 @@ namespace tileSetZoo {
             listeBitmap.Add(LoadTile(FILLETTE_DOS));  // FILLETTE_DOS
             listeBitmap.Add(LoadTile(FILLETTE_GAUCHE));  // FILLETTE_GAUCHE
             listeBitmap.Add(LoadTile(FILLETTE_DROITE));  // FILLETTE_DROITE
+            listeBitmap.Last().RotateFlip(RotateFlipType.RotateNoneFlipX);
+
+            listeBitmap.Add(LoadTile(MONSIEUR_FACE));  // MONSIEUR_FACE
+            listeBitmap.Add(LoadTile(MONSIEUR_DOS));  // MONSIEUR_DOS
+            listeBitmap.Add(LoadTile(MONSIEUR_GAUCHE));  // MONSIEUR_GAUCHE
+            listeBitmap.Add(LoadTile(MONSIEUR_DROITE));  // MONSIEUR_DROITE
             listeBitmap.Last().RotateFlip(RotateFlipType.RotateNoneFlipX);
         }
 
