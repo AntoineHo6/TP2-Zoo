@@ -19,7 +19,7 @@ namespace TP2_Zoo.Etat {
         int nbrAnimaux;
 
         public Heros heros;
-
+        public int touche;
         public List<Mouton> listeMouton;
         public List<Lion> listeLion;
         public List<Licorne> listeLicorne;
@@ -58,7 +58,7 @@ namespace TP2_Zoo.Etat {
         private void EtatJeu_Paint(object sender, PaintEventArgs e) {
             GerantCarte.PeintureMap(e);
 
-            heros.Peinturer(e, 0);
+            heros.Peinturer(e, touche);
 
             // Paint les animaux
             foreach (var mouton in listeMouton) {
@@ -84,7 +84,7 @@ namespace TP2_Zoo.Etat {
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private void EtatJeu_KeyDown(object sender, KeyEventArgs e) {
-            heros.Deplacer(e);
+            touche = heros.Deplacer(e);
             this.Refresh();
         }
 
