@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using System.Drawing;
 using System.Windows.Forms;
 using tileSetZoo;
+using TP2_Zoo.Noms;
 
 namespace TP2_Zoo {
     public static class GerantCarte {

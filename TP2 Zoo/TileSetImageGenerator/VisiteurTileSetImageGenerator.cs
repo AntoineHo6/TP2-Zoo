@@ -12,15 +12,10 @@ namespace tileSetZoo {
 
 
         public static int PEPE_FACE1 = 0;
-        public static int PEPE_FACE2 = 1;
-        public static int PEPE_DOS1 = 2;
-        public static int PEPE_DOS2 = 3;
-        public static int PEPE_GAUCHE1 = 4;
-        public static int PEPE_GAUCHE2 = 5;
-        public static int PEPE_GAUCHE3 = 6;
-        public static int PEPE_DROITE1 = 7;
-        public static int PEPE_DROITE2 = 8;
-        public static int PEPE_DROITE3 = 9;
+        public static int PEPE_DOS1 = 1;
+        public static int PEPE_GAUCHE1 = 2;
+        public static int PEPE_DROITE1 = 3;
+
 
 
         private static List<TileCoord> listeCoord = new List<TileCoord>();
@@ -32,29 +27,15 @@ namespace tileSetZoo {
         static VisiteurTileSetImageGenerator() {
 
             listeCoord.Add(new TileCoord() { Ligne = 2, Colonne = 0 }); // PEPE_FACE1
-            listeCoord.Add(new TileCoord() { Ligne = 2, Colonne = 3 }); // PEPE_FACE2
             listeCoord.Add(new TileCoord() { Ligne = 2, Colonne = 1 }); // PEPE_DOS1
-            listeCoord.Add(new TileCoord() { Ligne = 2, Colonne = 4 }); // PEPE_DOS2
             listeCoord.Add(new TileCoord() { Ligne = 2, Colonne = 2 }); // PEPE_GAUCHE1
-            listeCoord.Add(new TileCoord() { Ligne = 2, Colonne = 5 }); // PEPE_GAUCHE2
-            listeCoord.Add(new TileCoord() { Ligne = 2, Colonne = 6 }); // PEPE_GAUCHE3
             listeCoord.Add(new TileCoord() { Ligne = 2, Colonne = 2 }); // PEPE_DROITE1
-            listeCoord.Add(new TileCoord() { Ligne = 2, Colonne = 5 }); // PEPE_DROITE2
-            listeCoord.Add(new TileCoord() { Ligne = 2, Colonne = 6 }); // PEPE_DROITE3
 
 
             listeBitmap.Add(LoadTile(PEPE_FACE1));  // PEPE_FACE1
-            listeBitmap.Add(LoadTile(PEPE_FACE2));  // PEPE_FACE2
             listeBitmap.Add(LoadTile(PEPE_DOS1));  // PEPE_DOS1
-            listeBitmap.Add(LoadTile(PEPE_DOS2));  // PEPE_DOS2
             listeBitmap.Add(LoadTile(PEPE_GAUCHE1));  // PEPE_GAUCHE1
-            listeBitmap.Add(LoadTile(PEPE_GAUCHE2));  // PEPE_GAUCHE2
-            listeBitmap.Add(LoadTile(PEPE_GAUCHE3));  // PEPE_GAUCHE3
             listeBitmap.Add(LoadTile(PEPE_DROITE1));  // PEPE_DROITE1
-            listeBitmap.Last().RotateFlip(RotateFlipType.RotateNoneFlipX);
-            listeBitmap.Add(LoadTile(PEPE_DROITE2));  // PEPE_DROITE2
-            listeBitmap.Last().RotateFlip(RotateFlipType.RotateNoneFlipX);
-            listeBitmap.Add(LoadTile(PEPE_DROITE3));  // PEPE_DROITE3
             listeBitmap.Last().RotateFlip(RotateFlipType.RotateNoneFlipX);
         }
 

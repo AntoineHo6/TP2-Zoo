@@ -36,6 +36,8 @@ namespace TP2_Zoo.Etat {
             heros = new Heros();
             InitListeAI();
             InitChoixAnimal();
+
+            Noms.Noms.LoadNames();
         }
 
 

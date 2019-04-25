@@ -10,11 +10,12 @@ namespace TP2_Zoo.Personne {
     public abstract class Visiteur : Personne {
 
         public String Nom { get; set; }
-        public String Sexe { get; set; }
+        public int Sexe { get; set; }   // 0: masculin; 1: feminin
         public int NbrJours { get; set; }
         public int NbrDechets { get; set; }
         public int PrixEntree { get; set; }
-        // static Random r = new Random();
+
+        static Random r = new Random();
 
         public Visiteur() {
             Position = new int[] {19, 0 };
@@ -22,7 +23,18 @@ namespace TP2_Zoo.Personne {
             PrixEntree = 2;
             NbrJours = 0;
         }
+        
 
+        public String AssignerNom(int sexe) {
+            if (sexe == 0) {
+                int indexM = r.Next(0, Noms.Noms.NomsMasculins.Count);
+                return Noms.Noms.NomsMasculins[indexM];
+            }
+            else {
+                int indexF = r.Next(0, Noms.Noms.NomsFeminins.Count);
+                return Noms.Noms.NomsFeminins[indexF];
+            }
+        }
 
 
         public void Deplacer(int[] positionHero) {

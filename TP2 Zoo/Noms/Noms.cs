@@ -8,17 +8,25 @@ using System.Threading.Tasks;
 namespace TP2_Zoo.Noms {
     public static class Noms {
 
-        public static List<String> noms;
+        public static List<String> NomsMasculins { get; set; }
+        public static List<String> NomsFeminins { get; set; }
 
         static Noms() {
-            noms = new List<string>();
+            NomsMasculins = new List<string>();
+            NomsFeminins = new List<string>();
+        }
 
-            // load names in txt file to list<>
-            //string[] lines = System.IO.File.ReadAllLines(@"NomsMasculins.txt");
-            Console.WriteLine("ALLLLLLOOO");
-            //foreach (String line in lines) {
-            //    Console.WriteLine(line);
-            //}
+        public static void LoadNames() {
+                                                                                                        // encoding français
+            string[] nomsFichierMasc = System.IO.File.ReadAllLines(@"..\..\Noms\NomsMasculins.txt", Encoding.GetEncoding("iso-8859-1"));
+            foreach (String nom in nomsFichierMasc) {
+                NomsMasculins.Add(nom);
+            }
+
+            string[] nomsFichierFem = System.IO.File.ReadAllLines(@"..\..\Noms\NomsFeminins.txt", Encoding.GetEncoding("iso-8859-1"));
+            foreach(String nom in nomsFichierFem) {
+                NomsFeminins.Add(nom);
+            }
         }
     }
 }

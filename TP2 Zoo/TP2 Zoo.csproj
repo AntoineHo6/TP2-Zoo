@@ -194,6 +194,7 @@
     <None Include="Resources\Mouton.JPG" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Noms\NomsFeminins.txt" />
     <Content Include="Noms\NomsMasculins.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -8,12 +8,14 @@ using tileSetZoo;
 namespace TP2_Zoo.Personne {
     public class Pepe : Visiteur {
 
-        public Pepe(String nom){
-            for (int i = 0; i < 10; i++) {
+        public Pepe(){
+            for (int i = 0; i < 4; i++) {
                 Sprites.Add(VisiteurTileSetImageGenerator.GetTile(i));
             }
 
-            Sexe = "Homme";
+            Sexe = 0;
+
+            Nom = AssignerNom(Sexe);
         }
     }
 }
