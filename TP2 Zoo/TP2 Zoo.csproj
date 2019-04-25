@@ -75,6 +75,8 @@
       <DependentUpon>InfosAnimaux.cs</DependentUpon>
     </Compile>
     <Compile Include="Noms\Noms.cs" />
+    <Compile Include="Personne\Dame.cs" />
+    <Compile Include="Personne\Fillette.cs" />
     <Compile Include="Personne\Pepe.cs" />
     <Compile Include="TileSetImageGenerator\AnimalTileSetImageGenerator.cs" />
     <Compile Include="TileSetImageGenerator\VisiteurTileSetImageGenerator.cs" />

@@ -26,6 +26,8 @@ namespace TP2_Zoo.Etat {
         public ChoixAnimal choixAnimal;
 
         List<Pepe> listePepe;
+        List<Dame> listeDame;
+        List<Fillette> listeFillette;
 
         public EtatJeu(Zoo formPrincipale) {
             InitializeComponent();
@@ -50,10 +52,13 @@ namespace TP2_Zoo.Etat {
 
 
         private void InitListeAI() {
-            listePepe = new List<Pepe>();
             listeMouton = new List<Mouton>();
             listeLion = new List<Lion>();
             listeLicorne = new List<Licorne>();
+
+            listePepe = new List<Pepe>();
+            listeDame = new List<Dame>();
+            listeFillette = new List<Fillette>();
         }
 
 
@@ -76,6 +81,14 @@ namespace TP2_Zoo.Etat {
             // Paint les visiteurs
             foreach (var pepe in listePepe) {
                 pepe.Peinturer(e, 0);
+            }
+
+            foreach (var dame in listeDame) {
+                dame.Peinturer(e, 0);
+            }
+
+            foreach (var fillette in listeFillette) {
+                fillette.Peinturer(e, 0);
             }
         }
 
@@ -248,6 +261,12 @@ namespace TP2_Zoo.Etat {
             foreach (var pepe in listePepe) {
                 PepeTick(pepe);
             }
+            foreach(var dame in listeDame) {
+                DameTick(dame);
+            }
+            foreach (var fillette in listeFillette) {
+                FilletteTick(fillette);
+            }
 
             // Tick les animaux
             foreach (var mouton in listeMouton) {
@@ -270,6 +289,24 @@ namespace TP2_Zoo.Etat {
 
             if (pepe.NbrJours > 60) {
                 pepe.PeutQuitter = true;
+            }
+        }
+
+        private void DameTick(Dame dame) {
+            dame.NbrJours++;
+            dame.Deplacer(heros.Position);
+
+            if (dame.NbrJours > 60) {
+                dame.PeutQuitter = true;
+            }
+        }
+
+        private void FilletteTick(Fillette fillette) {
+            fillette.NbrJours++;
+            fillette.Deplacer(heros.Position);
+
+            if (fillette.NbrJours > 60) {
+                fillette.PeutQuitter = true;
             }
         }
 
