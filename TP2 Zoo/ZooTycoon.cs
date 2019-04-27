@@ -26,6 +26,8 @@ namespace TP2_Zoo {
 
             dateNow = DateTime.Now;
             LblDate.Text = "Date : " + dateNow.Day + "  " + (Mois)dateNow.Month + "  " + dateNow.Year;
+
+            Noms.Noms.LoadNames();
         }
 
 

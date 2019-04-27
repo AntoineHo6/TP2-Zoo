@@ -25,10 +25,8 @@ namespace TP2_Zoo.Etat {
 
         public ChoixAnimal choixAnimal;
 
-        List<Pepe> listePepe;
-        List<Dame> listeDame;
-        List<Fillette> listeFillette;
-        List<Monsieur> listeMonsieur;
+        List<Visiteur> listeVisiteurs = new List<Visiteur>();
+
 
         public EtatJeu(Zoo formPrincipale) {
             InitializeComponent();
@@ -37,12 +35,12 @@ namespace TP2_Zoo.Etat {
             nbrAnimaux = 0;
             nbrDechet = 0;
             secondesJeu = 0;
+
             this.formPrincipale = formPrincipale;
             heros = new Heros();
-            InitListeAI();
+            listeAnimaux = new List<Animal>();
+            listeVisiteurs = new List<Visiteur>();
             InitChoixAnimal();
-
-            Noms.Noms.LoadNames();
         }
 
 
@@ -54,48 +52,19 @@ namespace TP2_Zoo.Etat {
         }
 
 
-        private void InitListeAI() {
-            listeAnimaux = new List<Animal>();
-
-            listePepe = new List<Pepe>();
-            listeDame = new List<Dame>();
-            listeFillette = new List<Fillette>();
-            listeMonsieur = new List<Monsieur>();
-        }
-
-        private void InitListeAnimaux() {
-        }
-
         private void EtatJeu_Paint(object sender, PaintEventArgs e) {
             GerantCarte.PeintureMap(e);
-
             heros.Peinturer(e, heros.Touche);
-
-            PeinturerAnimaux(e);
-
-            PeinturerVisiteurs(e);
+            PeinturerAI(e);
         }
 
 
-        private void PeinturerAnimaux(PaintEventArgs e) {
+        private void PeinturerAI(PaintEventArgs e) {
             foreach (var animal in listeAnimaux) {
                 animal.Peinturer(e, 0);
             }
-        }
-
-
-        private void PeinturerVisiteurs(PaintEventArgs e) {
-            foreach (var pepe in listePepe) {
-                pepe.Peinturer(e, 0);
-            }
-            foreach (var dame in listeDame) {
-                dame.Peinturer(e, 0);
-            }
-            foreach (var fillette in listeFillette) {
-                fillette.Peinturer(e, 0);
-            }
-            foreach (var monsieur in listeMonsieur) {
-                monsieur.Peinturer(e, 0);
+            foreach (var visiteur in listeVisiteurs) {
+                visiteur.Peinturer(e, 0);
             }
         }
 
@@ -176,7 +145,7 @@ namespace TP2_Zoo.Etat {
             }
 
             if (animalCree) {
-                CreerVisiteur(r.Next(0, 4));
+                CreerVisiteur();
                 nbrAnimaux++;
                 UpdateLblNbrAnimaux();
                 Refresh();
@@ -184,19 +153,21 @@ namespace TP2_Zoo.Etat {
         }
 
 
-        void CreerVisiteur(int typeVisiteur) {
-            switch(typeVisiteur) {
+        void CreerVisiteur() {
+            int typeVisiteur = r.Next(0, 4);
+
+            switch (typeVisiteur) {
                 case 0:
-                    listePepe.Add(new Pepe());
+                    listeVisiteurs.Add(new Pepe());
                     break;
                 case 1:
-                    listeDame.Add(new Dame());
+                    listeVisiteurs.Add(new Dame());
                     break;
                 case 2:
-                    listeFillette.Add(new Fillette());
+                    listeVisiteurs.Add(new Fillette());
                     break;
                 case 3:
-                    listeMonsieur.Add(new Monsieur());
+                    listeVisiteurs.Add(new Monsieur());
                     break;
             }
 
@@ -266,17 +237,11 @@ namespace TP2_Zoo.Etat {
 
 
         private void TickVisiteurs() {
-            foreach (var pepe in listePepe) {
-                PepeTick(pepe);
-            }
-            foreach (var dame in listeDame) {
-                DameTick(dame);
-            }
-            foreach (var fillette in listeFillette) {
-                FilletteTick(fillette);
-            }
-            foreach (var monsieur in listeMonsieur) {
-                MonsieurTick(monsieur);
+            foreach (var visiteur in listeVisiteurs) {
+                visiteur.NbrJours++;
+                ChanceProduireDechet(visiteur);
+                visiteur.Deplacer(heros.Position);
+                visiteur.VerifierPeutQuit();
             }
         }
 
@@ -296,36 +261,6 @@ namespace TP2_Zoo.Etat {
         }
 
 
-        private void PepeTick(Pepe pepe) {
-            pepe.NbrJours++;
-            ChanceProduireDechet(pepe);
-            pepe.Deplacer(heros.Position);
-            pepe.VerifierPeutQuit();
-        }
-
-        private void DameTick(Dame dame) {
-            dame.NbrJours++;
-            ChanceProduireDechet(dame);
-            dame.Deplacer(heros.Position);
-            dame.VerifierPeutQuit();
-        }
-
-        private void FilletteTick(Fillette fillette) {
-            fillette.NbrJours++;
-            ChanceProduireDechet(fillette);
-            fillette.Deplacer(heros.Position);
-            fillette.VerifierPeutQuit();
-        }
-
-
-        private void MonsieurTick(Monsieur monsieur) {
-            monsieur.NbrJours++;
-            ChanceProduireDechet(monsieur);
-            monsieur.Deplacer(heros.Position);
-            monsieur.VerifierPeutQuit();
-        }
-
-
         private void ChanceProduireDechet(Visiteur visiteur) {
             if (r.Next(100) < 5) {     // 5% chance de laisser tomber un dechet
                 visiteur.LaisserDechet();
@@ -336,7 +271,7 @@ namespace TP2_Zoo.Etat {
 
         private void IncNbrDechet() {
             nbrDechet++;
-            formPrincipale.LblNbrDechets.Text = "Nombre de dechets :" + nbrDechet;
+            formPrincipale.LblNbrDechets.Text = "Nombre de dechets : " + nbrDechet;
         }
 
 
