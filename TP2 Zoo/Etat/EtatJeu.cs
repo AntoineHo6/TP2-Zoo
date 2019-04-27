@@ -19,7 +19,6 @@ namespace TP2_Zoo.Etat {
         int nbrAnimaux;
 
         public Heros heros;
-        public int touche;
         public List<Mouton> listeMouton;
         public List<Lion> listeLion;
         public List<Licorne> listeLicorne;
@@ -69,9 +68,15 @@ namespace TP2_Zoo.Etat {
         private void EtatJeu_Paint(object sender, PaintEventArgs e) {
             GerantCarte.PeintureMap(e);
 
-            heros.Peinturer(e, touche);
+            heros.Peinturer(e, heros.Touche);
 
-            // Paint les animaux
+            PeinturerAnimaux(e);
+
+            PeinturerVisiteurs(e);
+        }
+
+
+        private void PeinturerAnimaux(PaintEventArgs e) {
             foreach (var mouton in listeMouton) {
                 mouton.Peinturer(e, 0);
             }
@@ -81,8 +86,10 @@ namespace TP2_Zoo.Etat {
             foreach (var licorne in listeLicorne) {
                 licorne.Peinturer(e, 0);
             }
+        }
 
-            // Paint les visiteurs
+
+        private void PeinturerVisiteurs(PaintEventArgs e) {
             foreach (var pepe in listePepe) {
                 pepe.Peinturer(e, 0);
             }
@@ -104,7 +111,7 @@ namespace TP2_Zoo.Etat {
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private void EtatJeu_KeyDown(object sender, KeyEventArgs e) {
-            touche = heros.Deplacer(e);
+            heros.Deplacer(e);
             this.Refresh();
         }
 
@@ -242,7 +249,7 @@ namespace TP2_Zoo.Etat {
         }
 
 
-        void UpdateLblNbrAnimaux() {
+        private void UpdateLblNbrAnimaux() {
             formPrincipale.LblNbrAnimaux.Text = "Nombre d'animaux : " + nbrAnimaux;
         }
 
@@ -293,11 +300,19 @@ namespace TP2_Zoo.Etat {
 
 
         private void Timer_Tick(object sender, EventArgs e) {
-            // Tick les visiteurs
+            TickVisiteurs();
+
+            TickAnimaux();
+
+            this.Refresh();
+        }
+
+
+        private void TickVisiteurs() {
             foreach (var pepe in listePepe) {
                 PepeTick(pepe);
             }
-            foreach(var dame in listeDame) {
+            foreach (var dame in listeDame) {
                 DameTick(dame);
             }
             foreach (var fillette in listeFillette) {
@@ -306,8 +321,10 @@ namespace TP2_Zoo.Etat {
             foreach (var monsieur in listeMonsieur) {
                 MonsieurTick(monsieur);
             }
+        }
 
-            // Tick les animaux
+
+        private void TickAnimaux() {
             foreach (var mouton in listeMouton) {
                 MoutonTick(mouton);
             }
@@ -317,8 +334,6 @@ namespace TP2_Zoo.Etat {
             foreach (var licorne in listeLicorne) {
                 LicorneTick(licorne);
             }
-
-            this.Refresh();
         }
 
 
