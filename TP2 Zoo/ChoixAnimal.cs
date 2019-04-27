@@ -25,7 +25,7 @@ namespace TP2_Zoo {
             this.etatJeu = etatJeu;
         }
 
-        public void Setup(int argentHero, int Enclos, int x, int y) {
+        public void Setup(double argentHero, int Enclos, int x, int y) {
             this.Enclos = Enclos;
             spawnX = x;
             spawnY = y;
@@ -80,19 +80,19 @@ namespace TP2_Zoo {
 
         private void BtnMouton_Click(object sender, EventArgs e) {
             etatJeu.CreerAnimal("Mouton", spawnX, spawnY);
-            GerantCarte.animalEnclos[Enclos] = "Mouton";
+            GerantCarte.AnimalEnclos[Enclos] = "Mouton";
             Cacher();
         }
 
         private void BtnLion_Click(object sender, EventArgs e) {
             etatJeu.CreerAnimal("Lion", spawnX, spawnY);
-            GerantCarte.animalEnclos[Enclos] = "Lion";
+            GerantCarte.AnimalEnclos[Enclos] = "Lion";
             Cacher();
         }
 
         private void BtnLicorne_Click(object sender, EventArgs e) {
             etatJeu.CreerAnimal("Licorne", spawnX, spawnY);
-            GerantCarte.animalEnclos[Enclos] = "Licorne";
+            GerantCarte.AnimalEnclos[Enclos] = "Licorne";
             Cacher();
         }
 
@@ -101,6 +101,4 @@ namespace TP2_Zoo {
             etatJeu.Focus();
         }
     }
-
-    /// TODO: deduct money.
 }

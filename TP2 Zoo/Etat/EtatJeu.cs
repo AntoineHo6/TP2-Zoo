@@ -17,6 +17,8 @@ namespace TP2_Zoo.Etat {
         static Random r = new Random();
         Zoo formPrincipale;
         int nbrAnimaux;
+        int nbrDechet;
+        int secondesJeu;
 
         public Heros heros;
         public List<Mouton> listeMouton;
@@ -34,6 +36,8 @@ namespace TP2_Zoo.Etat {
             DoubleBuffered = true;
 
             nbrAnimaux = 0;
+            nbrDechet = 0;
+            secondesJeu = 0;
             this.formPrincipale = formPrincipale;
             heros = new Heros();
             InitListeAI();
@@ -124,7 +128,7 @@ namespace TP2_Zoo.Etat {
             if (e.Button == MouseButtons.Left) {
                 if (HerosAdjacent(pX, pY)) {
                     int enclos = GerantCarte.SurfaceEnclosMap[pX, pY];  // 0: pas dans un enclos.
-                    String enclosTypeAnimal = GerantCarte.animalEnclos[enclos];
+                    String enclosTypeAnimal = GerantCarte.AnimalEnclos[enclos];
 
                     // Si clique dans un enclos sur une tuile vide
                     if (enclos != 0 && !GerantCarte.OccupeAiMap[pX, pY] && (pX != heros.Position[0] || pY != heros.Position[1])) {
@@ -221,11 +225,18 @@ namespace TP2_Zoo.Etat {
                     listeMonsieur.Add(new Monsieur());
                     break;
             }
+
+            AjouterArgentHero(2);
         }
 
 
-        public void DeduireArgentHero(int montant) {
+        private void DeduireArgentHero(double montant) {
             heros.Argent -= montant;
+            formPrincipale.LblArgent.Text = "Argent : " + heros.Argent + "$";
+        }
+
+        private void AjouterArgentHero(double montant) {
+            heros.Argent += montant;
             formPrincipale.LblArgent.Text = "Argent : " + heros.Argent + "$";
         }
 
@@ -304,6 +315,15 @@ namespace TP2_Zoo.Etat {
 
             TickAnimaux();
 
+            secondesJeu++;
+            // temp
+            Console.WriteLine(secondesJeu);
+
+            if (secondesJeu % 60 == 0) {
+                AjouterArgentHero(nbrAnimaux * nbrAnimaux); // chaque visiteur repaie 1$ pour chaque animal présent, et pour chaque animal, il y a un visiteur.
+                DeduireArgentHero(nbrDechet * 0.10);
+            }
+
             this.Refresh();
         }
 
@@ -339,39 +359,45 @@ namespace TP2_Zoo.Etat {
 
         private void PepeTick(Pepe pepe) {
             pepe.NbrJours++;
+            ChanceProduireDechet(pepe);
             pepe.Deplacer(heros.Position);
-
-            if (pepe.NbrJours > 60) {
-                pepe.PeutQuitter = true;
-            }
+            pepe.VerifierPeutQuit();
         }
 
         private void DameTick(Dame dame) {
             dame.NbrJours++;
+            ChanceProduireDechet(dame);
             dame.Deplacer(heros.Position);
-
-            if (dame.NbrJours > 60) {
-                dame.PeutQuitter = true;
-            }
+            dame.VerifierPeutQuit();
         }
 
         private void FilletteTick(Fillette fillette) {
             fillette.NbrJours++;
+            ChanceProduireDechet(fillette);
             fillette.Deplacer(heros.Position);
-
-            if (fillette.NbrJours > 60) {
-                fillette.PeutQuitter = true;
-            }
+            fillette.VerifierPeutQuit();
         }
 
 
         private void MonsieurTick(Monsieur monsieur) {
             monsieur.NbrJours++;
+            ChanceProduireDechet(monsieur);
             monsieur.Deplacer(heros.Position);
+            monsieur.VerifierPeutQuit();
+        }
 
-            if (monsieur.NbrJours > 60) {
-                monsieur.PeutQuitter = true;
+
+        private void ChanceProduireDechet(Visiteur visiteur) {
+            if (r.Next(100) < 5) {     // 5% chance de laisser tomber un dechet
+                visiteur.LaisserDechet();
+                IncNbrDechet();
             }
+        }
+
+
+        private void IncNbrDechet() {
+            nbrDechet++;
+            formPrincipale.LblNbrDechets.Text = "Nombre de dechets :" + nbrDechet;
         }
 
 
@@ -380,7 +406,7 @@ namespace TP2_Zoo.Etat {
             mouton.JoursPasNourri++;
 
             if (mouton.JoursPasNourri > 120) {
-                mouton.Faim = false;
+                mouton.JoursPasNourri = 0;
                 Contravention();
             }
 
@@ -393,7 +419,7 @@ namespace TP2_Zoo.Etat {
             lion.JoursPasNourri++;
 
             if (lion.JoursPasNourri > 120) {
-                lion.Faim = false;
+                lion.JoursPasNourri = 0;
                 Contravention();
             }
 
@@ -406,7 +432,7 @@ namespace TP2_Zoo.Etat {
             licorne.JoursPasNourri++;
 
             if (licorne.JoursPasNourri > 180) {
-                licorne.Faim = false;
+                licorne.JoursPasNourri = 0;
                 Contravention();
             }
 

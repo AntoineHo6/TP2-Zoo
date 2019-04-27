@@ -15,29 +15,25 @@ namespace TP2_Zoo {
         public static bool[,] SolidMapAi = new bool[42, 28];    // Pour les visiteurs et les animaux
         public static bool[,] OccupeAiMap = new bool[40, 26];
         public static int[,] SurfaceEnclosMap = new int[40, 26];    // Verifie quelles tuiles sont dans l'enclos. 1: NW, 2: NE, 3: SW, 4: SE
-        public static String[] animalEnclos = new String[5];        // Stock le type d'animal que chaque enclos contient. commence a index 1.
+        public static String[] AnimalEnclos = new String[5];        // Stock le type d'animal que chaque enclos contient. commence a index 1.
+        public static bool[,] PosDechetsMap = new bool[40, 26];
 
         static GerantCarte() {
             InitSolidMaps();
             InitSurfaceEnclosMap();
-            InitOccupeAiMap();
 
             // les prints pour tester
             //PrintSurfaceEnclosMap();
         }
-        
 
-        static void InitSolidMaps() {
+
+        private static void InitSolidMaps() {
             // Par defaut, tout n'est pas solide à part la bordure.
             for (int y = 0; y < SolidMapHeros.GetLength(1); y++) {
                 for (int x = 0; x < SolidMapHeros.GetLength(0); x++) {
                     if ((x == 0 || x == 41) || (y == 0 || y == 27)) {
                         SolidMapHeros[x, y] = true;
                         SolidMapAi[x, y] = true;
-                    }
-                    else {
-                        SolidMapHeros[x, y] = false;
-                        SolidMapAi[x, y] = false;
                     }
                 }
             }
@@ -72,7 +68,7 @@ namespace TP2_Zoo {
             }
         }
 
-        static void InitSurfaceEnclosMap() {
+        private static void InitSurfaceEnclosMap() {
             for (int y = 0; y < SurfaceEnclosMap.GetLength(1); y++) {
                 for (int x = 0; x < SurfaceEnclosMap.GetLength(0); x++) {
                     if ((x > 7 && x < 18)) {
@@ -95,13 +91,6 @@ namespace TP2_Zoo {
             }
         }
 
-        static void InitOccupeAiMap() {
-            for (int y = 0; y < OccupeAiMap.GetLength(1); y++) {
-                for (int x = 0; x < OccupeAiMap.GetLength(0); x++) {
-                    OccupeAiMap[x, y] = false;
-                }
-            }
-        }
 
         // testing purposes
         public static void PrintSolidMapHeros() {
@@ -179,6 +168,7 @@ namespace TP2_Zoo {
             PeintureEnclos(e);
             PeintureMaison(e);
             PeintureCadriage(e);
+            PeinturerDechet(e);
         }
 
 
@@ -275,6 +265,17 @@ namespace TP2_Zoo {
 
         private static void PeintureMaison(PaintEventArgs e) {
             e.Graphics.DrawImage(MapTileSetImageGenerator.GetTile(5), TuileAPixel(0), 0);
+        }
+
+
+        private static void PeinturerDechet(PaintEventArgs e) {
+            for (int y = 0; y < PosDechetsMap.GetLength(1); y++) {
+                for (int x = 0; x < PosDechetsMap.GetLength(0); x++) {
+                    if (PosDechetsMap[x, y]) {
+                        e.Graphics.DrawImage(MapTileSetImageGenerator.GetTile(6), TuileAPixel(x), TuileAPixel(y));
+                    }
+                }
+            }
         }
     }
 }

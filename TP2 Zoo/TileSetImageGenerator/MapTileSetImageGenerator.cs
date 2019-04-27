@@ -17,6 +17,7 @@ namespace tileSetZoo {
         public static int ENCLOS_V = 3;
         public static int SABLE = 4;
         public static int MAISON = 5;
+        public static int DECHET = 6;
 
         private static List<TileCoord> listeCoord = new List<TileCoord>();
         private static List<Bitmap> listeBitmap = new List<Bitmap>();
@@ -25,22 +26,22 @@ namespace tileSetZoo {
         /// Constructeur statique
         /// </summary>
         static MapTileSetImageGenerator() {
-            // Map
             listeCoord.Add(new TileCoord() { Ligne = 0, Colonne = 0 }); // FLAQUEDEAU
             listeCoord.Add(new TileCoord() { Ligne = 8, Colonne = 0 }); // GAZON
             listeCoord.Add(new TileCoord() { Ligne = 14, Colonne = 22 }); // ENCLOS HORIZONTAL
             listeCoord.Add(new TileCoord() { Ligne = 10, Colonne = 18 }); // ENCLOS VERTICAL
             listeCoord.Add(new TileCoord() { Ligne = 14, Colonne = 4 }); // SABLE
             listeCoord.Add(new TileCoord() { Ligne = 0, Colonne = 18 }); // MAISON
+            listeCoord.Add(new TileCoord() { Ligne = 4, Colonne = 28 }); // DECHET
 
 
-            // Map
             listeBitmap.Add(LoadTile(FLAQUEDEAU, 32, 32));  // FLAQUEDEAU
             listeBitmap.Add(LoadTile(GAZON, 32, 32));       // GAZON
             listeBitmap.Add(LoadTile(ENCLOS_H, 64, 32));      // ENCLOS HORIZONTAL
             listeBitmap.Add(LoadTile(ENCLOS_V, 32, 32));      // ENCLOS VERTICAL
             listeBitmap.Add(LoadTile(SABLE, 32, 32));      // SABLE
             listeBitmap.Add(LoadTile(MAISON, 128, 160));      // MAISON
+            listeBitmap.Add(LoadTile(DECHET, 32, 32));      // DECHET
         }
 
         private static Bitmap LoadTile(int posListe, int imageWidth, int imageHeight) {
