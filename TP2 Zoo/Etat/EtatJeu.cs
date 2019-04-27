@@ -107,6 +107,12 @@ namespace TP2_Zoo.Etat {
                             NourrirAnimal(pX, pY);
                         }
                     }
+                    // si clique sur un dechet
+                    else if (GerantCarte.PosDechetsMap[pX, pY]) {
+                        GerantCarte.PosDechetsMap[pX, pY] = false;
+                        DecNbrDechet();
+                        Refresh();
+                    }
                 }
             }
             else if (e.Button == MouseButtons.Right) {
@@ -271,6 +277,12 @@ namespace TP2_Zoo.Etat {
 
         private void IncNbrDechet() {
             nbrDechet++;
+            formPrincipale.LblNbrDechets.Text = "Nombre de dechets : " + nbrDechet;
+        }
+
+
+        private void DecNbrDechet() {
+            nbrDechet--;
             formPrincipale.LblNbrDechets.Text = "Nombre de dechets : " + nbrDechet;
         }
 

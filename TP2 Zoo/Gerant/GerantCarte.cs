@@ -167,7 +167,7 @@ namespace TP2_Zoo {
             PeintureCheminSable(e);
             PeintureEnclos(e);
             PeintureMaison(e);
-            PeintureCadriage(e);
+            // PeintureCadriage(e);
             PeinturerDechet(e);
         }
 
