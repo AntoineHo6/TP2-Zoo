@@ -6,7 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace TP2_Zoo.Animal {
+namespace TP2_Zoo.Animaux {
     public abstract class Animal {
 
         static Random r = new Random();

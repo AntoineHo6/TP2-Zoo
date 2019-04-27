@@ -10,7 +10,7 @@ using System.Windows.Forms;
 using tileSetZoo;
 using TP2_Zoo.Personne;
 using System.Threading;
-using TP2_Zoo.Animal;
+using TP2_Zoo.Animaux;
 
 namespace TP2_Zoo.Etat {
     public partial class EtatJeu : UserControl {
@@ -21,9 +21,8 @@ namespace TP2_Zoo.Etat {
         int secondesJeu;
 
         public Heros heros;
-        public List<Mouton> listeMouton;
-        public List<Lion> listeLion;
-        public List<Licorne> listeLicorne;
+        public List<Animal> listeAnimaux;
+
         public ChoixAnimal choixAnimal;
 
         List<Pepe> listePepe;
@@ -56,9 +55,7 @@ namespace TP2_Zoo.Etat {
 
 
         private void InitListeAI() {
-            listeMouton = new List<Mouton>();
-            listeLion = new List<Lion>();
-            listeLicorne = new List<Licorne>();
+            listeAnimaux = new List<Animal>();
 
             listePepe = new List<Pepe>();
             listeDame = new List<Dame>();
@@ -81,14 +78,8 @@ namespace TP2_Zoo.Etat {
 
 
         private void PeinturerAnimaux(PaintEventArgs e) {
-            foreach (var mouton in listeMouton) {
-                mouton.Peinturer(e, 0);
-            }
-            foreach (var lion in listeLion) {
-                lion.Peinturer(e, 0);
-            }
-            foreach (var licorne in listeLicorne) {
-                licorne.Peinturer(e, 0);
+            foreach (var animal in listeAnimaux) {
+                animal.Peinturer(e, 0);
             }
         }
 
@@ -144,7 +135,7 @@ namespace TP2_Zoo.Etat {
                     // Si clique sur un animal
                     else if (enclos != 0 && GerantCarte.OccupeAiMap[pX, pY]) {
                         if (heros.Argent >= 1) {
-                            NourrirAnimal(enclosTypeAnimal, pX, pY);
+                            NourrirAnimal(pX, pY);
                         }
                     }
                 }
@@ -163,50 +154,33 @@ namespace TP2_Zoo.Etat {
             switch (animal) {
                 case "Mouton":
                     if (heros.Argent >= 20) {
-                        CreerMouton(x, y);
+                        DeduireArgentHero(20);
+                        listeAnimaux.Add(new Mouton(true, x, y));
                         animalCree = true;
                     }
                     break;
                 case "Lion":
                     if (heros.Argent >= 35) {
-                        CreerLion(x, y);
+                        DeduireArgentHero(35);
+                        listeAnimaux.Add(new Lion(true, x, y));
                         animalCree = true;
                     }
                     break;
                 case "Licorne":
                     if (heros.Argent >= 50) {
-                        CreerLicorne(x, y);
+                        DeduireArgentHero(50);
+                        listeAnimaux.Add(new Licorne(true, x, y));
                         animalCree = true;
                     }
                     break;
             }
 
-            UpdateLblNbrAnimaux();
-
             if (animalCree) {
                 CreerVisiteur(r.Next(0, 4));
+                nbrAnimaux++;
+                UpdateLblNbrAnimaux();
+                Refresh();
             }
-        }
-
-        public void CreerMouton(int x, int y) {
-            DeduireArgentHero(20);
-            listeMouton.Add(new Mouton(true, x, y));
-            nbrAnimaux++;
-            Refresh();
-        }
-
-        public void CreerLion(int x, int y) {
-            DeduireArgentHero(35);
-            listeLion.Add(new Lion(true, x, y));
-            nbrAnimaux++;
-            Refresh();
-        }
-
-        public void CreerLicorne(int x, int y) {
-            DeduireArgentHero(50);
-            listeLicorne.Add(new Licorne(true, x, y));
-            nbrAnimaux++;
-            Refresh();
         }
 
 
@@ -265,48 +239,13 @@ namespace TP2_Zoo.Etat {
         }
 
 
-        private void NourrirAnimal(String typeAnimal, int x, int y) {
-            switch (typeAnimal) {
-                case "Mouton":
-                    foreach (var mouton in listeMouton) {
-                        if (mouton.Position[0] == x && mouton.Position[1] == y) {
-                            NourrirMouton(mouton);
-                        }
-                    }
-                    break;
-                case "Lion":
-                    foreach (var lion in listeLion) {
-                        if (lion.Position[0] == x && lion.Position[1] == y) {
-                            NourrirLion(lion);
-                        }
-                    }
-                    break;
-                case "Licorne":
-                    foreach (var licorne in listeLicorne) {
-                        if (licorne.Position[0] == x && licorne.Position[1] == y) {
-                            NourrirLicorne(licorne);
-                        }
-                    }
-                    break;
+        private void NourrirAnimal(int x, int y) {
+            foreach (var animal in listeAnimaux) {
+                if (animal.Position[0] == x && animal.Position[1] == y) {
+                    DeduireArgentHero(1);
+                    animal.Manger();
+                }
             }
-        }
-
-
-        private void NourrirMouton(Mouton mouton) {
-            DeduireArgentHero(1);
-            mouton.Manger();
-        }
-
-
-        private void NourrirLion(Lion lion) {
-            DeduireArgentHero(1);
-            lion.Manger();
-        }
-
-
-        private void NourrirLicorne(Licorne licorne) {
-            DeduireArgentHero(1);
-            licorne.Manger();
         }
 
 
@@ -316,8 +255,6 @@ namespace TP2_Zoo.Etat {
             TickAnimaux();
 
             secondesJeu++;
-            // temp
-            Console.WriteLine(secondesJeu);
 
             if (secondesJeu % 60 == 0) {
                 AjouterArgentHero(nbrAnimaux * nbrAnimaux); // chaque visiteur repaie 1$ pour chaque animal présent, et pour chaque animal, il y a un visiteur.
@@ -345,14 +282,16 @@ namespace TP2_Zoo.Etat {
 
 
         private void TickAnimaux() {
-            foreach (var mouton in listeMouton) {
-                MoutonTick(mouton);
-            }
-            foreach (var lion in listeLion) {
-                LionTick(lion);
-            }
-            foreach (var licorne in listeLicorne) {
-                LicorneTick(licorne);
+            foreach (var animal in listeAnimaux) {
+                animal.NbrJours++;
+                animal.JoursPasNourri++;
+
+                if (animal.JoursPasNourri > 120) {
+                    animal.JoursPasNourri = 0;
+                    Contravention();
+                }
+
+                animal.Deplacer(heros.Position);
             }
         }
 
@@ -400,44 +339,6 @@ namespace TP2_Zoo.Etat {
             formPrincipale.LblNbrDechets.Text = "Nombre de dechets :" + nbrDechet;
         }
 
-
-        private void MoutonTick(Mouton mouton) {
-            mouton.NbrJours++;
-            mouton.JoursPasNourri++;
-
-            if (mouton.JoursPasNourri > 120) {
-                mouton.JoursPasNourri = 0;
-                Contravention();
-            }
-
-            mouton.Deplacer(heros.Position);
-        }
-
-
-        private void LionTick(Lion lion) {
-            lion.NbrJours++;
-            lion.JoursPasNourri++;
-
-            if (lion.JoursPasNourri > 120) {
-                lion.JoursPasNourri = 0;
-                Contravention();
-            }
-
-            lion.Deplacer(heros.Position);
-        }
-
-
-        private void LicorneTick(Licorne licorne) {
-            licorne.NbrJours++;
-            licorne.JoursPasNourri++;
-
-            if (licorne.JoursPasNourri > 180) {
-                licorne.JoursPasNourri = 0;
-                Contravention();
-            }
-
-            licorne.Deplacer(heros.Position);
-        }
 
         private void Contravention() {
             DeduireArgentHero(2);

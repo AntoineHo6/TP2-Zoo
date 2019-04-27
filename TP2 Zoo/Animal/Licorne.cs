@@ -6,7 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using tileSetZoo;
 
-namespace TP2_Zoo.Animal {
+namespace TP2_Zoo.Animaux {
     public class Licorne : Animal {
 
         public Licorne(bool EstAdulte, params int[] Position) : base(EstAdulte, Position) {

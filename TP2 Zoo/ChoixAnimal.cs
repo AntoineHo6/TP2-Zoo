@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using TP2_Zoo.Etat;
-using TP2_Zoo.Animal;
+using TP2_Zoo.Animaux;
 using System.Threading;
 
 namespace TP2_Zoo {
