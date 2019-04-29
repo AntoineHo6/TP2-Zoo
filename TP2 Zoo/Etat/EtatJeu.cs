@@ -268,7 +268,8 @@ namespace TP2_Zoo.Etat {
 
 
         private void ChanceProduireDechet(Visiteur visiteur) {
-            if (r.Next(100) < 5) {     // 5% chance de laisser tomber un dechet
+            // 5% chance de laisser tomber un dechet et pas de dechet dans la position courante du visiteur
+            if (r.Next(100) < 5 && !GerantCarte.PosDechetsMap[visiteur.Position[0], visiteur.Position[1]]) {
                 visiteur.LaisserDechet();
                 IncNbrDechet();
             }
