@@ -91,71 +91,6 @@ namespace TP2_Zoo {
             }
         }
 
-
-        // testing purposes
-        public static void PrintSolidMapHeros() {
-            Console.WriteLine("SOLID MAPPING HERO: ");
-            for (int y = 0; y < SolidMapHeros.GetLength(1); y++) {
-                for (int x = 0; x < SolidMapHeros.GetLength(0); x++) {
-                    if (SolidMapHeros[x, y]) {
-                        Console.Write("1 ");
-                    }
-                    else {
-                        Console.Write("- ");
-                    }
-                }
-                Console.Write("\n");
-            }
-        }
-
-        // testing purposes
-        public static void PrintSolidMapAi() {
-            Console.WriteLine("SOLID MAPPING AI: ");
-            for (int y = 0; y < SolidMapAi.GetLength(1); y++) {
-                for (int x = 0; x < SolidMapAi.GetLength(0); x++) {
-                    if (SolidMapAi[x, y]) {
-                        Console.Write("1 ");
-                    }
-                    else {
-                        Console.Write("- ");
-                    }
-                }
-                Console.Write("\n");
-            }
-        }
-
-        // testing purposes
-        public static void PrintSurfaceEnclosMap() {
-            Console.WriteLine("SURFACE MAPPING ENCLOS: ");
-            for (int y = 0; y < SurfaceEnclosMap.GetLength(1); y++) {
-                for (int x = 0; x < SurfaceEnclosMap.GetLength(0); x++) {
-                    if (SurfaceEnclosMap[x, y] == 0) {
-                        Console.Write("- ");
-                    }
-                    else {
-                        Console.Write(SurfaceEnclosMap[x, y] + " ");
-                    }
-                }
-                Console.Write("\n");
-            }
-        }
-
-        // testing purposes
-        public static void PrintOccupeAiMap() {
-            Console.WriteLine("AI OCCUPE MAPPING: ");
-            for (int y = 0; y < OccupeAiMap.GetLength(1); y++) {
-                for (int x = 0; x < OccupeAiMap.GetLength(0); x++) {
-                    if (OccupeAiMap[x, y]) {
-                        Console.Write("1 ");
-                    }
-                    else {
-                        Console.Write("- ");
-                    }
-                }
-                Console.Write("\n");
-            }
-        }
-
         // Taille de 40 x 26 ou (39 x 25 si on commmence par index 0)
         static int TuileAPixel(int Tuile) {
             return Tuile * 32;
@@ -164,6 +99,7 @@ namespace TP2_Zoo {
 
         public static void PeintureMap(PaintEventArgs e) {
             PeintureGazon(e);
+            PeintureEau(e);
             PeintureCheminSable(e);
             PeintureEnclos(e);
             PeintureMaison(e);
@@ -188,9 +124,30 @@ namespace TP2_Zoo {
 
 
         private static void PeintureGazon(PaintEventArgs e) {
+            // peinture gazon normal partout.
             for (int y = 0; y < 26; y++) {
                 for (int x = 0; x < 40; x++) {
                     e.Graphics.DrawImage(MapTileSetImageGenerator.GetTile(1), TuileAPixel(x), TuileAPixel(y));
+                }
+            }
+
+            // painture gazon_haut dans les enclos
+            for (int y = 0; y < 26; y++) {
+                for (int x = 0; x < 40; x++) {
+                    if (((x > 6 && x < 19) || (x > 20 && x < 33)) && ((y > 5 && y < 12) || (y > 13 && y < 20))) {
+                        e.Graphics.DrawImage(MapTileSetImageGenerator.GetTile(7), TuileAPixel(x), TuileAPixel(y));
+                    }
+                }
+            }
+        }
+
+
+        private static void PeintureEau(PaintEventArgs e) {
+            for (int y = 0; y < 26; y++) {
+                for (int x = 0; x < 40; x++) {
+                    if ((x == 17 || x == 22) && (y == 10 || y == 15)) {
+                        e.Graphics.DrawImage(MapTileSetImageGenerator.GetTile(8), TuileAPixel(x), TuileAPixel(y));
+                    }
                 }
             }
         }
@@ -256,8 +213,8 @@ namespace TP2_Zoo {
             // Peinture les entrees
             for (int i = 0; i < SolidMapHeros.GetLength(0); i++) {
                 if (i == 12 || i == 13 || i == 26 || i == 27) {
-                    e.Graphics.DrawImage(MapTileSetImageGenerator.GetTile(1), TuileAPixel(i), TuileAPixel(6));
-                    e.Graphics.DrawImage(MapTileSetImageGenerator.GetTile(1), TuileAPixel(i), TuileAPixel(19));
+                    e.Graphics.DrawImage(MapTileSetImageGenerator.GetTile(7), TuileAPixel(i), TuileAPixel(6));
+                    e.Graphics.DrawImage(MapTileSetImageGenerator.GetTile(7), TuileAPixel(i), TuileAPixel(19));
                 }
             }
         }
