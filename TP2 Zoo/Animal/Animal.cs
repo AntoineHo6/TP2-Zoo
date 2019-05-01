@@ -14,7 +14,6 @@ namespace TP2_Zoo.Animaux {
         public int[] Position { get; set; }
         public String Type { get; set; }
         public int Genre { get; set; }   // 0: male; 1: femelle
-        public bool Faim { get; set; } // True: Faim ; False: Pas faim
         public bool Enceinte { get; set; }
         public int Prix { get; set; }
         public List<Bitmap> Sprites { get; set; }
@@ -28,7 +27,6 @@ namespace TP2_Zoo.Animaux {
             JoursPasNourri = 0;
             this.Position = Position;
             Genre = r.Next(0, 2);
-            Faim = false;
             Enceinte = false;
             Sprites = new List<Bitmap>();
             Ai.Ai.OccuperTuile(Position[0], Position[1]);

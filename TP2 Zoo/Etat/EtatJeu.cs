@@ -21,8 +21,8 @@ namespace TP2_Zoo.Etat {
         int secondesJeu;
 
         public Heros heros;
-        public List<Animal> listeAnimaux;
 
+        public List<Animal> listeAnimaux;
         public ChoixAnimal choixAnimal;
 
         List<Visiteur> listeVisiteurs;
@@ -85,9 +85,10 @@ namespace TP2_Zoo.Etat {
             int pX = p.X / 32;
             int pY = p.Y / 32;
 
+            int enclos = GerantCarte.SurfaceEnclosMap[pX, pY];  // 0: pas dans un enclos.
+
             if (e.Button == MouseButtons.Left) {
                 if (HerosAdjacent(pX, pY)) {
-                    int enclos = GerantCarte.SurfaceEnclosMap[pX, pY];  // 0: pas dans un enclos.
                     String enclosTypeAnimal = GerantCarte.AnimalEnclos[enclos];
 
                     // Si clique dans un enclos sur une tuile vide
@@ -116,7 +117,6 @@ namespace TP2_Zoo.Etat {
                 }
             }
             else if (e.Button == MouseButtons.Right) {
-                int enclos = GerantCarte.SurfaceEnclosMap[pX, pY];  // 0: pas dans un enclos.
                 if (enclos != 0 && GerantCarte.OccupeAiMap[pX, pY]) {
                     Console.WriteLine("C'est un animal!");
                 }
@@ -200,6 +200,7 @@ namespace TP2_Zoo.Etat {
         private bool HerosAdjacent(int iX, int iY) {
             bool heroAdjacent = false;
 
+            // parcours les tuiles autour du héros.
             for (int y = -1; y < 2; y++) {
                 for (int x = -1; x < 2; x++) {
                     if ((heros.Position[0] == iX + x) && (heros.Position[1] == iY + y)) {
@@ -228,7 +229,6 @@ namespace TP2_Zoo.Etat {
 
         private void Timer_Tick(object sender, EventArgs e) {
             TickVisiteurs();
-
             TickAnimaux();
 
             secondesJeu++;
@@ -282,7 +282,8 @@ namespace TP2_Zoo.Etat {
 
 
         private void ChanceProduireDechet(Visiteur visiteur) {
-            if (r.Next(100) < 5) {     // 5% chance de laisser tomber un dechet
+            // 3% chance de laisser tomber un dechet et pas de dechet sur un autre dechet.
+            if (r.Next(100) < 3 && !GerantCarte.PosDechetsMap[visiteur.Position[0], visiteur.Position[1]]) {
                 visiteur.LaisserDechet();
                 IncNbrDechet();
             }

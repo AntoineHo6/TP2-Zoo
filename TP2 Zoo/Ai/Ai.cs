@@ -14,11 +14,6 @@ namespace TP2_Zoo.Ai {
 
         }
 
-        
-        public static void ChoixDirectionVisiteur(int[] Position, int[] positionHero) {
-
-        }
-
 
         /*
          * 1: en haut
@@ -34,29 +29,29 @@ namespace TP2_Zoo.Ai {
             switch (direction) {    // Additionne 1 aux positions de SolidMapAi parce qu'il a une "bordure de solides".
                 case 1:
                         // A REFACTOR LES CONDITIONS
-                        // Si la prochaine tuile n'est pas un solide          Si le hero n'est pas sur la prochaine tuile                    si un ai n'est pas sur la prochaine tuile
-                    if (!GerantCarte.SolidMapAi[ToSolidCoord(x), ToSolidCoord(y) - 1] && (x != positionHero[0] && y - 1 != positionHero[1]) && !GerantCarte.OccupeAiMap[x, y - 1]) {
+                        // Si la prochaine tuile n'est pas un solide          Si le hero n'est pas sur la prochaine tuile                    si un ai n'est pas sur la prochaine tuile     si pas de dechet
+                    if (!GerantCarte.SolidMapAi[ToSolidCoord(x), ToSolidCoord(y) - 1] && (x != positionHero[0] && y - 1 != positionHero[1]) && !GerantCarte.OccupeAiMap[x, y - 1] && !GerantCarte.PosDechetsMap[x, y - 1]) {
                         LibererTuile(x, y);
                         Position[1] -= 1;
                         OccuperTuile(Position[0], Position[1]);
                     }
                     break;
                 case 2:
-                    if (!GerantCarte.SolidMapAi[ToSolidCoord(x), ToSolidCoord(y) + 1] && (x != positionHero[0] && y + 1 != positionHero[1]) && !GerantCarte.OccupeAiMap[x, y + 1]) {
+                    if (!GerantCarte.SolidMapAi[ToSolidCoord(x), ToSolidCoord(y) + 1] && (x != positionHero[0] && y + 1 != positionHero[1]) && !GerantCarte.OccupeAiMap[x, y + 1] && !GerantCarte.PosDechetsMap[x, y + 1]) {
                         LibererTuile(x, y);
                         Position[1] += 1;
                         OccuperTuile(Position[0], Position[1]);
                     }
                     break;
                 case 3:
-                    if (!GerantCarte.SolidMapAi[ToSolidCoord(x) - 1, ToSolidCoord(y)] && (x - 1 != positionHero[0] && y != positionHero[1]) && !GerantCarte.OccupeAiMap[x - 1, y]) {
+                    if (!GerantCarte.SolidMapAi[ToSolidCoord(x) - 1, ToSolidCoord(y)] && (x - 1 != positionHero[0] && y != positionHero[1]) && !GerantCarte.OccupeAiMap[x - 1, y] && !GerantCarte.PosDechetsMap[x - 1, y]) {
                         LibererTuile(x, y);
                         Position[0] -= 1;
                         OccuperTuile(Position[0], Position[1]);
                     }
                     break;
                 case 4:
-                    if (!GerantCarte.SolidMapAi[ToSolidCoord(x) + 1, ToSolidCoord(y)] && (x + 1 != positionHero[0] && y != positionHero[1]) && !GerantCarte.OccupeAiMap[x + 1, y]) {
+                    if (!GerantCarte.SolidMapAi[ToSolidCoord(x) + 1, ToSolidCoord(y)] && (x + 1 != positionHero[0] && y != positionHero[1]) && !GerantCarte.OccupeAiMap[x + 1, y] && !GerantCarte.PosDechetsMap[x + 1, y]) {
                         LibererTuile(x, y);
                         Position[0] += 1;
                         OccuperTuile(Position[0], Position[1]);
