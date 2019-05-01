@@ -13,7 +13,7 @@ namespace TP2_Zoo.Personne {
         public int Sexe { get; set; }   // 0: masculin; 1: feminin
         public int NbrJours { get; set; }
         public int NbrDechets { get; set; }
-        public bool PeutQuitter { get; set; }
+        public bool droitQuitter { get; set; }
 
         static Random r = new Random();
 
@@ -21,7 +21,7 @@ namespace TP2_Zoo.Personne {
             Position = new int[] {19, 0 };
             Ai.Ai.OccuperTuile(19, 0);
             NbrJours = 0;
-            PeutQuitter = false;
+            droitQuitter = false;
         }
         
 
@@ -39,7 +39,7 @@ namespace TP2_Zoo.Personne {
 
         public void VerifierPeutQuit() {
             if (NbrJours > 60) {
-                PeutQuitter = true;
+                droitQuitter = true;
             }
         }
 

@@ -15,7 +15,7 @@ using TP2_Zoo.Animaux;
 namespace TP2_Zoo.Etat {
     public partial class EtatJeu : UserControl {
         static Random r = new Random();
-        Zoo formPrincipale;
+        Zoo formePrincipale;
         int nbrAnimaux;
         int nbrDechet;
         int secondesJeu;
@@ -25,7 +25,7 @@ namespace TP2_Zoo.Etat {
 
         public ChoixAnimal choixAnimal;
 
-        List<Visiteur> listeVisiteurs = new List<Visiteur>();
+        List<Visiteur> listeVisiteurs;
 
 
         public EtatJeu(Zoo formPrincipale) {
@@ -36,7 +36,7 @@ namespace TP2_Zoo.Etat {
             nbrDechet = 0;
             secondesJeu = 0;
 
-            this.formPrincipale = formPrincipale;
+            this.formePrincipale = formPrincipale;
             heros = new Heros();
             listeAnimaux = new List<Animal>();
             listeVisiteurs = new List<Visiteur>();
@@ -183,12 +183,12 @@ namespace TP2_Zoo.Etat {
 
         private void DeduireArgentHero(double montant) {
             heros.Argent -= montant;
-            formPrincipale.LblArgent.Text = "Argent : " + heros.Argent + "$";
+            formePrincipale.LblArgent.Text = "Argent : " + heros.Argent + "$";
         }
 
         private void AjouterArgentHero(double montant) {
             heros.Argent += montant;
-            formPrincipale.LblArgent.Text = "Argent : " + heros.Argent + "$";
+            formePrincipale.LblArgent.Text = "Argent : " + heros.Argent + "$";
         }
 
         /// <summary>
@@ -212,7 +212,7 @@ namespace TP2_Zoo.Etat {
 
 
         private void UpdateLblNbrAnimaux() {
-            formPrincipale.LblNbrAnimaux.Text = "Nombre d'animaux : " + nbrAnimaux;
+            formePrincipale.LblNbrAnimaux.Text = "Nombre d'animaux : " + nbrAnimaux;
         }
 
 
@@ -242,13 +242,27 @@ namespace TP2_Zoo.Etat {
         }
 
 
+        
+
+
         private void TickVisiteurs() {
             foreach (var visiteur in listeVisiteurs) {
                 visiteur.NbrJours++;
                 ChanceProduireDechet(visiteur);
                 visiteur.Deplacer(heros.Position);
                 visiteur.VerifierPeutQuit();
+
+                // a tester
+                if (VisiteurPeuxTuQuitter(visiteur)) {
+                    listeVisiteurs.Remove(visiteur);
+                }
             }
+        }
+
+
+        private bool VisiteurPeuxTuQuitter(Visiteur visiteur) {
+            return visiteur.droitQuitter && ((visiteur.Position[0] == 19 || visiteur.Position[0] == 20) && visiteur.Position[1] == 25);
+
         }
 
 
@@ -277,13 +291,13 @@ namespace TP2_Zoo.Etat {
 
         private void IncNbrDechet() {
             nbrDechet++;
-            formPrincipale.LblNbrDechets.Text = "Nombre de dechets : " + nbrDechet;
+            formePrincipale.LblNbrDechets.Text = "Nombre de dechets : " + nbrDechet;
         }
 
 
         private void DecNbrDechet() {
             nbrDechet--;
-            formPrincipale.LblNbrDechets.Text = "Nombre de dechets : " + nbrDechet;
+            formePrincipale.LblNbrDechets.Text = "Nombre de dechets : " + nbrDechet;
         }
 
 
