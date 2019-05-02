@@ -30,17 +30,17 @@ namespace TP2_Zoo {
                 case "Mouton":
                     PctrBoxAnimal.BackgroundImage = Properties.Resources.Mouton;
                     LblTypeAnimal.Text = "Mouton";
-                    LblGenreAnimal.Text = animal.Genre.ToString();
+                    LblGenreAnimal.Text = TrouverGenreAnimal(animal);
                     break;
                 case "Lion":
                     PctrBoxAnimal.BackgroundImage = Properties.Resources.Lion;
                     LblTypeAnimal.Text = "Lion";
-                    LblGenreAnimal.Text = animal.Genre.ToString();
+                    LblGenreAnimal.Text = TrouverGenreAnimal(animal);
                     break;
                 case "Licorne":
                     PctrBoxAnimal.BackgroundImage = Properties.Resources.Licorne;
                     LblTypeAnimal.Text = "Licorne";
-                    LblGenreAnimal.Text = animal.Genre.ToString();
+                    LblGenreAnimal.Text = TrouverGenreAnimal(animal);
                     break;
             }
         }
@@ -52,6 +52,19 @@ namespace TP2_Zoo {
                 }
             }
             return animalTemp;
+        }
+
+        private String TrouverGenreAnimal(Animal animal) {
+            String GenreAnimal;
+
+            if (animal.Genre.Equals("0")) {
+                GenreAnimal = "Mâle";
+            }
+            else {
+                GenreAnimal = "Femelle";
+            }
+
+            return GenreAnimal;
         }
     }
 }
