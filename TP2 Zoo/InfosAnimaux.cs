@@ -31,16 +31,19 @@ namespace TP2_Zoo {
                     PctrBoxAnimal.BackgroundImage = Properties.Resources.Mouton;
                     LblTypeAnimal.Text = "Mouton";
                     LblGenreAnimal.Text = TrouverGenreAnimal(animal);
+                    LblCroissanceAnimal.Text = TrouverCroissanceAnimal(animal);
                     break;
                 case "Lion":
                     PctrBoxAnimal.BackgroundImage = Properties.Resources.Lion;
                     LblTypeAnimal.Text = "Lion";
                     LblGenreAnimal.Text = TrouverGenreAnimal(animal);
+                    LblCroissanceAnimal.Text = TrouverCroissanceAnimal(animal);
                     break;
                 case "Licorne":
                     PctrBoxAnimal.BackgroundImage = Properties.Resources.Licorne;
                     LblTypeAnimal.Text = "Licorne";
                     LblGenreAnimal.Text = TrouverGenreAnimal(animal);
+                    LblCroissanceAnimal.Text = TrouverCroissanceAnimal(animal);
                     break;
             }
         }
@@ -66,5 +69,21 @@ namespace TP2_Zoo {
 
             return GenreAnimal;
         }
+
+        private String TrouverCroissanceAnimal(Animal animal) {
+            String CroissanceAnimal;
+
+            bool b = false;
+
+            if (b) {
+                CroissanceAnimal = "Adulte";
+            }
+            else {
+                CroissanceAnimal = "Enfant";
+            }
+
+            return CroissanceAnimal;
+        }
+
     }
 }

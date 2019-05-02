@@ -126,7 +126,9 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.KeyPreview = true;
             this.MainMenuStrip = this.menuStrip1;
+            this.MaximizeBox = false;
             this.Name = "Zoo";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Zoo Tycoon";
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Zoo_KeyDown);
             this.panel1.ResumeLayout(false);
