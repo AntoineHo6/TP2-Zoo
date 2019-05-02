@@ -10,7 +10,7 @@ namespace TP2_Zoo.Personne {
 
         public Dame() {
             for (int i = 4; i < 8; i++) {
-                Sprites.Add(VisiteurTileSetImageGenerator.GetTile(i));
+                Sprites.Add(HumainTileSetImageGenerator.GetTile(i));
             }
 
             Sexe = 1;

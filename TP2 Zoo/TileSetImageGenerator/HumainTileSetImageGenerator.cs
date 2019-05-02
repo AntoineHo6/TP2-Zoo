@@ -6,7 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace tileSetZoo {
-    class VisiteurTileSetImageGenerator {
+    class HumainTileSetImageGenerator {
         // Différentes tailles concernant les images dans le fichier de tuiles de jeu
         public const int IMAGE_WIDTH = 32, IMAGE_HEIGHT = 32;
 
@@ -34,6 +34,12 @@ namespace tileSetZoo {
         public static int MONSIEUR_GAUCHE = 14;
         public static int MONSIEUR_DROITE = 15;
 
+        // CONCIERGE
+        public static int CONCIERGE_FACE = 16;
+        public static int CONCIERGE_DOS = 17;
+        public static int CONCIERGE_GAUCHE = 18;
+        public static int CONCIERGE_DROITE = 19;
+
 
         private static List<TileCoord> listeCoord = new List<TileCoord>();
         private static List<Bitmap> listeBitmap = new List<Bitmap>();
@@ -41,7 +47,7 @@ namespace tileSetZoo {
         /// <summary>
         /// Constructeur statique
         /// </summary>
-        static VisiteurTileSetImageGenerator() {
+        static HumainTileSetImageGenerator() {
 
             listeCoord.Add(new TileCoord() { Ligne = 2, Colonne = 0 }); // PEPE_FACE
             listeCoord.Add(new TileCoord() { Ligne = 2, Colonne = 1 }); // PEPE_DOS
@@ -63,31 +69,41 @@ namespace tileSetZoo {
             listeCoord.Add(new TileCoord() { Ligne = 0, Colonne = 2 }); // MONSIEUR_GAUCHE
             listeCoord.Add(new TileCoord() { Ligne = 0, Colonne = 2 }); // MONSIEUR_DROITE
 
+            listeCoord.Add(new TileCoord() { Ligne = 5, Colonne = 0});  // CONCIERGE_FACE
+            listeCoord.Add(new TileCoord() { Ligne = 5, Colonne = 1 }); // CONCIERGE_DOS
+            listeCoord.Add(new TileCoord() { Ligne = 5, Colonne = 2 }); // CONCIERGE_GAUCHE
+            listeCoord.Add(new TileCoord() { Ligne = 5, Colonne = 2 }); // CONCIERGE_DROITE
 
 
 
-            listeBitmap.Add(LoadTile(PEPE_FACE));  // PEPE_FACE
-            listeBitmap.Add(LoadTile(PEPE_DOS));  // PEPE_DOS
-            listeBitmap.Add(LoadTile(PEPE_GAUCHE));  // PEPE_GAUCHE
-            listeBitmap.Add(LoadTile(PEPE_DROITE));  // PEPE_DROITE
+            listeBitmap.Add(LoadTile(PEPE_FACE));       // PEPE_FACE
+            listeBitmap.Add(LoadTile(PEPE_DOS));        // PEPE_DOS
+            listeBitmap.Add(LoadTile(PEPE_GAUCHE));     // PEPE_GAUCHE
+            listeBitmap.Add(LoadTile(PEPE_DROITE));     // PEPE_DROITE
             listeBitmap.Last().RotateFlip(RotateFlipType.RotateNoneFlipX);
 
-            listeBitmap.Add(LoadTile(DAME_FACE));  // DAME_FACE
-            listeBitmap.Add(LoadTile(DAME_DOS));  // DAME_DOS
-            listeBitmap.Add(LoadTile(DAME_GAUCHE));  // DAME_GAUCHE
-            listeBitmap.Add(LoadTile(DAME_DROITE));  // DAME_DROITE
+            listeBitmap.Add(LoadTile(DAME_FACE));       // DAME_FACE
+            listeBitmap.Add(LoadTile(DAME_DOS));        // DAME_DOS
+            listeBitmap.Add(LoadTile(DAME_GAUCHE));     // DAME_GAUCHE
+            listeBitmap.Add(LoadTile(DAME_DROITE));     // DAME_DROITE
             listeBitmap.Last().RotateFlip(RotateFlipType.RotateNoneFlipX);
 
-            listeBitmap.Add(LoadTile(FILLETTE_FACE));  // FILLETTE_FACE
-            listeBitmap.Add(LoadTile(FILLETTE_DOS));  // FILLETTE_DOS
-            listeBitmap.Add(LoadTile(FILLETTE_GAUCHE));  // FILLETTE_GAUCHE
-            listeBitmap.Add(LoadTile(FILLETTE_DROITE));  // FILLETTE_DROITE
+            listeBitmap.Add(LoadTile(FILLETTE_FACE));   // FILLETTE_FACE
+            listeBitmap.Add(LoadTile(FILLETTE_DOS));    // FILLETTE_DOS
+            listeBitmap.Add(LoadTile(FILLETTE_GAUCHE)); // FILLETTE_GAUCHE
+            listeBitmap.Add(LoadTile(FILLETTE_DROITE)); // FILLETTE_DROITE
             listeBitmap.Last().RotateFlip(RotateFlipType.RotateNoneFlipX);
 
-            listeBitmap.Add(LoadTile(MONSIEUR_FACE));  // MONSIEUR_FACE
-            listeBitmap.Add(LoadTile(MONSIEUR_DOS));  // MONSIEUR_DOS
-            listeBitmap.Add(LoadTile(MONSIEUR_GAUCHE));  // MONSIEUR_GAUCHE
-            listeBitmap.Add(LoadTile(MONSIEUR_DROITE));  // MONSIEUR_DROITE
+            listeBitmap.Add(LoadTile(MONSIEUR_FACE));   // MONSIEUR_FACE
+            listeBitmap.Add(LoadTile(MONSIEUR_DOS));    // MONSIEUR_DOS
+            listeBitmap.Add(LoadTile(MONSIEUR_GAUCHE)); // MONSIEUR_GAUCHE
+            listeBitmap.Add(LoadTile(MONSIEUR_DROITE)); // MONSIEUR_DROITE
+            listeBitmap.Last().RotateFlip(RotateFlipType.RotateNoneFlipX);
+
+            listeBitmap.Add(LoadTile(CONCIERGE_FACE));  // CONCIERGE_FACE
+            listeBitmap.Add(LoadTile(CONCIERGE_DOS));  // CONCIERGE_DOS
+            listeBitmap.Add(LoadTile(CONCIERGE_GAUCHE));  // CONCIERGE_GAUCHE
+            listeBitmap.Add(LoadTile(CONCIERGE_DROITE));  // CONCIERGE_DROITE
             listeBitmap.Last().RotateFlip(RotateFlipType.RotateNoneFlipX);
         }
 
