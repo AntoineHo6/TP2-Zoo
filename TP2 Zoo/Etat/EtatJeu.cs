@@ -127,7 +127,7 @@ namespace TP2_Zoo.Etat {
                             choixAnimal.Visible = true;
                         }
                         else {
-                            CreerAnimal(enclosTypeAnimal, pX, pY);
+                            CreerAnimal(enclosTypeAnimal, enclos, pX, pY);
                         }
                     }
                     // Si clique sur un animal
@@ -146,7 +146,7 @@ namespace TP2_Zoo.Etat {
             }
             else if (e.Button == MouseButtons.Right) {
                 if (enclos != 0 && GerantCarte.OccupeAiMap[pX, pY]) {
-                    infosAnimaux.Setup(enclosTypeAnimal, listeAnimaux, pX, pY);
+                    infosAnimaux.Setup(enclosTypeAnimal, enclos, listeAnimaux, pX, pY);
                     infosAnimaux.Visible = true;
                 }
             }
@@ -159,28 +159,28 @@ namespace TP2_Zoo.Etat {
         /// <param name="animal"> Le type d'animal à créé </param>
         /// <param name="x"></param>
         /// <param name="y"></param>
-        public void CreerAnimal(String animal, int x, int y) {
+        public void CreerAnimal(String animal, int Enclos, int x, int y) {
             bool animalCree = false;
 
             switch (animal) {
                 case "Mouton":
                     if (heros.Argent >= 20) {
                         DeduireArgentHeros(20);
-                        listeAnimaux.Add(new Mouton(true, x, y));
+                        listeAnimaux.Add(new Mouton(true, Enclos, x, y));
                         animalCree = true;
                     }
                     break;
                 case "Lion":
                     if (heros.Argent >= 35) {
                         DeduireArgentHeros(35);
-                        listeAnimaux.Add(new Lion(true, x, y));
+                        listeAnimaux.Add(new Lion(true, Enclos, x, y));
                         animalCree = true;
                     }
                     break;
                 case "Licorne":
                     if (heros.Argent >= 50) {
                         DeduireArgentHeros(50);
-                        listeAnimaux.Add(new Licorne(true, x, y));
+                        listeAnimaux.Add(new Licorne(true, Enclos, x, y));
                         animalCree = true;
                     }
                     break;

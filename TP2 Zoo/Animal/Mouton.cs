@@ -9,7 +9,7 @@ using tileSetZoo;
 namespace TP2_Zoo.Animaux {
     public class Mouton : Animal {
         
-        public Mouton(bool EstAdulte, params int[] Position) : base(EstAdulte, Position) {
+        public Mouton(bool EstAdulte, int Enclos, params int[] Position) : base(EstAdulte, Enclos, Position) {
             Prix = 20;
             Type = "Mouton";
 

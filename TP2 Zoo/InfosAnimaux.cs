@@ -20,11 +20,9 @@ namespace TP2_Zoo {
             this.etatJeu = etatJeu;
         }
 
-        public void Setup(String enclosTypeAnimal, List<Animal> listeAnimaux, int x, int y) {
+        public void Setup(String enclosTypeAnimal, int Enclos, List<Animal> ListeAnimaux, int x, int y) {
 
-            Animal animal = TrouverAnimal(listeAnimaux, x, y);
-
-            Console.WriteLine("L'animal cliqué: " + animal);
+            Animal animal = TrouverAnimal(ListeAnimaux, x, y);
            
             switch (enclosTypeAnimal) {
                 case "Mouton":
@@ -32,18 +30,21 @@ namespace TP2_Zoo {
                     LblTypeAnimal.Text = "Mouton";
                     LblGenreAnimal.Text = TrouverGenreAnimal(animal);
                     LblCroissanceAnimal.Text = TrouverCroissanceAnimal(animal);
+                    LblEnceinteAnimal.Text = TrouverEnceinteAnimal(animal);
                     break;
                 case "Lion":
                     PctrBoxAnimal.BackgroundImage = Properties.Resources.Lion;
                     LblTypeAnimal.Text = "Lion";
                     LblGenreAnimal.Text = TrouverGenreAnimal(animal);
                     LblCroissanceAnimal.Text = TrouverCroissanceAnimal(animal);
+                    LblEnceinteAnimal.Text = TrouverEnceinteAnimal(animal);
                     break;
                 case "Licorne":
                     PctrBoxAnimal.BackgroundImage = Properties.Resources.Licorne;
                     LblTypeAnimal.Text = "Licorne";
                     LblGenreAnimal.Text = TrouverGenreAnimal(animal);
                     LblCroissanceAnimal.Text = TrouverCroissanceAnimal(animal);
+                    LblEnceinteAnimal.Text = TrouverEnceinteAnimal(animal);
                     break;
             }
         }
@@ -58,31 +59,35 @@ namespace TP2_Zoo {
         }
 
         private String TrouverGenreAnimal(Animal animal) {
-            String GenreAnimal;
-
-            if (animal.Genre.Equals("0")) {
-                GenreAnimal = "Mâle";
+            if (animal.Genre == 0) {
+                return "Mâle";
             }
             else {
-                GenreAnimal = "Femelle";
+                return "Femelle";
             }
-
-            return GenreAnimal;
         }
 
         private String TrouverCroissanceAnimal(Animal animal) {
-            String CroissanceAnimal;
-
-            bool b = false;
-
-            if (b) {
-                CroissanceAnimal = "Adulte";
+            if (animal.EstAdulte) {
+                return "Adulte";
             }
             else {
-                CroissanceAnimal = "Enfant";
+                return "Enfant";
             }
+        }
 
-            return CroissanceAnimal;
+        private string TrouverEnceinteAnimal(Animal animal) {
+            if (animal.Genre == 0) {
+                return "Non";
+            }
+            else {
+                if (animal.Enceinte) {
+                    return "Oui";
+                }
+                else {
+                    return "Non";
+                }
+            }
         }
 
     }
