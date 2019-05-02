@@ -8,30 +8,50 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using TP2_Zoo.Etat;
+using TP2_Zoo.Animaux;
 
 namespace TP2_Zoo {
     public partial class InfosAnimaux : UserControl {
         EtatJeu etatJeu;
+        public Animal animalTemp;
 
         public InfosAnimaux(EtatJeu etatJeu) {
             InitializeComponent();
             this.etatJeu = etatJeu;
         }
 
-        public void Setup(String enclosTypeAnimal) {
+        public void Setup(String enclosTypeAnimal, List<Animal> listeAnimaux, int x, int y) {
 
+            Animal animal = TrouverAnimal(listeAnimaux, x, y);
+
+            Console.WriteLine("L'animal cliqué: " + animal);
+           
             switch (enclosTypeAnimal) {
                 case "Mouton":
                     PctrBoxAnimal.BackgroundImage = Properties.Resources.Mouton;
-                    LblNomAnimal.Text = "Mouton";
+                    LblTypeAnimal.Text = "Mouton";
+                    LblGenreAnimal.Text = animal.Genre.ToString();
                     break;
                 case "Lion":
-
+                    PctrBoxAnimal.BackgroundImage = Properties.Resources.Lion;
+                    LblTypeAnimal.Text = "Lion";
+                    LblGenreAnimal.Text = animal.Genre.ToString();
                     break;
                 case "Licorne":
-
+                    PctrBoxAnimal.BackgroundImage = Properties.Resources.Licorne;
+                    LblTypeAnimal.Text = "Licorne";
+                    LblGenreAnimal.Text = animal.Genre.ToString();
                     break;
             }
+        }
+
+        private Animal TrouverAnimal(List<Animal> ListeAnimaux, int PostionX, int PositionY) {
+            foreach (var animal in ListeAnimaux) {
+                if (animal.Position[0] == PostionX && animal.Position[1] == PositionY) {
+                    animalTemp = animal;
+                }
+            }
+            return animalTemp;
         }
     }
 }

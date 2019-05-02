@@ -146,7 +146,7 @@ namespace TP2_Zoo.Etat {
             }
             else if (e.Button == MouseButtons.Right) {
                 if (enclos != 0 && GerantCarte.OccupeAiMap[pX, pY]) {
-                    infosAnimaux.Setup(enclosTypeAnimal);
+                    infosAnimaux.Setup(enclosTypeAnimal, listeAnimaux, pX, pY);
                     infosAnimaux.Visible = true;
                 }
             }
