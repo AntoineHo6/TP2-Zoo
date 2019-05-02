@@ -40,10 +40,9 @@
             // PctrBoxAnimal
             // 
             this.PctrBoxAnimal.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.PctrBoxAnimal.Location = new System.Drawing.Point(267, 55);
-            this.PctrBoxAnimal.Margin = new System.Windows.Forms.Padding(7);
+            this.PctrBoxAnimal.Location = new System.Drawing.Point(87, 16);
             this.PctrBoxAnimal.Name = "PctrBoxAnimal";
-            this.PctrBoxAnimal.Size = new System.Drawing.Size(210, 210);
+            this.PctrBoxAnimal.Size = new System.Drawing.Size(90, 94);
             this.PctrBoxAnimal.TabIndex = 0;
             this.PctrBoxAnimal.TabStop = false;
             // 
@@ -51,10 +50,9 @@
             // 
             this.LblType.AutoSize = true;
             this.LblType.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.LblType.Location = new System.Drawing.Point(97, 311);
-            this.LblType.Margin = new System.Windows.Forms.Padding(7, 0, 7, 0);
+            this.LblType.Location = new System.Drawing.Point(13, 126);
             this.LblType.Name = "LblType";
-            this.LblType.Size = new System.Drawing.Size(107, 39);
+            this.LblType.Size = new System.Drawing.Size(47, 17);
             this.LblType.TabIndex = 2;
             this.LblType.Text = "Type :";
             // 
@@ -62,10 +60,9 @@
             // 
             this.LblGenre.AutoSize = true;
             this.LblGenre.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.LblGenre.Location = new System.Drawing.Point(97, 380);
-            this.LblGenre.Margin = new System.Windows.Forms.Padding(7, 0, 7, 0);
+            this.LblGenre.Location = new System.Drawing.Point(13, 157);
             this.LblGenre.Name = "LblGenre";
-            this.LblGenre.Size = new System.Drawing.Size(127, 39);
+            this.LblGenre.Size = new System.Drawing.Size(56, 17);
             this.LblGenre.TabIndex = 3;
             this.LblGenre.Text = "Genre :";
             // 
@@ -73,10 +70,9 @@
             // 
             this.LblCroissance.AutoSize = true;
             this.LblCroissance.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.LblCroissance.Location = new System.Drawing.Point(97, 447);
-            this.LblCroissance.Margin = new System.Windows.Forms.Padding(7, 0, 7, 0);
+            this.LblCroissance.Location = new System.Drawing.Point(13, 187);
             this.LblCroissance.Name = "LblCroissance";
-            this.LblCroissance.Size = new System.Drawing.Size(307, 39);
+            this.LblCroissance.Size = new System.Drawing.Size(138, 17);
             this.LblCroissance.TabIndex = 4;
             this.LblCroissance.Text = "État de croissance :";
             // 
@@ -84,10 +80,9 @@
             // 
             this.LblFaim.AutoSize = true;
             this.LblFaim.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.LblFaim.Location = new System.Drawing.Point(97, 514);
-            this.LblFaim.Margin = new System.Windows.Forms.Padding(7, 0, 7, 0);
+            this.LblFaim.Location = new System.Drawing.Point(13, 217);
             this.LblFaim.Name = "LblFaim";
-            this.LblFaim.Size = new System.Drawing.Size(108, 39);
+            this.LblFaim.Size = new System.Drawing.Size(49, 17);
             this.LblFaim.TabIndex = 5;
             this.LblFaim.Text = "Faim :";
             // 
@@ -95,10 +90,9 @@
             // 
             this.LblEnceinte.AutoSize = true;
             this.LblEnceinte.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.LblEnceinte.Location = new System.Drawing.Point(97, 584);
-            this.LblEnceinte.Margin = new System.Windows.Forms.Padding(7, 0, 7, 0);
+            this.LblEnceinte.Location = new System.Drawing.Point(13, 249);
             this.LblEnceinte.Name = "LblEnceinte";
-            this.LblEnceinte.Size = new System.Drawing.Size(165, 39);
+            this.LblEnceinte.Size = new System.Drawing.Size(73, 17);
             this.LblEnceinte.TabIndex = 6;
             this.LblEnceinte.Text = "Enceinte :";
             // 
@@ -106,10 +100,9 @@
             // 
             this.LblTypeAnimal.AutoSize = true;
             this.LblTypeAnimal.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.LblTypeAnimal.Location = new System.Drawing.Point(218, 311);
-            this.LblTypeAnimal.Margin = new System.Windows.Forms.Padding(7, 0, 7, 0);
+            this.LblTypeAnimal.Location = new System.Drawing.Point(64, 126);
             this.LblTypeAnimal.Name = "LblTypeAnimal";
-            this.LblTypeAnimal.Size = new System.Drawing.Size(257, 39);
+            this.LblTypeAnimal.Size = new System.Drawing.Size(113, 17);
             this.LblTypeAnimal.TabIndex = 8;
             this.LblTypeAnimal.Text = "Type de l\'Animal";
             // 
@@ -117,10 +110,9 @@
             // 
             this.LblGenreAnimal.AutoSize = true;
             this.LblGenreAnimal.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.LblGenreAnimal.Location = new System.Drawing.Point(238, 380);
-            this.LblGenreAnimal.Margin = new System.Windows.Forms.Padding(7, 0, 7, 0);
+            this.LblGenreAnimal.Location = new System.Drawing.Point(73, 157);
             this.LblGenreAnimal.Name = "LblGenreAnimal";
-            this.LblGenreAnimal.Size = new System.Drawing.Size(277, 39);
+            this.LblGenreAnimal.Size = new System.Drawing.Size(122, 17);
             this.LblGenreAnimal.TabIndex = 9;
             this.LblGenreAnimal.Text = "Genre de l\'Animal";
             // 
@@ -128,10 +120,9 @@
             // 
             this.LblCroissanceAnimal.AutoSize = true;
             this.LblCroissanceAnimal.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.LblCroissanceAnimal.Location = new System.Drawing.Point(418, 447);
-            this.LblCroissanceAnimal.Margin = new System.Windows.Forms.Padding(7, 0, 7, 0);
+            this.LblCroissanceAnimal.Location = new System.Drawing.Point(150, 187);
             this.LblCroissanceAnimal.Name = "LblCroissanceAnimal";
-            this.LblCroissanceAnimal.Size = new System.Drawing.Size(184, 39);
+            this.LblCroissanceAnimal.Size = new System.Drawing.Size(83, 17);
             this.LblCroissanceAnimal.TabIndex = 10;
             this.LblCroissanceAnimal.Text = "Croissance";
             // 
@@ -139,10 +130,9 @@
             // 
             this.LblFaimAnimal.AutoSize = true;
             this.LblFaimAnimal.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.LblFaimAnimal.Location = new System.Drawing.Point(219, 514);
-            this.LblFaimAnimal.Margin = new System.Windows.Forms.Padding(7, 0, 7, 0);
+            this.LblFaimAnimal.Location = new System.Drawing.Point(65, 217);
             this.LblFaimAnimal.Name = "LblFaimAnimal";
-            this.LblFaimAnimal.Size = new System.Drawing.Size(258, 39);
+            this.LblFaimAnimal.Size = new System.Drawing.Size(115, 17);
             this.LblFaimAnimal.TabIndex = 11;
             this.LblFaimAnimal.Text = "Faim de l\'Animal";
             // 
@@ -150,16 +140,15 @@
             // 
             this.LblEnceinteAnimal.AutoSize = true;
             this.LblEnceinteAnimal.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.LblEnceinteAnimal.Location = new System.Drawing.Point(276, 584);
-            this.LblEnceinteAnimal.Margin = new System.Windows.Forms.Padding(7, 0, 7, 0);
+            this.LblEnceinteAnimal.Location = new System.Drawing.Point(89, 249);
             this.LblEnceinteAnimal.Name = "LblEnceinteAnimal";
-            this.LblEnceinteAnimal.Size = new System.Drawing.Size(315, 39);
+            this.LblEnceinteAnimal.Size = new System.Drawing.Size(139, 17);
             this.LblEnceinteAnimal.TabIndex = 12;
             this.LblEnceinteAnimal.Text = "Enceinte de l\'Animal";
             // 
             // InfosAnimaux
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(14F, 29F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.Controls.Add(this.LblEnceinteAnimal);
@@ -173,9 +162,8 @@
             this.Controls.Add(this.LblGenre);
             this.Controls.Add(this.LblType);
             this.Controls.Add(this.PctrBoxAnimal);
-            this.Margin = new System.Windows.Forms.Padding(7);
             this.Name = "InfosAnimaux";
-            this.Size = new System.Drawing.Size(709, 664);
+            this.Size = new System.Drawing.Size(252, 281);
             ((System.ComponentModel.ISupportInitialize)(this.PctrBoxAnimal)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

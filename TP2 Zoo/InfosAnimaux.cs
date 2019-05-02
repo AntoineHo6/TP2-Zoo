@@ -30,6 +30,7 @@ namespace TP2_Zoo {
                     LblTypeAnimal.Text = "Mouton";
                     LblGenreAnimal.Text = TrouverGenreAnimal(animal);
                     LblCroissanceAnimal.Text = TrouverCroissanceAnimal(animal);
+                    LblFaimAnimal.Text = TrouverFaimAnimal(animal);
                     LblEnceinteAnimal.Text = TrouverEnceinteAnimal(animal);
                     break;
                 case "Lion":
@@ -76,6 +77,15 @@ namespace TP2_Zoo {
             }
         }
 
+        private string TrouverFaimAnimal(Animal animal) {
+            if (animal.JoursPasNourri > 0) {
+                return "Oui";
+            }
+            else {
+                return "Non";
+            }
+        }
+
         private string TrouverEnceinteAnimal(Animal animal) {
             if (animal.Genre == 0) {
                 return "Non";
@@ -89,6 +99,5 @@ namespace TP2_Zoo {
                 }
             }
         }
-
     }
 }
