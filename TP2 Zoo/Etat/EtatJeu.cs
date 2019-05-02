@@ -24,6 +24,7 @@ namespace TP2_Zoo.Etat {
 
         public List<Animal> listeAnimaux;
         public ChoixAnimal choixAnimal;
+        public InfosAnimaux infosAnimaux;
 
         List<Visiteur> listeVisiteurs;
 
@@ -41,6 +42,7 @@ namespace TP2_Zoo.Etat {
             listeAnimaux = new List<Animal>();
             listeVisiteurs = new List<Visiteur>();
             InitChoixAnimal();
+            InitInfosAnimaux();
         }
 
 
@@ -54,6 +56,15 @@ namespace TP2_Zoo.Etat {
             choixAnimal.Visible = false;
         }
 
+        /// <summary>
+        ///     Préparer le user control qui permet d'afficher les informations de tous les animaux présents dans le parc.
+        /// </summary>
+        private void InitInfosAnimaux() {
+            infosAnimaux = new InfosAnimaux(this);
+            infosAnimaux.Location = new Point(345, 239);
+            this.Controls.Add(infosAnimaux);
+            infosAnimaux.Visible = false;
+        }
 
         /// <summary>
         ///     Peinture la map, le hero et finalement les AIs.
@@ -103,10 +114,10 @@ namespace TP2_Zoo.Etat {
             int pY = p.Y / 32;
 
             int enclos = GerantCarte.SurfaceEnclosMap[pX, pY];  // 0: pas dans un enclos.
+            String enclosTypeAnimal = GerantCarte.AnimalEnclos[enclos];
 
             if (e.Button == MouseButtons.Left) {
                 if (HerosAdjacent(pX, pY)) {
-                    String enclosTypeAnimal = GerantCarte.AnimalEnclos[enclos];
 
                     // Si clique dans un enclos sur une tuile vide
                     if (enclos != 0 && !GerantCarte.OccupeAiMap[pX, pY] && (pX != heros.Position[0] || pY != heros.Position[1])) {
@@ -135,7 +146,8 @@ namespace TP2_Zoo.Etat {
             }
             else if (e.Button == MouseButtons.Right) {
                 if (enclos != 0 && GerantCarte.OccupeAiMap[pX, pY]) {
-                    Console.WriteLine("C'est un animal!");
+                    infosAnimaux.Setup(enclosTypeAnimal);
+                    infosAnimaux.Visible = true;
                 }
             }
         }

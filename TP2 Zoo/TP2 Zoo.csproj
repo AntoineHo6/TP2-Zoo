@@ -62,12 +62,6 @@
     <Compile Include="Etat\EtatJeu.Designer.cs">
       <DependentUpon>EtatJeu.cs</DependentUpon>
     </Compile>
-    <Compile Include="InformationsAnimaux.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="InformationsAnimaux.Designer.cs">
-      <DependentUpon>InformationsAnimaux.cs</DependentUpon>
-    </Compile>
     <Compile Include="InfosAnimaux.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -100,9 +94,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Etat\EtatJeu.resx">
       <DependentUpon>EtatJeu.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="InformationsAnimaux.resx">
-      <DependentUpon>InformationsAnimaux.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="InfosAnimaux.resx">
       <DependentUpon>InfosAnimaux.cs</DependentUpon>
