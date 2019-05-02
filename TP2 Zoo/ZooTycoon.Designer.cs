@@ -32,6 +32,7 @@
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.menuToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.Timer = new System.Windows.Forms.Timer(this.components);
+            this.EngagerConcierge = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -39,6 +40,7 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(166)))), ((int)(((byte)(100)))), ((int)(((byte)(40)))));
+            this.panel1.Controls.Add(this.EngagerConcierge);
             this.panel1.Controls.Add(this.LblNbrDechets);
             this.panel1.Controls.Add(this.LblNbrAnimaux);
             this.panel1.Controls.Add(this.LblDate);
@@ -116,6 +118,16 @@
             this.Timer.Interval = 1000;
             this.Timer.Tick += new System.EventHandler(this.Timer1_Tick);
             // 
+            // EngagerConcierge
+            // 
+            this.EngagerConcierge.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.EngagerConcierge.Location = new System.Drawing.Point(963, 15);
+            this.EngagerConcierge.Name = "EngagerConcierge";
+            this.EngagerConcierge.Size = new System.Drawing.Size(75, 23);
+            this.EngagerConcierge.TabIndex = 5;
+            this.EngagerConcierge.Text = "Engager Concierge";
+            this.EngagerConcierge.UseVisualStyleBackColor = true;
+            // 
             // Zoo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -149,6 +161,7 @@
         public System.Windows.Forms.Label LblArgent;
         public System.Windows.Forms.Label LblNbrAnimaux;
         public System.Windows.Forms.Label LblNbrDechets;
+        private System.Windows.Forms.Button EngagerConcierge;
     }
 }
 

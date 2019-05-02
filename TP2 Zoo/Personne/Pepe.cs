@@ -10,7 +10,7 @@ namespace TP2_Zoo.Personne {
 
         public Pepe(){
             for (int i = 0; i < 4; i++) {
-                Sprites.Add(VisiteurTileSetImageGenerator.GetTile(i));
+                Sprites.Add(HumainTileSetImageGenerator.GetTile(i));
             }
 
             Sexe = 0;

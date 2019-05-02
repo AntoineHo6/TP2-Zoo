@@ -9,7 +9,7 @@ namespace TP2_Zoo.Personne {
     class Monsieur : Visiteur {
         public Monsieur() {
             for (int i = 12; i < 16; i++) {
-                Sprites.Add(VisiteurTileSetImageGenerator.GetTile(i));
+                Sprites.Add(HumainTileSetImageGenerator.GetTile(i));
             }
 
             Sexe = 0;

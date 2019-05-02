@@ -10,7 +10,7 @@ namespace TP2_Zoo.Personne {
 
         public Fillette() {
             for (int i = 8; i < 12; i++) {
-                Sprites.Add(VisiteurTileSetImageGenerator.GetTile(i));
+                Sprites.Add(HumainTileSetImageGenerator.GetTile(i));
             }
 
             Sexe = 1;

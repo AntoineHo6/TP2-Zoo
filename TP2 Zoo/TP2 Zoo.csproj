@@ -74,7 +74,7 @@
     <Compile Include="Personne\Monsieur.cs" />
     <Compile Include="Personne\Pepe.cs" />
     <Compile Include="TileSetImageGenerator\AnimalTileSetImageGenerator.cs" />
-    <Compile Include="TileSetImageGenerator\VisiteurTileSetImageGenerator.cs" />
+    <Compile Include="TileSetImageGenerator\HumainTileSetImageGenerator.cs" />
     <Compile Include="ZooTycoon.cs">
       <SubType>Form</SubType>
     </Compile>

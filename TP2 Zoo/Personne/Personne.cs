@@ -19,6 +19,5 @@ namespace TP2_Zoo.Personne {
         public void Peinturer(PaintEventArgs e, int index) {
             e.Graphics.DrawImage(Sprites[index], Position[0] * 32, Position[1] * 32);
         }
-
     }
 }
