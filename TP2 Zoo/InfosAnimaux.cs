@@ -38,6 +38,7 @@ namespace TP2_Zoo {
                     LblTypeAnimal.Text = "Lion";
                     LblGenreAnimal.Text = TrouverGenreAnimal(animal);
                     LblCroissanceAnimal.Text = TrouverCroissanceAnimal(animal);
+                    LblFaimAnimal.Text = TrouverFaimAnimal(animal);
                     LblEnceinteAnimal.Text = TrouverEnceinteAnimal(animal);
                     break;
                 case "Licorne":
@@ -45,6 +46,7 @@ namespace TP2_Zoo {
                     LblTypeAnimal.Text = "Licorne";
                     LblGenreAnimal.Text = TrouverGenreAnimal(animal);
                     LblCroissanceAnimal.Text = TrouverCroissanceAnimal(animal);
+                    LblFaimAnimal.Text = TrouverFaimAnimal(animal);
                     LblEnceinteAnimal.Text = TrouverEnceinteAnimal(animal);
                     break;
             }
