@@ -1,5 +1,5 @@
 ﻿namespace TP2_Zoo.Etat {
-    partial class EtatJeu {
+    partial class FrmEtatJeu {
         /// <summary> 
         /// Variable nécessaire au concepteur.
         /// </summary>
@@ -33,11 +33,11 @@
             this.Timer.Interval = 1000;
             this.Timer.Tick += new System.EventHandler(this.Timer_Tick);
             // 
-            // EtatJeu
+            // FrmEtatJeu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Name = "EtatJeu";
+            this.Name = "FrmEtatJeu";
             this.Size = new System.Drawing.Size(1280, 832);
             this.Paint += new System.Windows.Forms.PaintEventHandler(this.EtatJeu_Paint);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.EtatJeu_KeyDown);

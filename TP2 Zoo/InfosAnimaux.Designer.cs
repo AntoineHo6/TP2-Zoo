@@ -1,5 +1,5 @@
 ﻿namespace TP2_Zoo {
-    partial class InfosAnimaux {
+    partial class UsrCtrlInfosAnimaux {
         /// <summary> 
         /// Variable nécessaire au concepteur.
         /// </summary>
@@ -146,7 +146,7 @@
             this.LblEnceinteAnimal.TabIndex = 12;
             this.LblEnceinteAnimal.Text = "Enceinte de l\'Animal";
             // 
-            // InfosAnimaux
+            // UsrCtrlInfosAnimaux
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -162,7 +162,7 @@
             this.Controls.Add(this.LblGenre);
             this.Controls.Add(this.LblType);
             this.Controls.Add(this.PctrBoxAnimal);
-            this.Name = "InfosAnimaux";
+            this.Name = "UsrCtrlInfosAnimaux";
             this.Size = new System.Drawing.Size(252, 281);
             ((System.ComponentModel.ISupportInitialize)(this.PctrBoxAnimal)).EndInit();
             this.ResumeLayout(false);

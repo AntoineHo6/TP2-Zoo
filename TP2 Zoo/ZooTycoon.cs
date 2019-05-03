@@ -17,7 +17,7 @@ namespace TP2_Zoo {
         Septembre, Octobre, Novembre, Decembre };
         
         DateTime dateNow;
-        EtatJeu etatJeu;
+        FrmEtatJeu etatJeu;
 
         public Zoo() {
             InitializeComponent();
@@ -32,7 +32,7 @@ namespace TP2_Zoo {
 
 
         private void InitEtatJeu() {
-            etatJeu = new EtatJeu(this);
+            etatJeu = new FrmEtatJeu(this);
             etatJeu.Location = new Point(0, 112);
             this.Controls.Add(etatJeu);
             //this.Size = new Size(1280, 832);

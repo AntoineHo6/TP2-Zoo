@@ -14,12 +14,12 @@ using System.Threading;
 namespace TP2_Zoo {
     public partial class ChoixAnimal : UserControl {
 
-        EtatJeu etatJeu;
+        FrmEtatJeu etatJeu;
         int spawnX;
         int spawnY;
         public int Enclos { get; set; }
 
-        public ChoixAnimal(EtatJeu etatJeu) {
+        public ChoixAnimal(FrmEtatJeu etatJeu) {
             InitializeComponent();
 
             this.etatJeu = etatJeu;

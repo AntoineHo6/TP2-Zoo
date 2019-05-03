@@ -13,7 +13,7 @@ using System.Threading;
 using TP2_Zoo.Animaux;
 
 namespace TP2_Zoo.Etat {
-    public partial class EtatJeu : UserControl {
+    public partial class FrmEtatJeu : UserControl {
         static Random r = new Random();
         Zoo formePrincipale;
         int nbrAnimaux;
@@ -24,12 +24,12 @@ namespace TP2_Zoo.Etat {
 
         public List<Animal> listeAnimaux;
         public ChoixAnimal choixAnimal;
-        public InfosAnimaux infosAnimaux;
+        public UsrCtrlInfosAnimaux infosAnimaux;
 
         List<Visiteur> listeVisiteurs;
 
 
-        public EtatJeu(Zoo formPrincipale) {
+        public FrmEtatJeu(Zoo formPrincipale) {
             InitializeComponent();
             DoubleBuffered = true;
 
@@ -60,7 +60,7 @@ namespace TP2_Zoo.Etat {
         ///     Préparer le user control qui permet d'afficher les informations de tous les animaux présents dans le parc.
         /// </summary>
         private void InitInfosAnimaux() {
-            infosAnimaux = new InfosAnimaux(this);
+            infosAnimaux = new UsrCtrlInfosAnimaux(this);
             infosAnimaux.Location = new Point(345, 239);
             this.Controls.Add(infosAnimaux);
             infosAnimaux.Visible = false;

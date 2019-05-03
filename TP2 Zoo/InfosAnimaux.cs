@@ -11,11 +11,11 @@ using TP2_Zoo.Etat;
 using TP2_Zoo.Animaux;
 
 namespace TP2_Zoo {
-    public partial class InfosAnimaux : UserControl {
-        EtatJeu etatJeu;
+    public partial class UsrCtrlInfosAnimaux : UserControl {
+        FrmEtatJeu etatJeu;
         public Animal animalTemp;
 
-        public InfosAnimaux(EtatJeu etatJeu) {
+        public UsrCtrlInfosAnimaux(FrmEtatJeu etatJeu) {
             InitializeComponent();
             this.etatJeu = etatJeu;
         }
