@@ -68,11 +68,17 @@
     <Compile Include="InfosAnimaux.Designer.cs">
       <DependentUpon>InfosAnimaux.cs</DependentUpon>
     </Compile>
-    <Compile Include="InfosVisiteur.cs">
-      <SubType>Form</SubType>
+    <Compile Include="InfosVisiteurs.cs">
+      <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="InfosVisiteur.Designer.cs">
-      <DependentUpon>InfosVisiteur.cs</DependentUpon>
+    <Compile Include="InfosVisiteurs.Designer.cs">
+      <DependentUpon>InfosVisiteurs.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Rien.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Rien.Designer.cs">
+      <DependentUpon>Rien.cs</DependentUpon>
     </Compile>
     <Compile Include="Noms\Noms.cs" />
     <Compile Include="Personne\Dame.cs" />
@@ -104,8 +110,11 @@
     <EmbeddedResource Include="InfosAnimaux.resx">
       <DependentUpon>InfosAnimaux.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="InfosVisiteur.resx">
-      <DependentUpon>InfosVisiteur.cs</DependentUpon>
+    <EmbeddedResource Include="InfosVisiteurs.resx">
+      <DependentUpon>InfosVisiteurs.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Rien.resx">
+      <DependentUpon>Rien.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ZooTycoon.resx">
       <DependentUpon>ZooTycoon.cs</DependentUpon>

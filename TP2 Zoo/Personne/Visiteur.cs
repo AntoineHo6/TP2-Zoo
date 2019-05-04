@@ -11,6 +11,7 @@ namespace TP2_Zoo.Personne {
 
         public String Nom { get; set; }
         public int Sexe { get; set; }   // 0: masculin; 1: feminin
+        public String Type { get; set; }
         public int NbrJours { get; set; }
         public int NbrDechets { get; set; }
         public bool droitQuitter { get; set; }

@@ -21,7 +21,6 @@ namespace TP2_Zoo {
 
         public ChoixAnimal(FrmEtatJeu etatJeu) {
             InitializeComponent();
-
             this.etatJeu = etatJeu;
         }
 

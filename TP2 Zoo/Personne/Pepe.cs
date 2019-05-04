@@ -12,6 +12,7 @@ namespace TP2_Zoo.Personne {
             for (int i = 0; i < 4; i++) {
                 Sprites.Add(HumainTileSetImageGenerator.GetTile(i));
             }
+            Type = "Pépé";
 
             Sexe = 0;
 

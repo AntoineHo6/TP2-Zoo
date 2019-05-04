@@ -12,66 +12,66 @@ using TP2_Zoo.Animaux;
 
 namespace TP2_Zoo {
     public partial class UsrCtrlInfosAnimaux : UserControl {
-        FrmEtatJeu etatJeu;
-        public Animal animalTemp;
+        FrmEtatJeu EtatJeu;
+        private Animal AnimalTemp;
 
-        public UsrCtrlInfosAnimaux(FrmEtatJeu etatJeu) {
+        public UsrCtrlInfosAnimaux(FrmEtatJeu EtatJeu) {
             InitializeComponent();
-            this.etatJeu = etatJeu;
+            this.EtatJeu = EtatJeu;
         }
 
-        public void Setup(String enclosTypeAnimal, int Enclos, List<Animal> ListeAnimaux, int x, int y) {
+        public void Setup(String EnclosTypeAnimal, int Enclos, List<Animal> ListeAnimaux, int PositionX, int PositionY) {
 
-            Animal animal = TrouverAnimal(ListeAnimaux, x, y);
+            Animal unAnimal = TrouverAnimal(ListeAnimaux, PositionX, PositionY);
            
-            switch (enclosTypeAnimal) {
+            switch (EnclosTypeAnimal) {
                 case "Mouton":
                     PctrBoxAnimal.BackgroundImage = Properties.Resources.Mouton;
                     LblTypeAnimal.Text = "Mouton";
-                    LblGenreAnimal.Text = TrouverGenreAnimal(animal);
-                    LblCroissanceAnimal.Text = TrouverCroissanceAnimal(animal);
-                    LblFaimAnimal.Text = TrouverFaimAnimal(animal);
-                    LblEnceinteAnimal.Text = TrouverEnceinteAnimal(animal);
+                    LblGenreAnimal.Text = TrouverGenreAnimal(unAnimal);
+                    LblCroissanceAnimal.Text = TrouverCroissanceAnimal(unAnimal);
+                    LblFaimAnimal.Text = TrouverFaimAnimal(unAnimal);
+                    LblEnceinteAnimal.Text = TrouverEnceinteAnimal(unAnimal);
                     break;
                 case "Lion":
                     PctrBoxAnimal.BackgroundImage = Properties.Resources.Lion;
                     LblTypeAnimal.Text = "Lion";
-                    LblGenreAnimal.Text = TrouverGenreAnimal(animal);
-                    LblCroissanceAnimal.Text = TrouverCroissanceAnimal(animal);
-                    LblFaimAnimal.Text = TrouverFaimAnimal(animal);
-                    LblEnceinteAnimal.Text = TrouverEnceinteAnimal(animal);
+                    LblGenreAnimal.Text = TrouverGenreAnimal(unAnimal);
+                    LblCroissanceAnimal.Text = TrouverCroissanceAnimal(unAnimal);
+                    LblFaimAnimal.Text = TrouverFaimAnimal(unAnimal);
+                    LblEnceinteAnimal.Text = TrouverEnceinteAnimal(unAnimal);
                     break;
                 case "Licorne":
                     PctrBoxAnimal.BackgroundImage = Properties.Resources.Licorne;
                     LblTypeAnimal.Text = "Licorne";
-                    LblGenreAnimal.Text = TrouverGenreAnimal(animal);
-                    LblCroissanceAnimal.Text = TrouverCroissanceAnimal(animal);
-                    LblFaimAnimal.Text = TrouverFaimAnimal(animal);
-                    LblEnceinteAnimal.Text = TrouverEnceinteAnimal(animal);
+                    LblGenreAnimal.Text = TrouverGenreAnimal(unAnimal);
+                    LblCroissanceAnimal.Text = TrouverCroissanceAnimal(unAnimal);
+                    LblFaimAnimal.Text = TrouverFaimAnimal(unAnimal);
+                    LblEnceinteAnimal.Text = TrouverEnceinteAnimal(unAnimal);
                     break;
             }
         }
 
         private Animal TrouverAnimal(List<Animal> ListeAnimaux, int PostionX, int PositionY) {
-            foreach (var animal in ListeAnimaux) {
-                if (animal.Position[0] == PostionX && animal.Position[1] == PositionY) {
-                    animalTemp = animal;
+            foreach (var Animal in ListeAnimaux) {
+                if (Animal.Position[0] == PostionX && Animal.Position[1] == PositionY) {
+                    AnimalTemp = Animal;
                 }
             }
-            return animalTemp;
+            return AnimalTemp;
         }
 
-        private String TrouverGenreAnimal(Animal animal) {
-            if (animal.Genre == 0) {
-                return "Mâle";
+        private String TrouverGenreAnimal(Animal unAnimal) {
+            if (unAnimal.Genre == 0) {
+                return "Masculin";
             }
             else {
-                return "Femelle";
+                return "Féminin";
             }
         }
 
-        private String TrouverCroissanceAnimal(Animal animal) {
-            if (animal.EstAdulte) {
+        private String TrouverCroissanceAnimal(Animal unAnimal) {
+            if (unAnimal.EstAdulte) {
                 return "Adulte";
             }
             else {
@@ -79,8 +79,8 @@ namespace TP2_Zoo {
             }
         }
 
-        private string TrouverFaimAnimal(Animal animal) {
-            if (animal.JoursPasNourri > 0) {
+        private string TrouverFaimAnimal(Animal unAnimal) {
+            if (unAnimal.JoursPasNourri > 0) {
                 return "Oui";
             }
             else {
@@ -88,12 +88,12 @@ namespace TP2_Zoo {
             }
         }
 
-        private string TrouverEnceinteAnimal(Animal animal) {
-            if (animal.Genre == 0) {
+        private string TrouverEnceinteAnimal(Animal unAnimal) {
+            if (unAnimal.Genre == 0) {
                 return "Non";
             }
             else {
-                if (animal.Enceinte) {
+                if (unAnimal.Enceinte) {
                     return "Oui";
                 }
                 else {

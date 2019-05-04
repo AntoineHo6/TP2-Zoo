@@ -27,7 +27,7 @@ namespace TP2_Zoo.Etat {
         public UsrCtrlInfosAnimaux infosAnimaux;
 
         List<Visiteur> listeVisiteurs;
-
+        public FrmInfosVisiteurs infosVisiteurs;
 
         public FrmEtatJeu(Zoo formPrincipale) {
             InitializeComponent();
@@ -43,6 +43,7 @@ namespace TP2_Zoo.Etat {
             listeVisiteurs = new List<Visiteur>();
             InitChoixAnimal();
             InitInfosAnimaux();
+            FrmInfosVisiteurs();
         }
 
 
@@ -64,6 +65,12 @@ namespace TP2_Zoo.Etat {
             infosAnimaux.Location = new Point(345, 239);
             this.Controls.Add(infosAnimaux);
             infosAnimaux.Visible = false;
+        }
+
+        private void FrmInfosVisiteurs()
+        {
+            infosVisiteurs = new FrmInfosVisiteurs(this);
+            infosVisiteurs.Visible = false;
         }
 
         /// <summary>
@@ -145,9 +152,17 @@ namespace TP2_Zoo.Etat {
                 }
             }
             else if (e.Button == MouseButtons.Right) {
+                // Si clique sur un animal
                 if (enclos != 0 && GerantCarte.OccupeAiMap[pX, pY]) {
                     infosAnimaux.Setup(enclosTypeAnimal, enclos, listeAnimaux, pX, pY);
                     infosAnimaux.Visible = true;
+                }
+
+                // Si je clique sur un visiteur
+                else if (GerantCarte.OccupeAiMap[pX,pY]) 
+                {
+                    infosVisiteurs.Setup(listeVisiteurs, pX, pY);
+                    infosVisiteurs.Visible = true;
                 }
             }
         }

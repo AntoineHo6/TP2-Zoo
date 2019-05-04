@@ -12,6 +12,7 @@ namespace TP2_Zoo.Personne {
             for (int i = 8; i < 12; i++) {
                 Sprites.Add(HumainTileSetImageGenerator.GetTile(i));
             }
+            Type = "Fillette";
 
             Sexe = 1;
 

@@ -13,7 +13,7 @@ namespace TP2_Zoo.Animaux {
 
         public int[] Position { get; set; }
         public String Type { get; set; }
-        public int Genre { get; set; }   // 0: male; 1: femelle
+        public int Genre { get; set; }   // 0: masculin; 1: feminin
         public bool Enceinte { get; set; }
         public int Prix { get; set; }
         public List<Bitmap> Sprites { get; set; }
