@@ -278,6 +278,16 @@ namespace TP2_Zoo.Properties {
         }
         
         /// <summary>
+        ///   Recherche une ressource localisée de type System.Drawing.Icon semblable à (Icône).
+        /// </summary>
+        internal static System.Drawing.Icon Zoo_Tycoon_Icon {
+            get {
+                object obj = ResourceManager.GetObject("Zoo_Tycoon_Icon", resourceCulture);
+                return ((System.Drawing.Icon)(obj));
+            }
+        }
+        
+        /// <summary>
         ///   Recherche une ressource localisée de type System.Drawing.Bitmap.
         /// </summary>
         internal static System.Drawing.Bitmap ZooTycoon {
