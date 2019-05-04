@@ -25,7 +25,7 @@ namespace TP2_Zoo {
             InitEtatJeu();
 
             dateNow = DateTime.Now;
-            LblDate.Text = "Date : " + dateNow.Day + "  " + (Mois)dateNow.Month + "  " + dateNow.Year;
+            LblDate.Text = " " + dateNow.Day + "  " + (Mois)dateNow.Month + "  " + dateNow.Year;
 
             Noms.Noms.LoadNames();
         }
@@ -41,7 +41,7 @@ namespace TP2_Zoo {
 
         private void Timer1_Tick(object sender, EventArgs e) {
             dateNow = dateNow.AddDays(1);
-            LblDate.Text = "Date : " + dateNow.Day + "  " + (Mois)dateNow.Month + "  " + dateNow.Year;
+            LblDate.Text = " " + dateNow.Day + "  " + (Mois)dateNow.Month + "  " + dateNow.Year;
         }
 
         private void Zoo_KeyDown(object sender, KeyEventArgs e) {

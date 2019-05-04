@@ -63,6 +63,16 @@ namespace TP2_Zoo.Properties {
         /// <summary>
         ///   Recherche une ressource localisée de type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap Argent_Logo {
+            get {
+                object obj = ResourceManager.GetObject("Argent_Logo", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une ressource localisée de type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap bas1 {
             get {
                 object obj = ResourceManager.GetObject("bas1", resourceCulture);
