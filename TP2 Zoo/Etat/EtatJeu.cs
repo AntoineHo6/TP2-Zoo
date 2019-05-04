@@ -177,28 +177,28 @@ namespace TP2_Zoo.Etat {
         /// <param name="animal"> Le type d'animal à créé </param>
         /// <param name="x"></param>
         /// <param name="y"></param>
-        public void CreerAnimal(String animal, int Enclos, int x, int y) {
+        public void CreerAnimal(String animal, int enclos, int x, int y) {
             bool animalCree = false;
 
             switch (animal) {
                 case "Mouton":
                     if (heros.Argent >= 20) {
                         DeduireArgentHeros(20);
-                        ListeAnimaux.Add(new Mouton(true, Enclos, x, y));
+                        ListeAnimaux.Add(new Mouton(true, enclos, x, y));
                         animalCree = true;
                     }
                     break;
                 case "Lion":
                     if (heros.Argent >= 35) {
                         DeduireArgentHeros(35);
-                        ListeAnimaux.Add(new Lion(true, Enclos, x, y));
+                        ListeAnimaux.Add(new Lion(true, enclos, x, y));
                         animalCree = true;
                     }
                     break;
                 case "Licorne":
                     if (heros.Argent >= 50) {
                         DeduireArgentHeros(50);
-                        ListeAnimaux.Add(new Licorne(true, Enclos, x, y));
+                        ListeAnimaux.Add(new Licorne(true, enclos, x, y));
                         animalCree = true;
                     }
                     break;
@@ -301,6 +301,37 @@ namespace TP2_Zoo.Etat {
             }
         }
 
+        private void VerifierAnimalEnceinte(int enclos) {
+            bool PresenceMasculin = TrouverAnimalMasculin(enclos);
+            bool PresenceFeminin = TrouverAnimalFeminin(enclos);
+
+            if (PresenceFeminin && PresenceMasculin) {
+                ChanceAnimauxEnceinte(enclos);
+            }
+        }
+
+        private bool TrouverAnimalFeminin(int enclos) {
+            bool PresenceFeminin = false;
+
+            foreach (var animal in ListeAnimaux) {
+                if (animal.Genre == 1 && animal.Enclos == enclos) {
+                    return PresenceFeminin = true;
+                }
+            }
+            return PresenceFeminin;
+        }
+
+        private bool TrouverAnimalMasculin(int enclos) {
+            bool PresenceMasculin = false;
+
+            foreach (var animal in ListeAnimaux) {
+                if (animal.Genre == 0 && animal.Enclos == enclos) {
+                    return PresenceMasculin = true;
+                }
+            }
+            return PresenceMasculin;
+        }
+
 
         /// <summary>
         ///     Mets à jours tous les AIs et paie le joueur à chaque minute dépendamment du nombre d'animaux et de déchets.
@@ -310,6 +341,7 @@ namespace TP2_Zoo.Etat {
         private void Timer_Tick(object sender, EventArgs e) {
             TickVisiteurs();
             TickAnimaux();
+            TickAnimauxEnceinte();
 
             SecondesJeu++;
 
@@ -320,7 +352,6 @@ namespace TP2_Zoo.Etat {
 
             this.Refresh();
         }
-
 
         /// <summary>
         ///     Mets à jour chaque visiteur et ils se déplacent.
@@ -368,6 +399,24 @@ namespace TP2_Zoo.Etat {
             }
         }
 
+        private void TickAnimauxEnceinte() {
+            for (int i = 1; i < 5; i++) {
+                switch (i) {
+                    case 1:
+                        VerifierAnimalEnceinte(1);
+                        break;
+                    case 2:
+                        VerifierAnimalEnceinte(2);
+                        break;
+                    case 3:
+                        VerifierAnimalEnceinte(3);
+                        break;
+                    case 4:
+                        VerifierAnimalEnceinte(4);
+                        break;
+                }
+            }
+        }
 
         /// <summary>
         ///     Le visiteur a 3% chance de laisser tomber un dechet.
@@ -381,6 +430,12 @@ namespace TP2_Zoo.Etat {
             }
         }
 
+        private void ChanceAnimauxEnceinte(int enclos) {
+            String enclosTypeAnimal = GerantCarte.AnimalEnclos[enclos];
+            if (r.Next(100) < 2 && !GerantCarte.OccupeAiMap[pX, pY] && (pX != heros.Position[0] || pY != heros.Position[1])) {
+                CreerAnimal(enclosTypeAnimal, enclos, );
+            }
+        }
 
         /// <summary>
         ///     Incrémente le nombre de déchets.
