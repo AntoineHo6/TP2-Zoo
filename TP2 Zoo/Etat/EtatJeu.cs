@@ -15,62 +15,65 @@ using TP2_Zoo.Animaux;
 namespace TP2_Zoo.Etat {
     public partial class FrmEtatJeu : UserControl {
         static Random r = new Random();
-        Zoo formePrincipale;
-        int nbrAnimaux;
-        int nbrDechet;
-        int secondesJeu;
+        Zoo FormePrincipale;
+        int NbrAnimaux;
+        int NbrDechets;
+        int SecondesJeu;
 
         public Heros heros;
 
-        public List<Animal> listeAnimaux;
-        public ChoixAnimal choixAnimal;
-        public UsrCtrlInfosAnimaux infosAnimaux;
+        public List<Animal> ListeAnimaux;
+        public ChoixAnimal ChoixAnimal;
+        public UsrCtrlInfosAnimaux InfosAnimaux;
 
         List<Visiteur> listeVisiteurs;
-        public FrmInfosVisiteurs infosVisiteurs;
+        public UsrCtrlInfosVisiteurs InfosVisiteurs;
 
         public FrmEtatJeu(Zoo formPrincipale) {
             InitializeComponent();
             DoubleBuffered = true;
 
-            nbrAnimaux = 0;
-            nbrDechet = 0;
-            secondesJeu = 0;
+            NbrAnimaux = 0;
+            NbrDechets = 0;
+            SecondesJeu = 0;
 
-            this.formePrincipale = formPrincipale;
+            this.FormePrincipale = formPrincipale;
             heros = new Heros();
-            listeAnimaux = new List<Animal>();
+            ListeAnimaux = new List<Animal>();
             listeVisiteurs = new List<Visiteur>();
             InitChoixAnimal();
             InitInfosAnimaux();
-            FrmInfosVisiteurs();
+            InitInfosVisiteurs();
         }
-
 
         /// <summary>
         ///     Prépare le user control qui permet de choisir le type d'animal à créer dans un nouvel enclos.
         /// </summary>
         private void InitChoixAnimal() {
-            choixAnimal = new ChoixAnimal(this);
-            choixAnimal.Location = new Point(345, 239);
-            this.Controls.Add(choixAnimal);
-            choixAnimal.Visible = false;
+            ChoixAnimal = new ChoixAnimal(this);
+            ChoixAnimal.Location = new Point(345, 239);
+            this.Controls.Add(ChoixAnimal);
+            ChoixAnimal.Visible = false;
         }
 
         /// <summary>
         ///     Préparer le user control qui permet d'afficher les informations de tous les animaux présents dans le parc.
         /// </summary>
         private void InitInfosAnimaux() {
-            infosAnimaux = new UsrCtrlInfosAnimaux(this);
-            infosAnimaux.Location = new Point(345, 239);
-            this.Controls.Add(infosAnimaux);
-            infosAnimaux.Visible = false;
+            InfosAnimaux = new UsrCtrlInfosAnimaux(this);
+            InfosAnimaux.Location = new Point(345, 239);
+            this.Controls.Add(InfosAnimaux);
+            InfosAnimaux.Visible = false;
         }
 
-        private void FrmInfosVisiteurs()
-        {
-            infosVisiteurs = new FrmInfosVisiteurs(this);
-            infosVisiteurs.Visible = false;
+        /// <summary>
+        /// Préparer le User Control qui permet d'afficher les informations d'un visiteur sélectionné.
+        /// </summary>
+        private void InitInfosVisiteurs() {
+            InfosVisiteurs = new UsrCtrlInfosVisiteurs(this);
+            InfosVisiteurs.Location = new Point(345, 239);
+            this.Controls.Add(InfosVisiteurs);
+            InfosVisiteurs.Visible = false;
         }
 
         /// <summary>
@@ -90,7 +93,7 @@ namespace TP2_Zoo.Etat {
         /// </summary>
         /// <param name="e"></param>
         private void PeinturerAI(PaintEventArgs e) {
-            foreach (var animal in listeAnimaux) {
+            foreach (var animal in ListeAnimaux) {
                 animal.Peinturer(e, 0);
             }
             foreach (var visiteur in listeVisiteurs) {
@@ -130,8 +133,8 @@ namespace TP2_Zoo.Etat {
                     if (enclos != 0 && !GerantCarte.OccupeAiMap[pX, pY] && (pX != heros.Position[0] || pY != heros.Position[1])) {
                         // Si aucun animal dans l'enclos
                         if (enclosTypeAnimal == null) {
-                            choixAnimal.Setup(heros.Argent, enclos, pX, pY);
-                            choixAnimal.Visible = true;
+                            ChoixAnimal.Setup(heros.Argent, enclos, pX, pY);
+                            ChoixAnimal.Visible = true;
                         }
                         else {
                             CreerAnimal(enclosTypeAnimal, enclos, pX, pY);
@@ -154,15 +157,15 @@ namespace TP2_Zoo.Etat {
             else if (e.Button == MouseButtons.Right) {
                 // Si clique sur un animal
                 if (enclos != 0 && GerantCarte.OccupeAiMap[pX, pY]) {
-                    infosAnimaux.Setup(enclosTypeAnimal, enclos, listeAnimaux, pX, pY);
-                    infosAnimaux.Visible = true;
+                    InfosAnimaux.Setup(enclosTypeAnimal, enclos, ListeAnimaux, pX, pY);
+                    InfosAnimaux.Visible = true;
                 }
 
                 // Si je clique sur un visiteur
                 else if (GerantCarte.OccupeAiMap[pX,pY]) 
                 {
-                    infosVisiteurs.Setup(listeVisiteurs, pX, pY);
-                    infosVisiteurs.Visible = true;
+                    InfosVisiteurs.Setup(listeVisiteurs, pX, pY);
+                    InfosVisiteurs.Visible = true;
                 }
             }
         }
@@ -181,21 +184,21 @@ namespace TP2_Zoo.Etat {
                 case "Mouton":
                     if (heros.Argent >= 20) {
                         DeduireArgentHeros(20);
-                        listeAnimaux.Add(new Mouton(true, Enclos, x, y));
+                        ListeAnimaux.Add(new Mouton(true, Enclos, x, y));
                         animalCree = true;
                     }
                     break;
                 case "Lion":
                     if (heros.Argent >= 35) {
                         DeduireArgentHeros(35);
-                        listeAnimaux.Add(new Lion(true, Enclos, x, y));
+                        ListeAnimaux.Add(new Lion(true, Enclos, x, y));
                         animalCree = true;
                     }
                     break;
                 case "Licorne":
                     if (heros.Argent >= 50) {
                         DeduireArgentHeros(50);
-                        listeAnimaux.Add(new Licorne(true, Enclos, x, y));
+                        ListeAnimaux.Add(new Licorne(true, Enclos, x, y));
                         animalCree = true;
                     }
                     break;
@@ -240,7 +243,7 @@ namespace TP2_Zoo.Etat {
         /// <param name="montant"> Le montant d'argent à déduire. </param>
         private void DeduireArgentHeros(double montant) {
             heros.Argent -= montant;
-            formePrincipale.LblArgent.Text = "Argent : " + heros.Argent + "$";
+            FormePrincipale.LblArgent.Text = "Argent : " + heros.Argent + "$";
         }
 
 
@@ -250,7 +253,7 @@ namespace TP2_Zoo.Etat {
         /// <param name="montant"> Le montant d'argent à ajouter. </param>
         private void AjouterArgentHeros(double montant) {
             heros.Argent += montant;
-            formePrincipale.LblArgent.Text = "Argent : " + heros.Argent + "$";
+            FormePrincipale.LblArgent.Text = "Argent : " + heros.Argent + "$";
         }
 
 
@@ -279,8 +282,8 @@ namespace TP2_Zoo.Etat {
         ///     Incrémente la variable du nombre d'animaux.
         /// </summary>
         private void IncNbrAnimaux() {
-            nbrAnimaux++;
-            formePrincipale.LblNbrAnimaux.Text = "Nombre d'animaux : " + nbrAnimaux;
+            NbrAnimaux++;
+            FormePrincipale.LblNbrAnimaux.Text = "Nombre d'animaux : " + NbrAnimaux;
         }
 
 
@@ -290,7 +293,7 @@ namespace TP2_Zoo.Etat {
         /// <param name="x"> La position X de l'animal </param>
         /// <param name="y"> La position Y de l'animal </param>
         private void NourrirAnimal(int x, int y) {
-            foreach (var animal in listeAnimaux) {
+            foreach (var animal in ListeAnimaux) {
                 if (animal.Position[0] == x && animal.Position[1] == y) {
                     DeduireArgentHeros(1);
                     animal.Manger();
@@ -308,11 +311,11 @@ namespace TP2_Zoo.Etat {
             TickVisiteurs();
             TickAnimaux();
 
-            secondesJeu++;
+            SecondesJeu++;
 
-            if (secondesJeu % 60 == 0) {
-                AjouterArgentHeros(nbrAnimaux * nbrAnimaux); // chaque visiteur repaie 1$ pour chaque animal présent, et pour chaque animal, il y a un visiteur.
-                DeduireArgentHeros(nbrDechet * 0.10);
+            if (SecondesJeu % 60 == 0) {
+                AjouterArgentHeros(NbrAnimaux * NbrAnimaux); // chaque visiteur repaie 1$ pour chaque animal présent, et pour chaque animal, il y a un visiteur.
+                DeduireArgentHeros(NbrDechets * 0.10);
             }
 
             this.Refresh();
@@ -352,7 +355,7 @@ namespace TP2_Zoo.Etat {
         ///     Mets à jours tous les animaux et ils se déplacent.
         /// </summary>
         private void TickAnimaux() {
-            foreach (var animal in listeAnimaux) {
+            foreach (var animal in ListeAnimaux) {
                 animal.NbrJours++;
                 animal.JoursPasNourri++;
 
@@ -383,8 +386,8 @@ namespace TP2_Zoo.Etat {
         ///     Incrémente le nombre de déchets.
         /// </summary>
         private void IncNbrDechet() {
-            nbrDechet++;
-            formePrincipale.LblNbrDechets.Text = "Nombre de dechets : " + nbrDechet;
+            NbrDechets++;
+            FormePrincipale.LblNbrDechets.Text = "Nombre de dechets : " + NbrDechets;
         }
 
 
@@ -392,8 +395,8 @@ namespace TP2_Zoo.Etat {
         ///     Décremente le nombre de déchets.
         /// </summary>
         private void DecNbrDechet() {
-            nbrDechet--;
-            formePrincipale.LblNbrDechets.Text = "Nombre de dechets : " + nbrDechet;
+            NbrDechets--;
+            FormePrincipale.LblNbrDechets.Text = "Nombre de dechets : " + NbrDechets;
         }
 
 

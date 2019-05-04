@@ -46,8 +46,9 @@ namespace TP2_Zoo {
 
         private void Zoo_KeyDown(object sender, KeyEventArgs e) {
             if (e.KeyCode == Keys.Escape) {
-                etatJeu.choixAnimal.Visible = false;
-                etatJeu.infosAnimaux.Visible = false;
+                etatJeu.ChoixAnimal.Visible = false;
+                etatJeu.InfosAnimaux.Visible = false;
+                etatJeu.InfosVisiteurs.Visible = false;
                 etatJeu.Focus();
             }
         }

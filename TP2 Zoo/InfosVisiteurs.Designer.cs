@@ -1,6 +1,6 @@
 ﻿namespace TP2_Zoo
 {
-    partial class InfosVisiteurs
+    partial class UsrCtrlInfosVisiteurs
     {
         /// <summary> 
         /// Variable nécessaire au concepteur.
@@ -48,20 +48,18 @@
             this.panel1.Controls.Add(this.LblDuree);
             this.panel1.Controls.Add(this.LblSexe);
             this.panel1.Controls.Add(this.LblNom);
-            this.panel1.Location = new System.Drawing.Point(25, 256);
-            this.panel1.Margin = new System.Windows.Forms.Padding(7);
+            this.panel1.Location = new System.Drawing.Point(11, 115);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(550, 216);
+            this.panel1.Size = new System.Drawing.Size(236, 97);
             this.panel1.TabIndex = 3;
             // 
             // LblDureeVisiteur
             // 
             this.LblDureeVisiteur.AutoSize = true;
             this.LblDureeVisiteur.Font = new System.Drawing.Font("Arial", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.LblDureeVisiteur.Location = new System.Drawing.Point(268, 152);
-            this.LblDureeVisiteur.Margin = new System.Windows.Forms.Padding(7, 0, 7, 0);
+            this.LblDureeVisiteur.Location = new System.Drawing.Point(115, 68);
             this.LblDureeVisiteur.Name = "LblDureeVisiteur";
-            this.LblDureeVisiteur.Size = new System.Drawing.Size(259, 38);
+            this.LblDureeVisiteur.Size = new System.Drawing.Size(118, 17);
             this.LblDureeVisiteur.TabIndex = 5;
             this.LblDureeVisiteur.Text = "Durée du visiteur";
             // 
@@ -69,10 +67,9 @@
             // 
             this.LblSexeVisiteur.AutoSize = true;
             this.LblSexeVisiteur.Font = new System.Drawing.Font("Arial", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.LblSexeVisiteur.Location = new System.Drawing.Point(127, 87);
-            this.LblSexeVisiteur.Margin = new System.Windows.Forms.Padding(7, 0, 7, 0);
+            this.LblSexeVisiteur.Location = new System.Drawing.Point(54, 39);
             this.LblSexeVisiteur.Name = "LblSexeVisiteur";
-            this.LblSexeVisiteur.Size = new System.Drawing.Size(243, 38);
+            this.LblSexeVisiteur.Size = new System.Drawing.Size(111, 17);
             this.LblSexeVisiteur.TabIndex = 4;
             this.LblSexeVisiteur.Text = "Sexe du visiteur";
             // 
@@ -80,10 +77,9 @@
             // 
             this.LblNomVisiteur.AutoSize = true;
             this.LblNomVisiteur.Font = new System.Drawing.Font("Arial", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.LblNomVisiteur.Location = new System.Drawing.Point(124, 20);
-            this.LblNomVisiteur.Margin = new System.Windows.Forms.Padding(7, 0, 7, 0);
+            this.LblNomVisiteur.Location = new System.Drawing.Point(53, 9);
             this.LblNomVisiteur.Name = "LblNomVisiteur";
-            this.LblNomVisiteur.Size = new System.Drawing.Size(240, 38);
+            this.LblNomVisiteur.Size = new System.Drawing.Size(109, 17);
             this.LblNomVisiteur.TabIndex = 3;
             this.LblNomVisiteur.Text = "Nom du visiteur";
             // 
@@ -91,10 +87,9 @@
             // 
             this.LblDuree.AutoSize = true;
             this.LblDuree.Font = new System.Drawing.Font("Arial", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.LblDuree.Location = new System.Drawing.Point(7, 152);
-            this.LblDuree.Margin = new System.Windows.Forms.Padding(7, 0, 7, 0);
+            this.LblDuree.Location = new System.Drawing.Point(3, 68);
             this.LblDuree.Name = "LblDuree";
-            this.LblDuree.Size = new System.Drawing.Size(247, 38);
+            this.LblDuree.Size = new System.Drawing.Size(113, 17);
             this.LblDuree.TabIndex = 2;
             this.LblDuree.Text = "Durée de visite :";
             // 
@@ -102,10 +97,9 @@
             // 
             this.LblSexe.AutoSize = true;
             this.LblSexe.Font = new System.Drawing.Font("Arial", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.LblSexe.Location = new System.Drawing.Point(7, 87);
-            this.LblSexe.Margin = new System.Windows.Forms.Padding(7, 0, 7, 0);
+            this.LblSexe.Location = new System.Drawing.Point(3, 39);
             this.LblSexe.Name = "LblSexe";
-            this.LblSexe.Size = new System.Drawing.Size(106, 38);
+            this.LblSexe.Size = new System.Drawing.Size(49, 17);
             this.LblSexe.TabIndex = 1;
             this.LblSexe.Text = "Sexe :";
             // 
@@ -113,30 +107,30 @@
             // 
             this.LblNom.AutoSize = true;
             this.LblNom.Font = new System.Drawing.Font("Arial", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.LblNom.Location = new System.Drawing.Point(7, 20);
-            this.LblNom.Margin = new System.Windows.Forms.Padding(7, 0, 7, 0);
+            this.LblNom.Location = new System.Drawing.Point(3, 9);
             this.LblNom.Name = "LblNom";
-            this.LblNom.Size = new System.Drawing.Size(103, 38);
+            this.LblNom.Size = new System.Drawing.Size(47, 17);
             this.LblNom.TabIndex = 0;
             this.LblNom.Text = "Nom :";
             // 
             // PctrBoxVisiteur
             // 
-            this.PctrBoxVisiteur.Location = new System.Drawing.Point(184, 31);
-            this.PctrBoxVisiteur.Margin = new System.Windows.Forms.Padding(7);
+            this.PctrBoxVisiteur.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.PctrBoxVisiteur.Location = new System.Drawing.Point(88, 15);
             this.PctrBoxVisiteur.Name = "PctrBoxVisiteur";
-            this.PctrBoxVisiteur.Size = new System.Drawing.Size(210, 201);
+            this.PctrBoxVisiteur.Size = new System.Drawing.Size(85, 85);
             this.PctrBoxVisiteur.TabIndex = 2;
             this.PctrBoxVisiteur.TabStop = false;
             // 
-            // InfosVisiteurs
+            // UsrCtrlInfosVisiteurs
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(14F, 29F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.PctrBoxVisiteur);
-            this.Name = "InfosVisiteurs";
-            this.Size = new System.Drawing.Size(598, 524);
+            this.Margin = new System.Windows.Forms.Padding(1, 1, 1, 1);
+            this.Name = "UsrCtrlInfosVisiteurs";
+            this.Size = new System.Drawing.Size(256, 235);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.PctrBoxVisiteur)).EndInit();

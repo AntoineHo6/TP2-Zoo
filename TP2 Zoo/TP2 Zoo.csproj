@@ -74,12 +74,6 @@
     <Compile Include="InfosVisiteurs.Designer.cs">
       <DependentUpon>InfosVisiteurs.cs</DependentUpon>
     </Compile>
-    <Compile Include="Rien.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="Rien.Designer.cs">
-      <DependentUpon>Rien.cs</DependentUpon>
-    </Compile>
     <Compile Include="Noms\Noms.cs" />
     <Compile Include="Personne\Dame.cs" />
     <Compile Include="Personne\Fillette.cs" />
@@ -112,9 +106,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="InfosVisiteurs.resx">
       <DependentUpon>InfosVisiteurs.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Rien.resx">
-      <DependentUpon>Rien.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ZooTycoon.resx">
       <DependentUpon>ZooTycoon.cs</DependentUpon>
@@ -208,6 +199,7 @@
   <ItemGroup>
     <Content Include="Noms\NomsFeminins.txt" />
     <Content Include="Noms\NomsMasculins.txt" />
+    <None Include="Resources\Calendrier_Logo.png" />
     <None Include="Resources\ZooTycoon.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
