@@ -28,30 +28,28 @@ namespace TP2_Zoo {
             switch (UnVisiteur.Type) {
                 case "Pépé":
                     PctrBoxVisiteur.BackgroundImage = HumainTileSetImageGenerator.GetTile(0);
-                    LblNomVisiteur.Text = UnVisiteur.Nom;
-                    LblSexeVisiteur.Text = TrouverSexeVisiteur(UnVisiteur);
-                    LblDureeVisiteur.Text = UnVisiteur.NbrJours.ToString() + " jour(s)";
                     break;
                 case "Monsieur":
                     PctrBoxVisiteur.BackgroundImage = HumainTileSetImageGenerator.GetTile(12);
-                    LblNomVisiteur.Text = UnVisiteur.Nom;
-                    LblSexeVisiteur.Text = TrouverSexeVisiteur(UnVisiteur);
-                    LblDureeVisiteur.Text = UnVisiteur.NbrJours.ToString() + " jour(s)";
                     break;
                 case "Fillette":
                     PctrBoxVisiteur.BackgroundImage = HumainTileSetImageGenerator.GetTile(8);
-                    LblNomVisiteur.Text = UnVisiteur.Nom;
-                    LblSexeVisiteur.Text = TrouverSexeVisiteur(UnVisiteur);
-                    LblDureeVisiteur.Text = UnVisiteur.NbrJours.ToString() + " jour(s)";
                     break;
                 case "Dame":
                     PctrBoxVisiteur.BackgroundImage = HumainTileSetImageGenerator.GetTile(4);
-                    LblNomVisiteur.Text = UnVisiteur.Nom;
-                    LblSexeVisiteur.Text = TrouverSexeVisiteur(UnVisiteur);
-                    LblDureeVisiteur.Text = UnVisiteur.NbrJours.ToString() + " jour(s)";
                     break;
             }
+
+            UpdateInfoVisiteur(UnVisiteur);
         }
+
+
+        private void UpdateInfoVisiteur(Visiteur UnVisiteur) {
+            LblNomVisiteur.Text = UnVisiteur.Nom;
+            LblSexeVisiteur.Text = TrouverSexeVisiteur(UnVisiteur);
+            LblDureeVisiteur.Text = UnVisiteur.NbrJours.ToString() + " jour(s)";
+        }
+
 
         private Visiteur TrouverVisiteur(List<Visiteur> ListeVisiteurs, int PositionX, int PositionY) {
             foreach (var Visiteur in ListeVisiteurs) {
@@ -65,9 +63,8 @@ namespace TP2_Zoo {
         private string TrouverSexeVisiteur(Visiteur unVisiteur) {
             if (unVisiteur.Sexe == 0) {
                 return "Masculin";
-            } else {
-                return "Féminin";
-            }
+            } 
+            return "Féminin";
         }
     }
 }

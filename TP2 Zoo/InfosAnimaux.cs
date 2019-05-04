@@ -27,29 +27,19 @@ namespace TP2_Zoo {
             switch (EnclosTypeAnimal) {
                 case "Mouton":
                     PctrBoxAnimal.BackgroundImage = Properties.Resources.Mouton;
-                    LblTypeAnimal.Text = "Mouton";
-                    LblGenreAnimal.Text = TrouverGenreAnimal(unAnimal);
-                    LblCroissanceAnimal.Text = TrouverCroissanceAnimal(unAnimal);
-                    LblFaimAnimal.Text = TrouverFaimAnimal(unAnimal);
-                    LblEnceinteAnimal.Text = TrouverEnceinteAnimal(unAnimal);
+                    LblTypeAnimal.Text = EnclosTypeAnimal;
                     break;
                 case "Lion":
                     PctrBoxAnimal.BackgroundImage = Properties.Resources.Lion;
-                    LblTypeAnimal.Text = "Lion";
-                    LblGenreAnimal.Text = TrouverGenreAnimal(unAnimal);
-                    LblCroissanceAnimal.Text = TrouverCroissanceAnimal(unAnimal);
-                    LblFaimAnimal.Text = TrouverFaimAnimal(unAnimal);
-                    LblEnceinteAnimal.Text = TrouverEnceinteAnimal(unAnimal);
+                    LblTypeAnimal.Text = EnclosTypeAnimal;
                     break;
                 case "Licorne":
                     PctrBoxAnimal.BackgroundImage = Properties.Resources.Licorne;
-                    LblTypeAnimal.Text = "Licorne";
-                    LblGenreAnimal.Text = TrouverGenreAnimal(unAnimal);
-                    LblCroissanceAnimal.Text = TrouverCroissanceAnimal(unAnimal);
-                    LblFaimAnimal.Text = TrouverFaimAnimal(unAnimal);
-                    LblEnceinteAnimal.Text = TrouverEnceinteAnimal(unAnimal);
+                    LblTypeAnimal.Text = EnclosTypeAnimal;
                     break;
             }
+
+            UpdateInfoAnimal(unAnimal);
         }
 
         private Animal TrouverAnimal(List<Animal> ListeAnimaux, int PostionX, int PositionY) {
@@ -100,6 +90,13 @@ namespace TP2_Zoo {
                     return "Non";
                 }
             }
+        }
+
+        private void UpdateInfoAnimal(Animal unAnimal) {
+            LblGenreAnimal.Text = TrouverGenreAnimal(unAnimal);
+            LblCroissanceAnimal.Text = TrouverCroissanceAnimal(unAnimal);
+            LblFaimAnimal.Text = TrouverFaimAnimal(unAnimal);
+            LblEnceinteAnimal.Text = TrouverEnceinteAnimal(unAnimal);
         }
     }
 }
