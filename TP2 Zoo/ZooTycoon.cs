@@ -52,5 +52,9 @@ namespace TP2_Zoo {
                 etatJeu.Focus();
             }
         }
+
+        private void ToolStripMenuItemQuitter_Click(object sender, EventArgs e) {
+            Application.Exit();
+        }
     }
 }

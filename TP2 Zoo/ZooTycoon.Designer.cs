@@ -36,6 +36,9 @@
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.MnuToolStripMenu = new System.Windows.Forms.ToolStripMenuItem();
             this.Timer = new System.Windows.Forms.Timer(this.components);
+            this.ToolStripMenuItemJouer = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
+            this.ToolStripMenuItemQuitter = new System.Windows.Forms.ToolStripMenuItem();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.PctBoxArgent)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.PctrBoxCalendrier)).BeginInit();
@@ -149,6 +152,10 @@
             // MnuToolStripMenu
             // 
             this.MnuToolStripMenu.BackColor = System.Drawing.Color.Transparent;
+            this.MnuToolStripMenu.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.ToolStripMenuItemJouer,
+            this.toolStripSeparator1,
+            this.ToolStripMenuItemQuitter});
             this.MnuToolStripMenu.ForeColor = System.Drawing.Color.White;
             this.MnuToolStripMenu.Name = "MnuToolStripMenu";
             this.MnuToolStripMenu.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.M)));
@@ -160,6 +167,24 @@
             this.Timer.Enabled = true;
             this.Timer.Interval = 1000;
             this.Timer.Tick += new System.EventHandler(this.Timer1_Tick);
+            // 
+            // ToolStripMenuItemJouer
+            // 
+            this.ToolStripMenuItemJouer.Name = "ToolStripMenuItemJouer";
+            this.ToolStripMenuItemJouer.Size = new System.Drawing.Size(180, 22);
+            this.ToolStripMenuItemJouer.Text = "Jouer";
+            // 
+            // toolStripSeparator1
+            // 
+            this.toolStripSeparator1.Name = "toolStripSeparator1";
+            this.toolStripSeparator1.Size = new System.Drawing.Size(177, 6);
+            // 
+            // ToolStripMenuItemQuitter
+            // 
+            this.ToolStripMenuItemQuitter.Name = "ToolStripMenuItemQuitter";
+            this.ToolStripMenuItemQuitter.Size = new System.Drawing.Size(180, 22);
+            this.ToolStripMenuItemQuitter.Text = "Quitter";
+            this.ToolStripMenuItemQuitter.Click += new System.EventHandler(this.ToolStripMenuItemQuitter_Click);
             // 
             // Zoo
             // 
@@ -200,6 +225,9 @@
         private System.Windows.Forms.Button EngagerConcierge;
         private System.Windows.Forms.PictureBox PctrBoxCalendrier;
         private System.Windows.Forms.PictureBox PctBoxArgent;
+        private System.Windows.Forms.ToolStripMenuItem ToolStripMenuItemJouer;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
+        private System.Windows.Forms.ToolStripMenuItem ToolStripMenuItemQuitter;
     }
 }
 
