@@ -1,18 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Drawing;
-using System.Data;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using tileSetZoo;
-using TP2_Zoo.Personne;
-using System.Threading;
 using TP2_Zoo.Animaux;
+using TP2_Zoo.Personne;
 
-namespace TP2_Zoo.Etat {
+namespace TP2_Zoo.Etat
+{
     public partial class FrmEtatJeu : UserControl {
         static Random r = new Random();
         Zoo FormePrincipale;
@@ -302,6 +296,12 @@ namespace TP2_Zoo.Etat {
             }
         }
 
+        /// <summary>
+        ///     Méthode qui vérifie si l'animal femelle est enceinte et donne naissance
+        ///     à un bébé après un certain nombre de jours de gestation.
+        /// </summary>
+        /// <param name="enclos"> Le numéro de l'enclos </param>
+        /// <param name="AnimalFeminin"></param>
         private void AccoucherBebeAnimal(int enclos, Animal AnimalFeminin) {
             if (AnimalFeminin.Enceinte) {
                 switch (AnimalFeminin.Type) {
@@ -324,17 +324,33 @@ namespace TP2_Zoo.Etat {
             }
         }
 
+        /// <summary>
+        ///     Méthode qui donne naissance à un bébé dans une position aléatoire de l'enclos respectif.
+        /// </summary>
+        /// <param name="enclos"></param>
         private void CreerBebe(int enclos) {
             String enclosTypeAnimal = GerantCarte.AnimalEnclos[enclos];
 
             int pX = PosAleatoireX(enclos);
             int pY = PosAleatoireY(enclos);
 
-            if (enclos != 0 && !GerantCarte.OccupeAiMap[pX, pY] && (pX != heros.Position[0] || pY != heros.Position[1]) && AnimalEnceinte.Enceinte) {
+            while (!GerantCarte.OccupeAiMap[pX, pY] && (pX != heros.Position[0] || pY != heros.Position[1])) {
+                pX = PosAleatoireX(enclos);
+                pY = PosAleatoireY(enclos);
+            }
+
+            if (enclos != 0 && AnimalEnceinte.Enceinte) {
                 CreerAnimalBebe(enclosTypeAnimal, enclos, pX, pY);
             }
         }
 
+        /// <summary>
+        ///     Méthode qui crée le bébé de l'animal femelle. 
+        /// </summary>
+        /// <param name="enclosTypeAnimal"></param>
+        /// <param name="enclos"></param>
+        /// <param name="pX"></param>
+        /// <param name="pY"></param>
         private void CreerAnimalBebe(string enclosTypeAnimal, int enclos, int pX, int pY) {
             bool animalCree = false;
 
@@ -445,9 +461,13 @@ namespace TP2_Zoo.Etat {
             }
         }
 
+        /// <summary>
+        ///     Méthode qui vérifie si un animal femelle peut devenir enceinte dans 
+        ///     chaque enclos.
+        /// </summary>
         private void TickAnimauxEnceinte() {
-            for (int i = 1; i < 5; i++) {
-                switch (i) {
+            for (int enclos = 1; enclos < 5; enclos++) {
+                switch (enclos) {
                     case 1:
                         VerifierAnimalEnceinte(1);
                         break;
@@ -464,10 +484,15 @@ namespace TP2_Zoo.Etat {
             }
         }
 
+        /// <summary>
+        ///     Méthode qui vérifie s'il y a la présence d'un animal mâle et d'un
+        ///     animal femelle dans un enclos donné.
+        /// </summary>
+        /// <param name="enclos"></param>
         private void VerifierAnimalEnceinte(int enclos) {
-            bool PresenceMasculin = TrouverPresenceM(enclos);
-            bool PresenceFeminin = TrouverPresenceF(enclos);
-            Animal AnimalFeminin = TrouverAnimalF(enclos);
+            bool PresenceMasculin = TrouverPresenceMale(enclos);
+            bool PresenceFeminin = TrouverPresenceFemelle(enclos);
+            Animal AnimalFeminin = TrouverAnimalFemelle(enclos);
 
             if (PresenceFeminin && PresenceMasculin) {
                 ChanceAnimauxEnceinte(AnimalFeminin);
@@ -475,7 +500,12 @@ namespace TP2_Zoo.Etat {
             }
         }
 
-        private Animal TrouverAnimalF(int enclos) {
+        /// <summary>
+        ///     Méthode qui retourne l'animal femelle de l'enclos donné.
+        /// </summary>
+        /// <param name="enclos"></param>
+        /// <returns></returns>
+        private Animal TrouverAnimalFemelle(int enclos) {
             foreach (var animal in ListeAnimaux) {
                 if (animal.Genre == 1 && animal.Enclos == enclos && !animal.Enceinte) {
                     return AnimalEnceinte = animal;
@@ -484,7 +514,13 @@ namespace TP2_Zoo.Etat {
             return AnimalEnceinte;
         }
 
-        private bool TrouverPresenceF(int enclos) {
+        /// <summary>
+        ///     Méthode qui retourne un booléen indiquant la présence d'un animal
+        ///     femelle dans un enclos donné.
+        /// </summary>
+        /// <param name="enclos"></param>
+        /// <returns></returns>
+        private bool TrouverPresenceFemelle(int enclos) {
             bool PresenceFeminin = false;
 
             foreach (var animal in ListeAnimaux) {
@@ -495,7 +531,13 @@ namespace TP2_Zoo.Etat {
             return PresenceFeminin;
         }
 
-        private bool TrouverPresenceM(int enclos) {
+        /// <summary>
+        ///     Méthode qui retourne un booléen indiquant la présence d'un animal
+        ///     mâle dans un enclos donné.
+        /// </summary>
+        /// <param name="enclos"></param>
+        /// <returns></returns>
+        private bool TrouverPresenceMale(int enclos) {
             bool PresenceMasculin = false;
 
             foreach (var animal in ListeAnimaux) {
@@ -506,6 +548,11 @@ namespace TP2_Zoo.Etat {
             return PresenceMasculin;
         }
 
+        /// <summary>
+        ///     Méthode qui indique le nombre de chances (1%) qu'un animal femelle
+        ///     peut devenir enceinte. 
+        /// </summary>
+        /// <param name="AnimalFeminin"></param>
         private void ChanceAnimauxEnceinte(Animal AnimalFeminin) {
             if (r.Next(100) < 2) {
                 AnimalFeminin.Enceinte = true;
@@ -516,6 +563,11 @@ namespace TP2_Zoo.Etat {
             }
         }
 
+        /// <summary>
+        ///     Méthode qui génère une position aléatoire Y dans un enclos donné.
+        /// </summary>
+        /// <param name="enclos"></param>
+        /// <returns></returns>
         private int PosAleatoireY(int enclos) {
             int Position = 0;
             switch (enclos) {
@@ -535,6 +587,11 @@ namespace TP2_Zoo.Etat {
             return Position;
         }
 
+        /// <summary>
+        ///     Méthode qui génère une position aléatoire X dans un enclos donné.
+        /// </summary>
+        /// <param name="enclos"></param>
+        /// <returns></returns>
         private int PosAleatoireX(int enclos) {
             int Position = 0;
             switch (enclos) {
