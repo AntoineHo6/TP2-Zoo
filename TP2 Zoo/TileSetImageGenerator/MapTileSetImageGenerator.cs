@@ -34,7 +34,7 @@ namespace tileSetZoo {
             listeCoord.Add(new TileCoord() { Ligne = 10, Colonne = 18 });   // ENCLOS VERTICAL
             listeCoord.Add(new TileCoord() { Ligne = 14, Colonne = 4 });    // SABLE
             listeCoord.Add(new TileCoord() { Ligne = 0, Colonne = 18 });    // MAISON
-            listeCoord.Add(new TileCoord() { Ligne = 24, Colonne = 1 });    // DECHET
+            listeCoord.Add(new TileCoord() { Ligne = 23, Colonne = 1 });    // DECHET
             listeCoord.Add(new TileCoord() { Ligne = 8, Colonne = 3 });     // GAZON_HAUT
             listeCoord.Add(new TileCoord() { Ligne = 0, Colonne = 2 });     // FOSSE_EAU
 

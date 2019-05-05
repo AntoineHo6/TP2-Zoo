@@ -306,7 +306,6 @@ namespace TP2_Zoo.Etat {
             if (AnimalFeminin.Enceinte) {
                 switch (AnimalFeminin.Type) {
                     case "Mouton":
-                        AnimalFeminin.NbrJoursGestation = 150;
                         if (AnimalFeminin.NbrJoursGestation == 150) {
                             CreerBebe(enclos);
                         }
@@ -508,7 +507,7 @@ namespace TP2_Zoo.Etat {
         }
 
         private void ChanceAnimauxEnceinte(Animal AnimalFeminin) {
-            if (r.Next(100) < 99) {
+            if (r.Next(100) < 2) {
                 AnimalFeminin.Enceinte = true;
                 AnimalFeminin.NbrJoursGestation++;
             } else {
