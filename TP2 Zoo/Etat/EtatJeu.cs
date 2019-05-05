@@ -306,7 +306,18 @@ namespace TP2_Zoo.Etat {
             if (AnimalFeminin.Enceinte) {
                 switch (AnimalFeminin.Type) {
                     case "Mouton":
+                        AnimalFeminin.NbrJoursGestation = 150;
+                        if (AnimalFeminin.NbrJoursGestation == 150) {
+                            CreerBebe(enclos);
+                        }
+                        break;
+                    case "Lion":
                         if (AnimalFeminin.NbrJoursGestation == 110) {
+                            CreerBebe(enclos);
+                        }
+                        break;
+                    case "Licorne":
+                        if (AnimalFeminin.NbrJoursGestation == 360) {
                             CreerBebe(enclos);
                         }
                         break;
@@ -320,8 +331,33 @@ namespace TP2_Zoo.Etat {
             int pX = PosAleatoireX(enclos);
             int pY = PosAleatoireY(enclos);
 
-            if (!GerantCarte.OccupeAiMap[pX, pY] && (pX != heros.Position[0] || pY != heros.Position[1]) && AnimalEnceinte.Enceinte) {
-                CreerAnimal(enclosTypeAnimal, enclos, pX, pY);
+            if (enclos != 0 && !GerantCarte.OccupeAiMap[pX, pY] && (pX != heros.Position[0] || pY != heros.Position[1]) && AnimalEnceinte.Enceinte) {
+                CreerAnimalBebe(enclosTypeAnimal, enclos, pX, pY);
+            }
+        }
+
+        private void CreerAnimalBebe(string enclosTypeAnimal, int enclos, int pX, int pY) {
+            bool animalCree = false;
+
+            switch (enclosTypeAnimal) {
+                case "Mouton":
+                        ListeAnimaux.Add(new Mouton(false, enclos, pX, pY));
+                        animalCree = true;
+                    break;
+                case "Lion":
+                        ListeAnimaux.Add(new Lion(false, enclos, pX, pY));
+                        animalCree = true;
+                    break;
+                case "Licorne":
+                        ListeAnimaux.Add(new Licorne(false, enclos, pX, pY));
+                        animalCree = true;
+                    break;
+            }
+
+            if (animalCree) {
+                CreerVisiteur();
+                IncNbrAnimaux();
+                Refresh();
             }
         }
 
@@ -472,7 +508,7 @@ namespace TP2_Zoo.Etat {
         }
 
         private void ChanceAnimauxEnceinte(Animal AnimalFeminin) {
-            if (r.Next(100) < 2) {
+            if (r.Next(100) < 99) {
                 AnimalFeminin.Enceinte = true;
                 AnimalFeminin.NbrJoursGestation++;
             } else {
@@ -485,16 +521,16 @@ namespace TP2_Zoo.Etat {
             int Position = 0;
             switch (enclos) {
                 case 1:
-                    Position = r.Next(8, 18);
+                    Position = r.Next(7, 11);
                     break;
                 case 2:
-                    Position = r.Next(22, 32);
+                    Position = r.Next(7, 11);
                     break;
                 case 3:
-                    Position = r.Next(8, 18);
+                    Position = r.Next(15, 19);
                     break;
                 case 4:
-                    Position = r.Next(22, 32);
+                    Position = r.Next(15, 19);
                     break;
             }
             return Position;
@@ -504,16 +540,16 @@ namespace TP2_Zoo.Etat {
             int Position = 0;
             switch (enclos) {
                 case 1:
-                    Position = r.Next(7, 11);
+                    Position = r.Next(8, 18);
                     break;
                 case 2:
-                    Position = r.Next(7, 11);
+                    Position = r.Next(22, 32);
                     break;
                 case 3:
-                    Position = r.Next(15, 19);
+                    Position = r.Next(8, 18);
                     break;
                 case 4:
-                    Position = r.Next(15, 19);
+                    Position = r.Next(22, 32);
                     break;
             }
             return Position;
