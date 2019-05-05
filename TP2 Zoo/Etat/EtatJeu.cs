@@ -334,7 +334,7 @@ namespace TP2_Zoo.Etat
             int pX = PosAleatoireX(enclos);
             int pY = PosAleatoireY(enclos);
 
-            while (!GerantCarte.OccupeAiMap[pX, pY] && (pX != heros.Position[0] || pY != heros.Position[1])) {
+            while (!GerantCarte.OccupeAiMap[pX, pY] && (pX != heros.Position[0] && pY != heros.Position[1])) {
                 pX = PosAleatoireX(enclos);
                 pY = PosAleatoireY(enclos);
             }
@@ -356,16 +356,16 @@ namespace TP2_Zoo.Etat
 
             switch (enclosTypeAnimal) {
                 case "Mouton":
-                        ListeAnimaux.Add(new Mouton(false, enclos, pX, pY));
-                        animalCree = true;
+                    ListeAnimaux.Add(new Mouton(false, enclos, pX, pY));
+                    animalCree = true;
                     break;
                 case "Lion":
-                        ListeAnimaux.Add(new Lion(false, enclos, pX, pY));
-                        animalCree = true;
+                    ListeAnimaux.Add(new Lion(false, enclos, pX, pY));
+                    animalCree = true;
                     break;
                 case "Licorne":
-                        ListeAnimaux.Add(new Licorne(false, enclos, pX, pY));
-                        animalCree = true;
+                    ListeAnimaux.Add(new Licorne(false, enclos, pX, pY));
+                    animalCree = true;
                     break;
             }
 
@@ -407,7 +407,6 @@ namespace TP2_Zoo.Etat
                 visiteur.Deplacer(heros.Position);
                 visiteur.VerifierPeutQuit();
 
-                // temp
                 // a tester
                 if (VisiteurPeuxTuQuitter(visiteur)) {
                     listeVisiteurs.Remove(visiteur);
@@ -467,20 +466,7 @@ namespace TP2_Zoo.Etat
         /// </summary>
         private void TickAnimauxEnceinte() {
             for (int enclos = 1; enclos < 5; enclos++) {
-                switch (enclos) {
-                    case 1:
-                        VerifierAnimalEnceinte(1);
-                        break;
-                    case 2:
-                        VerifierAnimalEnceinte(2);
-                        break;
-                    case 3:
-                        VerifierAnimalEnceinte(3);
-                        break;
-                    case 4:
-                        VerifierAnimalEnceinte(4);
-                        break;
-                }
+                VerifierAnimalEnceinte(enclos);
             }
         }
 
@@ -525,7 +511,7 @@ namespace TP2_Zoo.Etat
 
             foreach (var animal in ListeAnimaux) {
                 if (animal.Genre == 1 && animal.Enclos == enclos) {
-                    return PresenceFeminin = true;
+                    PresenceFeminin = true;
                 }
             }
             return PresenceFeminin;
@@ -542,7 +528,8 @@ namespace TP2_Zoo.Etat
 
             foreach (var animal in ListeAnimaux) {
                 if (animal.Genre == 0 && animal.Enclos == enclos) {
-                    return PresenceMasculin = true;
+                    PresenceMasculin = true;
+                    break;
                 }
             }
             return PresenceMasculin;
@@ -554,7 +541,7 @@ namespace TP2_Zoo.Etat
         /// </summary>
         /// <param name="AnimalFeminin"></param>
         private void ChanceAnimauxEnceinte(Animal AnimalFeminin) {
-            if (r.Next(100) < 2) {
+            if (r.Next(100) < 1) {
                 AnimalFeminin.Enceinte = true;
                 AnimalFeminin.NbrJoursGestation++;
             } else {
