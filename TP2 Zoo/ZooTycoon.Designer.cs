@@ -61,6 +61,7 @@
             // 
             this.PctBoxArgent.BackColor = System.Drawing.Color.Transparent;
             this.PctBoxArgent.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.PctBoxArgent.Image = ((System.Drawing.Image)(resources.GetObject("PctBoxArgent.Image")));
             this.PctBoxArgent.Location = new System.Drawing.Point(10, 47);
             this.PctBoxArgent.Name = "PctBoxArgent";
             this.PctBoxArgent.Size = new System.Drawing.Size(35, 35);
@@ -72,6 +73,7 @@
             // 
             this.PctrBoxCalendrier.BackColor = System.Drawing.Color.Transparent;
             this.PctrBoxCalendrier.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.PctrBoxCalendrier.Image = ((System.Drawing.Image)(resources.GetObject("PctrBoxCalendrier.Image")));
             this.PctrBoxCalendrier.Location = new System.Drawing.Point(10, 6);
             this.PctrBoxCalendrier.Name = "PctrBoxCalendrier";
             this.PctrBoxCalendrier.Size = new System.Drawing.Size(35, 35);
