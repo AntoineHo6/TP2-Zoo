@@ -51,6 +51,7 @@ namespace TP2_Zoo {
                     }
                 }
             }
+
             // Change a false les entrees pour les enclos
             for (int i = 0; i < SolidMapHeros.GetLength(0); i++) {
                 if (i == 13 || i == 14 || i == 27 || i == 28) {

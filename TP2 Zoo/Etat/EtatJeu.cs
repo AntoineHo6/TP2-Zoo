@@ -21,6 +21,7 @@ namespace TP2_Zoo.Etat {
         int SecondesJeu;
 
         public Heros heros;
+        public Animal AnimalEnceinte;
 
         public List<Animal> ListeAnimaux;
         public ChoixAnimal ChoixAnimal;
@@ -301,37 +302,28 @@ namespace TP2_Zoo.Etat {
             }
         }
 
-        private void VerifierAnimalEnceinte(int enclos) {
-            bool PresenceMasculin = TrouverAnimalMasculin(enclos);
-            bool PresenceFeminin = TrouverAnimalFeminin(enclos);
-
-            if (PresenceFeminin && PresenceMasculin) {
-                ChanceAnimauxEnceinte(enclos);
-            }
-        }
-
-        private bool TrouverAnimalFeminin(int enclos) {
-            bool PresenceFeminin = false;
-
-            foreach (var animal in ListeAnimaux) {
-                if (animal.Genre == 1 && animal.Enclos == enclos) {
-                    return PresenceFeminin = true;
+        private void AccoucherBebeAnimal(int enclos, Animal AnimalFeminin) {
+            if (AnimalFeminin.Enceinte) {
+                switch (AnimalFeminin.Type) {
+                    case "Mouton":
+                        if (AnimalFeminin.NbrJoursGestation == 110) {
+                            CreerBebe(enclos);
+                        }
+                        break;
                 }
             }
-            return PresenceFeminin;
         }
 
-        private bool TrouverAnimalMasculin(int enclos) {
-            bool PresenceMasculin = false;
+        private void CreerBebe(int enclos) {
+            String enclosTypeAnimal = GerantCarte.AnimalEnclos[enclos];
 
-            foreach (var animal in ListeAnimaux) {
-                if (animal.Genre == 0 && animal.Enclos == enclos) {
-                    return PresenceMasculin = true;
-                }
+            int pX = PosAleatoireX(enclos);
+            int pY = PosAleatoireY(enclos);
+
+            if (!GerantCarte.OccupeAiMap[pX, pY] && (pX != heros.Position[0] || pY != heros.Position[1]) && AnimalEnceinte.Enceinte) {
+                CreerAnimal(enclosTypeAnimal, enclos, pX, pY);
             }
-            return PresenceMasculin;
         }
-
 
         /// <summary>
         ///     Mets à jours tous les AIs et paie le joueur à chaque minute dépendamment du nombre d'animaux et de déchets.
@@ -352,6 +344,7 @@ namespace TP2_Zoo.Etat {
 
             this.Refresh();
         }
+        
 
         /// <summary>
         ///     Mets à jour chaque visiteur et ils se déplacent.
@@ -387,12 +380,30 @@ namespace TP2_Zoo.Etat {
         /// </summary>
         private void TickAnimaux() {
             foreach (var animal in ListeAnimaux) {
-                animal.NbrJours++;
+                animal.NbrJoursAdulte++;
                 animal.JoursPasNourri++;
 
                 if (animal.JoursPasNourri > 120) {
                     animal.JoursPasNourri = 0;
                     Contravention();
+                }
+
+                switch (animal.Type) {
+                    case "Mouton":
+                        if (animal.NbrJoursAdulte == 150) {
+                            animal.EstAdulte = true;
+                        }
+                        break;
+                    case "Lion":
+                        if (animal.NbrJoursAdulte == 110) {
+                            animal.EstAdulte = true;
+                        }
+                        break;
+                    case "Licorne":
+                        if (animal.NbrJoursAdulte == 360) {
+                            animal.EstAdulte = true;
+                        }
+                        break;
                 }
 
                 animal.Deplacer(heros.Position);
@@ -418,6 +429,96 @@ namespace TP2_Zoo.Etat {
             }
         }
 
+        private void VerifierAnimalEnceinte(int enclos) {
+            bool PresenceMasculin = TrouverPresenceM(enclos);
+            bool PresenceFeminin = TrouverPresenceF(enclos);
+            Animal AnimalFeminin = TrouverAnimalF(enclos);
+
+            if (PresenceFeminin && PresenceMasculin) {
+                ChanceAnimauxEnceinte(AnimalFeminin);
+                AccoucherBebeAnimal(enclos, AnimalFeminin);
+            }
+        }
+
+        private Animal TrouverAnimalF(int enclos) {
+            foreach (var animal in ListeAnimaux) {
+                if (animal.Genre == 1 && animal.Enclos == enclos && !animal.Enceinte) {
+                    return AnimalEnceinte = animal;
+                }
+            }
+            return AnimalEnceinte;
+        }
+
+        private bool TrouverPresenceF(int enclos) {
+            bool PresenceFeminin = false;
+
+            foreach (var animal in ListeAnimaux) {
+                if (animal.Genre == 1 && animal.Enclos == enclos) {
+                    return PresenceFeminin = true;
+                }
+            }
+            return PresenceFeminin;
+        }
+
+        private bool TrouverPresenceM(int enclos) {
+            bool PresenceMasculin = false;
+
+            foreach (var animal in ListeAnimaux) {
+                if (animal.Genre == 0 && animal.Enclos == enclos) {
+                    return PresenceMasculin = true;
+                }
+            }
+            return PresenceMasculin;
+        }
+
+        private void ChanceAnimauxEnceinte(Animal AnimalFeminin) {
+            if (r.Next(100) < 2) {
+                AnimalFeminin.Enceinte = true;
+                AnimalFeminin.NbrJoursGestation++;
+            } else {
+                AnimalFeminin.Enceinte = false;
+                AnimalFeminin.NbrJoursGestation = 0;
+            }
+        }
+
+        private int PosAleatoireY(int enclos) {
+            int Position = 0;
+            switch (enclos) {
+                case 1:
+                    Position = r.Next(8, 18);
+                    break;
+                case 2:
+                    Position = r.Next(22, 32);
+                    break;
+                case 3:
+                    Position = r.Next(8, 18);
+                    break;
+                case 4:
+                    Position = r.Next(22, 32);
+                    break;
+            }
+            return Position;
+        }
+
+        private int PosAleatoireX(int enclos) {
+            int Position = 0;
+            switch (enclos) {
+                case 1:
+                    Position = r.Next(7, 11);
+                    break;
+                case 2:
+                    Position = r.Next(7, 11);
+                    break;
+                case 3:
+                    Position = r.Next(15, 19);
+                    break;
+                case 4:
+                    Position = r.Next(15, 19);
+                    break;
+            }
+            return Position;
+        }
+
         /// <summary>
         ///     Le visiteur a 3% chance de laisser tomber un dechet.
         /// </summary>
@@ -427,13 +528,6 @@ namespace TP2_Zoo.Etat {
             if (r.Next(100) < 3 && !GerantCarte.PosDechetsMap[visiteur.Position[0], visiteur.Position[1]]) {
                 visiteur.LaisserDechet();
                 IncNbrDechet();
-            }
-        }
-
-        private void ChanceAnimauxEnceinte(int enclos) {
-            String enclosTypeAnimal = GerantCarte.AnimalEnclos[enclos];
-            if (r.Next(100) < 2 && !GerantCarte.OccupeAiMap[pX, pY] && (pX != heros.Position[0] || pY != heros.Position[1])) {
-                CreerAnimal(enclosTypeAnimal, enclos, );
             }
         }
 
