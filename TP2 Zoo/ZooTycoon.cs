@@ -56,5 +56,10 @@ namespace TP2_Zoo {
         private void ToolStripMenuItemQuitter_Click(object sender, EventArgs e) {
             Application.Exit();
         }
+
+        private void EngagerConcierge_Click(object sender, EventArgs e) {
+            etatJeu.CreerConcierge();
+            etatJeu.Focus();
+        }
     }
 }

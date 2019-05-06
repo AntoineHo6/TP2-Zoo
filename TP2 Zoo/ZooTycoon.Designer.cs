@@ -35,10 +35,11 @@
             this.LblArgent = new System.Windows.Forms.Label();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.MnuToolStripMenu = new System.Windows.Forms.ToolStripMenuItem();
-            this.Timer = new System.Windows.Forms.Timer(this.components);
             this.ToolStripMenuItemJouer = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.ToolStripMenuItemQuitter = new System.Windows.Forms.ToolStripMenuItem();
+            this.Timer = new System.Windows.Forms.Timer(this.components);
+            this.label1 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.PctBoxArgent)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.PctrBoxCalendrier)).BeginInit();
@@ -48,6 +49,7 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(166)))), ((int)(((byte)(100)))), ((int)(((byte)(40)))));
+            this.panel1.Controls.Add(this.label1);
             this.panel1.Controls.Add(this.PctBoxArgent);
             this.panel1.Controls.Add(this.PctrBoxCalendrier);
             this.panel1.Controls.Add(this.EngagerConcierge);
@@ -86,13 +88,14 @@
             // 
             // EngagerConcierge
             // 
+            this.EngagerConcierge.BackgroundImage = global::TP2_Zoo.Properties.Resources.Concierge;
             this.EngagerConcierge.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.EngagerConcierge.Location = new System.Drawing.Point(1193, 32);
+            this.EngagerConcierge.Location = new System.Drawing.Point(1202, 0);
             this.EngagerConcierge.Name = "EngagerConcierge";
-            this.EngagerConcierge.Size = new System.Drawing.Size(75, 23);
+            this.EngagerConcierge.Size = new System.Drawing.Size(75, 78);
             this.EngagerConcierge.TabIndex = 5;
-            this.EngagerConcierge.Text = "Engager Concierge";
             this.EngagerConcierge.UseVisualStyleBackColor = true;
+            this.EngagerConcierge.Click += new System.EventHandler(this.EngagerConcierge_Click);
             // 
             // LblNbrDechets
             // 
@@ -162,29 +165,40 @@
             this.MnuToolStripMenu.Size = new System.Drawing.Size(50, 20);
             this.MnuToolStripMenu.Text = "Menu";
             // 
+            // ToolStripMenuItemJouer
+            // 
+            this.ToolStripMenuItemJouer.Name = "ToolStripMenuItemJouer";
+            this.ToolStripMenuItemJouer.Size = new System.Drawing.Size(111, 22);
+            this.ToolStripMenuItemJouer.Text = "Jouer";
+            // 
+            // toolStripSeparator1
+            // 
+            this.toolStripSeparator1.Name = "toolStripSeparator1";
+            this.toolStripSeparator1.Size = new System.Drawing.Size(108, 6);
+            // 
+            // ToolStripMenuItemQuitter
+            // 
+            this.ToolStripMenuItemQuitter.Name = "ToolStripMenuItemQuitter";
+            this.ToolStripMenuItemQuitter.Size = new System.Drawing.Size(111, 22);
+            this.ToolStripMenuItemQuitter.Text = "Quitter";
+            this.ToolStripMenuItemQuitter.Click += new System.EventHandler(this.ToolStripMenuItemQuitter_Click);
+            // 
             // Timer
             // 
             this.Timer.Enabled = true;
             this.Timer.Interval = 1000;
             this.Timer.Tick += new System.EventHandler(this.Timer1_Tick);
             // 
-            // ToolStripMenuItemJouer
+            // label1
             // 
-            this.ToolStripMenuItemJouer.Name = "ToolStripMenuItemJouer";
-            this.ToolStripMenuItemJouer.Size = new System.Drawing.Size(180, 22);
-            this.ToolStripMenuItemJouer.Text = "Jouer";
-            // 
-            // toolStripSeparator1
-            // 
-            this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(177, 6);
-            // 
-            // ToolStripMenuItemQuitter
-            // 
-            this.ToolStripMenuItemQuitter.Name = "ToolStripMenuItemQuitter";
-            this.ToolStripMenuItemQuitter.Size = new System.Drawing.Size(180, 22);
-            this.ToolStripMenuItemQuitter.Text = "Quitter";
-            this.ToolStripMenuItemQuitter.Click += new System.EventHandler(this.ToolStripMenuItemQuitter_Click);
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.SystemColors.Control;
+            this.label1.Location = new System.Drawing.Point(955, 21);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(241, 29);
+            this.label1.TabIndex = 8;
+            this.label1.Text = "Engager Concierge : ";
             // 
             // Zoo
             // 
@@ -228,6 +242,7 @@
         private System.Windows.Forms.ToolStripMenuItem ToolStripMenuItemJouer;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
         private System.Windows.Forms.ToolStripMenuItem ToolStripMenuItemQuitter;
+        private System.Windows.Forms.Label label1;
     }
 }
 

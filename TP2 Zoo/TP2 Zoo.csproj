@@ -199,6 +199,7 @@
   <ItemGroup>
     <Content Include="Noms\NomsFeminins.txt" />
     <Content Include="Noms\NomsMasculins.txt" />
+    <None Include="Resources\Concierge.PNG" />
     <None Include="Resources\Argent_Logo.png" />
     <None Include="Resources\Zoo_Tycoon_Icon.ico" />
     <None Include="Resources\Calendrier_Logo.png" />

@@ -24,6 +24,8 @@ namespace TP2_Zoo.Etat
         List<Visiteur> listeVisiteurs;
         public UsrCtrlInfosVisiteurs InfosVisiteurs;
 
+        List<Concierge> listeConcierges;
+
         public FrmEtatJeu(Zoo formPrincipale) {
             InitializeComponent();
             DoubleBuffered = true;
@@ -36,6 +38,7 @@ namespace TP2_Zoo.Etat
             heros = new Heros();
             ListeAnimaux = new List<Animal>();
             listeVisiteurs = new List<Visiteur>();
+            listeConcierges = new List<Concierge>();
             InitChoixAnimal();
             InitInfosAnimaux();
             InitInfosVisiteurs();
@@ -94,6 +97,9 @@ namespace TP2_Zoo.Etat
             foreach (var visiteur in listeVisiteurs) {
                 visiteur.Peinturer(e, 0);
             }
+            foreach(var concierge in listeConcierges) {
+                concierge.Peinturer(e, 0);
+            }
         }
 
 
@@ -142,9 +148,10 @@ namespace TP2_Zoo.Etat
                         }
                     }
                     // si clique sur un dechet
+
                     else if (GerantCarte.PosDechetsMap[pX, pY]) {
                         GerantCarte.PosDechetsMap[pX, pY] = false;
-                        DecNbrDechet();
+                        DecNbrDechet(1);
                         Refresh();
                     }
                 }
@@ -210,7 +217,7 @@ namespace TP2_Zoo.Etat
         /// <summary>
         ///     Créé un nouveau visiteur de type aléatoire.
         /// </summary>
-        void CreerVisiteur() {
+        private void CreerVisiteur() {
             int typeVisiteur = r.Next(0, 4);
 
             switch (typeVisiteur) {
@@ -229,6 +236,14 @@ namespace TP2_Zoo.Etat
             }
 
             AjouterArgentHeros(2);
+
+            Refresh();
+        }
+
+
+        public void CreerConcierge() {
+            listeConcierges.Add(new Concierge());
+            Refresh();
         }
 
 
@@ -384,6 +399,8 @@ namespace TP2_Zoo.Etat
         private void Timer_Tick(object sender, EventArgs e) {
             TickVisiteurs();
             TickAnimaux();
+            TickConcierges();
+
             TickAnimauxEnceinte();
 
             SecondesJeu++;
@@ -410,6 +427,20 @@ namespace TP2_Zoo.Etat
                 // a tester
                 if (VisiteurPeuxTuQuitter(visiteur)) {
                     listeVisiteurs.Remove(visiteur);
+                }
+            }
+        }
+
+
+        private void TickConcierges() {
+            foreach (var concierge in listeConcierges) {
+                concierge.Deplacer(heros.Position);
+                int nbrDechetsRammase = concierge.RamasserDechetsAdjacent();
+                DecNbrDechet(nbrDechetsRammase);
+                concierge.NbrJours++;
+
+                if (concierge.NbrJours % 60 == 0) {
+                    DeduireArgentHeros(2);
                 }
             }
         }
@@ -622,8 +653,8 @@ namespace TP2_Zoo.Etat
         /// <summary>
         ///     Décremente le nombre de déchets.
         /// </summary>
-        private void DecNbrDechet() {
-            NbrDechets--;
+        private void DecNbrDechet(int nbrDechetsRamasse) {
+            NbrDechets -= nbrDechetsRamasse;
             FormePrincipale.LblNbrDechets.Text = "Nombre de dechets : " + NbrDechets;
         }
 

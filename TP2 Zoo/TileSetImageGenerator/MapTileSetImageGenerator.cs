@@ -20,6 +20,7 @@ namespace tileSetZoo {
         public static int DECHET = 6;
         public static int GAZON_HAUT = 7;
         public static int FOSSE_EAU = 8;
+        public static int EDIFICE_CONCIERGE = 9;
 
         private static List<TileCoord> listeCoord = new List<TileCoord>();
         private static List<Bitmap> listeBitmap = new List<Bitmap>();
@@ -37,17 +38,19 @@ namespace tileSetZoo {
             listeCoord.Add(new TileCoord() { Ligne = 23, Colonne = 1 });    // DECHET
             listeCoord.Add(new TileCoord() { Ligne = 8, Colonne = 3 });     // GAZON_HAUT
             listeCoord.Add(new TileCoord() { Ligne = 0, Colonne = 2 });     // FOSSE_EAU
+            listeCoord.Add(new TileCoord() { Ligne = 4, Colonne = 12 });     // EDIFICE_CONCIERGE
 
 
-            listeBitmap.Add(LoadTile(FLAQUEDEAU, 32, 32));      // FLAQUEDEAU
-            listeBitmap.Add(LoadTile(GAZON, 32, 32));           // GAZON
-            listeBitmap.Add(LoadTile(ENCLOS_H, 64, 32));        // ENCLOS HORIZONTAL
-            listeBitmap.Add(LoadTile(ENCLOS_V, 32, 32));        // ENCLOS VERTICAL
-            listeBitmap.Add(LoadTile(SABLE, 32, 32));           // SABLE
-            listeBitmap.Add(LoadTile(MAISON, 128, 160));        // MAISON
-            listeBitmap.Add(LoadTile(DECHET, 32, 32));          // DECHET
-            listeBitmap.Add(LoadTile(GAZON_HAUT, 32, 32));      // GAZON_HAUT
+            listeBitmap.Add(LoadTile(FLAQUEDEAU, 32, 32));            // FLAQUEDEAU
+            listeBitmap.Add(LoadTile(GAZON, 32, 32));                 // GAZON
+            listeBitmap.Add(LoadTile(ENCLOS_H, 64, 32));              // ENCLOS HORIZONTAL
+            listeBitmap.Add(LoadTile(ENCLOS_V, 32, 32));              // ENCLOS VERTICAL
+            listeBitmap.Add(LoadTile(SABLE, 32, 32));                 // SABLE
+            listeBitmap.Add(LoadTile(MAISON, 128, 160));              // MAISON
+            listeBitmap.Add(LoadTile(DECHET, 32, 32));                // DECHET
+            listeBitmap.Add(LoadTile(GAZON_HAUT, 32, 32));            // GAZON_HAUT
             listeBitmap.Add(LoadTile(FOSSE_EAU, 32, 32));             // FOSSE_EAU
+            listeBitmap.Add(LoadTile(EDIFICE_CONCIERGE, 128, 160));   // EDIFICE_CONCIERGE
         }
 
         private static Bitmap LoadTile(int posListe, int imageWidth, int imageHeight) {

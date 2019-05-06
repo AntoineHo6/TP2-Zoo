@@ -62,6 +62,14 @@ namespace TP2_Zoo {
 
             // La maison est solide
             for (int y = 1; y < 6; y++) {
+                for (int x = 37; x < 41; x++) {
+                    SolidMapHeros[x, y] = true;
+                    SolidMapAi[x, y] = true;
+                }
+            }
+
+            // Le batiment de concierges est solide
+            for (int y = 1; y < 6; y++) {
                 for (int x = 1; x < 5; x++) {
                     SolidMapHeros[x, y] = true;
                     SolidMapAi[x, y] = true;
@@ -104,6 +112,7 @@ namespace TP2_Zoo {
             PeintureCheminSable(e);
             PeintureEnclos(e);
             PeintureMaison(e);
+            PeinturerEdificeConcierge(e);
             // PeintureCadriage(e);
             PeinturerDechet(e);
         }
@@ -222,7 +231,12 @@ namespace TP2_Zoo {
 
 
         private static void PeintureMaison(PaintEventArgs e) {
-            e.Graphics.DrawImage(MapTileSetImageGenerator.GetTile(5), TuileAPixel(0), 0);
+            e.Graphics.DrawImage(MapTileSetImageGenerator.GetTile(5), 0, 0);
+        }
+
+
+        private static void PeinturerEdificeConcierge(PaintEventArgs e) {
+            e.Graphics.DrawImage(MapTileSetImageGenerator.GetTile(9), TuileAPixel(36), 0);
         }
 
 
