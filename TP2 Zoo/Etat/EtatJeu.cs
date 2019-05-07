@@ -160,10 +160,13 @@ namespace TP2_Zoo.Etat
             else if (e.Button == MouseButtons.Right) {
                 // Si clique sur un animal
                 if (enclos != 0 && GerantCarte.OccupeAiMap[pX, pY]) {
+
                     InfosAnimaux = new UsrCtrlInfosAnimaux(this);
-                    InfosAnimaux.Setup(enclosTypeAnimal, enclos, ListeAnimaux, pX, pY);
+                    InfosAnimaux.UpdateInfosTousAnimaux(ListeAnimaux);
+                    InfosAnimaux.InfosAnimalClick(enclosTypeAnimal, enclos, ListeAnimaux, pX, pY);
                     InfosAnimaux.Visible = true;
-                    ListeInfosAnimaux = new FrmListeInfosAnimaux(this, InfosAnimaux);
+
+                    ListeInfosAnimaux = new FrmListeInfosAnimaux(this, InfosAnimaux, ListeAnimaux);
                     ListeInfosAnimaux.Show();
                 }
 

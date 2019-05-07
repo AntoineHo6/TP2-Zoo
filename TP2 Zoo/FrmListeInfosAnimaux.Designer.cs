@@ -36,7 +36,7 @@
             // 
             this.FlpListeInfosAnimaux.Location = new System.Drawing.Point(3, 3);
             this.FlpListeInfosAnimaux.Name = "FlpListeInfosAnimaux";
-            this.FlpListeInfosAnimaux.Size = new System.Drawing.Size(281, 296);
+            this.FlpListeInfosAnimaux.Size = new System.Drawing.Size(279, 296);
             this.FlpListeInfosAnimaux.TabIndex = 0;
             // 
             // FrmListeInfosAnimaux
