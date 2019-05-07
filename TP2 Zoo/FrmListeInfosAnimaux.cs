@@ -14,11 +14,19 @@ namespace TP2_Zoo
     public partial class FrmListeInfosAnimaux : Form
     {
         FrmEtatJeu etatJeu;
+        UsrCtrlInfosAnimaux infosAnimaux;
 
-        public FrmListeInfosAnimaux(FrmEtatJeu etatJeu)
+        public FrmListeInfosAnimaux(FrmEtatJeu etatJeu, UsrCtrlInfosAnimaux infosAnimaux)
         {
             InitializeComponent();
             this.etatJeu = etatJeu;
+            this.infosAnimaux = infosAnimaux;
+            CreerInfosAnimaux();
+        }
+
+        private void CreerInfosAnimaux()
+        {
+            FlpListeInfosAnimaux.Controls.Add(infosAnimaux);
         }
     }
 }
