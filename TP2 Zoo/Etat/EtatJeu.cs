@@ -20,6 +20,7 @@ namespace TP2_Zoo.Etat
         public List<Animal> ListeAnimaux;
         public ChoixAnimal ChoixAnimal;
         public UsrCtrlInfosAnimaux InfosAnimaux;
+        public FrmListeInfosAnimaux ListeInfosAnimaux;
 
         List<Visiteur> listeVisiteurs;
         public UsrCtrlInfosVisiteurs InfosVisiteurs;
@@ -58,10 +59,10 @@ namespace TP2_Zoo.Etat
         ///     Préparer le user control qui permet d'afficher les informations de tous les animaux présents dans le parc.
         /// </summary>
         private void InitInfosAnimaux() {
-            InfosAnimaux = new UsrCtrlInfosAnimaux(this);
-            InfosAnimaux.Location = new Point(345, 239);
-            this.Controls.Add(InfosAnimaux);
-            InfosAnimaux.Visible = false;
+            //InfosAnimaux = new UsrCtrlInfosAnimaux(this);
+            //InfosAnimaux.Location = new Point(345, 239);
+            //this.Controls.Add(InfosAnimaux);
+            //InfosAnimaux.Visible = false;
         }
 
         /// <summary>
@@ -159,6 +160,10 @@ namespace TP2_Zoo.Etat
             else if (e.Button == MouseButtons.Right) {
                 // Si clique sur un animal
                 if (enclos != 0 && GerantCarte.OccupeAiMap[pX, pY]) {
+                    ListeInfosAnimaux = new FrmListeInfosAnimaux(this);
+                    ListeInfosAnimaux.Show();
+                    InfosAnimaux = new UsrCtrlInfosAnimaux(this);
+                    ListeInfosAnimaux.Controls.Add(InfosAnimaux);
                     InfosAnimaux.Setup(enclosTypeAnimal, enclos, ListeAnimaux, pX, pY);
                     InfosAnimaux.Visible = true;
                 }
@@ -461,7 +466,7 @@ namespace TP2_Zoo.Etat
         /// </summary>
         private void TickAnimaux() {
             foreach (var animal in ListeAnimaux) {
-                animal.NbrJoursAdulte++;
+                animal.NbrJours++;
                 animal.JoursPasNourri++;
 
                 if (animal.JoursPasNourri > 120) {
@@ -471,17 +476,17 @@ namespace TP2_Zoo.Etat
 
                 switch (animal.Type) {
                     case "Mouton":
-                        if (animal.NbrJoursAdulte == 150) {
+                        if (animal.NbrJours == 150) {
                             animal.EstAdulte = true;
                         }
                         break;
                     case "Lion":
-                        if (animal.NbrJoursAdulte == 110) {
+                        if (animal.NbrJours == 110) {
                             animal.EstAdulte = true;
                         }
                         break;
                     case "Licorne":
-                        if (animal.NbrJoursAdulte == 360) {
+                        if (animal.NbrJours == 360) {
                             animal.EstAdulte = true;
                         }
                         break;

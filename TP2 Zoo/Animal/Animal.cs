@@ -17,7 +17,7 @@ namespace TP2_Zoo.Animaux {
         public bool Enceinte { get; set; }
         public int Prix { get; set; }
         public List<Bitmap> Sprites { get; set; }
-        public int NbrJoursAdulte { get; set; }
+        public int NbrJours { get; set; }
         public int NbrJoursGestation { get; set; }
         public int JoursPasNourri { get; set; }
         public bool EstAdulte { get; set; } // True: Adulte; False: Enfant
@@ -25,7 +25,7 @@ namespace TP2_Zoo.Animaux {
 
         public Animal(bool EstAdulte, int Enclos, params int[] Position) {
             this.EstAdulte = EstAdulte;
-            NbrJoursAdulte = 0;
+            NbrJours = 0;
             JoursPasNourri = 0;
             this.Position = Position;
             Genre = r.Next(0, 2);
