@@ -48,6 +48,9 @@ namespace TP2_Zoo {
             if (e.KeyCode == Keys.Escape) {
                 etatJeu.ChoixAnimal.Visible = false;
                 etatJeu.InfosVisiteurs.Visible = false;
+
+                etatJeu.ListeInfosAnimaux
+
                 etatJeu.Focus();
             }
         }

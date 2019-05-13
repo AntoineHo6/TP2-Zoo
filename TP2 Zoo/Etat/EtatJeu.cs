@@ -18,14 +18,15 @@ namespace TP2_Zoo.Etat
         public Animal AnimalEnceinte;
 
         public List<Animal> ListeAnimaux;
+        List<Visiteur> listeVisiteurs;
+        List<Concierge> listeConcierges;
+
         public ChoixAnimal ChoixAnimal;
         public UsrCtrlInfosAnimaux InfosAnimaux;
         public FrmListeInfosAnimaux ListeInfosAnimaux;
 
-        List<Visiteur> listeVisiteurs;
         public UsrCtrlInfosVisiteurs InfosVisiteurs;
 
-        List<Concierge> listeConcierges;
 
         public FrmEtatJeu(Zoo formPrincipale) {
             InitializeComponent();
@@ -171,8 +172,7 @@ namespace TP2_Zoo.Etat
                 }
 
                 // Si je clique sur un visiteur
-                else if (GerantCarte.OccupeAiMap[pX,pY]) 
-                {
+                else if (GerantCarte.OccupeAiMap[pX, pY]) {
                     InfosVisiteurs.Setup(listeVisiteurs, pX, pY);
                     InfosVisiteurs.Visible = true;
                 }
@@ -248,6 +248,9 @@ namespace TP2_Zoo.Etat
         }
 
 
+        /// <summary>
+        ///     Création d'un concierge
+        /// </summary>
         public void CreerConcierge() {
             listeConcierges.Add(new Concierge());
             Refresh();
@@ -439,6 +442,9 @@ namespace TP2_Zoo.Etat
         }
 
 
+        /// <summary>
+        ///     Mets à jour chaque concierge et ils se déplacent.
+        /// </summary>
         private void TickConcierges() {
             foreach (var concierge in listeConcierges) {
                 concierge.Deplacer(heros.Position);
