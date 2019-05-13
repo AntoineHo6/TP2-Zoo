@@ -82,7 +82,7 @@ namespace TP2_Zoo.Etat
         /// <param name="e"></param>
         private void EtatJeu_Paint(object sender, PaintEventArgs e) {
             GerantCarte.PeintureMap(e);
-            heros.Peinturer(e, heros.Touche);
+            heros.Peinturer(e, heros.Sprite);
             PeinturerAI(e);
         }
 
