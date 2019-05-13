@@ -49,8 +49,6 @@ namespace TP2_Zoo {
                 etatJeu.ChoixAnimal.Visible = false;
                 etatJeu.InfosVisiteurs.Visible = false;
 
-                etatJeu.ListeInfosAnimaux
-
                 etatJeu.Focus();
             }
         }
