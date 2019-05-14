@@ -527,7 +527,7 @@ namespace TP2_Zoo.Etat
             if (PresenceFeminin && PresenceMasculin) {
                 ChanceAnimauxEnceinte(AnimalFeminin);
                 AccoucherBebeAnimal(enclos, AnimalFeminin);
-            }
+            } 
         }
 
         /// <summary>
