@@ -14,34 +14,11 @@ namespace TP2_Zoo {
     public partial class UsrCtrlInfosAnimaux : UserControl {
         FrmEtatJeu EtatJeu;
         private Animal AnimalTemp;
-        private bool EstAnimalClique;
+        public bool EstAnimalClique = false;
 
         public UsrCtrlInfosAnimaux(FrmEtatJeu EtatJeu) {
             InitializeComponent();
             this.EtatJeu = EtatJeu;
-        }
-
-        public void InfosAnimalClick(String EnclosTypeAnimal, int Enclos, List<Animal> ListeAnimaux, int PositionX, int PositionY) {
-
-            Animal unAnimal = TrouverAnimal(ListeAnimaux, PositionX, PositionY);
-            
-            switch (EnclosTypeAnimal) {
-                case "Mouton":
-                    PctrBoxAnimal.BackgroundImage = Properties.Resources.Mouton;
-                    LblTypeAnimal.Text = EnclosTypeAnimal;
-                    break;
-                case "Lion":
-                    PctrBoxAnimal.BackgroundImage = Properties.Resources.Lion;
-                    LblTypeAnimal.Text = EnclosTypeAnimal;
-                    break;
-                case "Licorne":
-                    PctrBoxAnimal.BackgroundImage = Properties.Resources.Licorne;
-                    LblTypeAnimal.Text = EnclosTypeAnimal;
-                    break;
-            }
-
-            UpdateInfosAnimal(unAnimal);
-            EstAnimalClique = true;
         }
 
         public void InfosTousAnimaux(Animal animal) {
@@ -71,9 +48,10 @@ namespace TP2_Zoo {
         }
 
         private Animal TrouverAnimal(List<Animal> ListeAnimaux, int PostionX, int PositionY) {
-            foreach (var Animal in ListeAnimaux) {
-                if (Animal.Position[0] == PostionX && Animal.Position[1] == PositionY) {
-                    AnimalTemp = Animal;
+            foreach (Animal animal in ListeAnimaux) {
+                if (animal.Position[0] == PostionX && animal.Position[1] == PositionY) {
+                    AnimalTemp = animal;
+                    EstAnimalClique = true;
                 }
             }
             return AnimalTemp;
@@ -120,17 +98,9 @@ namespace TP2_Zoo {
             }
         }
 
-        private void UpdateInfosAnimal(Animal unAnimal) {
-            LblGenreAnimal.Text = TrouverGenreAnimal(unAnimal);
-            LblCroissanceAnimal.Text = TrouverCroissanceAnimal(unAnimal);
-            LblFaimAnimal.Text = TrouverFaimAnimal(unAnimal);
-            LblEnceinteAnimal.Text = TrouverEnceinteAnimal(unAnimal);
-        }
-
         private void UsrCtrlInfosAnimaux_Paint(object sender, PaintEventArgs e)
         {
-            if (EstAnimalClique)
-            {
+            if (EstAnimalClique) {
                 BorderStyle = BorderStyle.None;
                 ControlPaint.DrawBorder(e.Graphics, e.ClipRectangle, Color.Red, ButtonBorderStyle.Solid);
             }

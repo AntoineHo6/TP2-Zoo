@@ -27,7 +27,6 @@ namespace TP2_Zoo.Etat
 
         public UsrCtrlInfosVisiteurs InfosVisiteurs;
 
-
         public FrmEtatJeu(Zoo formPrincipale) {
             InitializeComponent();
             DoubleBuffered = true;
@@ -42,7 +41,6 @@ namespace TP2_Zoo.Etat
             listeVisiteurs = new List<Visiteur>();
             listeConcierges = new List<Concierge>();
             InitChoixAnimal();
-            InitInfosAnimaux();
             InitInfosVisiteurs();
         }
 
@@ -54,16 +52,6 @@ namespace TP2_Zoo.Etat
             ChoixAnimal.Location = new Point(345, 239);
             this.Controls.Add(ChoixAnimal);
             ChoixAnimal.Visible = false;
-        }
-
-        /// <summary>
-        ///     Préparer le user control qui permet d'afficher les informations de tous les animaux présents dans le parc.
-        /// </summary>
-        private void InitInfosAnimaux() {
-            //InfosAnimaux = new UsrCtrlInfosAnimaux(this);
-            //InfosAnimaux.Location = new Point(345, 239);
-            //this.Controls.Add(InfosAnimaux);
-            //InfosAnimaux.Visible = false;
         }
 
         /// <summary>
@@ -161,12 +149,6 @@ namespace TP2_Zoo.Etat
             else if (e.Button == MouseButtons.Right) {
                 // Si clique sur un animal
                 if (enclos != 0 && GerantCarte.OccupeAiMap[pX, pY]) {
-
-                    //InfosAnimaux = new UsrCtrlInfosAnimaux(this);
-                    //InfosAnimaux.UpdateInfosTousAnimaux(ListeAnimaux);
-                    //InfosAnimaux.InfosAnimalClick(enclosTypeAnimal, enclos, ListeAnimaux, pX, pY);
-                    //InfosAnimaux.Visible = true;
-
                     ListeInfosAnimaux = new FrmListeInfosAnimaux(this, ListeAnimaux);
                     ListeInfosAnimaux.Show();
                 }

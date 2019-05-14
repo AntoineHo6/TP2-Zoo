@@ -30,17 +30,33 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmListeInfosAnimaux));
             this.FlpListeInfosAnimaux = new System.Windows.Forms.FlowLayoutPanel();
+            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.FlpListeInfosAnimaux.SuspendLayout();
             this.SuspendLayout();
             // 
             // FlpListeInfosAnimaux
             // 
             this.FlpListeInfosAnimaux.AutoScroll = true;
+            this.FlpListeInfosAnimaux.Controls.Add(this.tableLayoutPanel1);
             this.FlpListeInfosAnimaux.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
             this.FlpListeInfosAnimaux.Location = new System.Drawing.Point(3, 3);
             this.FlpListeInfosAnimaux.Name = "FlpListeInfosAnimaux";
             this.FlpListeInfosAnimaux.Size = new System.Drawing.Size(279, 296);
             this.FlpListeInfosAnimaux.TabIndex = 0;
             this.FlpListeInfosAnimaux.WrapContents = false;
+            // 
+            // tableLayoutPanel1
+            // 
+            this.tableLayoutPanel1.ColumnCount = 2;
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(3, 3);
+            this.tableLayoutPanel1.Name = "tableLayoutPanel1";
+            this.tableLayoutPanel1.RowCount = 2;
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(8, 8);
+            this.tableLayoutPanel1.TabIndex = 0;
             // 
             // FrmListeInfosAnimaux
             // 
@@ -56,6 +72,7 @@
             this.Name = "FrmListeInfosAnimaux";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Liste d\'animaux";
+            this.FlpListeInfosAnimaux.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -63,5 +80,6 @@
         #endregion
 
         private System.Windows.Forms.FlowLayoutPanel FlpListeInfosAnimaux;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
     }
 }
