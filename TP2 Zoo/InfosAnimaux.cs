@@ -44,36 +44,30 @@ namespace TP2_Zoo {
             EstAnimalClique = true;
         }
 
-        public void InfosTousAnimaux(String EnclosTypeAnimal, List<Animal> ListeAnimaux)
-        {
-            switch (EnclosTypeAnimal)
-            {
+        public void InfosTousAnimaux(Animal animal) {
+            switch (animal.Type) {
                 case "Mouton":
                     PctrBoxAnimal.BackgroundImage = Properties.Resources.Mouton;
-                    LblTypeAnimal.Text = EnclosTypeAnimal;
+                    LblTypeAnimal.Text = animal.Type.ToString();
                     break;
                 case "Lion":
                     PctrBoxAnimal.BackgroundImage = Properties.Resources.Lion;
-                    LblTypeAnimal.Text = EnclosTypeAnimal;
+                    LblTypeAnimal.Text = animal.Type.ToString();
                     break;
                 case "Licorne":
                     PctrBoxAnimal.BackgroundImage = Properties.Resources.Licorne;
-                    LblTypeAnimal.Text = EnclosTypeAnimal;
+                    LblTypeAnimal.Text = animal.Type.ToString();
                     break;
             }
 
-            UpdateInfosTousAnimaux(ListeAnimaux);
         }
 
-        public void UpdateInfosTousAnimaux(List<Animal> ListeAnimaux)
-        {
-            for (int i = 0; i < ListeAnimaux.Count; i++)
-            {
-                LblGenreAnimal.Text = TrouverGenreAnimal(ListeAnimaux.ElementAt(i));
-                LblCroissanceAnimal.Text = TrouverCroissanceAnimal(ListeAnimaux.ElementAt(i));
-                LblFaimAnimal.Text = TrouverFaimAnimal(ListeAnimaux.ElementAt(i));
-                LblEnceinteAnimal.Text = TrouverEnceinteAnimal(ListeAnimaux.ElementAt(i));
-            }
+        public void InfosUserControl(Animal animal) {
+            InfosTousAnimaux(animal);
+            LblGenreAnimal.Text = TrouverGenreAnimal(animal);
+            LblCroissanceAnimal.Text = TrouverCroissanceAnimal(animal);
+            LblFaimAnimal.Text = TrouverFaimAnimal(animal);
+            LblEnceinteAnimal.Text = TrouverEnceinteAnimal(animal);
         }
 
         private Animal TrouverAnimal(List<Animal> ListeAnimaux, int PostionX, int PositionY) {

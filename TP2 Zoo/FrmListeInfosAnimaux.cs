@@ -17,17 +17,20 @@ namespace TP2_Zoo
         FrmEtatJeu etatJeu;
         UsrCtrlInfosAnimaux infosAnimaux;
 
-        public FrmListeInfosAnimaux(FrmEtatJeu etatJeu, UsrCtrlInfosAnimaux infosAnimaux, List<Animal> listeAnimaux)
+        public FrmListeInfosAnimaux(FrmEtatJeu etatJeu, List<Animal> listeAnimaux)
         {
             InitializeComponent();
             this.etatJeu = etatJeu;
-            this.infosAnimaux = infosAnimaux;
-            CreerInfosAnimaux(listeAnimaux);
+            CreerListeInfos(listeAnimaux);
         }
 
-        public void CreerInfosAnimaux(List<Animal> listeAnimaux)
+        public void CreerListeInfos(List<Animal> listeAnimaux)
         {
-            FlpListeInfosAnimaux.Controls.Add(infosAnimaux);
+            foreach (var animal in listeAnimaux) {
+                infosAnimaux = new UsrCtrlInfosAnimaux(etatJeu);
+                infosAnimaux.InfosUserControl(animal);
+                FlpListeInfosAnimaux.Controls.Add(infosAnimaux);
+            }
         }
     }
 }

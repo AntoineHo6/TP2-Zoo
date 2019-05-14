@@ -34,10 +34,13 @@
             // 
             // FlpListeInfosAnimaux
             // 
+            this.FlpListeInfosAnimaux.AutoScroll = true;
+            this.FlpListeInfosAnimaux.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
             this.FlpListeInfosAnimaux.Location = new System.Drawing.Point(3, 3);
             this.FlpListeInfosAnimaux.Name = "FlpListeInfosAnimaux";
             this.FlpListeInfosAnimaux.Size = new System.Drawing.Size(279, 296);
             this.FlpListeInfosAnimaux.TabIndex = 0;
+            this.FlpListeInfosAnimaux.WrapContents = false;
             // 
             // FrmListeInfosAnimaux
             // 
