@@ -42,7 +42,7 @@ namespace TP2_Zoo.Personne {
 
             switch (e.KeyCode) {
                 case Keys.W:
-                    if (!GerantCarte.SolidMapHeros[ToSolidCoord(x), ToSolidCoord(y) - 1] && !GerantCarte.OccupeAiMap[Position[0], Position[1] - 1] && !GerantCarte.PosDechetsMap[x, y - 1]) {
+                    if (!GerantCarte.SolidMapHeros[ToSolidCoord(x), ToSolidCoord(y) - 1] && !GerantCarte.OccupeAiMap[Position[0], Position[1] - 1]) {
                         Position[1] -= 1;
                         Sprite = RotationSpriteHaut;
                         
@@ -55,7 +55,7 @@ namespace TP2_Zoo.Personne {
                     }
                     break;
                 case Keys.A:
-                    if (!GerantCarte.SolidMapHeros[ToSolidCoord(x) - 1, ToSolidCoord(y)] && !GerantCarte.OccupeAiMap[Position[0] - 1, Position[1]] && !GerantCarte.PosDechetsMap[x - 1, y]) {
+                    if (!GerantCarte.SolidMapHeros[ToSolidCoord(x) - 1, ToSolidCoord(y)] && !GerantCarte.OccupeAiMap[Position[0] - 1, Position[1]]) {
                         Position[0] -= 1;
                         Sprite = RotationSpriteGauche;
 
@@ -68,7 +68,7 @@ namespace TP2_Zoo.Personne {
                     }
                     break;
                 case Keys.S:
-                    if (!GerantCarte.SolidMapHeros[ToSolidCoord(x), ToSolidCoord(y) + 1] && !GerantCarte.OccupeAiMap[Position[0], Position[1] + 1] && !GerantCarte.PosDechetsMap[x, y + 1]) {
+                    if (!GerantCarte.SolidMapHeros[ToSolidCoord(x), ToSolidCoord(y) + 1] && !GerantCarte.OccupeAiMap[Position[0], Position[1] + 1]) {
                         Position[1] += 1;
                         Sprite = RotationSpriteBas;
 
@@ -81,7 +81,7 @@ namespace TP2_Zoo.Personne {
                     }
                     break;
                 case Keys.D:
-                    if (!GerantCarte.SolidMapHeros[ToSolidCoord(x) + 1, ToSolidCoord(y)] && !GerantCarte.OccupeAiMap[Position[0] + 1, Position[1]] && !GerantCarte.PosDechetsMap[x + 1, y]) {
+                    if (!GerantCarte.SolidMapHeros[ToSolidCoord(x) + 1, ToSolidCoord(y)] && !GerantCarte.OccupeAiMap[Position[0] + 1, Position[1]]) {
                         Position[0] += 1;
                         Sprite = RotationSpriteDroite;
 
