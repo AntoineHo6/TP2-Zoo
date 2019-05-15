@@ -76,6 +76,10 @@ namespace TP2_Zoo {
             }
         }
 
+
+        /// <summary>
+        ///     Repère les endroits ou les enclos se retrouvent dans la map et les identifie.
+        /// </summary>
         private static void InitSurfaceEnclosMap() {
             for (int y = 0; y < SurfaceEnclosMap.GetLength(1); y++) {
                 for (int x = 0; x < SurfaceEnclosMap.GetLength(0); x++) {
