@@ -36,8 +36,6 @@
             this.LblArgent = new System.Windows.Forms.Label();
             this.MnuStrip = new System.Windows.Forms.MenuStrip();
             this.MnuToolStripMenu = new System.Windows.Forms.ToolStripMenuItem();
-            this.ToolStripMenuItemJouer = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.ToolStripMenuItemQuitter = new System.Windows.Forms.ToolStripMenuItem();
             this.Timer = new System.Windows.Forms.Timer(this.components);
             this.PnlInfosJoueur.SuspendLayout();
@@ -167,8 +165,6 @@
             // 
             this.MnuToolStripMenu.BackColor = System.Drawing.Color.Transparent;
             this.MnuToolStripMenu.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.ToolStripMenuItemJouer,
-            this.toolStripSeparator1,
             this.ToolStripMenuItemQuitter});
             this.MnuToolStripMenu.ForeColor = System.Drawing.Color.White;
             this.MnuToolStripMenu.Name = "MnuToolStripMenu";
@@ -176,21 +172,10 @@
             this.MnuToolStripMenu.Size = new System.Drawing.Size(50, 20);
             this.MnuToolStripMenu.Text = "Menu";
             // 
-            // ToolStripMenuItemJouer
-            // 
-            this.ToolStripMenuItemJouer.Name = "ToolStripMenuItemJouer";
-            this.ToolStripMenuItemJouer.Size = new System.Drawing.Size(152, 22);
-            this.ToolStripMenuItemJouer.Text = "Jouer";
-            // 
-            // toolStripSeparator1
-            // 
-            this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(149, 6);
-            // 
             // ToolStripMenuItemQuitter
             // 
             this.ToolStripMenuItemQuitter.Name = "ToolStripMenuItemQuitter";
-            this.ToolStripMenuItemQuitter.Size = new System.Drawing.Size(152, 22);
+            this.ToolStripMenuItemQuitter.Size = new System.Drawing.Size(180, 22);
             this.ToolStripMenuItemQuitter.Text = "Quitter";
             this.ToolStripMenuItemQuitter.Click += new System.EventHandler(this.ToolStripMenuItemQuitter_Click);
             // 
@@ -240,8 +225,6 @@
         private System.Windows.Forms.Button BtnEngagerConcierge;
         private System.Windows.Forms.PictureBox PctrBoxCalendrier;
         private System.Windows.Forms.PictureBox PctBoxArgent;
-        private System.Windows.Forms.ToolStripMenuItem ToolStripMenuItemJouer;
-        private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
         private System.Windows.Forms.ToolStripMenuItem ToolStripMenuItemQuitter;
         private System.Windows.Forms.Label LblEngagerConcierge;
     }

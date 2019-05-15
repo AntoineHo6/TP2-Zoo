@@ -22,8 +22,8 @@ namespace TP2_Zoo {
 
         public Zoo() {
             InitializeComponent();
-            InitFrmQuitter();
             InitEtatJeu();
+            InitFrmQuitter();
 
             _dateNow = DateTime.Now;
             LblDate.Text = " " + _dateNow.Day + "  " + (Mois)_dateNow.Month + "  " + _dateNow.Year;
@@ -76,9 +76,8 @@ namespace TP2_Zoo {
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private void ToolStripMenuItemQuitter_Click(object sender, EventArgs e) {
-            
+            _quitter.AfficherProfitTotal();
             _quitter.Visible = true;
-            Application.Exit();
         }
 
         /// <summary>

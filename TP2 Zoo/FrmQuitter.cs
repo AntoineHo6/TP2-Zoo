@@ -22,5 +22,8 @@ namespace TP2_Zoo {
             LblMontantTotal.Text = _etatJeu.Heros.Argent.ToString() + "$";
         }
 
+        private void FrmQuitter_FormClosing(object sender, FormClosingEventArgs e) {
+            Application.Exit();
+        }
     }
 }
