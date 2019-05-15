@@ -80,6 +80,11 @@ namespace TP2_Zoo.Ai {
             GerantCarte.PosAiMap[x, y] = false;
         }
 
+        /// <summary>
+        ///     Converti une coordonnée pour qu'elle puisse être utilisé dans un tableau de GerantCarte qui contient le mot clé "Solid"
+        /// </summary>
+        /// <param name="coord"></param>
+        /// <returns></returns>
         static int ToSolidCoord(int coord) {
             return coord + 1;
         }
