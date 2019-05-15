@@ -5,21 +5,28 @@ using System.Windows.Forms;
 using TP2_Zoo.Animaux;
 using TP2_Zoo.Personne;
 
-namespace TP2_Zoo.Etat
-{
+/// <summary>
+///     Auteurs : Antoine Ho et Kevin Li.
+///     
+///     Hiver 2019.
+/// 
+///     Date de remise: Le mardi 14 mai 2019.
+/// </summary>
+
+namespace TP2_Zoo.Etat {
     public partial class FrmEtatJeu : UserControl {
         static Random r = new Random();
         Zoo FormePrincipale;
-        int NbrAnimaux;
-        int NbrDechets;
-        int SecondesJeu;
+        int _nbrAnimaux;
+        int _nbrDechets;
+        int _secondesJeu;
 
-        public Heros heros;
+        public Heros Heros;
         public Animal AnimalEnceinte;
 
         public List<Animal> ListeAnimaux;
-        List<Visiteur> listeVisiteurs;
-        List<Concierge> listeConcierges;
+        List<Visiteur> ListeVisiteurs;
+        List<Concierge> ListeConcierges;
 
         public ChoixAnimal ChoixAnimal;
         public UsrCtrlInfosAnimaux InfosAnimaux;
@@ -31,15 +38,15 @@ namespace TP2_Zoo.Etat
             InitializeComponent();
             DoubleBuffered = true;
 
-            NbrAnimaux = 0;
-            NbrDechets = 0;
-            SecondesJeu = 0;
+            _nbrAnimaux = 0;
+            _nbrDechets = 0;
+            _secondesJeu = 0;
 
             this.FormePrincipale = formPrincipale;
-            heros = new Heros();
+            Heros = new Heros();
             ListeAnimaux = new List<Animal>();
-            listeVisiteurs = new List<Visiteur>();
-            listeConcierges = new List<Concierge>();
+            ListeVisiteurs = new List<Visiteur>();
+            ListeConcierges = new List<Concierge>();
             InitChoixAnimal();
             InitInfosVisiteurs();
         }
@@ -55,7 +62,7 @@ namespace TP2_Zoo.Etat
         }
 
         /// <summary>
-        /// Préparer le User Control qui permet d'afficher les informations d'un visiteur sélectionné.
+        ///     Prépare le User Control qui permet d'afficher les informations d'un visiteur sélectionné.
         /// </summary>
         private void InitInfosVisiteurs() {
             InfosVisiteurs = new UsrCtrlInfosVisiteurs(this);
@@ -71,7 +78,7 @@ namespace TP2_Zoo.Etat
         /// <param name="e"></param>
         private void EtatJeu_Paint(object sender, PaintEventArgs e) {
             GerantCarte.PeintureMap(e);
-            heros.Peinturer(e, heros.Sprite);
+            Heros.Peinturer(e, Heros.Sprite);
             PeinturerAI(e);
         }
 
@@ -84,22 +91,22 @@ namespace TP2_Zoo.Etat
             foreach (var animal in ListeAnimaux) {
                 animal.Peinturer(e, 0);
             }
-            foreach (var visiteur in listeVisiteurs) {
+            foreach (var visiteur in ListeVisiteurs) {
                 visiteur.Peinturer(e, 0);
             }
-            foreach(var concierge in listeConcierges) {
+            foreach (var concierge in ListeConcierges) {
                 concierge.Peinturer(e, 0);
             }
         }
 
 
         /// <summary>
-        ///     Permet de déplacer le heros.
+        ///     Permet de déplacer le héros.
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private void EtatJeu_KeyDown(object sender, KeyEventArgs e) {
-            heros.Deplacer(e);
+            Heros.Deplacer(e);
             this.Refresh();
         }
 
@@ -121,10 +128,10 @@ namespace TP2_Zoo.Etat
                 if (HerosAdjacent(pX, pY)) {
 
                     // Si clique dans un enclos sur une tuile vide
-                    if (enclos != 0 && !GerantCarte.OccupeAiMap[pX, pY] && (pX != heros.Position[0] || pY != heros.Position[1])) {
+                    if (enclos != 0 && !GerantCarte.PosAiMap[pX, pY] && (pX != Heros.Position[0] || pY != Heros.Position[1])) {
                         // Si aucun animal dans l'enclos
                         if (enclosTypeAnimal == null) {
-                            ChoixAnimal.Setup(heros.Argent, enclos, pX, pY);
+                            ChoixAnimal.Setup(Heros.Argent, enclos, pX, pY);
                             ChoixAnimal.Visible = true;
                         }
                         else {
@@ -132,12 +139,12 @@ namespace TP2_Zoo.Etat
                         }
                     }
                     // Si clique sur un animal
-                    else if (enclos != 0 && GerantCarte.OccupeAiMap[pX, pY]) {
-                        if (heros.Argent >= 1) {
+                    else if (enclos != 0 && GerantCarte.PosAiMap[pX, pY]) {
+                        if (Heros.Argent >= 1) {
                             NourrirAnimal(pX, pY);
                         }
                     }
-                    // si clique sur un dechet
+                    // si clique sur un déchet
 
                     else if (GerantCarte.PosDechetsMap[pX, pY]) {
                         GerantCarte.PosDechetsMap[pX, pY] = false;
@@ -148,14 +155,14 @@ namespace TP2_Zoo.Etat
             }
             else if (e.Button == MouseButtons.Right) {
                 // Si clique sur un animal
-                if (enclos != 0 && GerantCarte.OccupeAiMap[pX, pY]) {
+                if (enclos != 0 && GerantCarte.PosAiMap[pX, pY]) {
                     ListeInfosAnimaux = new FrmListeInfosAnimaux(this, ListeAnimaux);
                     ListeInfosAnimaux.Show();
                 }
 
                 // Si je clique sur un visiteur
-                else if (GerantCarte.OccupeAiMap[pX, pY]) {
-                    InfosVisiteurs.Setup(listeVisiteurs, pX, pY);
+                else if (GerantCarte.PosAiMap[pX, pY]) {
+                    InfosVisiteurs.Setup(ListeVisiteurs, pX, pY);
                     InfosVisiteurs.Visible = true;
                 }
             }
@@ -163,31 +170,31 @@ namespace TP2_Zoo.Etat
 
 
         /// <summary>
-        ///     Créé un nouvel animal à une position précise.
+        ///     Crée un nouvel animal à une position précise.
         /// </summary>
-        /// <param name="animal"> Le type d'animal à créé </param>
-        /// <param name="x"></param>
-        /// <param name="y"></param>
+        /// <param name="animal">Le type d'animal à créer</param>
+        /// <param name="x">La position X du clique</param>
+        /// <param name="y">La position Y du clique</param>
         public void CreerAnimal(String animal, int enclos, int x, int y) {
             bool animalCree = false;
 
             switch (animal) {
                 case "Mouton":
-                    if (heros.Argent >= 20) {
+                    if (Heros.Argent >= 20) {
                         DeduireArgentHeros(20);
                         ListeAnimaux.Add(new Mouton(true, enclos, x, y));
                         animalCree = true;
                     }
                     break;
                 case "Lion":
-                    if (heros.Argent >= 35) {
+                    if (Heros.Argent >= 35) {
                         DeduireArgentHeros(35);
                         ListeAnimaux.Add(new Lion(true, enclos, x, y));
                         animalCree = true;
                     }
                     break;
                 case "Licorne":
-                    if (heros.Argent >= 50) {
+                    if (Heros.Argent >= 50) {
                         DeduireArgentHeros(50);
                         ListeAnimaux.Add(new Licorne(true, enclos, x, y));
                         animalCree = true;
@@ -211,21 +218,20 @@ namespace TP2_Zoo.Etat
 
             switch (typeVisiteur) {
                 case 0:
-                    listeVisiteurs.Add(new Pepe());
+                    ListeVisiteurs.Add(new Pepe());
                     break;
                 case 1:
-                    listeVisiteurs.Add(new Dame());
+                    ListeVisiteurs.Add(new Dame());
                     break;
                 case 2:
-                    listeVisiteurs.Add(new Fillette());
+                    ListeVisiteurs.Add(new Fillette());
                     break;
                 case 3:
-                    listeVisiteurs.Add(new Monsieur());
+                    ListeVisiteurs.Add(new Monsieur());
                     break;
             }
 
             AjouterArgentHeros(2);
-
             Refresh();
         }
 
@@ -234,7 +240,7 @@ namespace TP2_Zoo.Etat
         ///     Création d'un concierge
         /// </summary>
         public void CreerConcierge() {
-            listeConcierges.Add(new Concierge());
+            ListeConcierges.Add(new Concierge());
             Refresh();
         }
 
@@ -244,8 +250,8 @@ namespace TP2_Zoo.Etat
         /// </summary>
         /// <param name="montant"> Le montant d'argent à déduire. </param>
         private void DeduireArgentHeros(double montant) {
-            heros.Argent -= montant;
-            FormePrincipale.LblArgent.Text = "Argent : " + heros.Argent + "$";
+            Heros.Argent -= montant;
+            FormePrincipale.LblArgent.Text = "Argent : " + Heros.Argent + "$";
         }
 
 
@@ -254,8 +260,8 @@ namespace TP2_Zoo.Etat
         /// </summary>
         /// <param name="montant"> Le montant d'argent à ajouter. </param>
         private void AjouterArgentHeros(double montant) {
-            heros.Argent += montant;
-            FormePrincipale.LblArgent.Text = "Argent : " + heros.Argent + "$";
+            Heros.Argent += montant;
+            FormePrincipale.LblArgent.Text = "Argent : " + Heros.Argent + "$";
         }
 
 
@@ -271,7 +277,7 @@ namespace TP2_Zoo.Etat
             // parcours les tuiles autour du héros.
             for (int y = -1; y < 2; y++) {
                 for (int x = -1; x < 2; x++) {
-                    if ((heros.Position[0] == iX + x) && (heros.Position[1] == iY + y)) {
+                    if ((Heros.Position[0] == iX + x) && (Heros.Position[1] == iY + y)) {
                         heroAdjacent = true;
                     }
                 }
@@ -284,8 +290,8 @@ namespace TP2_Zoo.Etat
         ///     Incrémente la variable du nombre d'animaux.
         /// </summary>
         private void IncNbrAnimaux() {
-            NbrAnimaux++;
-            FormePrincipale.LblNbrAnimaux.Text = "Nombre d'animaux : " + NbrAnimaux;
+            _nbrAnimaux++;
+            FormePrincipale.LblNbrAnimaux.Text = "Nombre d'animaux : " + _nbrAnimaux;
         }
 
 
@@ -308,9 +314,9 @@ namespace TP2_Zoo.Etat
         ///     à un bébé après un certain nombre de jours de gestation.
         /// </summary>
         /// <param name="enclos"> Le numéro de l'enclos </param>
-        /// <param name="AnimalFeminin"></param>
+        /// <param name="AnimalFeminin">L'animal femelle</param>
         private void AccoucherBebeAnimal(int enclos, Animal AnimalFeminin) {
-            if (AnimalFeminin.Enceinte) {
+            if (AnimalFeminin.EstEnceinte) {
                 switch (AnimalFeminin.Type) {
                     case "Mouton":
                         if (AnimalFeminin.NbrJoursGestation == 150) {
@@ -334,19 +340,19 @@ namespace TP2_Zoo.Etat
         /// <summary>
         ///     Méthode qui donne naissance à un bébé dans une position aléatoire de l'enclos respectif.
         /// </summary>
-        /// <param name="enclos"></param>
+        /// <param name="enclos">L'indice de l'enclos</param>
         private void CreerBebe(int enclos) {
             String enclosTypeAnimal = GerantCarte.AnimalEnclos[enclos];
 
-            int pX = PosAleatoireX(enclos);
+            int pX = PosAleatoireXEnclos(enclos);
             int pY = PosAleatoireY(enclos);
 
-            while (!GerantCarte.OccupeAiMap[pX, pY] && (pX != heros.Position[0] && pY != heros.Position[1])) {
-                pX = PosAleatoireX(enclos);
+            while (!GerantCarte.PosAiMap[pX, pY] && (pX != Heros.Position[0] && pY != Heros.Position[1])) {
+                pX = PosAleatoireXEnclos(enclos);
                 pY = PosAleatoireY(enclos);
             }
 
-            if (enclos != 0 && AnimalEnceinte.Enceinte) {
+            if (enclos != 0 && AnimalEnceinte.EstEnceinte) {
                 CreerAnimalBebe(enclosTypeAnimal, enclos, pX, pY);
             }
         }
@@ -354,10 +360,10 @@ namespace TP2_Zoo.Etat
         /// <summary>
         ///     Méthode qui crée le bébé de l'animal femelle. 
         /// </summary>
-        /// <param name="enclosTypeAnimal"></param>
-        /// <param name="enclos"></param>
-        /// <param name="pX"></param>
-        /// <param name="pY"></param>
+        /// <param name="enclosTypeAnimal">Le type d'un animal dans un enclos</param>
+        /// <param name="enclos">L'indice de l'enclos</param>
+        /// <param name="pX">La position aléatoire X dans l'enclos.</param>
+        /// <param name="pY">La position aléatoire Y dans l'enclos.</param>
         private void CreerAnimalBebe(string enclosTypeAnimal, int enclos, int pX, int pY) {
             bool animalCree = false;
 
@@ -395,41 +401,40 @@ namespace TP2_Zoo.Etat
 
             TickAnimauxEnceinte();
 
-            SecondesJeu++;
+            _secondesJeu++;
 
-            if (SecondesJeu % 60 == 0) {
-                AjouterArgentHeros(NbrAnimaux * NbrAnimaux); // chaque visiteur repaie 1$ pour chaque animal présent, et pour chaque animal, il y a un visiteur.
-                DeduireArgentHeros(NbrDechets * 0.10);
+            if (_secondesJeu % 60 == 0) {
+                AjouterArgentHeros(_nbrAnimaux * _nbrAnimaux); // chaque visiteur repaie 1$ pour chaque animal présent, et pour chaque animal, il y a un visiteur.
+                DeduireArgentHeros(_nbrDechets * 0.10);
             }
 
             this.Refresh();
         }
-        
+
 
         /// <summary>
         ///     Mets à jour chaque visiteur et ils se déplacent.
         /// </summary>
         private void TickVisiteurs() {
-            foreach (var visiteur in listeVisiteurs) {
+            foreach (var visiteur in ListeVisiteurs) {
                 visiteur.NbrJours++;
                 ChanceProduireDechet(visiteur);
-                visiteur.Deplacer(heros.Position);
+                visiteur.Deplacer(Heros.Position);
                 visiteur.VerifierPeutQuit();
 
                 // a tester
                 if (VisiteurPeuxTuQuitter(visiteur)) {
-                    listeVisiteurs.Remove(visiteur);
+                    ListeVisiteurs.Remove(visiteur);
                 }
             }
         }
-
 
         /// <summary>
         ///     Mets à jour chaque concierge et ils se déplacent.
         /// </summary>
         private void TickConcierges() {
-            foreach (var concierge in listeConcierges) {
-                concierge.Deplacer(heros.Position);
+            foreach (var concierge in ListeConcierges) {
+                concierge.Deplacer(Heros.Position);
                 int nbrDechetsRammase = concierge.RamasserDechetsAdjacent();
                 DecNbrDechet(nbrDechetsRammase);
                 concierge.NbrJours++;
@@ -440,16 +445,14 @@ namespace TP2_Zoo.Etat
             }
         }
 
-
         /// <summary>
         ///     Vérifie si un visiteur peut quitter.
         /// </summary>
-        /// <param name="visiteur"> Le visiteur a verifier. </param>
+        /// <param name="visiteur"> Le visiteur à verifier. </param>
         /// <returns></returns>
         private bool VisiteurPeuxTuQuitter(Visiteur visiteur) {
             return visiteur.droitQuitter && ((visiteur.Position[0] == 19 || visiteur.Position[0] == 20) && visiteur.Position[1] == 25);
         }
-
 
         /// <summary>
         ///     Mets à jours tous les animaux et ils se déplacent.
@@ -482,7 +485,7 @@ namespace TP2_Zoo.Etat
                         break;
                 }
 
-                animal.Deplacer(heros.Position);
+                animal.Deplacer(Heros.Position);
             }
         }
 
@@ -509,17 +512,17 @@ namespace TP2_Zoo.Etat
             if (PresenceFeminin && PresenceMasculin) {
                 ChanceAnimauxEnceinte(AnimalFeminin);
                 AccoucherBebeAnimal(enclos, AnimalFeminin);
-            } 
+            }
         }
 
         /// <summary>
         ///     Méthode qui retourne l'animal femelle de l'enclos donné.
         /// </summary>
-        /// <param name="enclos"></param>
+        /// <param name="enclos">L'indice de l'enclos</param>
         /// <returns></returns>
         private Animal TrouverAnimalFemelle(int enclos) {
             foreach (var animal in ListeAnimaux) {
-                if (animal.Genre == 1 && animal.Enclos == enclos && !animal.Enceinte) {
+                if (animal.Genre == 1 && animal.Enclos == enclos && !animal.EstEnceinte) {
                     return AnimalEnceinte = animal;
                 }
             }
@@ -547,7 +550,7 @@ namespace TP2_Zoo.Etat
         ///     Méthode qui retourne un booléen indiquant la présence d'un animal
         ///     mâle dans un enclos donné.
         /// </summary>
-        /// <param name="enclos"></param>
+        /// <param name="enclos">L'indice de l'enclos</param>
         /// <returns></returns>
         private bool TrouverPresenceMale(int enclos) {
             bool PresenceMasculin = false;
@@ -565,14 +568,15 @@ namespace TP2_Zoo.Etat
         ///     Méthode qui indique le nombre de chances (1%) qu'un animal femelle
         ///     peut devenir enceinte. 
         /// </summary>
-        /// <param name="AnimalFeminin"></param>
-        private void ChanceAnimauxEnceinte(Animal AnimalFeminin) {
+        /// <param name="animalFeminin">L'animal femelle</param>
+        private void ChanceAnimauxEnceinte(Animal animalFeminin) {
             if (r.Next(100) < 1) {
-                AnimalFeminin.Enceinte = true;
-                AnimalFeminin.NbrJoursGestation++;
-            } else {
-                AnimalFeminin.Enceinte = false;
-                AnimalFeminin.NbrJoursGestation = 0;
+                animalFeminin.EstEnceinte = true;
+                animalFeminin.NbrJoursGestation++;
+            }
+            else {
+                animalFeminin.EstEnceinte = false;
+                animalFeminin.NbrJoursGestation = 0;
             }
         }
 
@@ -603,9 +607,9 @@ namespace TP2_Zoo.Etat
         /// <summary>
         ///     Méthode qui génère une position aléatoire X dans un enclos donné.
         /// </summary>
-        /// <param name="enclos"></param>
+        /// <param name="enclos">L'indice de l'enclos</param>
         /// <returns></returns>
-        private int PosAleatoireX(int enclos) {
+        private int PosAleatoireXEnclos(int enclos) {
             int Position = 0;
             switch (enclos) {
                 case 1:
@@ -625,11 +629,11 @@ namespace TP2_Zoo.Etat
         }
 
         /// <summary>
-        ///     Le visiteur a 3% chance de laisser tomber un dechet.
+        ///     Le visiteur a 3% chance de laisser tomber un déchet.
         /// </summary>
-        /// <param name="visiteur"> Le visiteur qui a la chance de faire tomber un dechet. </param>
+        /// <param name="visiteur"> Le visiteur qui a la chance de faire tomber un déchet. </param>
         private void ChanceProduireDechet(Visiteur visiteur) {
-            //                     |              pas de dechet sur un autre dechet.                    |
+            //                     |              Pas de déchet sur un autre déchet.                    |
             if (r.Next(100) < 3 && !GerantCarte.PosDechetsMap[visiteur.Position[0], visiteur.Position[1]]) {
                 visiteur.LaisserDechet();
                 IncNbrDechet();
@@ -640,8 +644,8 @@ namespace TP2_Zoo.Etat
         ///     Incrémente le nombre de déchets.
         /// </summary>
         private void IncNbrDechet() {
-            NbrDechets++;
-            FormePrincipale.LblNbrDechets.Text = "Nombre de dechets : " + NbrDechets;
+            _nbrDechets++;
+            FormePrincipale.LblNbrDechets.Text = "Nombre de déchets : " + _nbrDechets;
         }
 
 
@@ -649,8 +653,8 @@ namespace TP2_Zoo.Etat
         ///     Décremente le nombre de déchets.
         /// </summary>
         private void DecNbrDechet(int nbrDechetsRamasse) {
-            NbrDechets -= nbrDechetsRamasse;
-            FormePrincipale.LblNbrDechets.Text = "Nombre de dechets : " + NbrDechets;
+            _nbrDechets -= nbrDechetsRamasse;
+            FormePrincipale.LblNbrDechets.Text = "Nombre de déchets : " + _nbrDechets;
         }
 
 

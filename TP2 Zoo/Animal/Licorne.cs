@@ -12,7 +12,6 @@ namespace TP2_Zoo.Animaux {
         public Licorne(bool EstAdulte, int Enclos, params int[] Position) : base(EstAdulte, Enclos, Position) {
             Prix = 50;
             Type = "Licorne";
-
             Sprites.Add(AnimalTileSetImageGenerator.GetTile(2));
         }
 

@@ -15,17 +15,18 @@ namespace TP2_Zoo.Personne {
             for (int i = 16; i < 20; i++) {
                 Sprites.Add(HumainTileSetImageGenerator.GetTile(i));
             }
-
             Position = new int[] { 38, 5 };
             Frais = 2;
         }
-
 
         public void Deplacer(int[] positionHero) {
             Ai.Ai.ChoixDirectionAleatoire(Position, positionHero);
         }
 
-
+        /// <summary>
+        ///     Méthode qui permet de ramasser les déchets adjacents.
+        /// </summary>
+        /// <returns></returns>
         public int RamasserDechetsAdjacent() {
             int nbrDechetRamasse = 0;
             int tuileAVerifierX;
@@ -47,7 +48,6 @@ namespace TP2_Zoo.Personne {
                     }
                 }
             }
-
             return nbrDechetRamasse;
         }
     }

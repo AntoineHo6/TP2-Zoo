@@ -41,75 +41,73 @@ namespace tileSetZoo {
         public static int CONCIERGE_DROITE = 19;
 
 
-        private static List<TileCoord> listeCoord = new List<TileCoord>();
-        private static List<Bitmap> listeBitmap = new List<Bitmap>();
+        private static List<TileCoord> ListeCoord = new List<TileCoord>();
+        private static List<Bitmap> ListeBitMap = new List<Bitmap>();
 
         /// <summary>
         /// Constructeur statique
         /// </summary>
         static HumainTileSetImageGenerator() {
 
-            listeCoord.Add(new TileCoord() { Ligne = 2, Colonne = 0 }); // PEPE_FACE
-            listeCoord.Add(new TileCoord() { Ligne = 2, Colonne = 1 }); // PEPE_DOS
-            listeCoord.Add(new TileCoord() { Ligne = 2, Colonne = 2 }); // PEPE_GAUCHE
-            listeCoord.Add(new TileCoord() { Ligne = 2, Colonne = 2 }); // PEPE_DROITE
+            ListeCoord.Add(new TileCoord() { Ligne = 2, Colonne = 0 }); // PEPE_FACE
+            ListeCoord.Add(new TileCoord() { Ligne = 2, Colonne = 1 }); // PEPE_DOS
+            ListeCoord.Add(new TileCoord() { Ligne = 2, Colonne = 2 }); // PEPE_GAUCHE
+            ListeCoord.Add(new TileCoord() { Ligne = 2, Colonne = 2 }); // PEPE_DROITE
 
-            listeCoord.Add(new TileCoord() { Ligne = 1, Colonne = 0 }); // DAME_FACE
-            listeCoord.Add(new TileCoord() { Ligne = 1, Colonne = 1 }); // DAME_DOS
-            listeCoord.Add(new TileCoord() { Ligne = 1, Colonne = 2 }); // DAME_GAUCHE
-            listeCoord.Add(new TileCoord() { Ligne = 1, Colonne = 2 }); // DAME_DROITE
+            ListeCoord.Add(new TileCoord() { Ligne = 1, Colonne = 0 }); // DAME_FACE
+            ListeCoord.Add(new TileCoord() { Ligne = 1, Colonne = 1 }); // DAME_DOS
+            ListeCoord.Add(new TileCoord() { Ligne = 1, Colonne = 2 }); // DAME_GAUCHE
+            ListeCoord.Add(new TileCoord() { Ligne = 1, Colonne = 2 }); // DAME_DROITE
 
-            listeCoord.Add(new TileCoord() { Ligne = 3, Colonne = 0 }); // FILLETTE_FACE
-            listeCoord.Add(new TileCoord() { Ligne = 3, Colonne = 1 }); // FILLETTE_DOS
-            listeCoord.Add(new TileCoord() { Ligne = 3, Colonne = 2 }); // FILLETTE_GAUCHE
-            listeCoord.Add(new TileCoord() { Ligne = 3, Colonne = 2 }); // FILLETTE_DROITE
+            ListeCoord.Add(new TileCoord() { Ligne = 3, Colonne = 0 }); // FILLETTE_FACE
+            ListeCoord.Add(new TileCoord() { Ligne = 3, Colonne = 1 }); // FILLETTE_DOS
+            ListeCoord.Add(new TileCoord() { Ligne = 3, Colonne = 2 }); // FILLETTE_GAUCHE
+            ListeCoord.Add(new TileCoord() { Ligne = 3, Colonne = 2 }); // FILLETTE_DROITE
 
-            listeCoord.Add(new TileCoord() { Ligne = 0, Colonne = 0 }); // MONSIEUR_FACE
-            listeCoord.Add(new TileCoord() { Ligne = 0, Colonne = 1 }); // MONSIEUR_DOS
-            listeCoord.Add(new TileCoord() { Ligne = 0, Colonne = 2 }); // MONSIEUR_GAUCHE
-            listeCoord.Add(new TileCoord() { Ligne = 0, Colonne = 2 }); // MONSIEUR_DROITE
+            ListeCoord.Add(new TileCoord() { Ligne = 0, Colonne = 0 }); // MONSIEUR_FACE
+            ListeCoord.Add(new TileCoord() { Ligne = 0, Colonne = 1 }); // MONSIEUR_DOS
+            ListeCoord.Add(new TileCoord() { Ligne = 0, Colonne = 2 }); // MONSIEUR_GAUCHE
+            ListeCoord.Add(new TileCoord() { Ligne = 0, Colonne = 2 }); // MONSIEUR_DROITE
 
-            listeCoord.Add(new TileCoord() { Ligne = 5, Colonne = 0});  // CONCIERGE_FACE
-            listeCoord.Add(new TileCoord() { Ligne = 5, Colonne = 1 }); // CONCIERGE_DOS
-            listeCoord.Add(new TileCoord() { Ligne = 5, Colonne = 2 }); // CONCIERGE_GAUCHE
-            listeCoord.Add(new TileCoord() { Ligne = 5, Colonne = 2 }); // CONCIERGE_DROITE
+            ListeCoord.Add(new TileCoord() { Ligne = 5, Colonne = 0});  // CONCIERGE_FACE
+            ListeCoord.Add(new TileCoord() { Ligne = 5, Colonne = 1 }); // CONCIERGE_DOS
+            ListeCoord.Add(new TileCoord() { Ligne = 5, Colonne = 2 }); // CONCIERGE_GAUCHE
+            ListeCoord.Add(new TileCoord() { Ligne = 5, Colonne = 2 }); // CONCIERGE_DROITE
 
+            ListeBitMap.Add(LoadTile(PEPE_FACE));       // PEPE_FACE
+            ListeBitMap.Add(LoadTile(PEPE_DOS));        // PEPE_DOS
+            ListeBitMap.Add(LoadTile(PEPE_GAUCHE));     // PEPE_GAUCHE
+            ListeBitMap.Add(LoadTile(PEPE_DROITE));     // PEPE_DROITE
+            ListeBitMap.Last().RotateFlip(RotateFlipType.RotateNoneFlipX);
 
+            ListeBitMap.Add(LoadTile(DAME_FACE));       // DAME_FACE
+            ListeBitMap.Add(LoadTile(DAME_DOS));        // DAME_DOS
+            ListeBitMap.Add(LoadTile(DAME_GAUCHE));     // DAME_GAUCHE
+            ListeBitMap.Add(LoadTile(DAME_DROITE));     // DAME_DROITE
+            ListeBitMap.Last().RotateFlip(RotateFlipType.RotateNoneFlipX);
 
-            listeBitmap.Add(LoadTile(PEPE_FACE));       // PEPE_FACE
-            listeBitmap.Add(LoadTile(PEPE_DOS));        // PEPE_DOS
-            listeBitmap.Add(LoadTile(PEPE_GAUCHE));     // PEPE_GAUCHE
-            listeBitmap.Add(LoadTile(PEPE_DROITE));     // PEPE_DROITE
-            listeBitmap.Last().RotateFlip(RotateFlipType.RotateNoneFlipX);
+            ListeBitMap.Add(LoadTile(FILLETTE_FACE));   // FILLETTE_FACE
+            ListeBitMap.Add(LoadTile(FILLETTE_DOS));    // FILLETTE_DOS
+            ListeBitMap.Add(LoadTile(FILLETTE_GAUCHE)); // FILLETTE_GAUCHE
+            ListeBitMap.Add(LoadTile(FILLETTE_DROITE)); // FILLETTE_DROITE
+            ListeBitMap.Last().RotateFlip(RotateFlipType.RotateNoneFlipX);
 
-            listeBitmap.Add(LoadTile(DAME_FACE));       // DAME_FACE
-            listeBitmap.Add(LoadTile(DAME_DOS));        // DAME_DOS
-            listeBitmap.Add(LoadTile(DAME_GAUCHE));     // DAME_GAUCHE
-            listeBitmap.Add(LoadTile(DAME_DROITE));     // DAME_DROITE
-            listeBitmap.Last().RotateFlip(RotateFlipType.RotateNoneFlipX);
+            ListeBitMap.Add(LoadTile(MONSIEUR_FACE));   // MONSIEUR_FACE
+            ListeBitMap.Add(LoadTile(MONSIEUR_DOS));    // MONSIEUR_DOS
+            ListeBitMap.Add(LoadTile(MONSIEUR_GAUCHE)); // MONSIEUR_GAUCHE
+            ListeBitMap.Add(LoadTile(MONSIEUR_DROITE)); // MONSIEUR_DROITE
+            ListeBitMap.Last().RotateFlip(RotateFlipType.RotateNoneFlipX);
 
-            listeBitmap.Add(LoadTile(FILLETTE_FACE));   // FILLETTE_FACE
-            listeBitmap.Add(LoadTile(FILLETTE_DOS));    // FILLETTE_DOS
-            listeBitmap.Add(LoadTile(FILLETTE_GAUCHE)); // FILLETTE_GAUCHE
-            listeBitmap.Add(LoadTile(FILLETTE_DROITE)); // FILLETTE_DROITE
-            listeBitmap.Last().RotateFlip(RotateFlipType.RotateNoneFlipX);
-
-            listeBitmap.Add(LoadTile(MONSIEUR_FACE));   // MONSIEUR_FACE
-            listeBitmap.Add(LoadTile(MONSIEUR_DOS));    // MONSIEUR_DOS
-            listeBitmap.Add(LoadTile(MONSIEUR_GAUCHE)); // MONSIEUR_GAUCHE
-            listeBitmap.Add(LoadTile(MONSIEUR_DROITE)); // MONSIEUR_DROITE
-            listeBitmap.Last().RotateFlip(RotateFlipType.RotateNoneFlipX);
-
-            listeBitmap.Add(LoadTile(CONCIERGE_FACE));  // CONCIERGE_FACE
-            listeBitmap.Add(LoadTile(CONCIERGE_DOS));  // CONCIERGE_DOS
-            listeBitmap.Add(LoadTile(CONCIERGE_GAUCHE));  // CONCIERGE_GAUCHE
-            listeBitmap.Add(LoadTile(CONCIERGE_DROITE));  // CONCIERGE_DROITE
-            listeBitmap.Last().RotateFlip(RotateFlipType.RotateNoneFlipX);
+            ListeBitMap.Add(LoadTile(CONCIERGE_FACE));  // CONCIERGE_FACE
+            ListeBitMap.Add(LoadTile(CONCIERGE_DOS));  // CONCIERGE_DOS
+            ListeBitMap.Add(LoadTile(CONCIERGE_GAUCHE));  // CONCIERGE_GAUCHE
+            ListeBitMap.Add(LoadTile(CONCIERGE_DROITE));  // CONCIERGE_DROITE
+            ListeBitMap.Last().RotateFlip(RotateFlipType.RotateNoneFlipX);
         }
 
         private static Bitmap LoadTile(int posListe) {
             Image source = TP2_Zoo.Properties.Resources.personnages;
-            TileCoord coord = listeCoord[posListe];
+            TileCoord coord = ListeCoord[posListe];
             Rectangle crop = new Rectangle((coord.Colonne * IMAGE_WIDTH), (coord.Ligne * IMAGE_HEIGHT), IMAGE_WIDTH, IMAGE_HEIGHT);
 
             var bmp = new Bitmap(crop.Width, crop.Height);
@@ -120,14 +118,9 @@ namespace tileSetZoo {
         }
 
         public static Bitmap GetTile(int posListe) {
-            return listeBitmap[posListe];
+            return ListeBitMap[posListe];
         }
 
     }
-
-    //public class TileCoord {
-    //    public int Ligne { get; set; }
-    //    public int Colonne { get; set; }
-    //};
 }
 

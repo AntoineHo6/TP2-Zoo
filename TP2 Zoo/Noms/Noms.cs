@@ -16,15 +16,17 @@ namespace TP2_Zoo.Noms {
             NomsFeminins = new List<string>();
         }
 
-        public static void LoadNames() {
-                                                                                                        // encoding français
+        /// <summary>
+        ///     Méthode qui fait la lecture des fichiers des noms de visiteurs.
+        /// </summary>
+        public static void LoadNames() {                                                             // encoding français
             string[] nomsFichierMasc = System.IO.File.ReadAllLines(@"..\..\Noms\NomsMasculins.txt", Encoding.GetEncoding("iso-8859-1"));
             foreach (String nom in nomsFichierMasc) {
                 NomsMasculins.Add(nom);
             }
 
             string[] nomsFichierFem = System.IO.File.ReadAllLines(@"..\..\Noms\NomsFeminins.txt", Encoding.GetEncoding("iso-8859-1"));
-            foreach(String nom in nomsFichierFem) {
+            foreach (String nom in nomsFichierFem) {
                 NomsFeminins.Add(nom);
             }
         }

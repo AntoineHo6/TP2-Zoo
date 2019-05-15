@@ -9,14 +9,14 @@ using TP2_Zoo.Ai;
 namespace TP2_Zoo.Personne {
     public abstract class Visiteur : Personne {
 
+        static Random r = new Random();
+
         public String Nom { get; set; }
         public int Sexe { get; set; }   // 0: masculin; 1: feminin
         public String Type { get; set; }
         public int NbrJours { get; set; }
         public int NbrDechets { get; set; }
         public bool droitQuitter { get; set; }
-
-        static Random r = new Random();
 
         public Visiteur() {
             Position = new int[] {19, 0 };
@@ -25,7 +25,11 @@ namespace TP2_Zoo.Personne {
             droitQuitter = false;
         }
         
-
+        /// <summary>
+        ///     Méthode qui permet d'assigner un nom à un visiteur.
+        /// </summary>
+        /// <param name="sexe">Le sexe de la personne</param>
+        /// <returns></returns>
         public String AssignerNom(int sexe) {
             if (sexe == 0) {
                 int indexM = r.Next(0, Noms.Noms.NomsMasculins.Count);
@@ -37,19 +41,26 @@ namespace TP2_Zoo.Personne {
             }
         }
 
-
+        /// <summary>
+        ///     Méthode qui permet aux visiteurs de quitter après un certain temps.
+        /// </summary>
         public void VerifierPeutQuit() {
             if (NbrJours > 60) {
                 droitQuitter = true;
             }
         }
 
-
+        /// <summary>
+        ///     Méthode qui permet de laisser un déchet à une position donnée.
+        /// </summary>
         public void LaisserDechet() {
             GerantCarte.PosDechetsMap[Position[0], Position[1]] = true;
         }
 
-
+        /// <summary>
+        ///     Méthode qui permet le déplacement du visiteur.
+        /// </summary>
+        /// <param name="positionHero"></param>
         public void Deplacer(int[] positionHero) {
             Ai.Ai.ChoixDirectionAleatoire(Position, positionHero);
         }

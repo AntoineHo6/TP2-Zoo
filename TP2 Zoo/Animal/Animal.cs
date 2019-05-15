@@ -14,25 +14,25 @@ namespace TP2_Zoo.Animaux {
         public int[] Position { get; set; }
         public String Type { get; set; }
         public int Genre { get; set; }   // 0: masculin; 1: feminin
-        public bool Enceinte { get; set; }
+        public bool EstEnceinte { get; set; }
         public int Prix { get; set; }
         public List<Bitmap> Sprites { get; set; }
         public int NbrJours { get; set; }
         public int NbrJoursGestation { get; set; }
         public int JoursPasNourri { get; set; }
-        public bool EstAdulte { get; set; } // True: Adulte; False: Enfant
+        public bool EstAdulte { get; set; }
         public int Enclos { get; set; }
 
-        public Animal(bool EstAdulte, int Enclos, params int[] Position) {
-            this.EstAdulte = EstAdulte;
+        public Animal(bool estAdulte, int enclos, params int[] position) {
+            this.EstAdulte = estAdulte;
             NbrJours = 0;
             JoursPasNourri = 0;
-            this.Position = Position;
+            this.Position = position;
             Genre = r.Next(0, 2);
-            Enceinte = false;
+            EstEnceinte = false;
             Sprites = new List<Bitmap>();
-            this.Enclos = Enclos;
-            Ai.Ai.OccuperTuile(Position[0], Position[1]);
+            this.Enclos = enclos;
+            Ai.Ai.OccuperTuile(position[0], position[1]);
         }
 
         public void Deplacer(int[] positionHero) {

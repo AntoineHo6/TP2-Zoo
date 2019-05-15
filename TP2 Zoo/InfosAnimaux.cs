@@ -13,15 +13,18 @@ using TP2_Zoo.Animaux;
 namespace TP2_Zoo {
     public partial class UsrCtrlInfosAnimaux : UserControl {
         FrmEtatJeu EtatJeu;
-        private Animal AnimalTemp;
-        public bool EstAnimalClique = false;
+        private Animal _animalTemp;
 
-        public UsrCtrlInfosAnimaux(FrmEtatJeu EtatJeu) {
+        public UsrCtrlInfosAnimaux(FrmEtatJeu etatJeu) {
             InitializeComponent();
-            this.EtatJeu = EtatJeu;
+            this.EtatJeu = etatJeu;
         }
 
-        public void InfosTousAnimaux(Animal animal) {
+        /// <summary>
+        ///     Méthode qui affiche l'image et le nom de l'animal.
+        /// </summary>
+        /// <param name="animal"></param>
+        public void InfoAnimal(Animal animal) {
             switch (animal.Type) {
                 case "Mouton":
                     PctrBoxAnimal.BackgroundImage = Properties.Resources.Mouton;
@@ -36,27 +39,25 @@ namespace TP2_Zoo {
                     LblTypeAnimal.Text = animal.Type.ToString();
                     break;
             }
-
         }
 
+        /// <summary>
+        ///     Méthode qui affiche les informations de l'animal.
+        /// </summary>
+        /// <param name="animal"></param>
         public void InfosUserControl(Animal animal) {
-            InfosTousAnimaux(animal);
+            InfoAnimal(animal);
             LblGenreAnimal.Text = TrouverGenreAnimal(animal);
             LblCroissanceAnimal.Text = TrouverCroissanceAnimal(animal);
             LblFaimAnimal.Text = TrouverFaimAnimal(animal);
             LblEnceinteAnimal.Text = TrouverEnceinteAnimal(animal);
         }
 
-        private Animal TrouverAnimal(List<Animal> ListeAnimaux, int PostionX, int PositionY) {
-            foreach (Animal animal in ListeAnimaux) {
-                if (animal.Position[0] == PostionX && animal.Position[1] == PositionY) {
-                    AnimalTemp = animal;
-                    EstAnimalClique = true;
-                }
-            }
-            return AnimalTemp;
-        }
-
+        /// <summary>
+        ///     Méthode qui retourne le genre de l'animal donné.
+        /// </summary>
+        /// <param name="unAnimal"></param>
+        /// <returns></returns>
         private String TrouverGenreAnimal(Animal unAnimal) {
             if (unAnimal.Genre == 0) {
                 return "Masculin";
@@ -66,6 +67,11 @@ namespace TP2_Zoo {
             }
         }
 
+        /// <summary>
+        ///     Méthode qui retourne l'état de la croissance d'un animal donné.
+        /// </summary>
+        /// <param name="unAnimal"></param>
+        /// <returns></returns>
         private String TrouverCroissanceAnimal(Animal unAnimal) {
             if (unAnimal.EstAdulte) {
                 return "Adulte";
@@ -75,6 +81,11 @@ namespace TP2_Zoo {
             }
         }
 
+        /// <summary>
+        ///     Méthode qui retourne l'état de la faim d'un animal donné.
+        /// </summary>
+        /// <param name="unAnimal"></param>
+        /// <returns></returns>
         private string TrouverFaimAnimal(Animal unAnimal) {
             if (unAnimal.JoursPasNourri > 0) {
                 return "Oui";
@@ -84,25 +95,22 @@ namespace TP2_Zoo {
             }
         }
 
+        /// <summary>
+        ///     Méthode qui retourne l'état de grossesse d'un animal donné.
+        /// </summary>
+        /// <param name="unAnimal"></param>
+        /// <returns></returns>
         private string TrouverEnceinteAnimal(Animal unAnimal) {
             if (unAnimal.Genre == 0) {
                 return "Non";
             }
             else {
-                if (unAnimal.Enceinte) {
+                if (unAnimal.EstEnceinte) {
                     return "Oui";
                 }
                 else {
                     return "Non";
                 }
-            }
-        }
-
-        private void UsrCtrlInfosAnimaux_Paint(object sender, PaintEventArgs e)
-        {
-            if (EstAnimalClique) {
-                BorderStyle = BorderStyle.None;
-                ControlPaint.DrawBorder(e.Graphics, e.ClipRectangle, Color.Red, ButtonBorderStyle.Solid);
             }
         }
     }

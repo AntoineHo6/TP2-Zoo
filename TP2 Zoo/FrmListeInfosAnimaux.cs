@@ -12,21 +12,20 @@ using TP2_Zoo.Etat;
 
 namespace TP2_Zoo {
     public partial class FrmListeInfosAnimaux : Form {
-        FrmEtatJeu etatJeu;
-        UsrCtrlInfosAnimaux infosAnimaux;
+        FrmEtatJeu _etatJeu;
+        UsrCtrlInfosAnimaux _usrCtrlInfosAnimaux;
 
         public FrmListeInfosAnimaux(FrmEtatJeu etatJeu, List<Animal> listeAnimaux) {
             InitializeComponent();
-            this.etatJeu = etatJeu;
-            CreerListeInfos(listeAnimaux);
+            this._etatJeu = etatJeu;
+            AfficherInfosAnimaux(listeAnimaux);
         }
 
-        public void CreerListeInfos(List<Animal> listeAnimaux) {
+        public void AfficherInfosAnimaux(List<Animal> listeAnimaux) {
             foreach (Animal animal in listeAnimaux) {
-                infosAnimaux = new UsrCtrlInfosAnimaux(etatJeu);
-                infosAnimaux.InfosAnimalClick(listeAnimaux);
-                infosAnimaux.InfosUserControl(animal);
-                FlpListeInfosAnimaux.Controls.Add(infosAnimaux);
+                _usrCtrlInfosAnimaux = new UsrCtrlInfosAnimaux(_etatJeu);
+                _usrCtrlInfosAnimaux.InfosUserControl(animal);
+                FlpListeInfosAnimaux.Controls.Add(_usrCtrlInfosAnimaux);
             }
         }
     }

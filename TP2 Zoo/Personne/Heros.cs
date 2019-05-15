@@ -36,13 +36,17 @@ namespace TP2_Zoo.Personne {
             RotationSpriteHaut = 7;
         }
 
+        /// <summary>
+        ///     Méthode qui permet le déplacement de l'héros avec les touches WASD du clavier.
+        /// </summary>
+        /// <param name="e"></param>
         public void Deplacer(KeyEventArgs e) {
             int x = Position[0];
             int y = Position[1];
 
             switch (e.KeyCode) {
                 case Keys.W:
-                    if (!GerantCarte.SolidMapHeros[ToSolidCoord(x), ToSolidCoord(y) - 1] && !GerantCarte.OccupeAiMap[Position[0], Position[1] - 1]) {
+                    if (!GerantCarte.SolidMapHeros[ToSolidCoord(x), ToSolidCoord(y) - 1] && !GerantCarte.PosAiMap[Position[0], Position[1] - 1]) {
                         Position[1] -= 1;
                         Sprite = RotationSpriteHaut;
                         
@@ -55,7 +59,7 @@ namespace TP2_Zoo.Personne {
                     }
                     break;
                 case Keys.A:
-                    if (!GerantCarte.SolidMapHeros[ToSolidCoord(x) - 1, ToSolidCoord(y)] && !GerantCarte.OccupeAiMap[Position[0] - 1, Position[1]]) {
+                    if (!GerantCarte.SolidMapHeros[ToSolidCoord(x) - 1, ToSolidCoord(y)] && !GerantCarte.PosAiMap[Position[0] - 1, Position[1]]) {
                         Position[0] -= 1;
                         Sprite = RotationSpriteGauche;
 
@@ -68,7 +72,7 @@ namespace TP2_Zoo.Personne {
                     }
                     break;
                 case Keys.S:
-                    if (!GerantCarte.SolidMapHeros[ToSolidCoord(x), ToSolidCoord(y) + 1] && !GerantCarte.OccupeAiMap[Position[0], Position[1] + 1]) {
+                    if (!GerantCarte.SolidMapHeros[ToSolidCoord(x), ToSolidCoord(y) + 1] && !GerantCarte.PosAiMap[Position[0], Position[1] + 1]) {
                         Position[1] += 1;
                         Sprite = RotationSpriteBas;
 
@@ -81,7 +85,7 @@ namespace TP2_Zoo.Personne {
                     }
                     break;
                 case Keys.D:
-                    if (!GerantCarte.SolidMapHeros[ToSolidCoord(x) + 1, ToSolidCoord(y)] && !GerantCarte.OccupeAiMap[Position[0] + 1, Position[1]]) {
+                    if (!GerantCarte.SolidMapHeros[ToSolidCoord(x) + 1, ToSolidCoord(y)] && !GerantCarte.PosAiMap[Position[0] + 1, Position[1]]) {
                         Position[0] += 1;
                         Sprite = RotationSpriteDroite;
 

@@ -14,16 +14,22 @@ using tileSetZoo;
 namespace TP2_Zoo {
     public partial class UsrCtrlInfosVisiteurs : UserControl {
         FrmEtatJeu EtatJeu;
-        private Visiteur VisiteurTemp;
+        private Visiteur _visiteurTemp;
 
-        public UsrCtrlInfosVisiteurs(FrmEtatJeu EtatJeu) {
+        public UsrCtrlInfosVisiteurs(FrmEtatJeu etatJeu) {
             InitializeComponent();
-            this.EtatJeu = EtatJeu;
+            this.EtatJeu = etatJeu;
         }
 
-        public void Setup(List<Visiteur> ListeVisiteurs, int PositionX, int PositionY) {
+        /// <summary>
+        ///     Méthode qui permet de  les informations du visiteur cliqué.
+        /// </summary>
+        /// <param name="listeVisiteurs">La liste de tous les visiteurs</param>
+        /// <param name="pX">La position X du visiteur cliqué</param>
+        /// <param name="pY">La position Y du visiteur cliqué</param>
+        public void Setup(List<Visiteur> listeVisiteurs, int pX, int pY) {
 
-            Visiteur UnVisiteur = TrouverVisiteur(ListeVisiteurs, PositionX, PositionY);
+            Visiteur UnVisiteur = TrouverVisiteur(listeVisiteurs, pX, pY);
 
             switch (UnVisiteur.Type) {
                 case "Pépé":
@@ -43,23 +49,38 @@ namespace TP2_Zoo {
             UpdateInfoVisiteur(UnVisiteur);
         }
 
-
-        private void UpdateInfoVisiteur(Visiteur UnVisiteur) {
-            LblNomVisiteur.Text = UnVisiteur.Nom;
-            LblSexeVisiteur.Text = TrouverSexeVisiteur(UnVisiteur);
-            LblDureeVisiteur.Text = UnVisiteur.NbrJours.ToString() + " jour(s)";
+        /// <summary>
+        ///     Méthode qui met à jour l'affichage des informations du visiteur cliqué.
+        /// </summary>
+        /// <param name="unVisiteur">Le visiteur cliqué</param>
+        private void UpdateInfoVisiteur(Visiteur unVisiteur) {
+            LblNomVisiteur.Text = unVisiteur.Nom;
+            LblSexeVisiteur.Text = TrouverSexeVisiteur(unVisiteur);
+            LblDureeVisiteur.Text = unVisiteur.NbrJours.ToString() + " jour(s)";
         }
 
-
-        private Visiteur TrouverVisiteur(List<Visiteur> ListeVisiteurs, int PositionX, int PositionY) {
-            foreach (var Visiteur in ListeVisiteurs) {
-                if (Visiteur.Position[0] == PositionX && Visiteur.Position[1] == PositionY) {
-                    VisiteurTemp = Visiteur;
+        /// <summary>
+        ///     Méthode qui trouve le visiteur cliqué. Elle retourne le visiteur.
+        /// </summary>
+        /// <param name="listeVisiteurs">La liste de tous les visiteurs</param>
+        /// <param name="pX">La position X du visiteur cliqué</param>
+        /// <param name="pY">La position Y du visiteur cliqué</param>
+        /// <returns></returns>
+        private Visiteur TrouverVisiteur(List<Visiteur> listeVisiteurs, int pX, int pY) {
+            foreach (var Visiteur in listeVisiteurs) {
+                if (Visiteur.Position[0] == pX && Visiteur.Position[1] == pY) {
+                    _visiteurTemp = Visiteur;
                 }
             }
-            return VisiteurTemp;
+            return _visiteurTemp;
         }
 
+        /// <summary>
+        ///     Méthode pour identifier le sexe du visiteur cliqué. Elle retourne le 
+        ///     sexe du visiteur.
+        /// </summary>
+        /// <param name="unVisiteur">Le visiteur cliqué</param>
+        /// <returns></returns>
         private string TrouverSexeVisiteur(Visiteur unVisiteur) {
             if (unVisiteur.Sexe == 0) {
                 return "Masculin";

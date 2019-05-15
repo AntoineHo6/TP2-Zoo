@@ -22,40 +22,40 @@ namespace tileSetZoo {
         public static int FOSSE_EAU = 8;
         public static int EDIFICE_CONCIERGE = 9;
 
-        private static List<TileCoord> listeCoord = new List<TileCoord>();
-        private static List<Bitmap> listeBitmap = new List<Bitmap>();
+        private static List<TileCoord> ListeCoord = new List<TileCoord>();
+        private static List<Bitmap> ListeBitMap = new List<Bitmap>();
 
         /// <summary>
         /// Constructeur statique
         /// </summary>
         static MapTileSetImageGenerator() {
-            listeCoord.Add(new TileCoord() { Ligne = 0, Colonne = 0 });     // FLAQUEDEAU
-            listeCoord.Add(new TileCoord() { Ligne = 8, Colonne = 0 });     // GAZON
-            listeCoord.Add(new TileCoord() { Ligne = 14, Colonne = 22 });   // ENCLOS HORIZONTAL
-            listeCoord.Add(new TileCoord() { Ligne = 10, Colonne = 18 });   // ENCLOS VERTICAL
-            listeCoord.Add(new TileCoord() { Ligne = 14, Colonne = 4 });    // SABLE
-            listeCoord.Add(new TileCoord() { Ligne = 0, Colonne = 18 });    // MAISON
-            listeCoord.Add(new TileCoord() { Ligne = 23, Colonne = 1 });    // DECHET
-            listeCoord.Add(new TileCoord() { Ligne = 8, Colonne = 3 });     // GAZON_HAUT
-            listeCoord.Add(new TileCoord() { Ligne = 0, Colonne = 2 });     // FOSSE_EAU
-            listeCoord.Add(new TileCoord() { Ligne = 4, Colonne = 12 });     // EDIFICE_CONCIERGE
+            ListeCoord.Add(new TileCoord() { Ligne = 0, Colonne = 0 });     // FLAQUEDEAU
+            ListeCoord.Add(new TileCoord() { Ligne = 8, Colonne = 0 });     // GAZON
+            ListeCoord.Add(new TileCoord() { Ligne = 14, Colonne = 22 });   // ENCLOS HORIZONTAL
+            ListeCoord.Add(new TileCoord() { Ligne = 10, Colonne = 18 });   // ENCLOS VERTICAL
+            ListeCoord.Add(new TileCoord() { Ligne = 14, Colonne = 4 });    // SABLE
+            ListeCoord.Add(new TileCoord() { Ligne = 0, Colonne = 18 });    // MAISON
+            ListeCoord.Add(new TileCoord() { Ligne = 23, Colonne = 1 });    // DECHET
+            ListeCoord.Add(new TileCoord() { Ligne = 8, Colonne = 3 });     // GAZON_HAUT
+            ListeCoord.Add(new TileCoord() { Ligne = 0, Colonne = 2 });     // FOSSE_EAU
+            ListeCoord.Add(new TileCoord() { Ligne = 4, Colonne = 12 });     // EDIFICE_CONCIERGE
 
 
-            listeBitmap.Add(LoadTile(FLAQUEDEAU, 32, 32));            // FLAQUEDEAU
-            listeBitmap.Add(LoadTile(GAZON, 32, 32));                 // GAZON
-            listeBitmap.Add(LoadTile(ENCLOS_H, 64, 32));              // ENCLOS HORIZONTAL
-            listeBitmap.Add(LoadTile(ENCLOS_V, 32, 32));              // ENCLOS VERTICAL
-            listeBitmap.Add(LoadTile(SABLE, 32, 32));                 // SABLE
-            listeBitmap.Add(LoadTile(MAISON, 128, 160));              // MAISON
-            listeBitmap.Add(LoadTile(DECHET, 32, 32));                // DECHET
-            listeBitmap.Add(LoadTile(GAZON_HAUT, 32, 32));            // GAZON_HAUT
-            listeBitmap.Add(LoadTile(FOSSE_EAU, 32, 32));             // FOSSE_EAU
-            listeBitmap.Add(LoadTile(EDIFICE_CONCIERGE, 128, 160));   // EDIFICE_CONCIERGE
+            ListeBitMap.Add(LoadTile(FLAQUEDEAU, 32, 32));            // FLAQUEDEAU
+            ListeBitMap.Add(LoadTile(GAZON, 32, 32));                 // GAZON
+            ListeBitMap.Add(LoadTile(ENCLOS_H, 64, 32));              // ENCLOS HORIZONTAL
+            ListeBitMap.Add(LoadTile(ENCLOS_V, 32, 32));              // ENCLOS VERTICAL
+            ListeBitMap.Add(LoadTile(SABLE, 32, 32));                 // SABLE
+            ListeBitMap.Add(LoadTile(MAISON, 128, 160));              // MAISON
+            ListeBitMap.Add(LoadTile(DECHET, 32, 32));                // DECHET
+            ListeBitMap.Add(LoadTile(GAZON_HAUT, 32, 32));            // GAZON_HAUT
+            ListeBitMap.Add(LoadTile(FOSSE_EAU, 32, 32));             // FOSSE_EAU
+            ListeBitMap.Add(LoadTile(EDIFICE_CONCIERGE, 128, 160));   // EDIFICE_CONCIERGE
         }
 
         private static Bitmap LoadTile(int posListe, int imageWidth, int imageHeight) {
             Image source = TP2_Zoo.Properties.Resources.zoo_tileset;
-            TileCoord coord = listeCoord[posListe];
+            TileCoord coord = ListeCoord[posListe];
             Rectangle crop = new Rectangle((coord.Colonne * IMAGE_WIDTH), (coord.Ligne * IMAGE_HEIGHT), imageWidth, imageHeight);
 
             var bmp = new Bitmap(crop.Width, crop.Height);
@@ -66,7 +66,7 @@ namespace tileSetZoo {
         }
 
         public static Bitmap GetTile(int posListe) {
-            return listeBitmap[posListe];
+            return ListeBitMap[posListe];
         }
 
     }

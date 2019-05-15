@@ -13,9 +13,7 @@ namespace TP2_Zoo.Personne {
                 Sprites.Add(HumainTileSetImageGenerator.GetTile(i));
             }
             Type = "Dame";
-
             Sexe = 1;
-
             Nom = AssignerNom(Sexe);
         }
     }
