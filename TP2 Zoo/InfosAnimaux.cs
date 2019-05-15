@@ -13,7 +13,6 @@ using TP2_Zoo.Animaux;
 namespace TP2_Zoo {
     public partial class UsrCtrlInfosAnimaux : UserControl {
         FrmEtatJeu EtatJeu;
-        private Animal _animalTemp;
 
         public UsrCtrlInfosAnimaux(FrmEtatJeu etatJeu) {
             InitializeComponent();

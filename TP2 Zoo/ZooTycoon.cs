@@ -16,50 +16,68 @@ namespace TP2_Zoo {
         enum Mois { Janvier=1, Fevrier, Mars, Avril, Mai, Juin, Juillet, Aout,
         Septembre, Octobre, Novembre, Decembre };
         
-        DateTime dateNow;
-        FrmEtatJeu etatJeu;
+        DateTime _dateNow;
+        FrmEtatJeu _etatJeu;
 
         public Zoo() {
             InitializeComponent();
-
             InitEtatJeu();
 
-            dateNow = DateTime.Now;
-            LblDate.Text = " " + dateNow.Day + "  " + (Mois)dateNow.Month + "  " + dateNow.Year;
+            _dateNow = DateTime.Now;
+            LblDate.Text = " " + _dateNow.Day + "  " + (Mois)_dateNow.Month + "  " + _dateNow.Year;
 
             Noms.Noms.LoadNames();
         }
 
-
+        /// <summary>
+        ///     Méthode qui instancie la form du jeu.
+        /// </summary>
         private void InitEtatJeu() {
-            etatJeu = new FrmEtatJeu(this);
-            etatJeu.Location = new Point(0, 112);
-            this.Controls.Add(etatJeu);
-            //this.Size = new Size(1280, 832);
+            _etatJeu = new FrmEtatJeu(this);
+            _etatJeu.Location = new Point(0, 112);
+            this.Controls.Add(_etatJeu);
         }
 
-
+        /// <summary>
+        ///     Méthode qui affiche la date.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void Timer1_Tick(object sender, EventArgs e) {
-            dateNow = dateNow.AddDays(1);
-            LblDate.Text = " " + dateNow.Day + "  " + (Mois)dateNow.Month + "  " + dateNow.Year;
+            _dateNow = _dateNow.AddDays(1);
+            LblDate.Text = " " + _dateNow.Day + "  " + (Mois)_dateNow.Month + "  " + _dateNow.Year;
         }
 
+        /// <summary>
+        ///     Méthode qui gère le clique de l'escape pour fermer les User Control.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void Zoo_KeyDown(object sender, KeyEventArgs e) {
             if (e.KeyCode == Keys.Escape) {
-                etatJeu.ChoixAnimal.Visible = false;
-                etatJeu.InfosVisiteurs.Visible = false;
-
-                etatJeu.Focus();
+                _etatJeu.ChoixAnimal.Visible = false;
+                _etatJeu.InfosVisiteurs.Visible = false;
+                _etatJeu.Focus();
             }
         }
 
+        /// <summary>
+        ///     Bouton qui permet de faire quitter le jeu.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void ToolStripMenuItemQuitter_Click(object sender, EventArgs e) {
             Application.Exit();
         }
 
+        /// <summary>
+        ///     Bouton pour faire engager un concierge.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void EngagerConcierge_Click(object sender, EventArgs e) {
-            etatJeu.CreerConcierge();
-            etatJeu.Focus();
+            _etatJeu.CreerConcierge();
+            _etatJeu.Focus();
         }
     }
 }
