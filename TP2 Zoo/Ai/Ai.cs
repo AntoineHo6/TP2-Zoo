@@ -60,14 +60,31 @@ namespace TP2_Zoo.Ai {
             }
         }
 
+
+        /// <summary>
+        ///     Collision de AI est activée.
+        /// </summary>
+        /// <param name="x"></param>
+        /// <param name="y"></param>
         public static void OccuperTuile(int x, int y) {
             GerantCarte.PosAiMap[x, y] = true;
         }
 
+
+        /// <summary>
+        ///     Collision de AI est desactivée.
+        /// </summary>
+        /// <param name="x"></param>
+        /// <param name="y"></param>
         public static void LibererTuile(int x, int y) {
             GerantCarte.PosAiMap[x, y] = false;
         }
 
+        /// <summary>
+        ///     Converti une coordonnée pour qu'elle puisse être utilisé dans un tableau de GerantCarte qui contient le mot clé "Solid"
+        /// </summary>
+        /// <param name="coord"></param>
+        /// <returns></returns>
         static int ToSolidCoord(int coord) {
             return coord + 1;
         }
