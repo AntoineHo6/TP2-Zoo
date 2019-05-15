@@ -29,10 +29,10 @@
             this.LblPrixMouton = new System.Windows.Forms.Label();
             this.LblPrixLion = new System.Windows.Forms.Label();
             this.LblPrixLicorne = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
+            this.LblEscape = new System.Windows.Forms.Label();
+            this.LblMouton = new System.Windows.Forms.Label();
+            this.LblLion = new System.Windows.Forms.Label();
+            this.LblLicorne = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // BtnMouton
@@ -67,7 +67,7 @@
             // 
             this.LblPrixMouton.AutoSize = true;
             this.LblPrixMouton.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.LblPrixMouton.Location = new System.Drawing.Point(91, 183);
+            this.LblPrixMouton.Location = new System.Drawing.Point(92, 183);
             this.LblPrixMouton.Name = "LblPrixMouton";
             this.LblPrixMouton.Size = new System.Drawing.Size(48, 25);
             this.LblPrixMouton.TabIndex = 3;
@@ -93,55 +93,55 @@
             this.LblPrixLicorne.TabIndex = 5;
             this.LblPrixLicorne.Text = "50$";
             // 
-            // label1
+            // LblEscape
             // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(3, 292);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(119, 20);
-            this.label1.TabIndex = 6;
-            this.label1.Text = "(esc pour sortir)";
+            this.LblEscape.AutoSize = true;
+            this.LblEscape.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LblEscape.Location = new System.Drawing.Point(3, 292);
+            this.LblEscape.Name = "LblEscape";
+            this.LblEscape.Size = new System.Drawing.Size(119, 20);
+            this.LblEscape.TabIndex = 6;
+            this.LblEscape.Text = "(esc pour sortir)";
             // 
-            // label2
+            // LblMouton
             // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(73, 23);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(84, 24);
-            this.label2.TabIndex = 7;
-            this.label2.Text = "Mouton :";
+            this.LblMouton.AutoSize = true;
+            this.LblMouton.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LblMouton.Location = new System.Drawing.Point(80, 23);
+            this.LblMouton.Name = "LblMouton";
+            this.LblMouton.Size = new System.Drawing.Size(74, 24);
+            this.LblMouton.TabIndex = 7;
+            this.LblMouton.Text = "Mouton";
             // 
-            // label3
+            // LblLion
             // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(267, 23);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(56, 24);
-            this.label3.TabIndex = 8;
-            this.label3.Text = "Lion :";
+            this.LblLion.AutoSize = true;
+            this.LblLion.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LblLion.Location = new System.Drawing.Point(277, 23);
+            this.LblLion.Name = "LblLion";
+            this.LblLion.Size = new System.Drawing.Size(46, 24);
+            this.LblLion.TabIndex = 8;
+            this.LblLion.Text = "Lion";
             // 
-            // label4
+            // LblLicorne
             // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(433, 23);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(83, 24);
-            this.label4.TabIndex = 9;
-            this.label4.Text = "Licorne :";
+            this.LblLicorne.AutoSize = true;
+            this.LblLicorne.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LblLicorne.Location = new System.Drawing.Point(441, 23);
+            this.LblLicorne.Name = "LblLicorne";
+            this.LblLicorne.Size = new System.Drawing.Size(73, 24);
+            this.LblLicorne.TabIndex = 9;
+            this.LblLicorne.Text = "Licorne";
             // 
             // ChoixAnimal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Cornsilk;
-            this.Controls.Add(this.label4);
-            this.Controls.Add(this.label3);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.label1);
+            this.Controls.Add(this.LblLicorne);
+            this.Controls.Add(this.LblLion);
+            this.Controls.Add(this.LblMouton);
+            this.Controls.Add(this.LblEscape);
             this.Controls.Add(this.LblPrixLicorne);
             this.Controls.Add(this.LblPrixLion);
             this.Controls.Add(this.LblPrixMouton);
@@ -163,9 +163,9 @@
         private System.Windows.Forms.Label LblPrixMouton;
         private System.Windows.Forms.Label LblPrixLion;
         private System.Windows.Forms.Label LblPrixLicorne;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label LblEscape;
+        private System.Windows.Forms.Label LblMouton;
+        private System.Windows.Forms.Label LblLion;
+        private System.Windows.Forms.Label LblLicorne;
     }
 }

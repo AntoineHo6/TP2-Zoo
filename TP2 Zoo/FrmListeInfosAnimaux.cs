@@ -21,6 +21,10 @@ namespace TP2_Zoo {
             AfficherInfosAnimaux(listeAnimaux);
         }
 
+        /// <summary>
+        ///     Méthode qui affiche une liste de tous les informations des animaux dans le jeu.
+        /// </summary>
+        /// <param name="listeAnimaux">La liste de tous les animaux</param>
         public void AfficherInfosAnimaux(List<Animal> listeAnimaux) {
             foreach (Animal animal in listeAnimaux) {
                 _usrCtrlInfosAnimaux = new UsrCtrlInfosAnimaux(_etatJeu);

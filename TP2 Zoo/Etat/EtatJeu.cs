@@ -231,7 +231,7 @@ namespace TP2_Zoo.Etat {
                     break;
             }
 
-            AjouterArgentHeros(2);
+            AjouterArgentHeros(_nbrAnimaux * 2);
             Refresh();
         }
 

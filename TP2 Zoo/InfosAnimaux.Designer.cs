@@ -165,7 +165,6 @@
             this.Controls.Add(this.PctrBoxAnimal);
             this.Name = "UsrCtrlInfosAnimaux";
             this.Size = new System.Drawing.Size(252, 286);
-            this.Paint += new System.Windows.Forms.PaintEventHandler(this.UsrCtrlInfosAnimaux_Paint);
             ((System.ComponentModel.ISupportInitialize)(this.PctrBoxAnimal)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
