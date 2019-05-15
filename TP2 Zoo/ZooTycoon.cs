@@ -29,7 +29,7 @@ namespace TP2_Zoo {
             LblDate.Text = " " + _dateNow.Day + "  " + (Mois)_dateNow.Month + "  " + _dateNow.Year;
 
             Noms.Noms.LoadNames();
-            this.ControlBox = false;
+            this.ControlBox = false;    // Cacher le bouton Cancel
         }
 
         /// <summary>
@@ -41,7 +41,9 @@ namespace TP2_Zoo {
             this.Controls.Add(_etatJeu);
         }
 
-
+        /// <summary>
+        ///     Méthode qui initialise la form Quitter.
+        /// </summary>
         private void InitFrmQuitter() {
             _quitter = new FrmQuitter(_etatJeu);
             _quitter.Visible = false;

@@ -27,7 +27,7 @@
             this.LblMontantTotal = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
             this.PctrBoxProfit = new System.Windows.Forms.PictureBox();
-            this.label1 = new System.Windows.Forms.Label();
+            this.LblTitreProfit = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.PctrBoxProfit)).BeginInit();
             this.SuspendLayout();
@@ -44,7 +44,7 @@
             // 
             // panel1
             // 
-            this.panel1.Controls.Add(this.label1);
+            this.panel1.Controls.Add(this.LblTitreProfit);
             this.panel1.Controls.Add(this.PctrBoxProfit);
             this.panel1.Controls.Add(this.LblMontantTotal);
             this.panel1.Location = new System.Drawing.Point(12, 12);
@@ -62,15 +62,15 @@
             this.PctrBoxProfit.TabIndex = 2;
             this.PctrBoxProfit.TabStop = false;
             // 
-            // label1
+            // LblTitreProfit
             // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Arial Narrow", 21.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(84, 19);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(93, 33);
-            this.label1.TabIndex = 3;
-            this.label1.Text = "Profit :";
+            this.LblTitreProfit.AutoSize = true;
+            this.LblTitreProfit.Font = new System.Drawing.Font("Arial Narrow", 21.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LblTitreProfit.Location = new System.Drawing.Point(84, 19);
+            this.LblTitreProfit.Name = "LblTitreProfit";
+            this.LblTitreProfit.Size = new System.Drawing.Size(93, 33);
+            this.LblTitreProfit.TabIndex = 3;
+            this.LblTitreProfit.Text = "Profit :";
             // 
             // FrmQuitter
             // 
@@ -98,6 +98,6 @@
         private System.Windows.Forms.Label LblMontantTotal;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.PictureBox PctrBoxProfit;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label LblTitreProfit;
     }
 }

@@ -18,10 +18,18 @@ namespace TP2_Zoo {
             this._etatJeu = etatJeu;
         }
 
+        /// <summary>
+        ///     Méthode qui affiche le profit total du joueur.
+        /// </summary>
         public void AfficherProfitTotal() {
             LblMontantTotal.Text = _etatJeu.Heros.Argent.ToString() + "$";
         }
 
+        /// <summary>
+        ///     Méthode qui gère la fin du jeu. 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void FrmQuitter_FormClosing(object sender, FormClosingEventArgs e) {
             Application.Exit();
         }
