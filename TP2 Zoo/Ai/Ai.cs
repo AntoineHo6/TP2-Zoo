@@ -60,10 +60,22 @@ namespace TP2_Zoo.Ai {
             }
         }
 
+
+        /// <summary>
+        ///     Collision de AI est activée.
+        /// </summary>
+        /// <param name="x"></param>
+        /// <param name="y"></param>
         public static void OccuperTuile(int x, int y) {
             GerantCarte.PosAiMap[x, y] = true;
         }
 
+
+        /// <summary>
+        ///     Collision de AI est desactivée.
+        /// </summary>
+        /// <param name="x"></param>
+        /// <param name="y"></param>
         public static void LibererTuile(int x, int y) {
             GerantCarte.PosAiMap[x, y] = false;
         }
