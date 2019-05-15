@@ -252,6 +252,7 @@ namespace TP2_Zoo.Etat {
         /// <param name="montant"> Le montant d'argent à déduire. </param>
         private void DeduireArgentHeros(double montant) {
             Heros.Argent -= montant;
+            Heros.Profit -= montant;
             FormePrincipale.LblArgent.Text = "Argent : " + Heros.Argent + "$";
         }
 
@@ -262,6 +263,7 @@ namespace TP2_Zoo.Etat {
         /// <param name="montant"> Le montant d'argent à ajouter. </param>
         private void AjouterArgentHeros(double montant) {
             Heros.Argent += montant;
+            Heros.Profit += montant;
             FormePrincipale.LblArgent.Text = "Argent : " + Heros.Argent + "$";
         }
 

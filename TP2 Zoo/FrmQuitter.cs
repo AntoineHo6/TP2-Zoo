@@ -22,7 +22,7 @@ namespace TP2_Zoo {
         ///     Méthode qui affiche le profit total du joueur.
         /// </summary>
         public void AfficherProfitTotal() {
-            LblMontantTotal.Text = _etatJeu.Heros.Argent.ToString() + "$";
+            LblMontantTotal.Text = _etatJeu.Heros.Profit.ToString() + "$";
         }
 
         /// <summary>

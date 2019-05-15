@@ -13,10 +13,11 @@ namespace TP2_Zoo.Personne {
         public int RotationSpriteDroite { get; set; }
         public int RotationSpriteGauche { get; set; }
         public int RotationSpriteHaut { get; set; }
-
+        public double Profit { get; set; }
 
         public Heros() {
             this.Position = new int[] { 1, 5 };
+            Profit = 0;
             Argent = 100.0;
 
             Sprites.Add(Properties.Resources.bas1);     // 0
