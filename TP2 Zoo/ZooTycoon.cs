@@ -18,9 +18,11 @@ namespace TP2_Zoo {
         
         DateTime _dateNow;
         FrmEtatJeu _etatJeu;
+        FrmQuitter _quitter;
 
         public Zoo() {
             InitializeComponent();
+            InitFrmQuitter();
             InitEtatJeu();
 
             _dateNow = DateTime.Now;
@@ -37,6 +39,12 @@ namespace TP2_Zoo {
             _etatJeu = new FrmEtatJeu(this);
             _etatJeu.Location = new Point(0, 112);
             this.Controls.Add(_etatJeu);
+        }
+
+
+        private void InitFrmQuitter() {
+            _quitter = new FrmQuitter(_etatJeu);
+            _quitter.Visible = false;
         }
 
         /// <summary>
@@ -68,6 +76,8 @@ namespace TP2_Zoo {
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private void ToolStripMenuItemQuitter_Click(object sender, EventArgs e) {
+            
+            _quitter.Visible = true;
             Application.Exit();
         }
 
