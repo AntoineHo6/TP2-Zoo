@@ -68,6 +68,12 @@
     <Compile Include="FrmListeInfosAnimaux.Designer.cs">
       <DependentUpon>FrmListeInfosAnimaux.cs</DependentUpon>
     </Compile>
+    <Compile Include="FrmQuitter.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmQuitter.Designer.cs">
+      <DependentUpon>FrmQuitter.cs</DependentUpon>
+    </Compile>
     <Compile Include="InfosAnimaux.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -109,6 +115,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FrmListeInfosAnimaux.resx">
       <DependentUpon>FrmListeInfosAnimaux.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmQuitter.resx">
+      <DependentUpon>FrmQuitter.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="InfosAnimaux.resx">
       <DependentUpon>InfosAnimaux.cs</DependentUpon>
@@ -208,6 +217,7 @@
   <ItemGroup>
     <Content Include="Noms\NomsFeminins.txt" />
     <Content Include="Noms\NomsMasculins.txt" />
+    <None Include="Resources\Profit_Logo.png" />
     <None Include="Resources\Concierge.PNG" />
     <None Include="Resources\Argent_Logo.png" />
     <None Include="Resources\Zoo_Tycoon_Icon.ico" />

@@ -290,6 +290,16 @@ namespace TP2_Zoo.Properties {
         /// <summary>
         ///   Recherche une ressource localisée de type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap Profit_Logo {
+            get {
+                object obj = ResourceManager.GetObject("Profit_Logo", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une ressource localisée de type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap zoo_tileset {
             get {
                 object obj = ResourceManager.GetObject("zoo_tileset", resourceCulture);

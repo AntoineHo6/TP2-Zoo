@@ -27,6 +27,7 @@ namespace TP2_Zoo {
             LblDate.Text = " " + _dateNow.Day + "  " + (Mois)_dateNow.Month + "  " + _dateNow.Year;
 
             Noms.Noms.LoadNames();
+            this.ControlBox = false;
         }
 
         /// <summary>
