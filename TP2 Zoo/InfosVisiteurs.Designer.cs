@@ -137,12 +137,13 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.Controls.Add(this.LblEscape);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.PctrBoxVisiteur);
             this.Margin = new System.Windows.Forms.Padding(1);
             this.Name = "UsrCtrlInfosVisiteurs";
-            this.Size = new System.Drawing.Size(256, 247);
+            this.Size = new System.Drawing.Size(254, 245);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.PctrBoxVisiteur)).EndInit();
