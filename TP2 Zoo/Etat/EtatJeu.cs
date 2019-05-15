@@ -57,6 +57,7 @@ namespace TP2_Zoo.Etat {
         private void InitChoixAnimal() {
             ChoixAnimal = new ChoixAnimal(this);
             ChoixAnimal.Location = new Point(345, 239);
+            ChoixAnimal.BorderStyle = BorderStyle.FixedSingle;
             this.Controls.Add(ChoixAnimal);
             ChoixAnimal.Visible = false;
         }
@@ -66,7 +67,7 @@ namespace TP2_Zoo.Etat {
         /// </summary>
         private void InitInfosVisiteurs() {
             InfosVisiteurs = new UsrCtrlInfosVisiteurs(this);
-            InfosVisiteurs.Location = new Point(345, 239);
+            InfosVisiteurs.Location = new Point(510, 239);
             this.Controls.Add(InfosVisiteurs);
             InfosVisiteurs.Visible = false;
         }

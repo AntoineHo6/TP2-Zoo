@@ -99,9 +99,9 @@
             this.LblEscape.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.LblEscape.Location = new System.Drawing.Point(3, 292);
             this.LblEscape.Name = "LblEscape";
-            this.LblEscape.Size = new System.Drawing.Size(119, 20);
+            this.LblEscape.Size = new System.Drawing.Size(121, 20);
             this.LblEscape.TabIndex = 6;
-            this.LblEscape.Text = "(esc pour sortir)";
+            this.LblEscape.Text = "(Esc pour sortir)";
             // 
             // LblMouton
             // 

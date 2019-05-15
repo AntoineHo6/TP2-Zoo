@@ -36,6 +36,7 @@
             this.LblSexe = new System.Windows.Forms.Label();
             this.LblNom = new System.Windows.Forms.Label();
             this.PctrBoxVisiteur = new System.Windows.Forms.PictureBox();
+            this.LblEscape = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.PctrBoxVisiteur)).BeginInit();
             this.SuspendLayout();
@@ -122,19 +123,31 @@
             this.PctrBoxVisiteur.TabIndex = 2;
             this.PctrBoxVisiteur.TabStop = false;
             // 
+            // LblEscape
+            // 
+            this.LblEscape.AutoSize = true;
+            this.LblEscape.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LblEscape.Location = new System.Drawing.Point(3, 224);
+            this.LblEscape.Name = "LblEscape";
+            this.LblEscape.Size = new System.Drawing.Size(101, 16);
+            this.LblEscape.TabIndex = 4;
+            this.LblEscape.Text = "(Esc pour sortir)";
+            // 
             // UsrCtrlInfosVisiteurs
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.LblEscape);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.PctrBoxVisiteur);
-            this.Margin = new System.Windows.Forms.Padding(1, 1, 1, 1);
+            this.Margin = new System.Windows.Forms.Padding(1);
             this.Name = "UsrCtrlInfosVisiteurs";
-            this.Size = new System.Drawing.Size(256, 235);
+            this.Size = new System.Drawing.Size(256, 247);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.PctrBoxVisiteur)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -148,5 +161,6 @@
         private System.Windows.Forms.Label LblSexe;
         private System.Windows.Forms.Label LblNom;
         private System.Windows.Forms.PictureBox PctrBoxVisiteur;
+        private System.Windows.Forms.Label LblEscape;
     }
 }
